@@ -356,6 +356,7 @@ retry:
             {
                 FMOD.Studio.ADVANCEDSETTINGS studioAdvancedSettings = new FMOD.Studio.ADVANCEDSETTINGS();
                 result = studioSystem.setAdvancedSettings(studioAdvancedSettings, Settings.Instance.EncryptionKey);
+                
                 CheckInitResult(result, "FMOD.Studio.System.setAdvancedSettings");
             }
 

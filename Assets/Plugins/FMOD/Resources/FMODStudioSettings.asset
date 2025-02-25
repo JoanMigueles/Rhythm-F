@@ -436,15 +436,15 @@ MonoBehaviour:
   displaySortOrder: 0
   childIdentifiers:
   - 0f8eb3f400726694eb47beb1a9f94ce8
-  - 46fbfdf3fc43db0458918377fd40293e
-  - 2fea114e74ecf3c4f920e1d5cc1c4c40
-  - e7a046c753c3c3d4aacc91f6597f310d
-  - 52eb9df5db46521439908db3a29a1bbb
-  - 2c5177b11d81d824dbb064f9ac8527da
   - b7716510a1f36934c87976f3a81dbf3d
-  - c88d16e5272a4e241b0ef0ac2e53b73d
-  - de700ef3f37a49b58a57ae3addf01ad9
   - fd7c55dab0fce234b8c25f6ffca523c1
+  - c88d16e5272a4e241b0ef0ac2e53b73d
+  - e7a046c753c3c3d4aacc91f6597f310d
+  - 2c5177b11d81d824dbb064f9ac8527da
+  - 46fbfdf3fc43db0458918377fd40293e
+  - de700ef3f37a49b58a57ae3addf01ad9
+  - 52eb9df5db46521439908db3a29a1bbb
+  - 2fea114e74ecf3c4f920e1d5cc1c4c40
   codecChannels:
     Value: []
     HasValue: 0
@@ -609,10 +609,10 @@ MonoBehaviour:
   switchSettingsMigration: 1
   HasSourceProject: 1
   HasPlatforms: 1
-  sourceProjectPath: ../FMOD/RhythmTFG.fspro
-  sourceBankPath: ../FMOD/Build
+  sourceProjectPath: FMOD/FMOD.fspro
+  sourceBankPath: FMOD/Build
   sourceBankPathUnformatted: 
-  BankRefreshCooldown: 5
+  BankRefreshCooldown: 1
   ShowBankRefreshWindow: 1
   AutomaticEventLoading: 1
   BankLoadType: 0
@@ -649,18 +649,18 @@ MonoBehaviour:
   HideSetupWizard: 1
   LastEventReferenceScanVersion: 131622
   Platforms:
-  - {fileID: -1436713903717013239}
-  - {fileID: -2221954243474343128}
   - {fileID: -6962303637087560685}
-  - {fileID: 242254584742390270}
-  - {fileID: 8346707051330746611}
-  - {fileID: -3721134758561071949}
-  - {fileID: 1686076392652824788}
-  - {fileID: -2018879937204516014}
   - {fileID: -6310451029719784059}
-  - {fileID: -4236601074041600064}
-  - {fileID: 1520125670311656035}
   - {fileID: -5033307015233983146}
+  - {fileID: -4236601074041600064}
+  - {fileID: -3721134758561071949}
+  - {fileID: -2221954243474343128}
+  - {fileID: -2018879937204516014}
+  - {fileID: -1436713903717013239}
+  - {fileID: 242254584742390270}
+  - {fileID: 1520125670311656035}
+  - {fileID: 1686076392652824788}
+  - {fileID: 8346707051330746611}
   MigratedPlatforms: 0500000000000000060000000a0000000800000009000000120000000c000000150000000b0000000200000001000000
 --- !u!114 &242254584742390270
 MonoBehaviour:

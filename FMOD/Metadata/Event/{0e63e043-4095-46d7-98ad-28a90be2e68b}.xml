@@ -73,6 +73,9 @@
 		<relationship name="modules">
 			<destination>{91d21794-5d59-42a9-935d-3bec4a40ef79}</destination>
 		</relationship>
+		<relationship name="markers">
+			<destination>{ff15dfe6-fdc7-4b67-a68f-9bae0119954e}</destination>
+		</relationship>
 	</object>
 	<object class="EventMixerMaster" id="{82548ea5-b936-4270-9b5f-299bf5505903}">
 		<relationship name="automators">
@@ -122,6 +125,20 @@
 		</relationship>
 		<relationship name="output">
 			<destination>{82548ea5-b936-4270-9b5f-299bf5505903}</destination>
+		</relationship>
+	</object>
+	<object class="TempoMarker" id="{ff15dfe6-fdc7-4b67-a68f-9bae0119954e}">
+		<property name="position">
+			<value>2.4272499999999999</value>
+		</property>
+		<property name="tempo">
+			<value>148</value>
+		</property>
+		<relationship name="timeline">
+			<destination>{e52eec19-9222-410d-9af5-6356f9c44622}</destination>
+		</relationship>
+		<relationship name="markerTrack">
+			<destination>{a2aaca3a-a8f0-4454-b2ab-6176bd2f2537}</destination>
 		</relationship>
 	</object>
 	<object class="Automator" id="{304e4c0a-7776-4eb6-b479-3cdeb2d0f8d7}">

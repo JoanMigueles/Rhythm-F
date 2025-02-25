@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-9053723832123515139
+--- !u!114 &-9091333054814538659
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -9,18 +9,52 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
-  m_Name: bank:/Master.strings.bank
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/CustomSong
   m_EditorClassIdentifier: 
-  Path: ../FMOD/Build/Desktop/Master.strings.bank
-  Name: Master.strings
-  StudioPath: bank:/Master.strings
-  lastModified: 638753442301231038
-  FileSizes:
-  - Name: Desktop
-    Value: 800
-  Exists: 1
---- !u!114 &-4974501245003783312
+  Path: event:/CustomSong
+  Guid:
+    Data1: -1785230349
+    Data2: 1150819385
+    Data3: -1223271781
+    Data4: -865256942
+  Banks:
+  - {fileID: -1751657219509329858}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 30500
+--- !u!114 &-5848251324872358444
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SoundEffects/Beep
+  m_EditorClassIdentifier: 
+  Path: event:/SoundEffects/Beep
+  Guid:
+    Data1: -566500808
+    Data2: 1285541106
+    Data3: -2014329946
+    Data4: 1808610427
+  Banks:
+  - {fileID: -1751657219509329858}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
+--- !u!114 &-1751657219509329858
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -32,13 +66,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
   m_Name: bank:/Master.bank
   m_EditorClassIdentifier: 
-  Path: ../FMOD/Build/Desktop/Master.bank
+  Path: FMOD/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 638753442301195719
+  lastModified: 638757981678015405
   FileSizes:
   - Name: Desktop
-    Value: 4462144
+    Value: 4464576
   Exists: 1
 --- !u!114 &11400000
 MonoBehaviour:
@@ -53,17 +87,39 @@ MonoBehaviour:
   m_Name: FMODStudioCache
   m_EditorClassIdentifier: 
   EditorBanks:
-  - {fileID: -9053723832123515139}
-  - {fileID: -4974501245003783312}
+  - {fileID: 2413521439291127005}
+  - {fileID: -1751657219509329858}
   EditorEvents:
   - {fileID: 5255439162199396486}
+  - {fileID: -9091333054814538659}
+  - {fileID: -5848251324872358444}
   EditorParameters: []
   MasterBanks:
-  - {fileID: -4974501245003783312}
+  - {fileID: -1751657219509329858}
   StringsBanks:
-  - {fileID: -9053723832123515139}
-  cacheTime: 638753442301231038
+  - {fileID: 2413521439291127005}
+  cacheTime: 638757981678050537
   cacheVersion: 131622
+--- !u!114 &2413521439291127005
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Master.strings.bank
+  m_EditorClassIdentifier: 
+  Path: FMOD/Build/Desktop/Master.strings.bank
+  Name: Master.strings
+  StudioPath: bank:/Master.strings
+  lastModified: 638757981678050537
+  FileSizes:
+  - Name: Desktop
+    Value: 900
+  Exists: 1
 --- !u!114 &5255439162199396486
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -83,16 +139,16 @@ MonoBehaviour:
     Data3: -1456951912
     Data4: -1947803125
   Banks:
-  - {fileID: -4974501245003783312}
+  - {fileID: -1751657219509329858}
   IsStream: 1
   Is3D: 0
   IsOneShot: 1
   Parameters:
-  - {fileID: 7040789478138766323}
+  - {fileID: 6187704923545736184}
   MinDistance: 1
   MaxDistance: 20
   Length: 242152
---- !u!114 &7040789478138766323
+--- !u!114 &6187704923545736184
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
