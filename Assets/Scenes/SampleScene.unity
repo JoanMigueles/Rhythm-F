@@ -201,7 +201,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2414001}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 189809754}
+        m_TargetAssemblyTypeName: Metronome, Assembly-CSharp
+        m_MethodName: StopSong
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &2414001
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -491,20 +503,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83093fa39aae1664980c684f1cb95b6a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <songReference>k__BackingField:
-    Guid:
+  <songs>k__BackingField:
+  - Guid:
       Data1: 241426499
       Data2: 1188511893
       Data3: -1456951912
       Data4: -1947803125
     Path: event:/Evento
-  <beepReference>k__BackingField:
-    Guid:
-      Data1: -566500808
-      Data2: 1285541106
-      Data3: -2014329946
-      Data4: 1808610427
-    Path: event:/SoundEffects/Beep
 --- !u!4 &189809753
 Transform:
   m_ObjectHideFlags: 0
@@ -532,6 +537,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb6cd5e7832589b40a9ec68fb02c5dfc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <beepReference>k__BackingField:
+    Guid:
+      Data1: -566500808
+      Data2: 1285541106
+      Data3: -2014329946
+      Data4: 1808610427
+    Path: event:/SoundEffects/Beep
   BPM: 148
   startingTimeDelay: 2444
 --- !u!1 &244031882
@@ -1308,7 +1320,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1018655393}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 189809754}
+        m_TargetAssemblyTypeName: Metronome, Assembly-CSharp
+        m_MethodName: PlaySong
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1018655393
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1591,7 +1615,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8491a6b205df3c941bd4df981c36e12c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <eventReference>k__BackingField:
+  <customSongReference>k__BackingField:
     Guid:
       Data1: -1785230349
       Data2: 1150819385

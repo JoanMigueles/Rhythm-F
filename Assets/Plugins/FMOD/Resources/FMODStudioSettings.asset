@@ -415,11 +415,11 @@ MonoBehaviour:
       Value: 0
       HasValue: 0
     DSPBufferLength:
-      Value: 0
-      HasValue: 0
+      Value: 256
+      HasValue: 1
     DSPBufferCount:
-      Value: 0
-      HasValue: 0
+      Value: 4
+      HasValue: 1
     Plugins:
       Value: []
       HasValue: 1
@@ -427,8 +427,8 @@ MonoBehaviour:
       Value: []
       HasValue: 1
     CallbackHandler:
-      Value: {fileID: 0}
-      HasValue: 0
+      Value: {fileID: 11400000, guid: 668c27e484c5a87489824bce2428b9a4, type: 2}
+      HasValue: 1
   OutputTypeName: 
   threadAffinities:
     Value: []
@@ -547,8 +547,8 @@ MonoBehaviour:
       Value: 1
       HasValue: 1
     OverlayPosition:
-      Value: 0
-      HasValue: 0
+      Value: 5
+      HasValue: 1
     OverlayFontSize:
       Value: 0
       HasValue: 0
@@ -557,7 +557,7 @@ MonoBehaviour:
       HasValue: 0
     SampleRate:
       Value: 48000
-      HasValue: 1
+      HasValue: 0
     BuildDirectory:
       Value: 
       HasValue: 0
@@ -566,16 +566,16 @@ MonoBehaviour:
       HasValue: 0
     VirtualChannelCount:
       Value: 1024
-      HasValue: 1
+      HasValue: 0
     RealChannelCount:
       Value: 256
-      HasValue: 1
+      HasValue: 0
     DSPBufferLength:
-      Value: 0
-      HasValue: 0
+      Value: 256
+      HasValue: 1
     DSPBufferCount:
-      Value: 0
-      HasValue: 0
+      Value: 4
+      HasValue: 1
     Plugins:
       Value: []
       HasValue: 0

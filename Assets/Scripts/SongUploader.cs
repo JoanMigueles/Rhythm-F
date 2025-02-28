@@ -6,14 +6,13 @@ using FMODUnity;
 using FMOD.Studio;
 using System.Runtime.InteropServices;
 using System;
-using System.Data;
 
 public class SongUploader : MonoBehaviour
 {
     private string savePath;
 
-    [field: SerializeField] public EventReference eventReference { get; private set; }
-    private EventInstance eventInstance;
+    [field: SerializeField] public EventReference customSongReference { get; private set; }
+    private FMODProgrammerSound programmerSound;
 
     void Start()
     {
@@ -43,46 +42,75 @@ public class SongUploader : MonoBehaviour
         }
 
         // Create a new FMOD sound instance
-        var programmerSound = new FMODProgrammerSound(destinationPath, eventReference);
-        eventInstance = programmerSound.GetEventInstance();
-        eventInstance.start();
+        Metronome.instance.ReleaseSongInstance();
+        programmerSound = new FMODProgrammerSound(destinationPath, customSongReference);
+
+        Metronome.instance.SetSongInstance(programmerSound.GetEventInstance());
         yield break;
     }
 }
 
 public class FMODProgrammerSound
 {
-    private static FMOD.Sound sound;
-    private static string audioPath;
     private EventInstance eventInstance;
+    private string audioPath;
+    private GCHandle handle;
+
     private EVENT_CALLBACK eventCallback;
 
     public FMODProgrammerSound(string songPath, EventReference eventRef)
     {
-        // Ruta del audio en StreamingAssets
+        // Get instances
         audioPath = songPath;
         eventInstance = RuntimeManager.CreateInstance(eventRef);
+
+        // Store GCHandle to this tracker
+        handle = GCHandle.Alloc(this);
+        IntPtr handlePtr = GCHandle.ToIntPtr(handle);
+        eventInstance.setUserData(handlePtr);
+
+        // Set callback
         eventCallback = new EVENT_CALLBACK(ProgrammerSoundCallback);
-        eventInstance.setCallback(eventCallback, EVENT_CALLBACK_TYPE.CREATE_PROGRAMMER_SOUND);
+        eventInstance.setCallback(eventCallback, EVENT_CALLBACK_TYPE.CREATE_PROGRAMMER_SOUND |
+                                          EVENT_CALLBACK_TYPE.DESTROY_PROGRAMMER_SOUND |
+                                          EVENT_CALLBACK_TYPE.DESTROYED);
     }
 
     [AOT.MonoPInvokeCallback(typeof(EVENT_CALLBACK))]
-    private FMOD.RESULT ProgrammerSoundCallback(EVENT_CALLBACK_TYPE type, IntPtr instancePtr, IntPtr parameterPtr)
+    private static FMOD.RESULT ProgrammerSoundCallback(EVENT_CALLBACK_TYPE type, IntPtr instancePtr, IntPtr parameterPtr)
     {
-        if (type == EVENT_CALLBACK_TYPE.CREATE_PROGRAMMER_SOUND) {
-            var instance = new EventInstance(instancePtr);
-            var parameter = (PROGRAMMER_SOUND_PROPERTIES)Marshal.PtrToStructure(parameterPtr, typeof(PROGRAMMER_SOUND_PROPERTIES));
+        // Retrieve the user data
+        IntPtr userData;
+        EventInstance eventInstance = new EventInstance(instancePtr);
+        eventInstance.getUserData(out userData);
 
-            FMOD.Sound sound;
-            var system = RuntimeManager.CoreSystem;
-            system.createSound(audioPath, FMOD.MODE.DEFAULT, out sound);
-            parameter.sound = sound.handle;
+        // Get the object to use
+        if (userData != IntPtr.Zero) {
+            GCHandle handle = GCHandle.FromIntPtr(userData);
 
-            Marshal.StructureToPtr(parameter, parameterPtr, false);
-        }
+            if (type == EVENT_CALLBACK_TYPE.CREATE_PROGRAMMER_SOUND) {
+                PROGRAMMER_SOUND_PROPERTIES parameter = (PROGRAMMER_SOUND_PROPERTIES)Marshal.PtrToStructure(parameterPtr, typeof(PROGRAMMER_SOUND_PROPERTIES));
 
-        else if (type == EVENT_CALLBACK_TYPE.DESTROY_PROGRAMMER_SOUND) {
-            sound.release();
+                if (handle.Target is FMODProgrammerSound programmer) {
+                    FMOD.Sound sound;
+                    RuntimeManager.CoreSystem.createSound(programmer.audioPath, FMOD.MODE.DEFAULT, out sound);
+                    parameter.sound = sound.handle;
+                }
+
+                Marshal.StructureToPtr(parameter, parameterPtr, false);
+            }
+
+            else if (type == EVENT_CALLBACK_TYPE.DESTROY_PROGRAMMER_SOUND) {
+                Debug.Log("destroy programmer sound");
+                PROGRAMMER_SOUND_PROPERTIES parameter = (PROGRAMMER_SOUND_PROPERTIES)Marshal.PtrToStructure(parameterPtr, typeof(PROGRAMMER_SOUND_PROPERTIES));
+                FMOD.Sound sound = new FMOD.Sound(parameter.sound);
+                sound.release();
+
+            }
+            else if (type == EVENT_CALLBACK_TYPE.DESTROYED) {
+                Debug.Log("destroy object");
+                handle.Free();
+            }
         }
 
         return FMOD.RESULT.OK;
