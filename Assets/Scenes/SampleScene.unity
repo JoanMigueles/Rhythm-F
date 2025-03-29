@@ -505,11 +505,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <songs>k__BackingField:
   - Guid:
-      Data1: 241426499
-      Data2: 1188511893
-      Data3: -1456951912
-      Data4: -1947803125
-    Path: event:/Evento
+      Data1: -1485310095
+      Data2: 1281423242
+      Data3: 1272657329
+      Data4: 1597510158
+    Path: event:/Tricolor Circus - AAAA
 --- !u!4 &189809753
 Transform:
   m_ObjectHideFlags: 0
@@ -544,7 +544,7 @@ MonoBehaviour:
       Data3: -2014329946
       Data4: 1808610427
     Path: event:/SoundEffects/Beep
-  BPM: 148
+  BPM: 180
   startingTimeDelay: 2444
 --- !u!1 &244031882
 GameObject:

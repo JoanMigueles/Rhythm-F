@@ -1,32 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-9091333054814538659
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/CustomSong
-  m_EditorClassIdentifier: 
-  Path: event:/CustomSong
-  Guid:
-    Data1: -1785230349
-    Data2: 1150819385
-    Data3: -1223271781
-    Data4: -865256942
-  Banks:
-  - {fileID: -1751657219509329858}
-  IsStream: 0
-  Is3D: 0
-  IsOneShot: 1
-  Parameters: []
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 38000
 --- !u!114 &-5848251324872358444
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -54,6 +27,33 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 0
+--- !u!114 &-4983458039256276038
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Tricolor Circus - AAAA
+  m_EditorClassIdentifier: 
+  Path: event:/Tricolor Circus - AAAA
+  Guid:
+    Data1: -1485310095
+    Data2: 1281423242
+    Data3: 1272657329
+    Data4: 1597510158
+  Banks:
+  - {fileID: -1751657219509329858}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 132107
 --- !u!114 &-1751657219509329858
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -69,10 +69,10 @@ MonoBehaviour:
   Path: FMOD/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 638761173125106004
+  lastModified: 638788170609356298
   FileSizes:
   - Name: Desktop
-    Value: 4464576
+    Value: 1795840
   Exists: 1
 --- !u!114 &11400000
 MonoBehaviour:
@@ -90,15 +90,15 @@ MonoBehaviour:
   - {fileID: 2413521439291127005}
   - {fileID: -1751657219509329858}
   EditorEvents:
-  - {fileID: 5255439162199396486}
-  - {fileID: -9091333054814538659}
   - {fileID: -5848251324872358444}
+  - {fileID: -4983458039256276038}
+  - {fileID: 8753710572888305244}
   EditorParameters: []
   MasterBanks:
   - {fileID: -1751657219509329858}
   StringsBanks:
   - {fileID: 2413521439291127005}
-  cacheTime: 638761173125137232
+  cacheTime: 638788170609391281
   cacheVersion: 131622
 --- !u!114 &2413521439291127005
 MonoBehaviour:
@@ -115,12 +115,12 @@ MonoBehaviour:
   Path: FMOD/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 638761173125137232
+  lastModified: 638788170609391281
   FileSizes:
   - Name: Desktop
-    Value: 900
+    Value: 874
   Exists: 1
---- !u!114 &5255439162199396486
+--- !u!114 &8753710572888305244
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -130,45 +130,20 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/Evento
+  m_Name: event:/Custom Song
   m_EditorClassIdentifier: 
-  Path: event:/Evento
+  Path: event:/Custom Song
   Guid:
-    Data1: 241426499
-    Data2: 1188511893
-    Data3: -1456951912
-    Data4: -1947803125
+    Data1: -1785230349
+    Data2: 1150819385
+    Data3: -1223271781
+    Data4: -865256942
   Banks:
   - {fileID: -1751657219509329858}
-  IsStream: 1
+  IsStream: 0
   Is3D: 0
   IsOneShot: 1
-  Parameters:
-  - {fileID: 6187704923545736184}
+  Parameters: []
   MinDistance: 1
   MaxDistance: 20
-  Length: 242152
---- !u!114 &6187704923545736184
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/Evento/dB
-  m_EditorClassIdentifier: 
-  Name: dB
-  StudioPath: 
-  Min: 0
-  Max: 10
-  Default: 5
-  ID:
-    data1: 817333862
-    data2: 3688975185
-  Type: 0
-  IsGlobal: 0
-  Labels: []
-  Exists: 1
+  Length: 38000

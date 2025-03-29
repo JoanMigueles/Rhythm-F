@@ -105,7 +105,6 @@ public class FMODProgrammerSound
                 PROGRAMMER_SOUND_PROPERTIES parameter = (PROGRAMMER_SOUND_PROPERTIES)Marshal.PtrToStructure(parameterPtr, typeof(PROGRAMMER_SOUND_PROPERTIES));
                 FMOD.Sound sound = new FMOD.Sound(parameter.sound);
                 sound.release();
-
             }
             else if (type == EVENT_CALLBACK_TYPE.DESTROYED) {
                 Debug.Log("destroy object");

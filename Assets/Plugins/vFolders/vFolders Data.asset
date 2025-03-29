@@ -20,7 +20,6 @@ MonoBehaviour:
     - 67227ab15ee3f9a48ada1d240575a4f6
     - cc635980c1336f346b566f8c426c3969
     - 46faeaf1fd098404e996fc88a8338e63
-    - 59901e75b42300f408f9312fdf0bb000
     - 06ae579381df01a4a87bb149dec89954
     - 57e25b4a578dba94c9353f4633b20549
     - f54d1bd14bd3ca042bd867b519fee8cc
@@ -38,8 +37,6 @@ MonoBehaviour:
       iconNameOrGuid: Shader Icon
     - colorIndex: 0
       iconNameOrGuid: Prefab Icon
-    - colorIndex: 0
-      iconNameOrGuid: Cubemap Icon
     - colorIndex: 0
       iconNameOrGuid: AudioMixerController Icon
     - colorIndex: 0

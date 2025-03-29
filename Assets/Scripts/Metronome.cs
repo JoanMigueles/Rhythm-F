@@ -1,13 +1,8 @@
-
 using FMOD.Studio;
 using FMODUnity;
 using System;
-using System.Globalization;
 using System.Runtime.InteropServices;
-using System.Threading;
-using UnityEditor.ShaderGraph.Internal;
 using UnityEngine;
-using UnityEngine.UIElements;
 
 public class Metronome : MonoBehaviour
 {
@@ -18,7 +13,7 @@ public class Metronome : MonoBehaviour
     private EventInstance beepInstance;
 
     // Song
-    private EventInstance songInstance;
+    public EventInstance songInstance { get; private set; }
 
     // Beat parameters
     [field: Header("Beat Parameters")]
@@ -26,15 +21,10 @@ public class Metronome : MonoBehaviour
     private float beatSecondInterval;
     public int startingTimeDelay = 1000; //in ms
 
-    private float timelinePosition;
-    private float songPosition;
-    private int previousSongPosition;
-    private float songPositionBeat;
-    private float previousSongPositionBeat;
+    private int timelinePosition;
+    private int timelineBeatPosition;
     
     private FMOD.ChannelGroup channelGroup;
-    private int sampleRate;
-    private ulong startDSPClock;
     private GameManager gm;
     private SongData sd;
     private FMODBeatTracker tracker;
@@ -56,8 +46,8 @@ public class Metronome : MonoBehaviour
         sd = GetComponent<SongData>();
 
         beatSecondInterval = 60f / BPM;
-        songPositionBeat = ((float)songPosition - (float)startingTimeDelay) / 1000f / beatSecondInterval;
-        previousSongPositionBeat = ((float)songPosition - (float)startingTimeDelay) / 1000f / beatSecondInterval;
+        //songPositionBeat = ((float)songPosition - (float)startingTimeDelay) / 1000f / beatSecondInterval;
+        //previousSongPositionBeat = ((float)songPosition - (float)startingTimeDelay) / 1000f / beatSecondInterval;
 
         beepInstance = RuntimeManager.CreateInstance(beepReference);
         songInstance = RuntimeManager.CreateInstance(sd.songs[0]);
@@ -69,49 +59,24 @@ public class Metronome : MonoBehaviour
         songInstance.start();
 
         //RuntimeManager.StudioSystem.getCoreSystem(out FMOD.System coreSystem);
-        //coreSystem.getSoftwareFormat(out sampleRate, out _, out _);
-        //coreSystem.getMasterChannelGroup(out channelGroup);
-        //channelGroup.getDSPClock(out startDSPClock, out ulong parent);
-        //Debug.Log(startDSPClock);
+        //coreSystem.getSoftwareFormat(out int sampleRate, out _, out _);
     }
 
     private void Update()
     {
-        if (channelGroup.hasHandle()) {
-            songInstance.getTimelinePosition(out int tposition);
-            //timelinePosition = tposition;
-
-            channelGroup.getDSPClock(out ulong dspClock, out ulong parent);
-            timelinePosition = (dspClock - startDSPClock) / (float)sampleRate * 1000;
-            songPosition += Time.deltaTime * 1000;
-
-            Debug.Log("Timelinepos: " + (int)tposition + ", Clock: " + (int)timelinePosition);
-
-            if (Input.GetKeyDown(KeyCode.Space)) {
-
-            }
-        } else {
-            songInstance.getChannelGroup(out channelGroup);
-            channelGroup.getDSPClock(out ulong dspClock, out ulong parent);
-            startDSPClock = dspClock;
-            Debug.Log(startDSPClock);
-        }
+        songInstance.getTimelinePosition(out int tposition);
+        ExtractSoundFromEvent(songInstance);
         
     }
 
-    public float GetSongTime()
+    public int GetSongTime()
     {
-        return songPosition;
+        return timelinePosition;
     }
 
-    public float GetSongBeat()
+    public int GetSongBeat()
     {
-        return songPositionBeat;
-    }
-
-    public float GetBeatInterval()
-    {
-        return beatSecondInterval;
+        return timelineBeatPosition;
     }
 
     public void ReleaseSongInstance()
@@ -130,11 +95,6 @@ public class Metronome : MonoBehaviour
         songInstance = eventInstance;
     }
 
-    public EventInstance GetSongInstance(EventReference eventReference)
-    {
-        return songInstance;
-    }
-
     public void PlaySong()
     {
         if (songInstance.isValid()) {
@@ -146,6 +106,40 @@ public class Metronome : MonoBehaviour
         if (songInstance.isValid()) {
             songInstance.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
         }
+    }
+
+    private FMOD.Sound ExtractSoundFromEvent(EventInstance eventInstance)
+    {
+        // Ensure the event is playing
+        eventInstance.getPlaybackState(out PLAYBACK_STATE state);
+        if (state != PLAYBACK_STATE.PLAYING) {
+            Debug.LogError("Event is not playing, cannot extract sound.");
+            return new FMOD.Sound();
+        }
+
+        // Get the ChannelGroup
+        eventInstance.getChannelGroup(out FMOD.ChannelGroup channelGroup);
+        if (!channelGroup.hasHandle()) {
+            Debug.LogError("Failed to get ChannelGroup from event!");
+            return new FMOD.Sound();
+        }
+
+        // Get the first active channel
+        FMOD.RESULT channelResult = channelGroup.getChannel(0, out FMOD.Channel channel);
+        if (channelResult != FMOD.RESULT.OK || !channel.hasHandle()) {
+            Debug.LogError("No active channel found in ChannelGroup.");
+            return new FMOD.Sound();
+        }
+
+        // Extract the sound from the channel
+        FMOD.RESULT soundResult = channel.getCurrentSound(out FMOD.Sound sound);
+        if (soundResult == FMOD.RESULT.OK && sound.hasHandle()) {
+            Debug.Log("Successfully extracted sound from FMOD Event!");
+            return sound;
+        }
+
+        Debug.LogError("Failed to extract sound. FMOD error: " + soundResult);
+        return new FMOD.Sound();
     }
 
     void OnDestroy()
