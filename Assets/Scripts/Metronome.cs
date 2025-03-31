@@ -24,7 +24,7 @@ public class Metronome : MonoBehaviour
     public SongSlider songSlider;
 
     private int timelinePosition;
-    private int timelineBeatPosition;
+    private float timelineBeatPosition;
     
     private GameManager gm;
     private SongData sd;
@@ -69,6 +69,7 @@ public class Metronome : MonoBehaviour
     private void Update()
     {
         songInstance.getTimelinePosition(out timelinePosition);
+        timelineBeatPosition = (float)(timelinePosition - startingTimeDelay) / (beatSecondInterval * 1000f);
         
         /*if (!loaded) {
             LoadSoundData();
@@ -142,7 +143,7 @@ public class Metronome : MonoBehaviour
         return timelinePosition;
     }
 
-    public int GetSongBeat()
+    public float GetTimelineBeatPosition()
     {
         return timelineBeatPosition;
     }
