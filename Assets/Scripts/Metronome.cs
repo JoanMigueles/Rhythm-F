@@ -13,6 +13,7 @@ public class Metronome : MonoBehaviour
     private EventInstance beepInstance;
 
     // Song
+    [field: Header("Song")]
     public EventInstance songInstance { get; private set; }
 
     // Beat parameters
@@ -69,7 +70,7 @@ public class Metronome : MonoBehaviour
     private void Update()
     {
         songInstance.getTimelinePosition(out timelinePosition);
-        timelineBeatPosition = (float)(timelinePosition - startingTimeDelay) / (beatSecondInterval * 1000f);
+        timelineBeatPosition = GetBeatFromTime(timelinePosition);
         
         /*if (!loaded) {
             LoadSoundData();
@@ -146,6 +147,16 @@ public class Metronome : MonoBehaviour
     public float GetTimelineBeatPosition()
     {
         return timelineBeatPosition;
+    }
+
+    public float GetBeatFromTime(int time)
+    {
+        return (float)(time - startingTimeDelay) / (beatSecondInterval * 1000f);
+    }
+     
+    public int GetTimeFromBeat(float beat)
+    {
+        return (int)(beat * beatSecondInterval * 1000 + startingTimeDelay);
     }
 
     public void ReleaseSongInstance()
