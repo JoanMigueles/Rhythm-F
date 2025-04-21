@@ -19,8 +19,8 @@ public class Metronome : MonoBehaviour
     // Beat parameters
     [field: Header("Beat Parameters")]
     public float BPM = 60f;
-    private float beatSecondInterval;
     public int startingTimeDelay = 1000; //in ms
+    private float beatSecondInterval;
 
     public SongSlider songSlider;
 

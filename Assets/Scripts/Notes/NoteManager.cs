@@ -6,6 +6,7 @@ public class NoteManager : MonoBehaviour
 {
     public static NoteManager instance { get; private set; }
     public float noteSpeed = 5f;
+    public int noteSubdivisionSnapping = 1;
 
     [SerializeField] private GameObject hitPrefab;
     [SerializeField] private GameObject sliderPrefab;
@@ -66,21 +67,36 @@ public class NoteManager : MonoBehaviour
 
         // Convert mouse screen position to world position
         Vector3 worldPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+
         // Get just the horizontal (x) position
-        float horizontalPosition = worldPosition.x;
+        float horizontalPosition = (worldPosition.x > 0) ? worldPosition.x : 0;
+        float verticalPosition = worldPosition.y;
 
         if (Input.GetKey(KeyCode.LeftControl)) {
-            notePreview.transform.position = new Vector3(horizontalPosition, -1.5f, 0f);
+            float yPos = verticalPosition > 0 ? 1.5f : -1.5f;
+            notePreview.transform.position = new Vector3(horizontalPosition, yPos, 0f);
         }
         else {
-            notePreview.transform.position = new Vector3(GetPositionFromBeat(Mathf.RoundToInt(GetBeatFromPosition(horizontalPosition))), -1.5f, 0);
+            float xPos = GetPositionFromBeat(Mathf.Round(GetBeatFromPosition(horizontalPosition) * noteSubdivisionSnapping) / noteSubdivisionSnapping);
+            float yPos = verticalPosition > 0 ? 1.5f : -1.5f;
+            notePreview.transform.position = new Vector3(xPos, yPos, 0);
         }
 
         if (Input.GetMouseButtonDown(0)) {
-            NoteData newNoteData = new NoteData(GetTimeFromPosition(notePreview.transform.position.x));
-            Note newNote = Instantiate(hitPrefab, transform).GetComponent<Note>();
-            newNote.data = newNoteData;
-            activeNotes.Add(newNote);
+            int lane = verticalPosition > 0 ? 0 : 1;
+            int time = GetTimeFromPosition(notePreview.transform.position.x);
+
+            // Check if a note already exists at this time and lane
+            bool noteExists = activeNotes.Exists(n =>
+                n.data.time == time && n.data.lane == lane);
+
+            if (!noteExists) {
+                NoteData newNoteData = new NoteData(time, lane);
+                Note newNote = Instantiate(hitPrefab, transform).GetComponent<Note>();
+                newNote.data = newNoteData;
+                Debug.Log(newNote.data.time);
+                activeNotes.Add(newNote);
+            }
         }
 
         foreach (Note note in activeNotes) {
@@ -90,7 +106,8 @@ public class NoteManager : MonoBehaviour
 
     private void UpdateNotePosition(Note note)
     {
-        note.transform.position = new Vector3(GetPositionFromTime(note.data.time), 1.5f, 0f);
+        float yPos = note.data.lane == 0 ? 1.5f : -1.5f;
+        note.transform.position = new Vector3(GetPositionFromTime(note.data.time), yPos, 0f);
     }
 
     public void SetSpeed(float speed)
