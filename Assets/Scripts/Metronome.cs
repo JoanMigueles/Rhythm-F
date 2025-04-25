@@ -20,7 +20,7 @@ public class Metronome : MonoBehaviour
     [field: Header("Beat Parameters")]
     public float BPM = 60f;
     public int startingTimeDelay = 1000; //in ms
-    private float beatSecondInterval;
+    public float beatSecondInterval;
 
     public SongSlider songSlider;
 
@@ -153,10 +153,14 @@ public class Metronome : MonoBehaviour
     {
         return (float)(time - startingTimeDelay) / (beatSecondInterval * 1000f);
     }
-     
+
     public int GetTimeFromBeat(float beat)
     {
-        return (int)(beat * beatSecondInterval * 1000 + startingTimeDelay);
+        return Mathf.RoundToInt(beat * beatSecondInterval * 1000 + startingTimeDelay);
+    }
+    public int GetTimeFromBeatInterval(float beat)
+    {
+        return Mathf.RoundToInt(beat * beatSecondInterval * 1000);
     }
 
     public void ReleaseSongInstance()

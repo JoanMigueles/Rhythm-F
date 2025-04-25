@@ -13,8 +13,7 @@ public enum NoteType
     Multiple_Slash
 }
 
-// Base class for all notes
-public class NoteData
+public struct NoteData
 {
     public int time { get; set; }
     public int lane { get; set; }
@@ -57,9 +56,19 @@ public class NoteData
         this.duration = duration;
         this.anticipation = anticipation;
     }
+
+    public NoteData(NoteData data)
+    {
+        this.time = data.time;
+        this.lane = data.lane;
+        this.type = data.type;
+        this.duration = data.duration;
+        this.anticipation = data.anticipation;
+    }
 }
 
 public class Note : MonoBehaviour
 {
+    public uint noteIndex;
     public NoteData data;
 }
