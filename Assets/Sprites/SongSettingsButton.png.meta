@@ -1,10 +1,13 @@
 fileFormatVersion: 2
-guid: b4466a8f1a620f94a9f1d0e969ee2990
+guid: e862fb216e42f7249b7af675d5dd2b6e
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 7436727063196276727
-    second: Oriental_Stage_0
+      213: 3883249360179226917
+    second: Recurso 19@2x_0
+  - first:
+      213: -5426714533463590239
+    second: Recurso 19@2x_1
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -46,7 +49,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 2
+  spriteMode: 1
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -100,13 +103,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Oriental_Stage_0
+      name: Recurso 19@2x_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 0
-        width: 1000
-        height: 563
+        y: 8
+        width: 252
+        height: 276
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +118,30 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 7f7195dccdf843760800000000000000
-      internalID: 7436727063196276727
+      spriteID: 529eebff7b214e530800000000000000
+      internalID: 3883249360179226917
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Recurso 19@2x_1
+      rect:
+        serializedVersion: 2
+        x: 207
+        y: 0
+        width: 129
+        height: 124
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1aaf37f32ef60b4b0800000000000000
+      internalID: -5426714533463590239
       vertices: []
       indices: 
       edges: []
@@ -125,7 +150,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 5e97eb03825dee720800000000000000
     internalID: 0
     vertices: []
     indices: 
@@ -135,7 +160,8 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Oriental_Stage_0: 7436727063196276727
+      Recurso 19@2x_0: 3883249360179226917
+      Recurso 19@2x_1: -5426714533463590239
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
