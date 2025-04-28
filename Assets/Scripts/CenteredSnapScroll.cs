@@ -29,7 +29,22 @@ public class CenteredSnapScroll : MonoBehaviour, IBeginDragHandler, IEndDragHand
 
     private void Update()
     {
-        SnapToNearestItem();
+        if (!isDragging && hasMomentum) {
+            // Apply momentum
+            content.anchoredPosition += Vector2.up * momentum * Time.deltaTime;
+
+            // Gradually reduce momentum
+            momentum *= decelerationRate;
+
+            // If momentum is very small, stop it and snap
+            if (Mathf.Abs(momentum) < 50f) {
+                momentum = 0f;
+                hasMomentum = false;
+            }
+        }
+        else {
+            SnapToNearestItem();
+        }
     }
 
     private void SnapToNearestItem()

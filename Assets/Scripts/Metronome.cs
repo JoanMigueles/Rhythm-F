@@ -28,7 +28,7 @@ public class Metronome : MonoBehaviour
     private float timelineBeatPosition;
     
     private GameManager gm;
-    private SongData sd;
+    private SongDataManager sd;
     private FMODBeatTracker tracker;
 
     private void Awake()
@@ -45,7 +45,7 @@ public class Metronome : MonoBehaviour
     private void Start()
     {
         gm = GameManager.instance;
-        sd = GetComponent<SongData>();
+        sd = GetComponent<SongDataManager>();
 
         beatSecondInterval = 60f / BPM;
         //songPositionBeat = ((float)songPosition - (float)startingTimeDelay) / 1000f / beatSecondInterval;

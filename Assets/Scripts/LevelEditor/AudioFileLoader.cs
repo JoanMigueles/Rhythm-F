@@ -7,19 +7,10 @@ using FMOD.Studio;
 using System.Runtime.InteropServices;
 using System;
 
-public class SongUploader : MonoBehaviour
+public class AudioFileLoader : MonoBehaviour
 {
-    private string savePath;
-
     [field: SerializeField] public EventReference customSongReference { get; private set; }
     private FMODProgrammerSound programmerSound;
-
-    void Start()
-    {
-        savePath = Path.Combine(Application.persistentDataPath, "CustomCharts");
-        if (!Directory.Exists(savePath))
-            Directory.CreateDirectory(savePath);
-    }
 
     public void OpenFileExplorer()
     {
@@ -27,24 +18,17 @@ public class SongUploader : MonoBehaviour
         string[] paths = StandaloneFileBrowser.OpenFilePanel("Select Audio File", "", extensions, false);
 
         if (paths.Length > 0 && !string.IsNullOrEmpty(paths[0])) {
-            StartCoroutine(LoadAndSaveAudio(paths[0]));
+            StartCoroutine(LoadAndSaveAudioFile(paths[0]));
         }
     }
 
-    private IEnumerator LoadAndSaveAudio(string filePath)
+    private IEnumerator LoadAndSaveAudioFile(string filePath)
     {
-        string fileName = Path.GetFileName(filePath);
-        string destinationPath = Path.Combine(savePath, fileName);
-
-        if (!File.Exists(destinationPath)) {
-            File.Copy(filePath, destinationPath);
-            Debug.Log("File saved to: " + destinationPath);
-        }
+        string audioPath = SaveData.SaveAudio(filePath);
 
         // Create a new FMOD sound instance
         Metronome.instance.ReleaseSongInstance();
-        programmerSound = new FMODProgrammerSound(destinationPath, customSongReference);
-
+        programmerSound = new FMODProgrammerSound(audioPath, customSongReference);
         Metronome.instance.SetSongInstance(programmerSound.GetEventInstance());
         yield break;
     }

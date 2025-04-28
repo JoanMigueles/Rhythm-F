@@ -824,7 +824,7 @@ MonoBehaviour:
   snapSpeed: 10
   scaleFactor: 0.5
   minScale: 0.7
-  decelerationRate: 0.95
+  decelerationRate: 0.98
   maxMomentum: 2000
 --- !u!1 &2009478630
 GameObject:

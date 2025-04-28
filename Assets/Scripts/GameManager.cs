@@ -5,14 +5,8 @@ using UnityEngine.Timeline;
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
-    public float trackSpeed;
+    private string selectedSong;
     private bool gameRunning;
-
-    public Metronome metronome;
-    public Marker marker;
-
-    // Audio source
-    public AudioSource musicSource;
 
     private void Awake()
     {
@@ -39,22 +33,25 @@ public class GameManager : MonoBehaviour
     public void PauseGame()
     {
         gameRunning = false;
-        if (musicSource != null) {
-            musicSource.Pause();
-        }
     }
 
     public void ResumeGame()
     {
         gameRunning = true;
-        if (musicSource != null) {
-            musicSource.UnPause();
-        }
     }
 
     public void RestartLevel()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
+    public void SetSelectedSong()
+    {
+        selectedSong = string.Empty;
+    }
+    public string GetSelectedSong()
+    {
+        return selectedSong;
     }
 
     public void QuitGame()

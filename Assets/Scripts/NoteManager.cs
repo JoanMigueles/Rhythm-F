@@ -10,6 +10,13 @@ public enum EditMode
     Object,
     Select
 }
+public enum Difficulty
+{
+    Easy,
+    Normal,
+    Hard,
+    Rumble
+}
 
 public class NoteManager : MonoBehaviour
 {
@@ -18,6 +25,7 @@ public class NoteManager : MonoBehaviour
     public bool beatSnapping = true;
     public int noteSubdivisionSnapping = 1;
     public EditMode editMode = EditMode.Select;
+    public Difficulty difficulty = Difficulty.Normal;
 
     // NOTE PREFABS
     [SerializeField] private GameObject hitPrefab;
@@ -42,7 +50,7 @@ public class NoteManager : MonoBehaviour
     private float clipboardBeatPivot; // The beat on the screen that serves as a referece pivot when copying and pasting groups in different beats
 
     // NOTE LISTS
-    private List<NoteData> notesData;
+    private SongData songData;
     private List<Note> selectedNotes;
     private List<Note> activeNotes;
 
@@ -58,11 +66,10 @@ public class NoteManager : MonoBehaviour
 
     private void Start()
     {
-        notesData = new List<NoteData>();
         clipboardNotesData = new List<NoteData>();
         selectedNotes = new List<Note>();
         activeNotes = new List<Note>();
-        //SpawnNotes();
+        SpawnDifficultyNotes(Difficulty.Normal);
     }
 
     private void Update()
@@ -401,14 +408,25 @@ public class NoteManager : MonoBehaviour
     // ---------------------------------------------------------------------------------------------------------------------------------------------
     // NOT COMMANDS: THESE ACTIONS DONT NEED TO BE UNDONE
     // ---------------------------------------------------------------------------------------------------------------------------------------------
-    private void SpawnInitialNotes()
+    
+    private void SpawnDifficultyNotes(Difficulty difficulty)
     {
-        foreach (NoteData noteData in notesData) {
-            Note newNote = Instantiate(hitPrefab, transform).GetComponent<Note>();
-            newNote.data = noteData;
-            UpdateNotePosition(newNote);
-            activeNotes.Add(newNote);
+        ClearActiveNotes();
+        switch (difficulty) {
+            case Difficulty.Easy:
+                SpawnActiveNotes(songData.easyNotes);
+                break;
+            case Difficulty.Normal:
+                SpawnActiveNotes(songData.normalNotes);
+                break;
+            case Difficulty.Hard:
+                SpawnActiveNotes(songData.hardNotes);
+                break;
+            case Difficulty.Rumble:
+                SpawnActiveNotes(songData.rumbleNotes);
+                break;
         }
+        
     }
 
     private void UpdateNotePosition(Note note)
@@ -466,6 +484,24 @@ public class NoteManager : MonoBehaviour
             note.GetComponent<SpriteRenderer>().color = Color.white;
         }
         selectedNotes.Clear();
+    }
+
+    public void ClearActiveNotes()
+    {
+        foreach (Note note in activeNotes) {
+            note.gameObject.Destroy();
+        }
+        activeNotes.Clear();
+    }
+
+    public void SpawnActiveNotes(List<NoteData> notesData)
+    {
+        foreach (NoteData noteData in notesData) {
+            Note newNote = Instantiate(hitPrefab, transform).GetComponent<Note>();
+            newNote.data = noteData;
+            UpdateNotePosition(newNote);
+            activeNotes.Add(newNote);
+        }
     }
 
     public bool IsDragging()

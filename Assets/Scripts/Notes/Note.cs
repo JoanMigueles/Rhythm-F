@@ -13,6 +13,7 @@ public enum NoteType
     Multiple_Slash
 }
 
+[System.Serializable]
 public struct NoteData
 {
     public int time { get; set; }
