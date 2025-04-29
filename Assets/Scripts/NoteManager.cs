@@ -50,7 +50,7 @@ public class NoteManager : MonoBehaviour
     private float clipboardBeatPivot; // The beat on the screen that serves as a referece pivot when copying and pasting groups in different beats
 
     // NOTE LISTS
-    private SongData songData;
+    private SongDataManager sdm;
     private List<Note> selectedNotes;
     private List<Note> activeNotes;
 
@@ -66,6 +66,7 @@ public class NoteManager : MonoBehaviour
 
     private void Start()
     {
+        sdm = Metronome.instance.GetComponent<SongDataManager>();
         clipboardNotesData = new List<NoteData>();
         selectedNotes = new List<Note>();
         activeNotes = new List<Note>();
@@ -412,20 +413,7 @@ public class NoteManager : MonoBehaviour
     private void SpawnDifficultyNotes(Difficulty difficulty)
     {
         ClearActiveNotes();
-        switch (difficulty) {
-            case Difficulty.Easy:
-                SpawnActiveNotes(songData.easyNotes);
-                break;
-            case Difficulty.Normal:
-                SpawnActiveNotes(songData.normalNotes);
-                break;
-            case Difficulty.Hard:
-                SpawnActiveNotes(songData.hardNotes);
-                break;
-            case Difficulty.Rumble:
-                SpawnActiveNotes(songData.rumbleNotes);
-                break;
-        }
+        SpawnActiveNotes(sdm.GetDifficultyNoteData(difficulty));
         
     }
 
@@ -540,6 +528,15 @@ public class NoteManager : MonoBehaviour
         return (moveDistance, changedLane);
     }
 
+    public void SaveActiveNotes()
+    {
+        List<NoteData> notesData = new List<NoteData>();
+        foreach (Note note in activeNotes) {
+            notesData.Add(note.data);
+        }
+        sdm.SetDifficultyNoteData(notesData, difficulty);
+    }
+
     // ---------------------------------------------------------------------------------------------------------------------------------------------
     // EDITOR PARAMETER SETTERS
     // ---------------------------------------------------------------------------------------------------------------------------------------------
@@ -565,6 +562,7 @@ public class NoteManager : MonoBehaviour
     // ---------------------------------------------------------------------------------------------------------------------------------------------
     // AUDIO TO POSITION
     // ---------------------------------------------------------------------------------------------------------------------------------------------
+    
     public int GetTimeFromPosition(float horizontalPos)
     {
         return Mathf.RoundToInt(Metronome.instance.GetTimelinePosition() + (horizontalPos / noteSpeed * 1000f));

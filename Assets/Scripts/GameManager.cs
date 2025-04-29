@@ -45,6 +45,11 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
+    public void OpenEditor()
+    {
+        SceneManager.LoadScene("LevelEditor");
+    }
+
     public void SetSelectedSong()
     {
         selectedSong = string.Empty;

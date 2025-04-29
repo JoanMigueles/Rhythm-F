@@ -13,6 +13,9 @@ public class CenteredSnapScroll : MonoBehaviour, IBeginDragHandler, IEndDragHand
     [SerializeField] private float minScale = 0.7f;
     [SerializeField] private float decelerationRate = 0.95f; // How quickly momentum slows down
     [SerializeField] private float maxMomentum = 2000f; // Maximum speed
+    [SerializeField] private Color selectedColor;
+    [SerializeField] private Color color;
+
     private RectTransform[] items;
     private bool isDragging;
     private Vector2 cursorPos;
@@ -80,7 +83,7 @@ public class CenteredSnapScroll : MonoBehaviour, IBeginDragHandler, IEndDragHand
 
             Image img = child.GetComponent<Image>();
             if (img != null) {
-                img.color = (child == nearestItem) ? Color.red : Color.white;
+                img.color = (child == nearestItem) ? selectedColor : color;
             }
         }
 

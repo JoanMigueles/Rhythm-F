@@ -22,8 +22,6 @@ public class Metronome : MonoBehaviour
     public int startingTimeDelay = 1000; //in ms
     public float beatSecondInterval;
 
-    public SongSlider songSlider;
-
     private int timelinePosition;
     private float timelineBeatPosition;
     
@@ -61,7 +59,7 @@ public class Metronome : MonoBehaviour
         songInstance.getDescription(out EventDescription description);
         description.getLength(out int length);
         Debug.Log(length);
-        songSlider.SetMaxValue(length);
+        EditorUIManager.instance.SetSongSliderMaxValue(length);
 
         //RuntimeManager.StudioSystem.getCoreSystem(out FMOD.System coreSystem);
         //coreSystem.getSoftwareFormat(out int sampleRate, out _, out _);

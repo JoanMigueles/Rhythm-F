@@ -2,19 +2,21 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class EditorUIManager : MonoBehaviour
+public class EditorUIManager : UIManager
 {
+    public static EditorUIManager instance { get; private set; }
     public TMP_Text timer;
     public TMP_Text beat;
     public TMP_Text subdivision;
+    public TMP_Text songTitle;
     public Slider subdivisionSlider;
+    public SongSlider songSlider;
     public Timeline timeline;
-    private RectTransform canvasRectTransform;
     private readonly int[] valueMap = { 1, 1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 16 };
 
     private void Awake()
     {
-        canvasRectTransform = GetComponent<RectTransform>();
+        instance = this;
     }
 
     private void Start()
@@ -61,5 +63,26 @@ public class EditorUIManager : MonoBehaviour
         }
         
         NoteManager.instance.noteSubdivisionSnapping = valueMap[i];
+    }
+
+    public void SetSongSliderMaxValue(int value)
+    {
+        songSlider.SetMaxValue(value);
+    }
+
+    public void SetSongTitle(string name, string artist)
+    {
+        if (string.IsNullOrEmpty(name) && string.IsNullOrEmpty(artist)) {
+            songTitle.text = "---";
+        }
+        else if (string.IsNullOrEmpty(name)) {
+            songTitle.text = $"Unnamed - {artist}";
+        }
+        else if (string.IsNullOrEmpty(artist)) {
+            songTitle.text = $"{name}";
+        } else {
+            songTitle.text = $"{name} - {artist}";
+        }
+        
     }
 }

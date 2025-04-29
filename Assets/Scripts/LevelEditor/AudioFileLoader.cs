@@ -12,26 +12,18 @@ public class AudioFileLoader : MonoBehaviour
     [field: SerializeField] public EventReference customSongReference { get; private set; }
     private FMODProgrammerSound programmerSound;
 
-    public void OpenFileExplorer()
+    public void OpenAudioFileExplorer()
     {
         var extensions = new[] { new ExtensionFilter("Audio Files", "mp3", "wav", "ogg") };
         string[] paths = StandaloneFileBrowser.OpenFilePanel("Select Audio File", "", extensions, false);
+        SongDataManager sdm = Metronome.instance.GetComponent<SongDataManager>();
 
         if (paths.Length > 0 && !string.IsNullOrEmpty(paths[0])) {
-            StartCoroutine(LoadAndSaveAudioFile(paths[0]));
+            StartCoroutine(sdm.LoadAndSaveAudioFile(paths[0]));
         }
     }
 
-    private IEnumerator LoadAndSaveAudioFile(string filePath)
-    {
-        string audioPath = SaveData.SaveAudio(filePath);
-
-        // Create a new FMOD sound instance
-        Metronome.instance.ReleaseSongInstance();
-        programmerSound = new FMODProgrammerSound(audioPath, customSongReference);
-        Metronome.instance.SetSongInstance(programmerSound.GetEventInstance());
-        yield break;
-    }
+    
 }
 
 public class FMODProgrammerSound

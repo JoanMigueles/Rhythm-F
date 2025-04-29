@@ -12,8 +12,8 @@ public static class SongFileConverter
             writer.WriteLine("[Song Data]");
             writer.WriteLine($"Name:{songData.songName}");
             writer.WriteLine($"Artist:{songData.artist}");
-            writer.WriteLine($"AudioFile:{songData.audioFilePath}");
-            writer.WriteLine($"CoverFile:{songData.coverFilePath}");
+            writer.WriteLine($"AudioFile:{songData.audioFileName}");
+            writer.WriteLine($"CoverFile:{songData.coverFileName}");
             writer.WriteLine($"PreviewStart:{songData.previewStartTime}");
             writer.WriteLine();
 
@@ -113,10 +113,10 @@ public static class SongFileConverter
                 songData.artist = value;
                 break;
             case "AudioFile":
-                songData.audioFilePath = value;
+                songData.audioFileName = value;
                 break;
             case "CoverFile":
-                songData.coverFilePath = value;
+                songData.coverFileName = value;
                 break;
             case "PreviewStart":
                 float.TryParse(value, out songData.previewStartTime);
