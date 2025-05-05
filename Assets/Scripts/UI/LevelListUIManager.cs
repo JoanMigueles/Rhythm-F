@@ -22,7 +22,7 @@ public class LevelListUIManager : UIManager
         foreach (SongMetadata metadata in songMetadataList) {
             SongPanel panel = Instantiate(songPanelPrefab, content.transform);
             panel.DisplaySongMetadata(metadata);
-            panel.SetLoadSongFilePathListener(metadata.localDirPath);
+            panel.SetLoadSongFilePathListener(metadata.localPath);
         }
 
         scroll.SetItems();

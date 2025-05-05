@@ -60,7 +60,7 @@ public static class SongFileConverter
             throw new FileNotFoundException("File not found", filePath);
 
         SongData songData = new SongData();
-        songData.metadata.localDirPath = Path.GetDirectoryName(filePath);
+        songData.metadata.localPath = filePath;
         string currentSection = "";
 
         foreach (string line in File.ReadAllLines(filePath)) {

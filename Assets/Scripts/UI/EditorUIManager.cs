@@ -131,29 +131,20 @@ public class EditorUIManager : UIManager
         var extensions = new[] { new ExtensionFilter("Audio Files", "mp3", "wav", "ogg") };
         string[] paths = StandaloneFileBrowser.OpenFilePanel("Select Audio File", "", extensions, false);
 
-        System.Diagnostics.Stopwatch stopwatch = new System.Diagnostics.Stopwatch();
-        stopwatch.Start();
-
         if (paths.Length > 0 && !string.IsNullOrEmpty(paths[0])) {
             StartCoroutine(SongDataManager.instance.SaveAndLoadCustomAudioFile(paths[0]));
+            ApplyWaveformTexture();
         }
+    }
 
-        stopwatch.Stop();
-        Debug.Log($"Time - Save Audio: {stopwatch.ElapsedMilliseconds} ms");
-
-        stopwatch.Restart();
+    public void ApplyWaveformTexture()
+    {
         Texture2D texture2D = Metronome.instance.GetSongWaveformTexture();
-        stopwatch.Stop();
-        Debug.Log($"Time - Recieving texture: {stopwatch.ElapsedMilliseconds} ms");
-
-        stopwatch.Restart();
         if (waveformTextures != null) {
             foreach (WaveformTexture waveformTexture in waveformTextures) {
                 waveformTexture.SetTexture(texture2D);
             }
         }
-        stopwatch.Stop();
-        Debug.Log($"Time - Texture setting: {stopwatch.ElapsedMilliseconds} ms");
     }
 
     public void OpenCoverFileExplorer()

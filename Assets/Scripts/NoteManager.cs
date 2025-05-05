@@ -269,7 +269,6 @@ public class NoteManager : MonoBehaviour
         }
 
         if (isMoving) {
-            Debug.Log("here");
             if (!moved && !isMarker) TrySelectSingleUnderCursor(worldPos);
             else {
                 (int moveDist, bool changedLane) = CalculateMovedDistance(worldPos.x, worldPos.y);

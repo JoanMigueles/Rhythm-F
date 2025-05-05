@@ -11,6 +11,7 @@ public class WaveformTexture : MonoBehaviour
     }
     public void SetTexture(Texture2D tex)
     {
+        if (tex == null) return;
         Sprite sprite = Sprite.Create(tex, new Rect(0, 0, tex.width, tex.height), new Vector2(0f, 0.5f), 100f, 0u, SpriteMeshType.FullRect);
         sr.sprite = sprite;
     }

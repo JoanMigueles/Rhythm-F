@@ -145,11 +145,10 @@ public class Metronome : MonoBehaviour
         songInstance = eventInstance;
     }
 
-    public void LoadCustomAudioFile(SongMetadata songMetadata)
+    public void SetCustomSong(string songPath)
     {
-        string audioPath = Path.Combine(songMetadata.localDirPath, songMetadata.audioFileName);
         ReleaseSongInstance();
-        customPlayer = new FMODCustomMusicPlayer(audioPath);
+        customPlayer = new FMODCustomMusicPlayer(songPath);
     }
 
     public void SetBPMFlags(List<BPMFlag> flags)
@@ -301,6 +300,8 @@ public class FMODCustomMusicPlayer : IDisposable
 
     private void LoadSound()
     {
+        if (sound.hasHandle()) sound.release();
+        StopChannel();
         var result = RuntimeManager.CoreSystem.createSound(audioPath, soundMode, out sound);
         if (result != FMOD.RESULT.OK) {
             Debug.LogError($"Failed to load sound: {result}");

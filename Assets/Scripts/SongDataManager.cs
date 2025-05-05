@@ -53,11 +53,10 @@ public class SongDataManager : MonoBehaviour
     public IEnumerator SaveAndLoadCustomAudioFile(string filePath)
     {
         // Save
-        string audioPath = SaveData.SaveAudioFile(customSelectedSongData, filePath);
-        customSelectedSongData.metadata.audioFileName = Path.GetFileName(audioPath);
+        SaveData.CreateAudioFile(customSelectedSongData, filePath);
 
         // Load
-        Metronome.instance.LoadCustomAudioFile(customSelectedSongData.metadata);
+        Metronome.instance.SetCustomSong(SaveData.GetAudioFilePath(customSelectedSongData.metadata.audioFileName));
         yield break;
     }
 
@@ -106,5 +105,6 @@ public class SongDataManager : MonoBehaviour
     public void SetTemporalSongData()
     {
         customSelectedSongData = new SongData();
+
     }
 }
