@@ -1,4 +1,3 @@
-using System.Collections;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -8,20 +7,14 @@ public class SongPanel : MonoBehaviour
     [SerializeField] TMP_Text titleText;
     [SerializeField] TMP_Text artistText;
     [SerializeField] Button button;
-    public void DisplaySongData(SongData songData) {
-        titleText.text = songData.songName;
-        artistText.text = songData.artist;
+    public void DisplaySongMetadata(SongMetadata songMetadata) {
+        titleText.text = songMetadata.songName;
+        artistText.text = songMetadata.artist;
     }
 
-    public void SetOpenSongFilePathListener(string songPath)
+    public void SetLoadSongFilePathListener(string songDirPath)
     {
-
-        button.onClick.AddListener(() => OpenSongFilePath(songPath));
-    }
-
-    private void OpenSongFilePath(string songPath)
-    {
-        
+        button.onClick.AddListener(() => SongDataManager.instance.SetCustomSelectedSong(songDirPath));
     }
 }
 

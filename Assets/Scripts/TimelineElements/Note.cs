@@ -68,7 +68,7 @@ public struct NoteData
     }
 }
 
-public class Note : MonoBehaviour
+public class Note : TimelineElement
 {
     public uint noteIndex;
     public NoteData data;

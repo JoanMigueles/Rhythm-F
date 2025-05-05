@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &4937441371140091966
+--- !u!1 &48457928452234693
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,23 +8,22 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 8452713879876358615}
-  - component: {fileID: 2911061087123222800}
-  - component: {fileID: 2641645653111896594}
+  - component: {fileID: 5026596126936113585}
+  - component: {fileID: 9110121923777970658}
   m_Layer: 0
-  m_Name: SongPlayer (Metronome)
+  m_Name: SongDataManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &8452713879876358615
+--- !u!4 &5026596126936113585
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4937441371140091966}
+  m_GameObject: {fileID: 48457928452234693}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
@@ -33,13 +32,13 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2911061087123222800
+--- !u!114 &9110121923777970658
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4937441371140091966}
+  m_GameObject: {fileID: 48457928452234693}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 83093fa39aae1664980c684f1cb95b6a, type: 3}
@@ -52,26 +51,10 @@ MonoBehaviour:
       Data3: 1272657329
       Data4: 1597510158
     Path: event:/Tricolor Circus - AAAA
---- !u!114 &2641645653111896594
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4937441371140091966}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cb6cd5e7832589b40a9ec68fb02c5dfc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  <beepReference>k__BackingField:
+  <customSongReference>k__BackingField:
     Guid:
-      Data1: -566500808
-      Data2: 1285541106
-      Data3: -2014329946
-      Data4: 1808610427
-    Path: event:/SoundEffects/Beep
-  BPM: 180
-  startingTimeDelay: 87
-  beatSecondInterval: 0
-  songSlider: {fileID: 0}
+      Data1: -1785230349
+      Data2: 1150819385
+      Data3: -1223271781
+      Data4: -865256942
+    Path: event:/Custom Song

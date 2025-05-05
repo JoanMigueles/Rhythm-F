@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using UnityEngine;
 
 public interface ICommand
 {
@@ -48,6 +47,49 @@ public class CreateNotesCommand : ICommand
     }
 }
 
+public class CreateMarkerCommand : ICommand
+{
+    BPMFlag flag;
+    public CreateMarkerCommand(BPMFlag flag)
+    {
+        this.flag = flag;
+    }
+
+    public void Execute()
+    {
+        NoteManager.instance.SpawnMarker(flag);
+    }
+
+    public void Undo()
+    {
+        NoteManager.instance.DeleteMarker(flag);
+    }
+}
+
+public class EditMarkerCommand : ICommand
+{
+    BPMFlag flag;
+    float newBPM;
+
+    public EditMarkerCommand(BPMFlag flag, float BPM)
+    {
+        this.flag = flag;
+        newBPM = BPM;
+    }
+
+    public void Execute()
+    {
+        NoteManager.instance.EditMarker(flag, newBPM);
+    }
+
+    public void Undo()
+    {
+        BPMFlag editedFlag = new BPMFlag(flag);
+        editedFlag.BPM = newBPM;
+        NoteManager.instance.EditMarker(editedFlag, flag.BPM);
+    }
+}
+
 public class DeleteNotesCommand : ICommand
 {
     NoteData[] deleteNotes;
@@ -74,6 +116,25 @@ public class DeleteNotesCommand : ICommand
         foreach (NoteData note in deleteNotes) {
             NoteManager.instance.SpawnNote(note, true);
         }
+    }
+}
+
+public class DeleteMarkerCommand : ICommand
+{
+    BPMFlag flag;
+    public DeleteMarkerCommand(BPMFlag flag)
+    {
+        this.flag = flag;
+    }
+
+    public void Execute()
+    {
+        NoteManager.instance.DeleteMarker(flag);
+    }
+
+    public void Undo()
+    {
+        NoteManager.instance.SpawnMarker(flag);
     }
 }
 
@@ -106,5 +167,28 @@ public class MoveNotesCommand : ICommand
             }
             NoteManager.instance.MoveNote(movedNote, -distance, laneSwap);
         }
+    }
+}
+
+public class MoveMarkerCommand : ICommand
+{
+    BPMFlag flag;
+    int distance;
+    public MoveMarkerCommand(BPMFlag flag, int distance)
+    {
+        this.flag = flag;
+        this.distance = distance;
+    }
+
+    public void Execute()
+    {
+        NoteManager.instance.MoveMarker(flag, distance);
+    }
+
+    public void Undo()
+    {
+        BPMFlag movedFlag = new BPMFlag(flag);
+        movedFlag.offset += distance;
+        NoteManager.instance.MoveMarker(movedFlag, -distance);
     }
 }

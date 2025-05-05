@@ -1,16 +1,14 @@
 using UnityEngine;
 using UnityEngine.UI;
-using System.Collections.Generic;
 using UnityEngine.EventSystems;
-using static Unity.VisualScripting.Metadata;
 
 public class CenteredSnapScroll : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDragHandler
 {
     [SerializeField] private RectTransform viewport;
     [SerializeField] private RectTransform content;
-    [SerializeField] private float snapSpeed = 10f;
-    [SerializeField] private float scaleFactor = 0.5f;
-    [SerializeField] private float minScale = 0.7f;
+    //[SerializeField] private float snapSpeed = 10f;
+    //[SerializeField] private float scaleFactor = 0.5f;
+    //[SerializeField] private float minScale = 0.7f;
     [SerializeField] private float decelerationRate = 0.95f; // How quickly momentum slows down
     [SerializeField] private float maxMomentum = 2000f; // Maximum speed
     [SerializeField] private Color selectedColor;
@@ -24,11 +22,6 @@ public class CenteredSnapScroll : MonoBehaviour, IBeginDragHandler, IEndDragHand
 
     private float momentum;
     private bool hasMomentum;
-
-    private void Start()
-    {
-        GetItems();
-    }
 
     private void Update()
     {
@@ -129,7 +122,7 @@ public class CenteredSnapScroll : MonoBehaviour, IBeginDragHandler, IEndDragHand
         hasMomentum = true;
     }
 
-    private void GetItems()
+    public void SetItems()
     {
         // Get all child items (skip content's own RectTransform)
         items = new RectTransform[content.childCount];

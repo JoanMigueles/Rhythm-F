@@ -1,88 +1,64 @@
 using UnityEngine;
 using System.Collections.Generic;
-using FMODUnity;
-using UnityEngine.UI;
 using System.Collections;
-
-
-// Supporting data structures
-[System.Serializable]
-public class SongData
-{
-    public int songID;
-    public string songName;
-    public string artist;
-    public string audioFileName;
-    public string coverFileName;
-    public float previewStartTime;
-    public List<BPMFlag> BPMFlags = new List<BPMFlag>();
-    public List<NoteData> easyNotes = new List<NoteData>();
-    public List<NoteData> normalNotes = new List<NoteData>();
-    public List<NoteData> hardNotes = new List<NoteData>();
-    public List<NoteData> rumbleNotes = new List<NoteData>();
-}
-
-[System.Serializable]
-public struct BPMFlag
-{
-    public int offset;
-    public float BPM;
-}
+using System.IO;
 
 public class SongDataManager : MonoBehaviour
 {
-    [field: Header("Songs")]
-    [field: SerializeField] public List<EventReference> songs { get; private set; }
-
-    [field: Header("Custom Songs")]
-    [field: SerializeField] public EventReference customSongReference { get; private set; }
-    private string customSelectedSongPath;
+    public static SongDataManager instance { get; private set; }
     private SongData customSelectedSongData;
 
-
-    private void Start()
+    private void Awake()
     {
-
-        /*
-        // Load the .songdata file (omit the extension)
-        TextAsset songDataFile = Resources.Load<TextAsset>("SongData/mySong");
-
-        if (songDataFile != null) {
-            string songDataContent = songDataFile.text;
-            Debug.Log("Song data loaded: " + songDataContent);
-
-            // Process your song data here
-            ProcessSongData(songDataContent);
+        if (instance == null) {
+            instance = this;
+            DontDestroyOnLoad(gameObject);
         }
         else {
-            Debug.LogError("Failed to load song data file!");
+            Destroy(gameObject);
         }
-
-        void ProcessSongData(string data)
-        {
-
-            Debug.Log("Processing: " + data);
-        }
-        // TODO: if passed a song data through previous scene, load it, create new otherwise;
-        SongFileConverter.LoadFromTextFormat(GameManager.instance.GetSelectedSong());*/
     }
 
-    public void SetCustomSelectedSong(string selectedSongPath, SongData selectedSong)
+    public void CreateCustomSong()
     {
-        customSelectedSongPath = selectedSongPath;
-        customSelectedSongData = selectedSong;
+        customSelectedSongData = new SongData("Custom");
+        SaveData.SaveCustomSongData(customSelectedSongData);
     }
 
-    public void SetSongName(string name)
+    public void SetCustomSelectedSong(string songDirPath)
     {
-        customSelectedSongData.songName = name;
-        EditorUIManager.instance.SetSongTitle(customSelectedSongData.songName, customSelectedSongData.artist);
+        customSelectedSongData = SaveData.LoadCustomSong(songDirPath);
     }
 
-    public void SetSongArtist(string artist)
+    public void SaveCustomSelectedSong()
     {
-        customSelectedSongData.artist = artist;
-        EditorUIManager.instance.SetSongTitle(customSelectedSongData.songName, customSelectedSongData.artist);
+        SaveData.SaveCustomSongData(customSelectedSongData);
+    }
+
+    public void SetCustomSelectedSongName(string name)
+    {
+        customSelectedSongData.metadata.songName = name;
+    }
+
+    public void SetCustomSelectedSongArtist(string artist)
+    {
+        customSelectedSongData.metadata.artist = artist;
+    }
+
+    public SongMetadata GetCustomSelectedSongMetadata()
+    {
+        return customSelectedSongData.metadata;
+    }
+
+    public IEnumerator SaveAndLoadCustomAudioFile(string filePath)
+    {
+        // Save
+        string audioPath = SaveData.SaveAudioFile(customSelectedSongData, filePath);
+        customSelectedSongData.metadata.audioFileName = Path.GetFileName(audioPath);
+
+        // Load
+        Metronome.instance.LoadCustomAudioFile(customSelectedSongData.metadata);
+        yield break;
     }
 
     public List<NoteData> GetDifficultyNoteData(Difficulty difficulty)
@@ -118,15 +94,17 @@ public class SongDataManager : MonoBehaviour
         }
     }
 
-    public IEnumerator LoadAndSaveAudioFile(string filePath)
+    public void SetBPMFlags(List<BPMFlag> bpmFlags)
     {
-        /*
-        string audioPath = SaveData.SaveAudioFile(NoteManager.instance.GetSongData(), filePath);
+        customSelectedSongData.BPMFlags = bpmFlags;
+    }
 
-        // Create a new FMOD sound instance
-        Metronome.instance.ReleaseSongInstance();
-        programmerSound = new FMODProgrammerSound(audioPath, customSongReference);
-        Metronome.instance.SetSongInstance(programmerSound.GetEventInstance());*/
-        yield break;
+    public bool IsSongDataSelected()
+    {
+        return customSelectedSongData != null;
+    }
+    public void SetTemporalSongData()
+    {
+        customSelectedSongData = new SongData();
     }
 }

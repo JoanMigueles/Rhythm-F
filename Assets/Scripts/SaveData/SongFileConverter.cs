@@ -10,11 +10,11 @@ public static class SongFileConverter
         using (StreamWriter writer = new StreamWriter(filePath)) {
             // Write Song Data section
             writer.WriteLine("[Song Data]");
-            writer.WriteLine($"Name:{songData.songName}");
-            writer.WriteLine($"Artist:{songData.artist}");
-            writer.WriteLine($"AudioFile:{songData.audioFileName}");
-            writer.WriteLine($"CoverFile:{songData.coverFileName}");
-            writer.WriteLine($"PreviewStart:{songData.previewStartTime}");
+            writer.WriteLine($"Name:{songData.metadata.songName}");
+            writer.WriteLine($"Artist:{songData.metadata.artist}");
+            writer.WriteLine($"AudioFile:{songData.metadata.audioFileName}");
+            writer.WriteLine($"CoverFile:{songData.metadata.coverFileName}");
+            writer.WriteLine($"PreviewStart:{songData.metadata.previewStartTime}");
             writer.WriteLine();
 
             // Write BPM Changes section
@@ -60,6 +60,7 @@ public static class SongFileConverter
             throw new FileNotFoundException("File not found", filePath);
 
         SongData songData = new SongData();
+        songData.metadata.localDirPath = Path.GetDirectoryName(filePath);
         string currentSection = "";
 
         foreach (string line in File.ReadAllLines(filePath)) {
@@ -107,19 +108,19 @@ public static class SongFileConverter
 
         switch (key) {
             case "Name":
-                songData.songName = value;
+                songData.metadata.songName = value;
                 break;
             case "Artist":
-                songData.artist = value;
+                songData.metadata.artist = value;
                 break;
             case "AudioFile":
-                songData.audioFileName = value;
+                songData.metadata.audioFileName = value;
                 break;
             case "CoverFile":
-                songData.coverFileName = value;
+                songData.metadata.coverFileName = value;
                 break;
             case "PreviewStart":
-                float.TryParse(value, out songData.previewStartTime);
+                float.TryParse(value, out songData.metadata.previewStartTime);
                 break;
         }
     }

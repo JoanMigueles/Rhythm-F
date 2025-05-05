@@ -11,7 +11,7 @@ public class Timeline : MonoBehaviour
         material = new Material(img.material);
         img.material = material;
 
-        material.SetFloat("_Tiling", Metronome.instance.BPM / 60f / NoteManager.instance.noteSpeed);
+        material.SetFloat("_Tiling", Metronome.instance.currentBPMFlag.BPM / 60f / NoteManager.instance.noteSpeed);
         material.SetFloat("_Subdivision", NoteManager.instance.noteSubdivisionSnapping);
         material.SetFloat("_Offset", -Metronome.instance.GetTimelineBeatPosition());
     }
@@ -19,7 +19,7 @@ public class Timeline : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        material.SetFloat("_Tiling", Metronome.instance.BPM / 60f / NoteManager.instance.noteSpeed);
+        material.SetFloat("_Tiling", Metronome.instance.currentBPMFlag.BPM / 60f / NoteManager.instance.noteSpeed);
         material.SetFloat("_Subdivision", NoteManager.instance.noteSubdivisionSnapping);
         material.SetFloat("_Offset", -Metronome.instance.GetTimelineBeatPosition());
     }

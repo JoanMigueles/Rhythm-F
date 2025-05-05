@@ -8,6 +8,7 @@ public class UIManager : MonoBehaviour
     {
         panel.SetActive(true);
         background.SetActive(true);
+        if (NoteManager.instance != null ) NoteManager.instance.ClearSelection();
     }
 
     public void ClosePanel(GameObject panel)
