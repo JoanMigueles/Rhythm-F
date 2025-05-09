@@ -255,6 +255,11 @@ public class Metronome : MonoBehaviour
         return true;
     }
 
+    public void SetMetronomeSound(bool on)
+    {
+        metronomeBeeps = on;
+    }
+
     void OnDestroy()
     {
         if (customPlayer != null)
@@ -304,7 +309,7 @@ public class FMODCustomMusicPlayer : IDisposable
         StopChannel();
         var result = RuntimeManager.CoreSystem.createSound(audioPath, soundMode, out sound);
         if (result != FMOD.RESULT.OK) {
-            Debug.LogError($"Failed to load sound: {result}");
+            Debug.LogError($"Failed to load sound: {result} " + audioPath);
             return;
         }
 

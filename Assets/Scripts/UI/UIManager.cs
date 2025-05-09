@@ -4,6 +4,7 @@ public class UIManager : MonoBehaviour
 {
     [SerializeField] private GameObject background;
 
+    // OPEN MENU PANEL
     public void OpenPanel(GameObject panel)
     {
         panel.SetActive(true);
@@ -11,6 +12,7 @@ public class UIManager : MonoBehaviour
         if (NoteManager.instance != null ) NoteManager.instance.ClearSelection();
     }
 
+    // CLOSE MENU PANEL
     public void ClosePanel(GameObject panel)
     {
         panel.SetActive(false);

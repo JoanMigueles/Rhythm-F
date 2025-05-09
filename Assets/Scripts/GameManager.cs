@@ -7,6 +7,7 @@ public class GameManager : MonoBehaviour
     public static GameManager instance;
     private string selectedSong;
     private bool gameRunning;
+    private bool isNew;
 
     private void Awake()
     {
@@ -45,18 +46,16 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
+    // EDITOR OPENING
     public void OpenEditor()
     {
         SceneManager.LoadScene("LevelEditor");
     }
 
-    public void SetSelectedSong()
+    // LIST OPENING
+    public void OpenSongList()
     {
-        selectedSong = string.Empty;
-    }
-    public string GetSelectedSong()
-    {
-        return selectedSong;
+        SceneManager.LoadScene("List");
     }
 
     public void QuitGame()

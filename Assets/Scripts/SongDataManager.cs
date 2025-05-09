@@ -7,6 +7,7 @@ public class SongDataManager : MonoBehaviour
 {
     public static SongDataManager instance { get; private set; }
     private SongData customSelectedSongData;
+    private bool isNew;
 
     private void Awake()
     {
@@ -21,17 +22,29 @@ public class SongDataManager : MonoBehaviour
 
     public void CreateCustomSong()
     {
-        customSelectedSongData = new SongData("Custom");
-        SaveData.SaveCustomSongData(customSelectedSongData);
+        isNew = true;
+        customSelectedSongData = new SongData();
     }
 
-    public void SetCustomSelectedSong(string songDirPath)
+    public bool IsNewSong() { return isNew; }
+
+    public void SetCustomSelectedSong(string songFilePath)
     {
-        customSelectedSongData = SaveData.LoadCustomSong(songDirPath);
+        isNew = false;
+        customSelectedSongData = SaveData.LoadCustomSong(songFilePath);
+        string songPath = SaveData.GetAudioFilePath(customSelectedSongData.metadata.songName);
+        Metronome.instance.SetCustomSong(songPath);
+    }
+
+    public void DeselectCustomSong()
+    {
+        isNew = false;
+        customSelectedSongData = null;
     }
 
     public void SaveCustomSelectedSong()
     {
+        isNew = false;
         SaveData.SaveCustomSongData(customSelectedSongData);
     }
 
@@ -56,6 +69,7 @@ public class SongDataManager : MonoBehaviour
         SaveData.CreateAudioFile(customSelectedSongData, filePath);
 
         // Load
+
         Metronome.instance.SetCustomSong(SaveData.GetAudioFilePath(customSelectedSongData.metadata.audioFileName));
         yield break;
     }
@@ -101,10 +115,5 @@ public class SongDataManager : MonoBehaviour
     public bool IsSongDataSelected()
     {
         return customSelectedSongData != null;
-    }
-    public void SetTemporalSongData()
-    {
-        customSelectedSongData = new SongData();
-
     }
 }

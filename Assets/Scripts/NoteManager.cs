@@ -26,6 +26,7 @@ public class NoteManager : MonoBehaviour
     public int noteSubdivisionSnapping = 1;
     public EditMode editMode = EditMode.Select;
     public Difficulty difficulty = Difficulty.Normal;
+    [SerializeField] private GameObject songDataPanel;
 
     // NOTE PREFABS
     [SerializeField] private GameObject hitPrefab;
@@ -77,13 +78,16 @@ public class NoteManager : MonoBehaviour
 
     private void Start()
     {
-        if (!SongDataManager.instance.IsSongDataSelected()) {
-            SongDataManager.instance.SetTemporalSongData();
-        }
         clipboardNotesData = new List<NoteData>();
         selectedNotes = new List<Note>();
         activeNotes = new List<Note>();
         activeMarkers = new List<BPMMarker>();
+        if (!SongDataManager.instance.IsSongDataSelected()) {
+            SongDataManager.instance.CreateCustomSong();
+        }
+        if (SongDataManager.instance.IsNewSong()) {
+            EditorUIManager.instance.OpenPanel(songDataPanel);
+        }
         SpawnDifficultyNotes(Difficulty.Normal);
     }
 
