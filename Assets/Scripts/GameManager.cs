@@ -1,10 +1,11 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.Timeline;
 
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
+    public List<Note> notes {  get; private set; }
     private string selectedSong;
     private bool gameRunning;
     private bool isNew;
@@ -49,17 +50,42 @@ public class GameManager : MonoBehaviour
     // EDITOR OPENING
     public void OpenEditor()
     {
+        Metronome.instance.ReleaseCustomSong();
         SceneManager.LoadScene("LevelEditor");
     }
 
     // LIST OPENING
     public void OpenSongList()
     {
+        Metronome.instance.ReleaseCustomSong();
         SceneManager.LoadScene("List");
     }
 
     public void QuitGame()
     {
+        Metronome.instance.ReleaseCustomSong();
         Application.Quit();
+    }
+
+    // SELECTED SONG
+    public void SetSelectedSong(string songPath)
+    {
+        selectedSong = songPath;
+    }
+
+    public string GetSelectedSong()
+    {
+        return selectedSong;
+    }
+
+    public bool IsSongSelected()
+    {
+        return !string.IsNullOrEmpty(selectedSong);
+    }
+
+    // NOTES
+    public void SetNotes(List<Note> notes)
+    {
+        this.notes = notes;
     }
 }

@@ -70,6 +70,11 @@ public class CenteredSnapScroll : MonoBehaviour, IBeginDragHandler, IEndDragHand
 
         if (nearestItem == null) return;
 
+        SongPanel panel = nearestItem.GetComponent<SongPanel>();
+        if (panel != null) {
+            LevelListUI.instance.SetHoveredSong(panel.GetSongMetadata());
+        }
+
         // Update visual feedback
         foreach (RectTransform child in items) {
             if (child == null) continue;

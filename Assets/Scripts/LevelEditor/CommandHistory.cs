@@ -47,4 +47,10 @@ public class CommandHistory
             Debug.Log("No more to redo");
         }
     }
+
+    public void Clear()
+    {
+        commandHistory.Clear();
+        index = 0;
+    }
 }

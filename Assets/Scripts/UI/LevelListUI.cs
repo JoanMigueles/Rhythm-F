@@ -1,14 +1,22 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LevelListUIManager : UIManager
+public class LevelListUI : UIManager
 {
+    public static LevelListUI instance { get; private set; }
     [SerializeField] SongPanel songPanelPrefab;
     [SerializeField] GameObject content;
     [SerializeField] CenteredSnapScroll scroll;
+    private SongMetadata hoveredSong;
+
+    private void Awake()
+    {
+        instance = this;
+    }
 
     private void Start()
     {
+        GameManager.instance.SetSelectedSong("");
         ReloadList();
     }
 
@@ -21,8 +29,7 @@ public class LevelListUIManager : UIManager
 
         foreach (SongMetadata metadata in songMetadataList) {
             SongPanel panel = Instantiate(songPanelPrefab, content.transform);
-            panel.DisplaySongMetadata(metadata);
-            panel.SetLoadSongFilePathListener(metadata.localPath);
+            panel.SetSongMetadata(metadata);
         }
 
         scroll.SetItems();
@@ -30,7 +37,17 @@ public class LevelListUIManager : UIManager
 
     public void CreateCustomSongButton()
     {
-        SongDataManager.instance.CreateCustomSong();
         GameManager.instance.OpenEditor();
+    }
+
+    public void DeleteCustomSongButton()
+    {
+        SaveData.RemoveCustomSongData(hoveredSong);
+        ReloadList();
+    }
+
+    public void SetHoveredSong(SongMetadata metadata)
+    {
+        hoveredSong = metadata;
     }
 }

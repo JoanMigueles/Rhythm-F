@@ -1,0 +1,419 @@
+fileFormatVersion: 2
+guid: 72c6b773244af1a4a94deb8100bb188c
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -1696534527951857013
+    second: Enemies-copia_0000_Capa-4-copia_0
+  - first:
+      213: -8433705503635419301
+    second: Enemies-copia_0000_Capa-4-copia_1
+  - first:
+      213: -1910056909823097728
+    second: Enemies-copia_0000_Capa-4-copia_2
+  - first:
+      213: 1175419846741823687
+    second: Enemies-copia_0000_Capa-4-copia_3
+  - first:
+      213: -4432585894619471199
+    second: Enemies-copia_0000_Capa-4-copia_4
+  - first:
+      213: -348037764756135940
+    second: Enemies-copia_0000_Capa-4-copia_5
+  - first:
+      213: -2094034818482161344
+    second: Enemies-copia_0000_Capa-4-copia_6
+  - first:
+      213: 1418524954718093724
+    second: Enemies-copia_0000_Capa-4-copia_7
+  - first:
+      213: 7092424836084206540
+    second: Enemies-copia_0000_Capa-4-copia_8
+  - first:
+      213: -1217022026187517266
+    second: Enemies-copia_0000_Capa-4-copia_9
+  - first:
+      213: 5605793074876561908
+    second: Enemies-copia_0000_Capa-4-copia_10
+  - first:
+      213: 4381638415910812342
+    second: Enemies-copia_0000_Capa-4-copia_11
+  - first:
+      213: -2698178550592393503
+    second: Enemies-copia_0000_Capa-4-copia_12
+  - first:
+      213: 4182550881740447337
+    second: Enemies-copia_0000_Capa-4-copia_13
+  - first:
+      213: 6184553891167604868
+    second: Enemies-copia_0000_Capa-4-copia_14
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 170
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: EnemiesGreen_0
+      rect:
+        serializedVersion: 2
+        x: 219
+        y: 1037
+        width: 279
+        height: 255
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: df70ae81a17949c4c826929f2d9e4887
+      internalID: -524070083
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: EnemiesGreen_1
+      rect:
+        serializedVersion: 2
+        x: 638
+        y: 631
+        width: 262
+        height: 839
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a8dc2d665ca28a04884cd380a6e10e81
+      internalID: 968438813
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: EnemiesGreen_2
+      rect:
+        serializedVersion: 2
+        x: 982
+        y: 992
+        width: 316
+        height: 315
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 46e75049a4359fd41a3464327f43f7f6
+      internalID: 1565852492
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: EnemiesGreen_3
+      rect:
+        serializedVersion: 2
+        x: 1358
+        y: 784
+        width: 571
+        height: 501
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c5f90263e190c2145b26c263a6c51c27
+      internalID: 1131401817
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: EnemiesGreen_4
+      rect:
+        serializedVersion: 2
+        x: 232
+        y: 662
+        width: 319
+        height: 272
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a89a052c59576e94da3d89a33f51f66f
+      internalID: -2076245187
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: EnemiesGreen_5
+      rect:
+        serializedVersion: 2
+        x: 1018
+        y: 650
+        width: 323
+        height: 249
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 034c3f7c1ded7aa4e860aa24f52d72c7
+      internalID: 2119588632
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: EnemiesGreen_6
+      rect:
+        serializedVersion: 2
+        x: 1463
+        y: 241
+        width: 465
+        height: 465
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5aadbe3082fa35a448ba7ecf90538ac8
+      internalID: 672562420
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: EnemiesGreen_7
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 308
+        width: 294
+        height: 279
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a5ad8c136c592e44f878a42c01b7b283
+      internalID: -640993057
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: EnemiesGreen_9
+      rect:
+        serializedVersion: 2
+        x: 708
+        y: 317
+        width: 266
+        height: 267
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a9b6d3f0c32d01b41acb1008ef6f6235
+      internalID: 798586165
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: EnemiesGreen_10
+      rect:
+        serializedVersion: 2
+        x: 1044
+        y: 135
+        width: 386
+        height: 459
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 93bd9432b9dfb174faa39f9943b2684d
+      internalID: -108051199
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: EnemiesGreen_14
+      rect:
+        serializedVersion: 2
+        x: 232
+        y: 0
+        width: 379
+        height: 230
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 39068639fb565cb4f88b821c1a389e4a
+      internalID: -1575985446
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 02c0d2600370d22409940b00be6f00ae
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      EnemiesGreen_0: -524070083
+      EnemiesGreen_1: 968438813
+      EnemiesGreen_10: -108051199
+      EnemiesGreen_11: -186045527
+      EnemiesGreen_12: -133959613
+      EnemiesGreen_13: -2047276748
+      EnemiesGreen_14: -1575985446
+      EnemiesGreen_2: 1565852492
+      EnemiesGreen_3: 1131401817
+      EnemiesGreen_4: -2076245187
+      EnemiesGreen_5: 2119588632
+      EnemiesGreen_6: 672562420
+      EnemiesGreen_7: -640993057
+      EnemiesGreen_8: -1811211712
+      EnemiesGreen_9: 798586165
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

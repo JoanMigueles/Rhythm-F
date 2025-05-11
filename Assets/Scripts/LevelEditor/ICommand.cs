@@ -32,7 +32,7 @@ public class CreateNotesCommand : ICommand
     public void Execute()
     {
         foreach (NoteData note in createNotes) {
-            NoteManager.instance.SpawnNote(note, selectNotes);
+            EditorManager.instance.SpawnNote(note, selectNotes);
         }
         
 
@@ -40,9 +40,9 @@ public class CreateNotesCommand : ICommand
 
     public void Undo() 
     {
-        NoteManager.instance.ClearSelection();
+        EditorManager.instance.ClearSelection();
         foreach (NoteData note in createNotes) {
-            NoteManager.instance.DeleteNote(note);
+            EditorManager.instance.DeleteNote(note);
         }
     }
 }
@@ -57,12 +57,12 @@ public class CreateMarkerCommand : ICommand
 
     public void Execute()
     {
-        NoteManager.instance.SpawnMarker(flag);
+        EditorManager.instance.SpawnMarker(flag);
     }
 
     public void Undo()
     {
-        NoteManager.instance.DeleteMarker(flag);
+        EditorManager.instance.DeleteMarker(flag);
     }
 }
 
@@ -79,14 +79,14 @@ public class EditMarkerCommand : ICommand
 
     public void Execute()
     {
-        NoteManager.instance.EditMarker(flag, newBPM);
+        EditorManager.instance.EditMarker(flag, newBPM);
     }
 
     public void Undo()
     {
         BPMFlag editedFlag = new BPMFlag(flag);
         editedFlag.BPM = newBPM;
-        NoteManager.instance.EditMarker(editedFlag, flag.BPM);
+        EditorManager.instance.EditMarker(editedFlag, flag.BPM);
     }
 }
 
@@ -106,15 +106,15 @@ public class DeleteNotesCommand : ICommand
     public void Execute()
     {
         foreach (NoteData note in deleteNotes) {
-            NoteManager.instance.DeleteNote(note);
+            EditorManager.instance.DeleteNote(note);
         }
     }
 
     public void Undo()
     {
-        NoteManager.instance.ClearSelection();
+        EditorManager.instance.ClearSelection();
         foreach (NoteData note in deleteNotes) {
-            NoteManager.instance.SpawnNote(note, true);
+            EditorManager.instance.SpawnNote(note, true);
         }
     }
 }
@@ -129,12 +129,12 @@ public class DeleteMarkerCommand : ICommand
 
     public void Execute()
     {
-        NoteManager.instance.DeleteMarker(flag);
+        EditorManager.instance.DeleteMarker(flag);
     }
 
     public void Undo()
     {
-        NoteManager.instance.SpawnMarker(flag);
+        EditorManager.instance.SpawnMarker(flag);
     }
 }
 
@@ -153,7 +153,7 @@ public class MoveNotesCommand : ICommand
     public void Execute()
     {
         foreach (NoteData note in moveNotes) {
-            NoteManager.instance.MoveNote(note, distance, laneSwap);
+            EditorManager.instance.MoveNote(note, distance, laneSwap);
         }
     }
 
@@ -165,7 +165,7 @@ public class MoveNotesCommand : ICommand
             if (laneSwap) {
                 movedNote.lane = movedNote.lane == 0 ? 1 : 0;
             }
-            NoteManager.instance.MoveNote(movedNote, -distance, laneSwap);
+            EditorManager.instance.MoveNote(movedNote, -distance, laneSwap);
         }
     }
 }
@@ -182,13 +182,13 @@ public class MoveMarkerCommand : ICommand
 
     public void Execute()
     {
-        NoteManager.instance.MoveMarker(flag, distance);
+        EditorManager.instance.MoveMarker(flag, distance);
     }
 
     public void Undo()
     {
         BPMFlag movedFlag = new BPMFlag(flag);
         movedFlag.offset += distance;
-        NoteManager.instance.MoveMarker(movedFlag, -distance);
+        EditorManager.instance.MoveMarker(movedFlag, -distance);
     }
 }

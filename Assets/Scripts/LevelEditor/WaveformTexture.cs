@@ -5,10 +5,12 @@ using UnityEngine.Rendering;
 public class WaveformTexture : MonoBehaviour
 {
     private SpriteRenderer sr;
-    private void Start()
+
+    private void Awake()
     {
         sr = GetComponent<SpriteRenderer>();
     }
+
     public void SetTexture(Texture2D tex)
     {
         if (tex == null) return;

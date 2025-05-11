@@ -7,14 +7,20 @@ public class SongPanel : MonoBehaviour
     [SerializeField] TMP_Text titleText;
     [SerializeField] TMP_Text artistText;
     [SerializeField] Button button;
-    public void DisplaySongMetadata(SongMetadata songMetadata) {
+    private SongMetadata metadata;
+
+    public void SetSongMetadata(SongMetadata songMetadata) {
+        metadata = songMetadata;
         titleText.text = songMetadata.songName;
         artistText.text = songMetadata.artist;
+        button.onClick.AddListener(() => {
+            GameManager.instance.SetSelectedSong(songMetadata.localPath);
+            GameManager.instance.OpenEditor();
+        });
     }
-
-    public void SetLoadSongFilePathListener(string songDirPath)
+    public SongMetadata GetSongMetadata()
     {
-        button.onClick.AddListener(() => SongDataManager.instance.SetCustomSelectedSong(songDirPath));
+        return metadata;
     }
 }
 

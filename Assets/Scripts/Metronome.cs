@@ -2,7 +2,6 @@ using FMOD.Studio;
 using FMODUnity;
 using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using UnityEngine;
 
@@ -101,10 +100,11 @@ public class Metronome : MonoBehaviour
     {
         BPMFlag currentFlag = new BPMFlag(0);
 
-        foreach (var flag in BPMFlags) {
-            if (flag.offset <= timelinePosition && flag.offset >= currentFlag.offset) {
-                currentFlag = flag;
-            }
+        foreach (BPMFlag flag in BPMFlags) {
+            if (flag.offset > timelinePosition)
+                break;
+
+            currentFlag = flag;
         }
 
         return currentFlag;
@@ -147,8 +147,14 @@ public class Metronome : MonoBehaviour
 
     public void SetCustomSong(string songPath)
     {
-        ReleaseSongInstance();
+        ReleaseCustomSong();
         customPlayer = new FMODCustomMusicPlayer(songPath);
+    }
+
+    public void ReleaseCustomSong()
+    {
+        ReleaseSongInstance();
+        if (customPlayer != null) customPlayer.Dispose();
     }
 
     public void SetBPMFlags(List<BPMFlag> flags)
@@ -203,8 +209,8 @@ public class Metronome : MonoBehaviour
     {
         if (isCustom && customPlayer != null) {
             customPlayer.Play();
-            if (EditorUIManager.instance != null) {
-                EditorUIManager.instance.DisplayPause(true);
+            if (EditorUI.instance != null) {
+                EditorUI.instance.DisplayPause(true);
             }
             return;
         }
@@ -221,8 +227,8 @@ public class Metronome : MonoBehaviour
     {
         if (isCustom && customPlayer != null) {
             customPlayer.Stop();
-            if (EditorUIManager.instance != null) {
-                EditorUIManager.instance.DisplayPause(false);
+            if (EditorUI.instance != null) {
+                EditorUI.instance.DisplayPause(false);
             }
             return;
         }
@@ -239,8 +245,8 @@ public class Metronome : MonoBehaviour
     {
         if (isCustom && customPlayer != null) {
             customPlayer.Pause(true);
-            if (EditorUIManager.instance != null) {
-                EditorUIManager.instance.DisplayPause(false);
+            if (EditorUI.instance != null) {
+                EditorUI.instance.DisplayPause(false);
             }
             return;
         }

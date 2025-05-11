@@ -52,6 +52,7 @@ public static class SaveData
     private static string audioFilesPath = Path.Combine(Application.persistentDataPath, "custom_charts", "AudioFiles");
     private static string coverFilesPath = Path.Combine(Application.persistentDataPath, "custom_charts", "CoverFiles");
 
+    // ALL CUSTOM SONG METADATA
     public static List<SongMetadata> LoadAllCustomSongsMetadata()
     {
         List<SongMetadata> customSongsMetadata;
@@ -62,7 +63,6 @@ public static class SaveData
             return customSongsMetadata;
         }
 
-        //
         string[] songDataFiles = Directory.GetFiles(customChartsPath, "*.songdata");
         customSongsMetadata = new List<SongMetadata>(songDataFiles.Length);
 
@@ -73,6 +73,7 @@ public static class SaveData
         return customSongsMetadata;
     }
 
+    // CUSTOM SONG DATA
     public static SongData LoadCustomSong(string songFilePath)
     {
         SongData song = new SongData();
@@ -84,11 +85,13 @@ public static class SaveData
         return song;
     }
 
+    // AUDIO PATH FROM NAME
     public static string GetAudioFilePath(string name)
     {
         return Path.Combine(audioFilesPath, name);
     }
 
+    // FILE NAME FORMAT
     private static string GenerateFileName(SongData songData)
     {
         string name = !string.IsNullOrEmpty(songData.metadata.songName) ? songData.metadata.songName : "Custom";
@@ -96,6 +99,7 @@ public static class SaveData
         return $"{name}{artist}";
     }
 
+    // CREATE
     private static string CreateCustomSongFile(SongData songData)
     {
         if (!Directory.Exists(customChartsPath))
@@ -108,10 +112,14 @@ public static class SaveData
             filePath = Path.Combine(customChartsPath, $"{fileName}_{rev}.songdata");
             rev++;
         }
+
+        Debug.Log("Creating " + filePath);
         SongFileConverter.SaveToTextFormat(songData, filePath);
+
         return filePath;
     }
 
+    // SAVE
     public static void SaveCustomSongData(SongData songData)
     {
         if (!IsLocallySaved(songData)) {
@@ -132,15 +140,31 @@ public static class SaveData
             }
             if (!found) {
                 File.Delete(songData.metadata.localPath);
+                songData.metadata.localPath = filePath;
             }
             SongFileConverter.SaveToTextFormat(songData, filePath);
         }
     }
 
+    // REMOVE
+    public static void RemoveCustomSongData(SongMetadata metadata)
+    {
+        if (!IsLocallySaved(metadata)) return;
+
+        if (Directory.Exists(audioFilesPath) && !string.IsNullOrEmpty(metadata.audioFileName))
+            File.Delete(GetAudioFilePath(metadata.audioFileName));
+
+        File.Delete(metadata.localPath);
+    }
+
+    // CREATE AUDIO
     public static void CreateAudioFile(SongData songData, string filePath)
     {
         if (!Directory.Exists(audioFilesPath))
             Directory.CreateDirectory(audioFilesPath);
+
+        if (!string.IsNullOrEmpty(songData.metadata.audioFileName))
+            File.Delete(GetAudioFilePath(songData.metadata.audioFileName));
 
         string audioName = Path.GetFileNameWithoutExtension(filePath);
         string audioExtension = Path.GetExtension(filePath);
@@ -157,6 +181,7 @@ public static class SaveData
         SaveCustomSongData(songData);
     }
 
+    // REMOVE AUDIO
     public static void RemoveAudioFile(SongData songData)
     {
         if (!Directory.Exists(audioFilesPath))
@@ -169,9 +194,14 @@ public static class SaveData
         SaveCustomSongData(songData);
     }
 
+    // IS SAVED
     private static bool IsLocallySaved(SongData songData)
     {
         return songData != null && !string.IsNullOrEmpty(songData.metadata.localPath) && File.Exists(songData.metadata.localPath);
+    }
+    private static bool IsLocallySaved(SongMetadata metadata)
+    {
+        return !string.IsNullOrEmpty(metadata.localPath) && File.Exists(metadata.localPath);
     }
 
 }

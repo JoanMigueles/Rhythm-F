@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
@@ -38,8 +39,8 @@ public class BPMMarker : TimelineElement
 
     public void SelectThisMarker()
     {
-        NoteManager.instance.SetEditMode("Select");
-        NoteManager.instance.SelectMarker(this);
+        EditorManager.instance.SetEditMode("Select");
+        EditorManager.instance.Select(this);
     }
 
     public void SetThisMarkerBPM(string BPM)
@@ -48,7 +49,7 @@ public class BPMMarker : TimelineElement
             bpmValue = Mathf.Min(bpmValue, 999f); // Clamp max to 999
             bpmValue = Mathf.Round(bpmValue * 10f) / 10f; // Round to one decimal
             SelectThisMarker();
-            NoteManager.instance.EditSelectedMarker(bpmValue);
+            EditorManager.instance.EditSelectedMarker(bpmValue);
         }
         else {
             BPMField.SetTextWithoutNotify(originalBPM.ToString());
