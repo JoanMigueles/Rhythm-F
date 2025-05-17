@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CharacterController : MonoBehaviour
+public class RhtyhmCharacterController : MonoBehaviour
 {
     public int lane;
     private const int PERFECT_WINDOW = 30;

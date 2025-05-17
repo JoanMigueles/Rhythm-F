@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using UnityEngine;
 public enum NoteType
 {
@@ -71,6 +70,19 @@ public struct NoteData
 
 public class Note : TimelineElement
 {
-    public uint noteIndex;
     public NoteData data;
+    public NoteHandle durationHandle;
+    public NoteHandle anticipationHandle;
+
+    public override void Move(int distance, bool laneSwap)
+    {
+        float yPos;
+        if (laneSwap) {
+            yPos = data.lane == 0 ? -1.5f : 1.5f;
+        }
+        else {
+            yPos = data.lane == 0 ? 1.5f : -1.5f;
+        }
+        transform.position = new Vector3(EditorManager.instance.GetPositionFromTime(data.time + distance), yPos, 0f);
+    }
 }

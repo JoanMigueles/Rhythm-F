@@ -29,11 +29,11 @@ public class BPMMarker : TimelineElement
     private float originalBPM = 120f;
     [SerializeField] private TMP_InputField BPMField;
 
-    public void Highlight(bool on)
+    public override void SetSelected(bool selected)
     {
         SpriteRenderer[] sprites = GetComponentsInChildren<SpriteRenderer>();
         foreach (SpriteRenderer sprite in sprites) {
-            sprite.color = on ? highlightedColor : normalColor;
+            sprite.color = selected ? highlightedColor : normalColor;
         }
     }
 
@@ -60,5 +60,10 @@ public class BPMMarker : TimelineElement
     {
         originalBPM = bpmValue; // Update stored value after successful input
         BPMField.SetTextWithoutNotify(bpmValue.ToString());
+    }
+
+    public override void Move(int distance, bool laneSwap)
+    {
+        transform.position = new Vector3(EditorManager.instance.GetPositionFromTime(flag.offset + distance), 3.3f, 0f);
     }
 }

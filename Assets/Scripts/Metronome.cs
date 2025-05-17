@@ -98,8 +98,13 @@ public class Metronome : MonoBehaviour
 
     public BPMFlag GetCurrentBPMFlag()
     {
-        BPMFlag currentFlag = new BPMFlag(0);
+        BPMFlag currentFlag;
+        if (BPMFlags.Count == 0) {
+            currentFlag = new BPMFlag(0);
+            return currentFlag;
+        }
 
+        currentFlag = BPMFlags[0];
         foreach (BPMFlag flag in BPMFlags) {
             if (flag.offset > timelinePosition)
                 break;

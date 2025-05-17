@@ -162,7 +162,7 @@ GameObject:
   - component: {fileID: 4082844729154687753}
   - component: {fileID: 7724914381145081941}
   m_Layer: 0
-  m_Name: HexSlider
+  m_Name: Punchbag
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

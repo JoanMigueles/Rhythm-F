@@ -1,4 +1,6 @@
 using System.Collections.Generic;
+using Unity.VisualScripting;
+using UnityEditor.Experimental.GraphView;
 
 public interface ICommand
 {
@@ -34,8 +36,6 @@ public class CreateNotesCommand : ICommand
         foreach (NoteData note in createNotes) {
             EditorManager.instance.SpawnNote(note, selectNotes);
         }
-        
-
     }
 
     public void Undo() 
@@ -66,29 +66,7 @@ public class CreateMarkerCommand : ICommand
     }
 }
 
-public class EditMarkerCommand : ICommand
-{
-    BPMFlag flag;
-    float newBPM;
 
-    public EditMarkerCommand(BPMFlag flag, float BPM)
-    {
-        this.flag = flag;
-        newBPM = BPM;
-    }
-
-    public void Execute()
-    {
-        EditorManager.instance.EditMarker(flag, newBPM);
-    }
-
-    public void Undo()
-    {
-        BPMFlag editedFlag = new BPMFlag(flag);
-        editedFlag.BPM = newBPM;
-        EditorManager.instance.EditMarker(editedFlag, flag.BPM);
-    }
-}
 
 public class DeleteNotesCommand : ICommand
 {
@@ -138,38 +116,55 @@ public class DeleteMarkerCommand : ICommand
     }
 }
 
-public class MoveNotesCommand : ICommand
+public class EditNotesCommand : ICommand
 {
-    NoteData[] moveNotes;
-    int distance;
-    bool laneSwap;
-    public MoveNotesCommand(List<NoteData> notes, int distance, bool laneSwap)
+    NoteData[] previousNotes;
+    NoteData[] editedNotes;
+
+    public EditNotesCommand(List<NoteData> notes, List<NoteData> edited)
     {
-        moveNotes = notes.ToArray();
-        this.distance = distance;
-        this.laneSwap = laneSwap;
+        previousNotes = notes.ToArray();
+        editedNotes = edited.ToArray();
     }
 
     public void Execute()
     {
-        foreach (NoteData note in moveNotes) {
-            EditorManager.instance.MoveNote(note, distance, laneSwap);
+        for (int i = 0; i < previousNotes.Length; i++) {
+            EditorManager.instance.EditNote(previousNotes[i], editedNotes[i]);
         }
     }
 
     public void Undo()
     {
-        foreach (NoteData note in moveNotes) {
-            NoteData movedNote = new NoteData(note);
-            movedNote.time += distance;
-            if (laneSwap) {
-                movedNote.lane = movedNote.lane == 0 ? 1 : 0;
-            }
-            EditorManager.instance.MoveNote(movedNote, -distance, laneSwap);
+        for (int i = 0; i < previousNotes.Length; i++) {
+            EditorManager.instance.EditNote(editedNotes[i], previousNotes[i]);
         }
     }
 }
 
+public class EditMarkerCommand : ICommand
+{
+    BPMFlag flag;
+    BPMFlag newFlag;
+
+    public EditMarkerCommand(BPMFlag flag, BPMFlag newFlag)
+    {
+        this.flag = flag;
+        this.newFlag = newFlag;
+    }
+
+    public void Execute()
+    {
+        EditorManager.instance.EditMarker(flag, newFlag);
+    }
+
+    public void Undo()
+    {
+        EditorManager.instance.EditMarker(newFlag, flag);
+    }
+}
+
+/*
 public class MoveMarkerCommand : ICommand
 {
     BPMFlag flag;
@@ -191,4 +186,4 @@ public class MoveMarkerCommand : ICommand
         movedFlag.offset += distance;
         EditorManager.instance.MoveMarker(movedFlag, -distance);
     }
-}
+}*/

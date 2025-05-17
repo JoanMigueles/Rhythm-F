@@ -45,6 +45,7 @@ public class EditorManager : MonoBehaviour
 
     [SerializeField] private GameObject notePreview;
     [SerializeField] private GameObject markerPreview;
+    private Note sliderPreview;
 
     // SELECTION BOX
     [SerializeField] private RectTransform selectionBoxVisual; 
@@ -55,7 +56,6 @@ public class EditorManager : MonoBehaviour
     // MOVING NOTES
     private int cursorStartTime; // The cursor time position when the user started moving selected notes
     private bool isMoving;
-    private bool isMarker;
     private bool singleLane;
     private bool moved;
 
@@ -70,10 +70,8 @@ public class EditorManager : MonoBehaviour
 
     // NOTE LISTS
     private SongData songData;
-    private List<NoteHandle> selectedHandles;
-    private List<Note> selectedNotes;
+    private List<TimelineElement> selectedElements;
     private List<Note> activeNotes;
-    private BPMMarker selectedMarker;
     private List<BPMMarker> activeMarkers;
 
     // COMMAND HISTORY
@@ -88,7 +86,7 @@ public class EditorManager : MonoBehaviour
     private void Start()
     {
         clipboardNotesData = new List<NoteData>();
-        selectedNotes = new List<Note>();
+        selectedElements = new List<TimelineElement>();
         activeNotes = new List<Note>();
         activeMarkers = new List<BPMMarker>();
 
@@ -142,12 +140,11 @@ public class EditorManager : MonoBehaviour
                 break;
         }
 
-
-        if (Input.GetKeyDown(KeyCode.Z) && !IsDragging()) {
+        if (Input.GetKeyDown(KeyCode.Z) && Input.GetKey(KeyCode.LeftControl) && !Input.GetKey(KeyCode.LeftAlt) && !IsDragging()) {
             UndoAction();
         }
 
-        if (Input.GetKeyDown(KeyCode.X) && !IsDragging()) {
+        if (Input.GetKeyDown(KeyCode.Z) && Input.GetKey(KeyCode.LeftControl) && Input.GetKey(KeyCode.LeftAlt) && !IsDragging()) {
             RedoAction();
         }
 
@@ -158,6 +155,7 @@ public class EditorManager : MonoBehaviour
         foreach (BPMMarker marker in activeMarkers) {
             UpdateMarkerPosition(marker);
         }
+
         if (isMoving) {
             UpdateMovingSelectionPosition();
         }
@@ -344,44 +342,36 @@ public class EditorManager : MonoBehaviour
 
         if (hit.collider != null) {
             TimelineElement element = hit.collider.GetComponent<TimelineElement>();
-            if (element == null) {
-                Debug.Log("Clicked on non timeline element");
-                return;
-            }
-
-            if (element is Note) {
-                HandleNoteClick(element as Note, worldPos.x);
-                isMarker = false;
-            }
-            else if (element is NoteHandle) {
-
-            }
-            else if (element is BPMMarker) {
-                Select(element as BPMMarker);
-                StartMoving(worldPos.x);
-            }
+            if (element == null)  return;
+            HandleElementClick(element, worldPos.x);
         }
         else {
             if (!Input.GetKey(KeyCode.LeftShift)) ClearSelection();
             isSelecting = true;
-            isMarker = false;
         }
     }
 
-    private void HandleNoteClick(Note note, float clickPosition)
+    private void HandleElementClick(TimelineElement element, float clickPosition)
     {
+        if (element is BPMMarker marker) {
+            ClearSelection();
+            Select(marker);
+            StartMoving(clickPosition);
+            return;
+        }
+
         if (!Input.GetKey(KeyCode.LeftShift)) {
-            if (!selectedNotes.Contains(note)) {
+            if (!element.isSelected) {
                 ClearSelection();
-                Select(note);
+                Select(element);
             }
             StartMoving(clickPosition);
         }
         else {
-            if (!selectedNotes.Contains(note))
-                Select(note);
+            if (!element.isSelected)
+                Select(element);
             else
-                Deselect(note);
+                Deselect(element);
 
             isSelecting = true;
         }
@@ -424,15 +414,12 @@ public class EditorManager : MonoBehaviour
         }
 
         if (isMoving) {
-            if (!moved && !isMarker) TrySelectSingleUnderCursor(worldPos);
+            if (!moved) {
+                TrySelectSingleUnderCursor(worldPos);
+            }
             else {
                 (int moveDist, bool changedLane) = CalculateMovedDistance(worldPos.x, worldPos.y);
-                if (isMarker) 
-                {
-                    MoveSelectedMarker(moveDist);
-                } else {
-                    MoveSelection(moveDist, changedLane);
-                }
+                MoveSelection(moveDist, changedLane);
             }
 
             isMoving = false;
@@ -448,10 +435,11 @@ public class EditorManager : MonoBehaviour
             Vector2 min = new Vector2(Mathf.Min(dragStartPos.x, worldPos.x), Mathf.Min(dragStartPos.y, worldPos.y));
             Vector2 max = new Vector2(Mathf.Max(dragStartPos.x, worldPos.x), Mathf.Max(dragStartPos.y, worldPos.y));
 
-            foreach (var hit in Physics2D.OverlapAreaAll(min, max)) {
-                Note note = hit.GetComponent<Note>();
-                if (note != null && !selectedNotes.Contains(note))
-                    Select(note);
+            Collider2D[] colliders = Physics2D.OverlapAreaAll(min, max);
+            foreach (Collider2D hit in colliders) {
+                TimelineElement element = hit.GetComponent<TimelineElement>();
+                if (element != null && !element.isSelected && element is not BPMMarker)
+                    Select(element);
             }
         }
 
@@ -463,10 +451,10 @@ public class EditorManager : MonoBehaviour
     {
         RaycastHit2D hit = Physics2D.Raycast(worldPos, Vector2.zero);
         if (hit.collider != null && hit.collider is BoxCollider2D) {
-            Note note = hit.collider.GetComponent<Note>();
-            if (note != null) {
+            TimelineElement element = hit.collider.GetComponent<TimelineElement>();
+            if (element != null) {
                 ClearSelection();
-                Select(note);
+                Select(element);
             }
         }
     }
@@ -474,15 +462,8 @@ public class EditorManager : MonoBehaviour
     private void HandleKeyboardShortcuts()
     {
         if (Input.GetKeyDown(KeyCode.Delete)) {
-            if (isMarker) {
-                Debug.Log("attempting to delete marker");
-                DeleteSelectedMarker();
-            } else {
-                Debug.Log("attempting to delete selection");
-                DeleteSelection();
-            }
+            DeleteSelection();
         }
-            
 
         if ((Input.GetKey(KeyCode.LeftControl) || Input.GetKey(KeyCode.RightControl) ||
              Input.GetKey(KeyCode.LeftCommand) || Input.GetKey(KeyCode.RightCommand)) &&
@@ -493,7 +474,7 @@ public class EditorManager : MonoBehaviour
         if ((Input.GetKey(KeyCode.LeftControl) || Input.GetKey(KeyCode.RightControl) ||
              Input.GetKey(KeyCode.LeftCommand) || Input.GetKey(KeyCode.RightCommand)) &&
             Input.GetKeyDown(KeyCode.V)) {
-            PasteSelection();
+            PasteNoteSelection();
         }
     }
 
@@ -505,35 +486,94 @@ public class EditorManager : MonoBehaviour
         if (!EventSystem.current.IsPointerOverGameObject()) {
             // Convert mouse screen position to world position
             Vector3 worldPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            float horizontalPosition = (worldPosition.x > 0) ? worldPosition.x : 0;
-            float verticalPosition = worldPosition.y;
+            
+            HandleCreateDown(worldPosition);
+            HandleCreateDrag(worldPosition);
+            HandleCreateUp(worldPosition);
 
-            if (Input.GetKey(KeyCode.LeftControl) || !beatSnapping) {
-                float yPos = verticalPosition > 0 ? 1.5f : -1.5f;
-                notePreview.transform.position = new Vector3(horizontalPosition, yPos, 0f);
-            }
-            else {
-                float xPos = GetPositionFromBeat(GetClosestBeatSnappingFromPosition(horizontalPosition));
-                float yPos = verticalPosition > 0 ? 1.5f : -1.5f;
-                notePreview.transform.position = new Vector3(xPos, yPos, 0);
-            }
-
-            if (Input.GetMouseButtonDown(0)) {
-                int lane = verticalPosition > 0 ? 0 : 1;
-                int time = GetTimeFromPosition(notePreview.transform.position.x);
-                int timeThreshold = 2; // 2ms
-
-                
-                // Check if a note already exists at this time and lane
-                bool noteExists = activeNotes.Exists(n =>
-                    n.data.time >= time - timeThreshold && n.data.time <= time + timeThreshold && n.data.lane == lane);
-                
-                if (!noteExists) {
-                    NoteData newNoteData = new NoteData(time, lane, currentNoteType);
-                    CreateNote(newNoteData);
-                }
-            }
+            UpdateNotePreview(worldPosition);
         }
+    }
+
+    private void HandleCreateDown(Vector3 worldPos)
+    {
+        if (!Input.GetMouseButtonDown(0)) return;
+
+        int lane = worldPos.y > 0 ? 0 : 1;
+        int time = GetTimeFromPosition(notePreview.transform.position.x);
+        int timeThreshold = 2; // 2ms
+        // Check if a note already exists at this time and lane
+        bool noteExists = activeNotes.Exists(n =>
+            n.data.time >= time - timeThreshold && n.data.time <= time + timeThreshold && n.data.lane == lane);
+
+        if (noteExists) return;
+
+        if (currentNoteType == NoteType.Slider || currentNoteType == NoteType.Warn_Hit) {
+            NoteData newNoteData = new NoteData(time, lane, currentNoteType);
+            CreateSliderPreview(newNoteData);
+        } else {
+            NoteData newNoteData = new NoteData(time, lane, currentNoteType);
+            CreateNote(newNoteData);
+        }
+
+        cursorStartTime = GetTimeFromPosition(worldPos.x);
+
+    }
+
+    private void HandleCreateDrag(Vector3 worldPos)
+    {
+        if (!Input.GetMouseButton(0) || sliderPreview == null) return;
+
+        (int moveDist, bool changedLane) = CalculateMovedDistance(worldPos.x, worldPos.y);
+        UpdateNotePosition(sliderPreview);
+        if (sliderPreview.durationHandle != null) {
+            sliderPreview.durationHandle.Move(moveDist, changedLane);
+        }
+        else if (sliderPreview.anticipationHandle != null) {
+            sliderPreview.anticipationHandle.Move(moveDist, changedLane);
+        }
+    }
+
+    private void HandleCreateUp(Vector3 worldPos)
+    {
+        if (!Input.GetMouseButtonUp(0) || sliderPreview == null) return;
+
+        (int moveDist, bool changedLane) = CalculateMovedDistance(worldPos.x, worldPos.y);
+        sliderPreview.data.duration = moveDist;
+        if (sliderPreview.durationHandle != null) {
+            if (moveDist < 0) moveDist = 0;
+            sliderPreview.data.duration = moveDist;
+        } else if (sliderPreview.anticipationHandle != null) {
+            if (moveDist > 0) moveDist = 0;
+            sliderPreview.data.anticipation = moveDist;
+        }
+        UpdateNotePosition(sliderPreview);
+        CreateNote(sliderPreview.data);
+        Destroy(sliderPreview.gameObject);
+    }
+
+    public void UpdateNotePreview(Vector3 worldPos)
+    {
+        float horizontalPosition = (worldPos.x > 0) ? worldPos.x : 0;
+        float verticalPosition = worldPos.y;
+
+        if (Input.GetKey(KeyCode.LeftControl) || !beatSnapping) {
+            float yPos = verticalPosition > 0 ? 1.5f : -1.5f;
+            notePreview.transform.position = new Vector3(horizontalPosition, yPos, 0f);
+        }
+        else {
+            float xPos = GetPositionFromBeat(GetClosestBeatSnappingFromPosition(horizontalPosition));
+            float yPos = verticalPosition > 0 ? 1.5f : -1.5f;
+            notePreview.transform.position = new Vector3(xPos, yPos, 0);
+        }
+    }
+
+    public void CreateSliderPreview(NoteData noteData)
+    {
+        GameObject prefab = GetNoteTypePrefab(noteData.type);
+        sliderPreview = Instantiate(prefab, transform).GetComponent<Note>();
+        sliderPreview.data = noteData;
+        UpdateNotePosition(sliderPreview);
     }
 
     // -----------------------------------------------------------------------------------------------------------------------------
@@ -596,13 +636,27 @@ public class EditorManager : MonoBehaviour
         UpdateMetronomeFlags();
     }
 
-    public void EditMarker(BPMFlag flag, float BPM)
+    public void EditNote(NoteData noteData, NoteData newData)
     {
-        BPMMarker editMarker = FindMarkerBinary(flag);
+        Note editNote = activeNotes.Find(note => note.data.Equals(noteData));
+
+        if (editNote != null) {
+            editNote.data = newData;
+            activeNotes = activeNotes.OrderBy(note => note.data.time).ThenBy(note => note.data.lane).ToList();
+        }
+        else {
+            Debug.LogWarning("Cant seem to find note with matching data");
+        }
+    }
+
+    public void EditMarker(BPMFlag flag, BPMFlag newFlag)
+    {
+        BPMMarker editMarker = activeMarkers.Find(marker => marker.flag.Equals(flag));
 
         if (editMarker != null) {
-            editMarker.flag.BPM = BPM;
-            editMarker.UpdateDisplay(BPM);
+            editMarker.flag = newFlag;
+            editMarker.UpdateDisplay(flag.BPM);
+            activeMarkers = activeMarkers.OrderBy(marker => marker.flag.offset).ToList();
         }
         else {
             Debug.LogWarning("Marker to edit not found in active markers list");
@@ -613,12 +667,14 @@ public class EditorManager : MonoBehaviour
 
     public void DeleteNote(NoteData noteData)
     {
-        Note deleteNote = FindNoteBinary(noteData);
+        Note deleteNote = activeNotes.Find(note => note.data.Equals(noteData));
 
         if (deleteNote != null) {
             // Remove from the list
             activeNotes.Remove(deleteNote);
-            selectedNotes.Remove(deleteNote);
+            selectedElements.Remove(deleteNote);
+            if (deleteNote.durationHandle != null)
+                selectedElements.Remove(deleteNote.durationHandle);
             Destroy(deleteNote.gameObject);
         }
         else {
@@ -628,12 +684,11 @@ public class EditorManager : MonoBehaviour
 
     public void DeleteMarker(BPMFlag flag)
     {
-        BPMMarker deleteMarker = FindMarkerBinary(flag);
+        BPMMarker deleteMarker = activeMarkers.Find(marker => marker.flag.Equals(flag));
 
         if (deleteMarker != null) {
             // Remove from the list
             activeMarkers.Remove(deleteMarker);
-            selectedMarker = null;
             Destroy(deleteMarker.gameObject);
         }
         else {
@@ -643,41 +698,7 @@ public class EditorManager : MonoBehaviour
         UpdateMetronomeFlags();
     }
 
-    public void MoveNote(NoteData noteData, int distance, bool laneSwap)
-    {
-        Note moveNote = FindNoteBinary(noteData);
-
-        if (moveNote != null) {
-            NoteData movedData = new NoteData(noteData);
-            movedData.time = noteData.time + distance;
-            if (laneSwap) {
-                movedData.lane = movedData.lane == 0 ? 1 : 0;
-            }
-            moveNote.data = movedData;
-            activeNotes = activeNotes.OrderBy(note => note.data.time).ThenBy(note => note.data.lane).ToList();
-        }
-        else {
-            Debug.LogWarning("Cant seem to find note with matching data");
-        }
-    }
-
-    public void MoveMarker(BPMFlag flag, int distance)
-    {
-        BPMMarker moveMarker = FindMarkerBinary(flag);
-
-        if (moveMarker != null) {
-            BPMFlag movedFlag = new BPMFlag(flag);
-            movedFlag.offset = movedFlag.offset + distance;
-            moveMarker.flag = movedFlag;
-            activeMarkers = activeMarkers.OrderBy(marker => marker.flag.offset).ToList();
-        }
-        else {
-            Debug.LogWarning("Cant seem to find marker with matching data");
-        }
-
-        UpdateMetronomeFlags();
-    }
-
+    
 
     // ---------------------------------------------------------------------------------------------------------------------------------------------
     // COMMANDS: ARE STORED IN A HISTORY, ALLOWING US TO UNDO AND REDO THESE ACTIONS
@@ -698,38 +719,41 @@ public class EditorManager : MonoBehaviour
 
     public void EditSelectedMarker(float bpm)
     {
-        if (selectedMarker == null) return;
-        EditMarkerCommand editCommand = new EditMarkerCommand(selectedMarker.flag, bpm);
-        history.AddCommand(editCommand);
-        Debug.Log("edited marker");
+        if (selectedElements.Count == 0) return;
+        if (selectedElements[0] is BPMMarker marker) {
+            BPMFlag newFlag = new BPMFlag(marker.flag);
+            newFlag.BPM = bpm;
+            EditMarkerCommand editCommand = new EditMarkerCommand(marker.flag, newFlag);
+            history.AddCommand(editCommand);
+            Debug.Log("edited marker");
+        }
 
     }
 
     public void DeleteSelection()
     {
-        if (selectedNotes.Count == 0) return;
+        if (selectedElements.Count == 0) return;
+        if (selectedElements[0] is BPMMarker selectedMarker) {
+            DeleteMarkerCommand deleteMarkerCommand = new DeleteMarkerCommand(selectedMarker.flag);
+            history.AddCommand(deleteMarkerCommand);
+            Debug.Log("deleted marker");
+            return;
+        }
 
         List<NoteData> selectedNotesData = new List<NoteData>();
-        foreach (Note note in selectedNotes) {
-            selectedNotesData.Add(note.data);
+        foreach (TimelineElement element in selectedElements) {
+            if (element is Note note) selectedNotesData.Add(note.data);
         }
+        if (selectedNotesData.Count == 0) return;
+
         DeleteNotesCommand deleteCommand = new DeleteNotesCommand(selectedNotesData);
         history.AddCommand(deleteCommand);
         Debug.Log("deleted notes");
     }
 
-    private void DeleteSelectedMarker()
+    public void PasteNoteSelection()
     {
-        if (selectedMarker != null) {
-            DeleteMarkerCommand deleteCommand = new DeleteMarkerCommand(selectedMarker.flag);
-            history.AddCommand(deleteCommand);
-            Debug.Log("deleted marker");
-        }
-    }
-
-    public void PasteSelection()
-    {
-        //if (clipboardNotesData.Count > 0) return;
+        if (clipboardNotesData.Count == 0) return;
 
         ClearSelection();
         List<NoteData> newNotes = new List<NoteData>();
@@ -750,20 +774,51 @@ public class EditorManager : MonoBehaviour
 
     public void MoveSelection(int distance, bool laneSwap)
     {
-        List<NoteData> selectedNotesData = new List<NoteData>();
-        foreach(Note note in selectedNotes) {
-            selectedNotesData.Add(note.data);
+        if (selectedElements.Count == 0) return;
+        if (selectedElements[0] is BPMMarker marker) {
+            BPMFlag newFlag = new BPMFlag(marker.flag);
+            newFlag.offset += distance;
+            EditMarkerCommand moveMarkerCommand = new EditMarkerCommand(marker.flag, newFlag);
+            history.AddCommand(moveMarkerCommand);
+            Debug.Log("moved marker");
+            return;
         }
-        MoveNotesCommand moveNotesCommand = new MoveNotesCommand(selectedNotesData, distance, laneSwap);
+
+        List<NoteData> selectedNotesData = new List<NoteData>();
+        List<NoteData> newNotesData = new List<NoteData>();
+        foreach (TimelineElement element in selectedElements) {
+            if (element is Note note) {
+                selectedNotesData.Add(note.data);
+                NoteData newNote = new NoteData(note.data);
+                newNote.time += distance;
+                if (laneSwap) newNote.lane = newNote.lane == 0 ? 1 : 0;
+                newNotesData.Add(newNote);
+            } else if (element is NoteHandle handle) {
+                if (handle.note.isSelected) continue;
+                NoteData newNote = new NoteData(handle.note.data);
+                switch (handle.type) {
+                    case HandleType.Duration:
+                        newNote.duration += distance;
+                        if (newNote.duration < 0) newNote.duration = 0;
+                        if (newNote.duration == handle.note.data.duration) continue;
+                        break;
+                    case HandleType.Anticipation:
+                        newNote.anticipation += distance;
+                        if (newNote.anticipation > 0) newNote.anticipation = 0;
+                        if (newNote.anticipation == handle.note.data.anticipation) continue;
+                        break;
+                }
+                
+                selectedNotesData.Add(handle.note.data);
+                newNotesData.Add(newNote);
+            }
+        }
+
+        if (selectedNotesData.Count == 0) return;
+
+        EditNotesCommand moveNotesCommand = new EditNotesCommand(selectedNotesData, newNotesData);
         history.AddCommand(moveNotesCommand);
         Debug.Log("moved notes");
-    }
-
-    public void MoveSelectedMarker(int distance)
-    {
-        MoveMarkerCommand moveCommand = new MoveMarkerCommand(selectedMarker.flag, distance);
-        history.AddCommand(moveCommand);
-        Debug.Log("moved marker");
     }
 
     public void UndoAction()
@@ -779,7 +834,6 @@ public class EditorManager : MonoBehaviour
     // ---------------------------------------------------------------------------------------------------------------------------------------------
     // NOT COMMANDS: THESE ACTIONS DONT NEED TO BE UNDONE
     // ---------------------------------------------------------------------------------------------------------------------------------------------
-    
     public void SpawnDifficultyNotes(int diff)
     {
         SaveDifficultyNoteData(difficulty);
@@ -796,6 +850,12 @@ public class EditorManager : MonoBehaviour
     {
         float yPos = note.data.lane == 0 ? 1.5f : -1.5f;
         note.transform.position = new Vector3(GetPositionFromTime(note.data.time), yPos, 0f);
+        if (note.durationHandle != null) {
+            note.durationHandle.transform.localPosition = new Vector3(GetDistanceFromTime(note.data.duration), 0f, 0f);
+        }
+        if (note.anticipationHandle != null) {
+            note.anticipationHandle.transform.localPosition = new Vector3(GetDistanceFromTime(note.data.anticipation), 0f, 0f);
+        }
     }
 
     private void UpdateMarkerPosition(BPMMarker marker)
@@ -812,82 +872,45 @@ public class EditorManager : MonoBehaviour
         (int moveDistance, bool changedLane) = CalculateMovedDistance(horizontalPosition, verticalPosition);
         moved = changedLane || moveDistance != 0;
 
-        if (isMarker) {
-            selectedMarker.transform.position = new Vector3(GetPositionFromTime(selectedMarker.flag.offset + moveDistance), 3.3f, 0f);
-        } else {
-            foreach (Note selectedNote in selectedNotes) {
-                float yPos;
-                if (changedLane) {
-                    yPos = selectedNote.data.lane == 0 ? -1.5f : 1.5f;
-                }
-                else {
-                    yPos = selectedNote.data.lane == 0 ? 1.5f : -1.5f;
-                }
-                selectedNote.transform.position = new Vector3(GetPositionFromTime(selectedNote.data.time + moveDistance), yPos, 0f);
-            }
+        foreach (TimelineElement element in selectedElements) {
+            element.Move(moveDistance, changedLane);
         }
     }
 
     public void Select(TimelineElement element)
     {
-        switch(element) {
-            case Note note:
-                selectedNotes.Add(note);
-                note.GetComponent<SpriteRenderer>().color = Color.green;
-                break;
-            case BPMMarker marker:
-                ClearSelection();
-                selectedMarker = marker;
-                selectedMarker.Highlight(true);
-                isMarker = true;
-                break;
-            case NoteHandle handle:
-                selectedHandles.Add(handle);
-                handle.GetComponent<SpriteRenderer>().color = Color.green;
-                break;
-        }
+        selectedElements.Add(element);
+        element.SetSelected(true);
     }
 
     private void Deselect(TimelineElement element)
     {
-        switch (element) {
-            case Note note:
-                selectedNotes.Remove(note);
-                note.GetComponent<SpriteRenderer>().color = Color.white;
-                break;
-            case BPMMarker marker:
-                if (selectedMarker != null) {
-                    selectedMarker.Highlight(false);
-                    selectedMarker = null;
-                }
-                break;
-            case NoteHandle handle:
-                selectedHandles.Add(handle);
-                handle.GetComponent<SpriteRenderer>().color = Color.green;
-                break;
-        }
+        selectedElements.Remove(element);
+        element.SetSelected(false);
     }
 
     public void CopySelection()
     {
-        if (selectedNotes.Count == 0) return;
-        if (isMarker) return;
+        if (selectedElements.Count == 0) return;
 
         clipboardNotesData = new List<NoteData>();
-        foreach (Note note in selectedNotes) {
-            clipboardNotesData.Add(note.data);
+
+        foreach (TimelineElement element in selectedElements) {
+            if (element is Note note) clipboardNotesData.Add(note.data);
         }
+
+        if (clipboardNotesData.Count == 0) return;
+
         clipboardBeatPivot = GetClosestBeatSnappingFromTime(Metronome.instance.GetTimelinePosition());
         Debug.Log("Copy pivot: " + clipboardBeatPivot);
     }
 
     public void ClearSelection()
     {
-        Deselect(selectedMarker);
-        foreach (Note note in selectedNotes) {
-            note.GetComponent<SpriteRenderer>().color = Color.white;
+        foreach (TimelineElement element in selectedElements) {
+            element.SetSelected(false);
         }
-        selectedNotes.Clear();
+        selectedElements.Clear();
     }
 
     public void ClearActiveNotes()
@@ -908,22 +931,33 @@ public class EditorManager : MonoBehaviour
     {
         // Determine if is a single lane selection
         int previousLane = -1;
-        foreach (Note note in selectedNotes) {
-            if (previousLane != note.data.lane) {
-                if (previousLane == -1) {
-                    previousLane = note.data.lane;
-                }
-                else {
-                    return false;
+        foreach (TimelineElement element in selectedElements) {
+            if (element is Note note) {
+                if (previousLane != note.data.lane) {
+                    if (previousLane == -1) {
+                        previousLane = note.data.lane;
+                    }
+                    else {
+                        return false;
+                    }
                 }
             }
+            else if (element is NoteHandle handle) {
+                if (!handle.note.isSelected) return false;
+            }
         }
+
         return true;
     }
 
     public (int, bool) CalculateMovedDistance(float horizontalPosition, float verticalPosition)
     {
         int moveDistance;
+        bool isMarker = false;
+        if (selectedElements.Count > 0) {
+            isMarker = selectedElements[0] is BPMMarker;
+        }
+
         if ((!isMarker && Input.GetKey(KeyCode.LeftControl)) || (isMarker && !Input.GetKey(KeyCode.LeftShift)) || !beatSnapping) {
             moveDistance = GetTimeFromPosition(horizontalPosition) - cursorStartTime;
         }
@@ -1015,6 +1049,11 @@ public class EditorManager : MonoBehaviour
         return (time - Metronome.instance.GetTimelinePosition()) / 1000f * noteSpeed;
     }
 
+    public float GetDistanceFromTime(int time)
+    {
+        return time / 1000f * noteSpeed;
+    }
+
     public float GetBeatFromPosition(float horizontalPosition)
     {
         // Add to current timeline beat position
@@ -1034,51 +1073,5 @@ public class EditorManager : MonoBehaviour
     public float GetClosestBeatSnappingFromTime(int time)
     {
         return Mathf.Round(Metronome.instance.GetBeatFromTime(time) * noteSubdivisionSnapping) / noteSubdivisionSnapping;
-    }
-
-    // SORTERS
-    private Note FindNoteBinary(NoteData noteData)
-    {
-        int low = 0;
-        int high = activeNotes.Count - 1;
-
-        while (low <= high) {
-            int mid = (low + high) / 2;
-            Note midNote = activeNotes[mid];
-
-            int cmp = noteData.time.CompareTo(midNote.data.time);
-            if (cmp == 0)
-                cmp = noteData.lane.CompareTo(midNote.data.lane);
-
-            if (cmp == 0)
-                return midNote;
-            else if (cmp < 0)
-                high = mid - 1;
-            else
-                low = mid + 1;
-        }
-
-        return null; // Not found
-    }
-
-    private BPMMarker FindMarkerBinary(BPMFlag flag)
-    {
-        int low = 0;
-        int high = activeMarkers.Count - 1;
-
-        while (low <= high) {
-            int mid = (low + high) / 2;
-            BPMMarker midMarker = activeMarkers[mid];
-
-            int cmp = flag.offset.CompareTo(midMarker.flag.offset);
-            if (cmp == 0)
-                return midMarker;
-            else if (cmp < 0)
-                high = mid - 1;
-            else
-                low = mid + 1;
-        }
-
-        return null; // Not found
     }
 }
