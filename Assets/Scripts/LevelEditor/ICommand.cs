@@ -1,6 +1,4 @@
 using System.Collections.Generic;
-using Unity.VisualScripting;
-using UnityEditor.Experimental.GraphView;
 
 public interface ICommand
 {
@@ -33,16 +31,19 @@ public class CreateNotesCommand : ICommand
 
     public void Execute()
     {
+        EditorManager em = NoteManager.instance as EditorManager;
+        if (em == null) return;
         foreach (NoteData note in createNotes) {
-            EditorManager.instance.SpawnNote(note, selectNotes);
+            em.SpawnNote(note, selectNotes);
         }
     }
 
     public void Undo() 
     {
-        EditorManager.instance.ClearSelection();
+        EditorManager em = NoteManager.instance as EditorManager;
+        if (em == null) return;
         foreach (NoteData note in createNotes) {
-            EditorManager.instance.DeleteNote(note);
+            em.DeleteNote(note);
         }
     }
 }
@@ -57,12 +58,16 @@ public class CreateMarkerCommand : ICommand
 
     public void Execute()
     {
-        EditorManager.instance.SpawnMarker(flag);
+        EditorManager em = NoteManager.instance as EditorManager;
+        if (em == null) return;
+        em.SpawnMarker(flag);
     }
 
     public void Undo()
     {
-        EditorManager.instance.DeleteMarker(flag);
+        EditorManager em = NoteManager.instance as EditorManager;
+        if (em == null) return;
+        em.DeleteMarker(flag);
     }
 }
 
@@ -83,16 +88,20 @@ public class DeleteNotesCommand : ICommand
 
     public void Execute()
     {
+        EditorManager em = NoteManager.instance as EditorManager;
+        if (em == null) return;
         foreach (NoteData note in deleteNotes) {
-            EditorManager.instance.DeleteNote(note);
+            em.DeleteNote(note);
         }
     }
 
     public void Undo()
     {
-        EditorManager.instance.ClearSelection();
+        EditorManager em = NoteManager.instance as EditorManager;
+        if (em == null) return;
+        em.ClearSelection();
         foreach (NoteData note in deleteNotes) {
-            EditorManager.instance.SpawnNote(note, true);
+            em.SpawnNote(note, true);
         }
     }
 }
@@ -107,12 +116,16 @@ public class DeleteMarkerCommand : ICommand
 
     public void Execute()
     {
-        EditorManager.instance.DeleteMarker(flag);
+        EditorManager em = NoteManager.instance as EditorManager;
+        if (em == null) return;
+        em.DeleteMarker(flag);
     }
 
     public void Undo()
     {
-        EditorManager.instance.SpawnMarker(flag);
+        EditorManager em = NoteManager.instance as EditorManager;
+        if (em == null) return;
+        em.SpawnMarker(flag);
     }
 }
 
@@ -129,15 +142,19 @@ public class EditNotesCommand : ICommand
 
     public void Execute()
     {
+        EditorManager em = NoteManager.instance as EditorManager;
+        if (em == null) return;
         for (int i = 0; i < previousNotes.Length; i++) {
-            EditorManager.instance.EditNote(previousNotes[i], editedNotes[i]);
+            em.EditNote(previousNotes[i], editedNotes[i]);
         }
     }
 
     public void Undo()
     {
+        EditorManager em = NoteManager.instance as EditorManager;
+        if (em == null) return;
         for (int i = 0; i < previousNotes.Length; i++) {
-            EditorManager.instance.EditNote(editedNotes[i], previousNotes[i]);
+            em.EditNote(editedNotes[i], previousNotes[i]);
         }
     }
 }
@@ -155,12 +172,16 @@ public class EditMarkerCommand : ICommand
 
     public void Execute()
     {
-        EditorManager.instance.EditMarker(flag, newFlag);
+        EditorManager em = NoteManager.instance as EditorManager;
+        if (em == null) return;
+        em.EditMarker(flag, newFlag);
     }
 
     public void Undo()
     {
-        EditorManager.instance.EditMarker(newFlag, flag);
+        EditorManager em = NoteManager.instance as EditorManager;
+        if (em == null) return;
+        em.EditMarker(newFlag, flag);
     }
 }
 

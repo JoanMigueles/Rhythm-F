@@ -27,28 +27,28 @@ public static class SongFileConverter
             // Write Easy Notes section
             writer.WriteLine("[Easy Notes]");
             foreach (NoteData note in songData.easyNotes) {
-                writer.WriteLine($"{note.time}:{note.lane}:{note.type}:{note.duration}:{note.anticipation}");
+                writer.WriteLine($"{note.time}:{note.lane}:{note.type}:{note.duration}");
             }
             writer.WriteLine();
 
             // Write Normal Notes section
             writer.WriteLine("[Normal Notes]");
             foreach (NoteData note in songData.normalNotes) {
-                writer.WriteLine($"{note.time}:{note.lane}:{note.type}:{note.duration}:{note.anticipation}");
+                writer.WriteLine($"{note.time}:{note.lane}:{note.type}:{note.duration}");
             }
             writer.WriteLine();
 
             // Write Hard Notes section
             writer.WriteLine("[Hard Notes]");
             foreach (NoteData note in songData.hardNotes) {
-                writer.WriteLine($"{note.time}:{note.lane}:{note.type}:{note.duration}:{note.anticipation}");
+                writer.WriteLine($"{note.time}:{note.lane}:{note.type}:{note.duration}");
             }
             writer.WriteLine();
 
             // Write Rumble Notes section
             writer.WriteLine("[Rumble Notes]");
             foreach (NoteData note in songData.rumbleNotes) {
-                writer.WriteLine($"{note.time}:{note.lane}:{note.type}:{note.duration}:{note.anticipation}");
+                writer.WriteLine($"{note.time}:{note.lane}:{note.type}:{note.duration}");
             }
             writer.WriteLine();
         }
@@ -145,9 +145,8 @@ public static class SongFileConverter
         int.TryParse(parts[1], out int lane);
         Enum.TryParse(parts[2], out NoteType type);
         int.TryParse(parts[3], out int duration);
-        int.TryParse(parts[4], out int anticipation);
 
-        NoteData note = new NoteData(time, lane, type, duration, anticipation);
+        NoteData note = new NoteData(time, lane, type, duration);
         songDataNotes.Add(note);
     }
 }

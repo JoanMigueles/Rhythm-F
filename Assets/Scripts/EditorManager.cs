@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -11,41 +10,22 @@ public enum EditMode
     Select,
     BPMMarker
 }
-public enum Difficulty
-{
-    Easy,
-    Normal,
-    Hard,
-    Rumble
-}
 
-public class EditorManager : MonoBehaviour
+public class EditorManager : NoteManager
 {
-    public static EditorManager instance { get; private set; }
-    public float noteSpeed = 5f;
     public bool beatSnapping = true;
     public int noteSubdivisionSnapping = 1;
     public EditMode editMode = EditMode.Select;
-    public Difficulty difficulty = Difficulty.Normal;
     [SerializeField] private GameObject songDataPanel;
 
-    // NOTE PREFABS
-    [SerializeField] private GameObject hitPrefab;
-    [SerializeField] private GameObject slashPrefab;
-    [SerializeField] private GameObject sliderPrefab;
-    [SerializeField] private GameObject warnHitPrefab;
-    [SerializeField] private GameObject warnSlashPrefab;
-    [SerializeField] private GameObject laserPrefab;
-    [SerializeField] private GameObject grabThrowPrefab;
-    [SerializeField] private GameObject sawPrefab;
-    [SerializeField] private GameObject multipleHitPrefab;
-    [SerializeField] private GameObject multipleSlashPrefab;
+    // SELECTED NOTE TYPE TO PLACE
     [SerializeField] private GameObject markerPrefab;
-    private NoteType currentNoteType;
-
     [SerializeField] private GameObject notePreview;
     [SerializeField] private GameObject markerPreview;
-    private Note sliderPreview;
+    private SliderNote sliderPreview;
+    private NoteType currentNoteType;
+    private bool isSlider;
+    private bool isBig;
 
     // SELECTION BOX
     [SerializeField] private RectTransform selectionBoxVisual; 
@@ -69,21 +49,19 @@ public class EditorManager : MonoBehaviour
     private float clipboardBeatPivot; // The beat on the screen that serves as a referece pivot when copying and pasting groups in different beats
 
     // NOTE LISTS
-    private SongData songData;
-    private List<TimelineElement> selectedElements;
-    private List<Note> activeNotes;
     private List<BPMMarker> activeMarkers;
+    private List<TimelineElement> selectedElements;
 
     // COMMAND HISTORY
     private CommandHistory history;
 
-    private void Awake()
+    protected override void Awake()
     {
-        instance = this;
+        base.Awake();
         history = new CommandHistory();
     }
 
-    private void Start()
+    protected override void Start()
     {
         clipboardNotesData = new List<NoteData>();
         selectedElements = new List<TimelineElement>();
@@ -101,10 +79,7 @@ public class EditorManager : MonoBehaviour
         EditorUI.instance.DisplaySongData(songData.metadata);
 
         //  SPAWN INITAL ELEMENTS
-        List<NoteData> notesData = GetDifficultyNoteData(Difficulty.Normal);
-        foreach (NoteData noteData in notesData) {
-            SpawnNote(noteData, false);
-        }
+        SpawnDifficultyNotes(1);
         foreach (BPMFlag flag in songData.BPMFlags) {
             SpawnMarker(flag);
         }
@@ -115,12 +90,8 @@ public class EditorManager : MonoBehaviour
         HandleTestingInput();
         if (EditorUI.instance.isHidden)
         {
-            foreach (Note note in activeNotes) {
-                UpdateNotePosition(note);
-            }
-            foreach (BPMMarker marker in activeMarkers) {
-                UpdateMarkerPosition(marker);
-            }
+            UpdateNotesPosition();
+            UpdateMarkersPosition();
             return;
         }
 
@@ -148,14 +119,8 @@ public class EditorManager : MonoBehaviour
             RedoAction();
         }
 
-
-        foreach (Note note in activeNotes) {
-            UpdateNotePosition(note);
-        }
-        foreach (BPMMarker marker in activeMarkers) {
-            UpdateMarkerPosition(marker);
-        }
-
+        UpdateNotesPosition();
+        UpdateMarkersPosition();
         if (isMoving) {
             UpdateMovingSelectionPosition();
         }
@@ -166,14 +131,10 @@ public class EditorManager : MonoBehaviour
         songData = new SongData();
     }
 
-    public void LoadSelectedSong(string songFilePath)
+    protected override void LoadSelectedSong(string songFilePath)
     {
-        songData = SaveData.LoadCustomSong(songFilePath);
-        string songPath = SaveData.GetAudioFilePath(songData.metadata.audioFileName);
-        if (File.Exists(songPath)) {
-            Metronome.instance.SetCustomSong(songPath);
-            EditorUI.instance.ApplyWaveformTexture();
-        }
+        base.LoadSelectedSong(songFilePath);
+        EditorUI.instance.ApplyWaveformTexture();
     }
 
     public void SetSongName(string name)
@@ -200,21 +161,6 @@ public class EditorManager : MonoBehaviour
         EditorUI.instance.ApplyWaveformTexture();
 
         yield break;
-    }
-
-    public List<NoteData> GetDifficultyNoteData(Difficulty difficulty)
-    {
-        switch (difficulty) {
-            case Difficulty.Easy:
-                return songData.easyNotes;
-            case Difficulty.Normal:
-                return songData.normalNotes;
-            case Difficulty.Hard:
-                return songData.hardNotes;
-            case Difficulty.Rumble:
-                return songData.rumbleNotes;
-        }
-        return null;
     }
 
     public void SaveDifficultyNoteData(Difficulty difficulty)
@@ -256,6 +202,7 @@ public class EditorManager : MonoBehaviour
     // ---------------------------------------------------------------------------------------------------------------------------------------------
     private void HandleTestingInput()
     {
+        if (EditorUI.instance.isPanelOpened) return;
         if ((EditorUI.instance.isHidden && Input.GetKeyDown(KeyCode.Escape)) || Input.GetKeyDown(KeyCode.T)) {
             EditorUI.instance.ToggleEditorPanels();
             GameManager.instance.SetNotes(activeNotes);
@@ -508,16 +455,15 @@ public class EditorManager : MonoBehaviour
 
         if (noteExists) return;
 
-        if (currentNoteType == NoteType.Slider || currentNoteType == NoteType.Warn_Hit) {
-            NoteData newNoteData = new NoteData(time, lane, currentNoteType);
+        if (isBig) lane = 0;
+        NoteData newNoteData = new NoteData(time, lane, currentNoteType);
+        if (isSlider) {
             CreateSliderPreview(newNoteData);
         } else {
-            NoteData newNoteData = new NoteData(time, lane, currentNoteType);
             CreateNote(newNoteData);
         }
 
         cursorStartTime = GetTimeFromPosition(worldPos.x);
-
     }
 
     private void HandleCreateDrag(Vector3 worldPos)
@@ -525,12 +471,9 @@ public class EditorManager : MonoBehaviour
         if (!Input.GetMouseButton(0) || sliderPreview == null) return;
 
         (int moveDist, bool changedLane) = CalculateMovedDistance(worldPos.x, worldPos.y);
-        UpdateNotePosition(sliderPreview);
+        sliderPreview.UpdatePosition();
         if (sliderPreview.durationHandle != null) {
             sliderPreview.durationHandle.Move(moveDist, changedLane);
-        }
-        else if (sliderPreview.anticipationHandle != null) {
-            sliderPreview.anticipationHandle.Move(moveDist, changedLane);
         }
     }
 
@@ -543,11 +486,8 @@ public class EditorManager : MonoBehaviour
         if (sliderPreview.durationHandle != null) {
             if (moveDist < 0) moveDist = 0;
             sliderPreview.data.duration = moveDist;
-        } else if (sliderPreview.anticipationHandle != null) {
-            if (moveDist > 0) moveDist = 0;
-            sliderPreview.data.anticipation = moveDist;
         }
-        UpdateNotePosition(sliderPreview);
+        sliderPreview.UpdatePosition();
         CreateNote(sliderPreview.data);
         Destroy(sliderPreview.gameObject);
     }
@@ -558,12 +498,20 @@ public class EditorManager : MonoBehaviour
         float verticalPosition = worldPos.y;
 
         if (Input.GetKey(KeyCode.LeftControl) || !beatSnapping) {
-            float yPos = verticalPosition > 0 ? 1.5f : -1.5f;
+            float yPos;
+            if (isBig) yPos = 0;
+            else {
+                yPos = verticalPosition > 0 ? 1.5f : -1.5f;
+            }
             notePreview.transform.position = new Vector3(horizontalPosition, yPos, 0f);
         }
         else {
             float xPos = GetPositionFromBeat(GetClosestBeatSnappingFromPosition(horizontalPosition));
-            float yPos = verticalPosition > 0 ? 1.5f : -1.5f;
+            float yPos;
+            if (isBig) yPos = 0;
+            else {
+                yPos = verticalPosition > 0 ? 1.5f : -1.5f;
+            }
             notePreview.transform.position = new Vector3(xPos, yPos, 0);
         }
     }
@@ -571,9 +519,9 @@ public class EditorManager : MonoBehaviour
     public void CreateSliderPreview(NoteData noteData)
     {
         GameObject prefab = GetNoteTypePrefab(noteData.type);
-        sliderPreview = Instantiate(prefab, transform).GetComponent<Note>();
+        sliderPreview = Instantiate(prefab, transform).GetComponent<SliderNote>();
         sliderPreview.data = noteData;
-        UpdateNotePosition(sliderPreview);
+        sliderPreview.UpdatePosition();
     }
 
     // -----------------------------------------------------------------------------------------------------------------------------
@@ -616,11 +564,7 @@ public class EditorManager : MonoBehaviour
     // ---------------------------------------------------------------------------------------------------------------------------------------------
     public void SpawnNote(NoteData noteData, bool select)
     {
-        GameObject prefab = GetNoteTypePrefab(noteData.type);
-        Note newNote = Instantiate(prefab, transform).GetComponent<Note>();
-        newNote.data = noteData;
-        activeNotes.Add(newNote);
-        activeNotes = activeNotes.OrderBy(note => note.data.time).ThenBy(note => note.data.lane).ToList();
+        Note newNote = SpawnNote(noteData);
         if (select)
             Select(newNote);
     }
@@ -655,7 +599,7 @@ public class EditorManager : MonoBehaviour
 
         if (editMarker != null) {
             editMarker.flag = newFlag;
-            editMarker.UpdateDisplay(flag.BPM);
+            editMarker.UpdateDisplay(newFlag.BPM);
             activeMarkers = activeMarkers.OrderBy(marker => marker.flag.offset).ToList();
         }
         else {
@@ -673,8 +617,9 @@ public class EditorManager : MonoBehaviour
             // Remove from the list
             activeNotes.Remove(deleteNote);
             selectedElements.Remove(deleteNote);
-            if (deleteNote.durationHandle != null)
-                selectedElements.Remove(deleteNote.durationHandle);
+            if (deleteNote is SliderNote slider && slider.durationHandle != null) {
+                selectedElements.Remove(slider.durationHandle);
+            }
             Destroy(deleteNote.gameObject);
         }
         else {
@@ -775,6 +720,7 @@ public class EditorManager : MonoBehaviour
     public void MoveSelection(int distance, bool laneSwap)
     {
         if (selectedElements.Count == 0) return;
+
         if (selectedElements[0] is BPMMarker marker) {
             BPMFlag newFlag = new BPMFlag(marker.flag);
             newFlag.offset += distance;
@@ -791,24 +737,14 @@ public class EditorManager : MonoBehaviour
                 selectedNotesData.Add(note.data);
                 NoteData newNote = new NoteData(note.data);
                 newNote.time += distance;
-                if (laneSwap) newNote.lane = newNote.lane == 0 ? 1 : 0;
+                if (laneSwap && note is not BigSliderNote) newNote.lane = newNote.lane == 0 ? 1 : 0;
                 newNotesData.Add(newNote);
             } else if (element is NoteHandle handle) {
                 if (handle.note.isSelected) continue;
                 NoteData newNote = new NoteData(handle.note.data);
-                switch (handle.type) {
-                    case HandleType.Duration:
-                        newNote.duration += distance;
-                        if (newNote.duration < 0) newNote.duration = 0;
-                        if (newNote.duration == handle.note.data.duration) continue;
-                        break;
-                    case HandleType.Anticipation:
-                        newNote.anticipation += distance;
-                        if (newNote.anticipation > 0) newNote.anticipation = 0;
-                        if (newNote.anticipation == handle.note.data.anticipation) continue;
-                        break;
-                }
-                
+                newNote.duration += distance;
+                if (newNote.duration < 0) newNote.duration = 0;
+                if (newNote.duration == handle.note.data.duration) continue;
                 selectedNotesData.Add(handle.note.data);
                 newNotesData.Add(newNote);
             }
@@ -834,33 +770,18 @@ public class EditorManager : MonoBehaviour
     // ---------------------------------------------------------------------------------------------------------------------------------------------
     // NOT COMMANDS: THESE ACTIONS DONT NEED TO BE UNDONE
     // ---------------------------------------------------------------------------------------------------------------------------------------------
-    public void SpawnDifficultyNotes(int diff)
+    public override void SpawnDifficultyNotes(int diff)
     {
         SaveDifficultyNoteData(difficulty);
         ClearActiveNotes();
-        difficulty = (Difficulty)diff;
-
-        List<NoteData> notesData = GetDifficultyNoteData((Difficulty)diff);
-        foreach (NoteData noteData in notesData) {
-            SpawnNote(noteData, false);
-        }
+        base.SpawnDifficultyNotes(diff);
     }
 
-    private void UpdateNotePosition(Note note)
+    private void UpdateMarkersPosition()
     {
-        float yPos = note.data.lane == 0 ? 1.5f : -1.5f;
-        note.transform.position = new Vector3(GetPositionFromTime(note.data.time), yPos, 0f);
-        if (note.durationHandle != null) {
-            note.durationHandle.transform.localPosition = new Vector3(GetDistanceFromTime(note.data.duration), 0f, 0f);
+        foreach (BPMMarker marker in activeMarkers) {
+            marker.UpdatePosition();
         }
-        if (note.anticipationHandle != null) {
-            note.anticipationHandle.transform.localPosition = new Vector3(GetDistanceFromTime(note.data.anticipation), 0f, 0f);
-        }
-    }
-
-    private void UpdateMarkerPosition(BPMMarker marker)
-    {
-        marker.transform.position = new Vector3(GetPositionFromTime(marker.flag.offset), 3.3f, 0f);
     }
 
     private void UpdateMovingSelectionPosition()
@@ -933,6 +854,7 @@ public class EditorManager : MonoBehaviour
         int previousLane = -1;
         foreach (TimelineElement element in selectedElements) {
             if (element is Note note) {
+                if (note is BigSliderNote unique) return false;
                 if (previousLane != note.data.lane) {
                     if (previousLane == -1) {
                         previousLane = note.data.lane;
@@ -1014,57 +936,15 @@ public class EditorManager : MonoBehaviour
     {
         if (System.Enum.TryParse(type, out NoteType noteType)) {
             currentNoteType = noteType;
+            isBig = GetNoteTypePrefab(currentNoteType).GetComponent<BigSliderNote>() != null;
+            isSlider = GetNoteTypePrefab(currentNoteType).GetComponent<SliderNote>() != null;
             notePreview.GetComponent<SpriteRenderer>().sprite = GetNoteTypePrefab(noteType).GetComponent<SpriteRenderer>().sprite;
-        }
-    }
-
-    private GameObject GetNoteTypePrefab(NoteType type)
-    {
-        switch (type) {
-            case NoteType.Hit: return hitPrefab;
-            case NoteType.Slash: return slashPrefab;
-            case NoteType.Slider: return sliderPrefab;
-            case NoteType.Warn_Hit: return warnHitPrefab;
-            case NoteType.Warn_Slash: return warnSlashPrefab;
-            case NoteType.Laser: return laserPrefab;
-            case NoteType.Grab_Throw: return grabThrowPrefab;
-            case NoteType.Saw: return sawPrefab;
-            case NoteType.Multiple_Hit: return multipleHitPrefab;
-            case NoteType.Multiple_Slash: return multipleSlashPrefab;
-            default: return hitPrefab;
         }
     }
 
     // ---------------------------------------------------------------------------------------------------------------------------------------------
     // AUDIO TO POSITION
     // ---------------------------------------------------------------------------------------------------------------------------------------------
-    
-    public int GetTimeFromPosition(float horizontalPos)
-    {
-        return Mathf.RoundToInt(Metronome.instance.GetTimelinePosition() + (horizontalPos / noteSpeed * 1000f));
-    }
-
-    public float GetPositionFromTime(int time)
-    {
-        return (time - Metronome.instance.GetTimelinePosition()) / 1000f * noteSpeed;
-    }
-
-    public float GetDistanceFromTime(int time)
-    {
-        return time / 1000f * noteSpeed;
-    }
-
-    public float GetBeatFromPosition(float horizontalPosition)
-    {
-        // Add to current timeline beat position
-        return Metronome.instance.GetTimelineBeatPosition() + horizontalPosition / noteSpeed / Metronome.instance.beatSecondInterval;
-    }
-
-    public float GetPositionFromBeat(float beat)
-    {
-        return GetPositionFromTime(Metronome.instance.GetTimeFromBeat(beat));
-    }
-
     public float GetClosestBeatSnappingFromPosition(float horizontalPosition)
     {
         return Mathf.Round(GetBeatFromPosition(horizontalPosition) * noteSubdivisionSnapping) / noteSubdivisionSnapping;

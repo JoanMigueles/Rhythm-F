@@ -20,7 +20,6 @@ public struct NoteData
     public int lane { get; set; }
     public NoteType type { get; private set; }
     public int duration { get; set; }
-    public int anticipation { get; set; }
 
     public NoteData(int time, int lane)
     {
@@ -28,7 +27,6 @@ public struct NoteData
         this.lane = lane;
         type = NoteType.Hit;
         duration = 0;
-        anticipation = 0;
     }
 
     public NoteData(int time, int lane, NoteType type)
@@ -37,7 +35,6 @@ public struct NoteData
         this.lane = lane;
         this.type = type;
         duration = 0;
-        anticipation = 0;
     }
 
     public NoteData(int time, int lane, NoteType type, int duration)
@@ -46,16 +43,6 @@ public struct NoteData
         this.lane = lane;
         this.type = type;
         this.duration = duration;
-        anticipation = 0;
-    }
-
-    public NoteData(int time, int lane, NoteType type, int duration, int anticipation)
-    {
-        this.time = time;
-        this.lane = lane;
-        this.type = type;
-        this.duration = duration;
-        this.anticipation = anticipation;
     }
 
     public NoteData(NoteData data)
@@ -64,15 +51,12 @@ public struct NoteData
         this.lane = data.lane;
         this.type = data.type;
         this.duration = data.duration;
-        this.anticipation = data.anticipation;
     }
 }
 
 public class Note : TimelineElement
 {
     public NoteData data;
-    public NoteHandle durationHandle;
-    public NoteHandle anticipationHandle;
 
     public override void Move(int distance, bool laneSwap)
     {
@@ -83,6 +67,12 @@ public class Note : TimelineElement
         else {
             yPos = data.lane == 0 ? 1.5f : -1.5f;
         }
-        transform.position = new Vector3(EditorManager.instance.GetPositionFromTime(data.time + distance), yPos, 0f);
+        transform.position = new Vector3(NoteManager.instance.GetPositionFromTime(data.time + distance), yPos, 0f);
+    }
+
+    public override void UpdatePosition()
+    {
+        float yPos = data.lane == 0 ? 1.5f : -1.5f;
+        transform.position = new Vector3(NoteManager.instance.GetPositionFromTime(data.time), yPos, 0f);
     }
 }

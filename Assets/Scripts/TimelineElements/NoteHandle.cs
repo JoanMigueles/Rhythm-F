@@ -1,11 +1,11 @@
 using UnityEngine;
-using static UnityEngine.Rendering.VirtualTexturing.Debugging;
 
 public enum HandleType
 {
     Duration,
     Anticipation
 }
+
 public class NoteHandle : TimelineElement
 {
     public Note note;
@@ -15,16 +15,8 @@ public class NoteHandle : TimelineElement
     {
         if (note.isSelected) return;
         float horizontalPosition = 0;
-        switch (type) {
-            case HandleType.Duration:
-                horizontalPosition = EditorManager.instance.GetDistanceFromTime(note.data.duration + distance);
-                if (horizontalPosition < 0f) horizontalPosition = 0f;
-                break;
-            case HandleType.Anticipation:
-                horizontalPosition = EditorManager.instance.GetDistanceFromTime(note.data.anticipation + distance);
-                if (horizontalPosition > 0f) horizontalPosition = 0f;
-                break;
-        }
+        horizontalPosition = NoteManager.instance.GetDistanceFromTime(note.data.duration + distance);
+        if (horizontalPosition < 0f) horizontalPosition = 0f;
         transform.localPosition = new Vector3(horizontalPosition, 0f, 0f);
     }
 }

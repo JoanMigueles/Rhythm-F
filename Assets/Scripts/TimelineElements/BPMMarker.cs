@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
@@ -39,31 +38,42 @@ public class BPMMarker : TimelineElement
 
     public void SelectThisMarker()
     {
-        EditorManager.instance.SetEditMode("Select");
-        EditorManager.instance.Select(this);
+        EditorManager em = NoteManager.instance as EditorManager;
+        if (em == null) return;
+
+        em.SetEditMode("Select");
+        em.Select(this);
     }
 
     public void SetThisMarkerBPM(string BPM)
     {
+        EditorManager em = NoteManager.instance as EditorManager;
         if (float.TryParse(BPM, out float bpmValue) && bpmValue != originalBPM) {
             bpmValue = Mathf.Min(bpmValue, 999f); // Clamp max to 999
             bpmValue = Mathf.Round(bpmValue * 10f) / 10f; // Round to one decimal
             SelectThisMarker();
-            EditorManager.instance.EditSelectedMarker(bpmValue);
+            em.EditSelectedMarker(bpmValue);
         }
         else {
             BPMField.SetTextWithoutNotify(originalBPM.ToString());
         }
     }
 
+    public override void UpdatePosition()
+    {
+        transform.position = new Vector3(NoteManager.instance.GetPositionFromTime(flag.offset), 3.3f, 0f);
+    }
+
     public void UpdateDisplay(float bpmValue)
     {
+        Debug.Log("Updated display to " + bpmValue.ToString());
+
         originalBPM = bpmValue; // Update stored value after successful input
         BPMField.SetTextWithoutNotify(bpmValue.ToString());
     }
 
     public override void Move(int distance, bool laneSwap)
     {
-        transform.position = new Vector3(EditorManager.instance.GetPositionFromTime(flag.offset + distance), 3.3f, 0f);
+        transform.position = new Vector3(NoteManager.instance.GetPositionFromTime(flag.offset + distance), 3.3f, 0f);
     }
 }

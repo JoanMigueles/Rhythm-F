@@ -78,15 +78,15 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 4
-  m_Sprite: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.3137255}
+  m_Sprite: {fileID: 1139307098650838142, guid: 9c7516aceeb8f4b41af5160630df8a15, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
   m_Size: {x: 1.8513603, y: 1.6921035}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!114 &7027564695848800866
@@ -102,8 +102,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isSelected: 0
-  note: {fileID: 3925290146943280262}
-  type: 0
+  note: {fileID: 3035134078522119229}
+  type: 1
 --- !u!61 &1858218296149298072
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -142,7 +142,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 2.2294118, y: 1.3529412}
+    oldSize: {x: 1.8705882, y: 1.8647059}
     newSize: {x: 1.8513603, y: 1.6921035}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -160,10 +160,10 @@ GameObject:
   m_Component:
   - component: {fileID: 286765242705894536}
   - component: {fileID: 7082676019171098176}
-  - component: {fileID: 3925290146943280262}
+  - component: {fileID: 3035134078522119229}
   - component: {fileID: 7724914381145081941}
   m_Layer: 0
-  m_Name: Punchbag
+  m_Name: Sharpshooter
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -230,18 +230,18 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 5
-  m_Sprite: {fileID: 968438813, guid: 72c6b773244af1a4a94deb8100bb188c, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Sprite: {fileID: 1139307098650838142, guid: 9c7516aceeb8f4b41af5160630df8a15, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.3137255}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1.5411764, y: 4.935294}
+  m_Size: {x: 1.8513603, y: 1.6921035}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &3925290146943280262
+--- !u!114 &3035134078522119229
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -250,7 +250,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 6640256213729569200}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 39284dc73092b534ba1d1ea3e18c863f, type: 3}
+  m_Script: {fileID: 11500000, guid: 52c520ec6d3ec9c429aa2fc884e40d5c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   isSelected: 0
@@ -293,8 +293,8 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.5411764, y: 4.935294}
-    newSize: {x: 1.5411764, y: 4.935294}
+    oldSize: {x: 1.8705882, y: 1.8647059}
+    newSize: {x: 1.8513603, y: 1.6921035}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0

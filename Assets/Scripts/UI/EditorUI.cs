@@ -31,6 +31,8 @@ public class EditorUI : UIManager
     public GameObject testDummy;
     public bool isHidden;
 
+    private EditorManager em;
+
 
     private void Awake()
     {
@@ -42,6 +44,7 @@ public class EditorUI : UIManager
         subdivisionSlider.minValue = 0;
         subdivisionSlider.maxValue = valueMap.Length - 1;
         subdivisionSlider.value = 2;
+        em = NoteManager.instance as EditorManager;
     }
 
     void Update()
@@ -99,32 +102,32 @@ public class EditorUI : UIManager
         int i = Mathf.RoundToInt(subdivisionIndex);
 
         if (subdivisionIndex == 0) {
-            EditorManager.instance.beatSnapping = false;
+            em.beatSnapping = false;
             subdivision.text = "None";
         } else {
-            EditorManager.instance.beatSnapping = true;
+            em.beatSnapping = true;
             subdivision.text = "1/" + valueMap[i].ToString();
         }
 
-        EditorManager.instance.noteSubdivisionSnapping = valueMap[i];
+        em.noteSubdivisionSnapping = valueMap[i];
     }
 
     // SONG TITLE INPUT FIELD
     public void SetSongName(string name)
     {
-        EditorManager.instance.SetSongName(name);
+        em.SetSongName(name);
     }
 
     // SONG ARTIST INPUT FIELD
     public void SetSongArtist(string artist)
     {
-        EditorManager.instance.SetSongArtist(artist);
+        em.SetSongArtist(artist);
     }
 
     // SAVE AND EXIT BUTTON
     public void SaveAndExitButton()
     {
-        EditorManager.instance.SaveChanges();
+        em.SaveChanges();
         GameManager.instance.OpenSongList();
     }
 
@@ -143,7 +146,7 @@ public class EditorUI : UIManager
     // SAVE BUTTON
     public void SaveButton()
     {
-        EditorManager.instance.SaveChanges();
+        em.SaveChanges();
     }
 
     // PLAY BUTTON
@@ -176,7 +179,7 @@ public class EditorUI : UIManager
         string[] paths = StandaloneFileBrowser.OpenFilePanel("Select Audio File", "", extensions, false);
 
         if (paths.Length > 0 && !string.IsNullOrEmpty(paths[0])) {
-            StartCoroutine(EditorManager.instance.SaveAndLoadCustomAudioFile(paths[0]));
+            StartCoroutine(em.SaveAndLoadCustomAudioFile(paths[0]));
         }
     }
 
@@ -220,7 +223,7 @@ public class EditorUI : UIManager
             panelSequence.Join(bottomPanel.DOAnchorPosY(bottomPanel.anchoredPosition.y + bottomPanel.rect.height, duration).SetEase(ease));
             panelSequence.Join(leftPanel.DOAnchorPosX(leftPanel.anchoredPosition.x + leftPanel.rect.width, duration).SetEase(ease));
             Metronome.instance.PauseSong();
-            EditorManager.instance.ReactivateNotes();
+            em.ReactivateNotes();
         }
 
         isHidden = !isHidden;

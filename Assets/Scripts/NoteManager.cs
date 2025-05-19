@@ -1,9 +1,15 @@
-using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using UnityEngine;
-using UnityEngine.EventSystems;
+
+public enum Difficulty
+{
+    Easy,
+    Normal,
+    Hard,
+    Rumble
+}
 
 public class NoteManager : MonoBehaviour
 {
@@ -13,50 +19,54 @@ public class NoteManager : MonoBehaviour
 
     // NOTE PREFABS
     [SerializeField] private GameObject hitPrefab;
+    [SerializeField] private GameObject slashPrefab;
     [SerializeField] private GameObject sliderPrefab;
     [SerializeField] private GameObject warnHitPrefab;
+    [SerializeField] private GameObject warnSlashPrefab;
+    [SerializeField] private GameObject laserPrefab;
+    [SerializeField] private GameObject grabThrowPrefab;
+    [SerializeField] private GameObject sawPrefab;
+    [SerializeField] private GameObject multipleHitPrefab;
+    [SerializeField] private GameObject multipleSlashPrefab;
 
-    // NOTE LISTS
-    private SongData songData;
-    private List<Note> activeNotes;
+    protected SongData songData;
+    protected List<Note> activeNotes;
 
-    private void Awake()
+    protected virtual void Awake()
     {
         instance = this;
     }
 
-    private void Start()
+    protected virtual void Start()
     {
         activeNotes = new List<Note>();
+
         if (GameManager.instance.IsSongSelected()) {
             LoadSelectedSong(GameManager.instance.GetSelectedSong());
         }
-        if (songData == null) {
-            // SET DEFAULT SONG
-            songData = new SongData();
-        }
+        else return;
 
-        //  SPAWN INITAL ELEMENTS
-        List<NoteData> notesData = GetDifficultyNoteData(Difficulty.Normal);
-        foreach (NoteData noteData in notesData) {
-            SpawnNote(noteData, false);
-        }
+        SpawnDifficultyNotes(1);
     }
 
     private void Update()
     {
+        UpdateNotesPosition();
+    }
+
+    protected void UpdateNotesPosition()
+    {
         foreach (Note note in activeNotes) {
-            UpdateNotePosition(note);
+            note.UpdatePosition();
         }
     }
 
-    public void LoadSelectedSong(string songFilePath)
+    protected virtual void LoadSelectedSong(string songFilePath)
     {
         songData = SaveData.LoadCustomSong(songFilePath);
         string songPath = SaveData.GetAudioFilePath(songData.metadata.audioFileName);
         if (File.Exists(songPath)) {
             Metronome.instance.SetCustomSong(songPath);
-            EditorUI.instance.ApplyWaveformTexture();
         }
     }
 
@@ -75,32 +85,77 @@ public class NoteManager : MonoBehaviour
         return null;
     }
 
-    public void SpawnNote(NoteData noteData, bool select)
+    public virtual void SpawnDifficultyNotes(int diff)
     {
-        Note newNote = Instantiate(hitPrefab, transform).GetComponent<Note>();
+        difficulty = (Difficulty)diff;
+
+        List<NoteData> notesData = GetDifficultyNoteData((Difficulty)diff);
+        foreach (NoteData noteData in notesData) {
+            SpawnNote(noteData);
+        }
+    }
+
+    public virtual void SpawnDifficultyNotes(Difficulty diff)
+    {
+        List<NoteData> notesData = GetDifficultyNoteData(diff);
+        foreach (NoteData noteData in notesData) {
+            SpawnNote(noteData);
+        }
+    }
+
+    public Note SpawnNote(NoteData noteData)
+    {
+        GameObject prefab = GetNoteTypePrefab(noteData.type);
+        Note newNote = Instantiate(prefab, transform).GetComponent<Note>();
         newNote.data = noteData;
         activeNotes.Add(newNote);
+        activeNotes = activeNotes.OrderBy(note => note.data.time).ThenBy(note => note.data.lane).ToList();
+        return newNote;
     }
 
-    private void UpdateNotePosition(Note note)
+    protected GameObject GetNoteTypePrefab(NoteType type)
     {
-        float yPos = note.data.lane == 0 ? 1.5f : -1.5f;
-        note.transform.position = new Vector3(GetPositionFromTime(note.data.time), yPos, 0f);
-    }
-
-    // ---------------------------------------------------------------------------------------------------------------------------------------------
-    // EDITOR PARAMETER SETTERS
-    // ---------------------------------------------------------------------------------------------------------------------------------------------
-    public void SetSpeed(float speed)
-    {
-        noteSpeed = speed;
+        switch (type) {
+            case NoteType.Hit: return hitPrefab;
+            case NoteType.Slash: return slashPrefab;
+            case NoteType.Slider: return sliderPrefab;
+            case NoteType.Warn_Hit: return warnHitPrefab;
+            case NoteType.Warn_Slash: return warnSlashPrefab;
+            case NoteType.Laser: return laserPrefab;
+            case NoteType.Grab_Throw: return grabThrowPrefab;
+            case NoteType.Saw: return sawPrefab;
+            case NoteType.Multiple_Hit: return multipleHitPrefab;
+            case NoteType.Multiple_Slash: return multipleSlashPrefab;
+            default: return hitPrefab;
+        }
     }
 
     // ---------------------------------------------------------------------------------------------------------------------------------------------
     // AUDIO TO POSITION
     // ---------------------------------------------------------------------------------------------------------------------------------------------
+    public int GetTimeFromPosition(float horizontalPos)
+    {
+        return Mathf.RoundToInt(Metronome.instance.GetTimelinePosition() + (horizontalPos / noteSpeed * 1000f));
+    }
+
     public float GetPositionFromTime(int time)
     {
         return (time - Metronome.instance.GetTimelinePosition()) / 1000f * noteSpeed;
+    }
+
+    public float GetDistanceFromTime(int time)
+    {
+        return time / 1000f * noteSpeed;
+    }
+
+    public float GetBeatFromPosition(float horizontalPosition)
+    {
+        // Add to current timeline beat position
+        return Metronome.instance.GetTimelineBeatPosition() + horizontalPosition / noteSpeed / Metronome.instance.beatSecondInterval;
+    }
+
+    public float GetPositionFromBeat(float beat)
+    {
+        return GetPositionFromTime(Metronome.instance.GetTimeFromBeat(beat));
     }
 }

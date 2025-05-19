@@ -28,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 787791201755154348}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -3, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -79,7 +79,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 4
   m_Sprite: {fileID: -1575985446, guid: 72c6b773244af1a4a94deb8100bb188c, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.38431373}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -102,7 +102,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isSelected: 0
-  note: {fileID: 4082844729154687753}
+  note: {fileID: 3035134078522119229}
   type: 1
 --- !u!61 &1858218296149298072
 BoxCollider2D:
@@ -160,7 +160,7 @@ GameObject:
   m_Component:
   - component: {fileID: 286765242705894536}
   - component: {fileID: 7082676019171098176}
-  - component: {fileID: 4082844729154687753}
+  - component: {fileID: 3035134078522119229}
   - component: {fileID: 7724914381145081941}
   m_Layer: 0
   m_Name: Bull
@@ -231,7 +231,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 5
   m_Sprite: {fileID: -1575985446, guid: 72c6b773244af1a4a94deb8100bb188c, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.3137255}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -241,7 +241,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &4082844729154687753
+--- !u!114 &3035134078522119229
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -250,12 +250,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 6640256213729569200}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8f8edc9f00c7c3c418004170d73ab723, type: 3}
+  m_Script: {fileID: 11500000, guid: 52c520ec6d3ec9c429aa2fc884e40d5c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   isSelected: 0
-  durationHandle: {fileID: 0}
-  anticipationHandle: {fileID: 7027564695848800866}
+  durationHandle: {fileID: 7027564695848800866}
 --- !u!61 &7724914381145081941
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -329,8 +328,8 @@ Transform:
   m_GameObject: {fileID: 7190100114630797509}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.44, y: -0.0257, z: 0}
-  m_LocalScale: {x: 2.9970584, y: 0.28, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0, y: 0.28, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 286765242705894536}

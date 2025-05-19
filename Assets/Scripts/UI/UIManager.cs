@@ -10,7 +10,8 @@ public class UIManager : MonoBehaviour
     {
         panel.SetActive(true);
         background.SetActive(true);
-        if (EditorManager.instance != null ) EditorManager.instance.ClearSelection();
+        EditorManager em = NoteManager.instance as EditorManager;
+        if (em != null) em.ClearSelection();
         isPanelOpened = true;
     }
 

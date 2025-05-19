@@ -23,7 +23,7 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        Application.targetFrameRate = -1; // Sin límite de framerate
+        Application.targetFrameRate = 30; // Sin límite de framerate
         gameRunning = true;
     }
 

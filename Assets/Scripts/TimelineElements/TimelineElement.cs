@@ -12,6 +12,11 @@ public class TimelineElement : MonoBehaviour
         spriteRenderer.color = selected ? new Color(0f, 1f, 0f, currentColor.a) : new Color(1f, 1f, 1f, currentColor.a);
     }
 
+    public virtual void UpdatePosition()
+    {
+        
+    }
+
     public virtual void Move(int distance, bool laneSwap)
     {
 
