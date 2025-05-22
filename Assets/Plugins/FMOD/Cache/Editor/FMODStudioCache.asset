@@ -69,10 +69,10 @@ MonoBehaviour:
   Path: FMOD/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 638790640155276746
+  lastModified: 638834800851959354
   FileSizes:
   - Name: Desktop
-    Value: 1795840
+    Value: 1800800
   Exists: 1
 --- !u!114 &11400000
 MonoBehaviour:
@@ -93,12 +93,13 @@ MonoBehaviour:
   - {fileID: -5848251324872358444}
   - {fileID: -4983458039256276038}
   - {fileID: 8753710572888305244}
+  - {fileID: 5169908476968712566}
   EditorParameters: []
   MasterBanks:
   - {fileID: -1751657219509329858}
   StringsBanks:
   - {fileID: 2413521439291127005}
-  cacheTime: 638790640155394291
+  cacheTime: 638834800851979466
   cacheVersion: 131622
 --- !u!114 &2413521439291127005
 MonoBehaviour:
@@ -115,11 +116,38 @@ MonoBehaviour:
   Path: FMOD/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 638790640155394291
+  lastModified: 638834800851979466
   FileSizes:
   - Name: Desktop
-    Value: 874
+    Value: 924
   Exists: 1
+--- !u!114 &5169908476968712566
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SoundEffects/KickDrum
+  m_EditorClassIdentifier: 
+  Path: event:/SoundEffects/KickDrum
+  Guid:
+    Data1: -1032950187
+    Data2: 1107193288
+    Data3: -1379719765
+    Data4: 1249203959
+  Banks:
+  - {fileID: -1751657219509329858}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
 --- !u!114 &8753710572888305244
 MonoBehaviour:
   m_ObjectHideFlags: 0

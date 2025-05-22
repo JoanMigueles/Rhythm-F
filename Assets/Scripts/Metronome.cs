@@ -9,17 +9,8 @@ public class Metronome : MonoBehaviour
 {
     public static Metronome instance { get; private set; }
 
-    [field: Header("Songs")]
-    [field: SerializeField] public List<EventReference> songs { get; private set; }
-
-    [field: Header("Custom Songs")]
-    [field: SerializeField] public EventReference customSongReference { get; private set; }
-
     [field: Header("Metronome")]
     [field: SerializeField] public EventReference beepReference { get; private set; }
-
-    public EventInstance songInstance { get; private set; }
-    private EventInstance beepInstance;
 
     // Beat parameters
     [field: Header("Beat Parameters")]
@@ -33,11 +24,9 @@ public class Metronome : MonoBehaviour
     private int lastBeat;
 
     private FMODCustomMusicPlayer customPlayer;
-    private bool isCustom;
 
     private void Awake()
     {
-        isCustom = true;
         if (instance == null) {
             instance = this;
             DontDestroyOnLoad(gameObject);
@@ -58,44 +47,31 @@ public class Metronome : MonoBehaviour
 
     private void Update()
     {
-        int currentBeat = Mathf.FloorToInt(timelineBeatPosition);
-        if (currentBeat != lastBeat) {
-            if (metronomeBeeps && !IsPaused()) {
-                beepInstance = RuntimeManager.CreateInstance(beepReference);
-                beepInstance.start();
-                beepInstance.release();
-            }
-            lastBeat = currentBeat;
-        }
-
+        // CHECK WHICH BPM IS CURRENTLY ON
         currentBPMFlag = GetCurrentBPMFlag();
         beatSecondInterval = 60f / currentBPMFlag.BPM;
-        if (isCustom && customPlayer != null) {
+
+        // GET TIME AND BEAT
+        if (customPlayer != null) {
             timelinePosition = customPlayer.GetTimelinePosition();
             timelineBeatPosition = GetBeatFromTime(timelinePosition);
             if (timelinePosition >= customPlayer.LengthInMS - 100) {
                 PauseSong();
             }
-        } else {
-            songInstance.getTimelinePosition(out int pos);
-            timelinePosition = pos;
-            timelineBeatPosition = GetBeatFromTime(timelinePosition);
+        }
+
+        // BEAT CHANGE DETECTION
+        int currentBeat = Mathf.FloorToInt(timelineBeatPosition);
+        if (currentBeat != lastBeat) {
+            if (metronomeBeeps && !IsPaused()) {
+                RuntimeManager.PlayOneShot(beepReference);
+            }
+            lastBeat = currentBeat;
         }
     }
-
-    public int GetTimelinePosition()
-    {
-        return timelinePosition;
-    }
-
-    public float GetNormalizedTimelinePosition()
-    {
-        if (isCustom && customPlayer != null) {
-            return customPlayer.GetNormalizedPosition();
-        }
-        return 0f;
-    }
-
+    // ---------------------------------------------------------------------------------------------------------------------------------------------
+    // FLAGS
+    // ---------------------------------------------------------------------------------------------------------------------------------------------
     public BPMFlag GetCurrentBPMFlag()
     {
         BPMFlag currentFlag;
@@ -115,6 +91,29 @@ public class Metronome : MonoBehaviour
         return currentFlag;
     }
 
+    public void SetBPMFlags(List<BPMFlag> flags)
+    {
+        if (flags == null || flags.Count == 0) {
+            BPMFlags = new List<BPMFlag> { new BPMFlag(0) };
+            return;
+        }
+        BPMFlags = flags;
+    }
+
+    // ---------------------------------------------------------------------------------------------------------------------------------------------
+    // BEAT & TIME GETTERS
+    // ---------------------------------------------------------------------------------------------------------------------------------------------
+    public int GetTimelinePosition()
+    {
+        return timelinePosition;
+    }
+
+    public float GetNormalizedTimelinePosition()
+    {
+        if (customPlayer == null) return 0f;
+        return customPlayer.GetNormalizedPosition();
+    }
+
     public float GetTimelineBeatPosition()
     {
         return timelineBeatPosition;
@@ -129,141 +128,86 @@ public class Metronome : MonoBehaviour
     {
         return Mathf.RoundToInt(beat * beatSecondInterval * 1000 + currentBPMFlag.offset);
     }
+
     public int GetTimeFromBeatInterval(float beat)
     {
         return Mathf.RoundToInt(beat * beatSecondInterval * 1000);
     }
 
-    public void ReleaseSongInstance()
-    {
-        songInstance.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
-        songInstance.release();
-    }
-
-    public void SetSongInstance(EventReference eventReference)
-    {
-        songInstance = RuntimeManager.CreateInstance(eventReference);
-    }
-
-    public void SetSongInstance(EventInstance eventInstance)
-    {
-        songInstance = eventInstance;
-    }
-
+    // ---------------------------------------------------------------------------------------------------------------------------------------------
+    // PLAYER
+    // ---------------------------------------------------------------------------------------------------------------------------------------------
     public void SetCustomSong(string songPath)
     {
-        ReleaseCustomSong();
+        ReleaseCustomPlayer();
         customPlayer = new FMODCustomMusicPlayer(songPath);
     }
 
-    public void ReleaseCustomSong()
+    public void ReleaseCustomPlayer()
     {
-        ReleaseSongInstance();
         if (customPlayer != null) customPlayer.Dispose();
-    }
-
-    public void SetBPMFlags(List<BPMFlag> flags)
-    {
-        if (flags == null || flags.Count == 0) {
-            BPMFlags = new List<BPMFlag> { new BPMFlag(0) };
-            return;
-        }
-        BPMFlags = flags;
     }
 
     public uint GetSongLength()
     {
-        if (isCustom && customPlayer != null) {
-            return customPlayer.LengthInMS;
-        }
-
-        songInstance.getDescription(out EventDescription description);
-        description.getLength(out int length);
-        return (uint)length;
+        if (customPlayer != null) return customPlayer.LengthInMS;
+        return 0;
     }
 
     public Texture2D GetSongWaveformTexture()
     {
+        if (customPlayer == null) return null;
         return customPlayer.GenerateWaveformTexture((int)(customPlayer.LengthInMS / 1000f * 50), 200);
     }
 
     public void SetTimelinePosition(int time)
     {
+        if (customPlayer == null) return;
+
         if (time < 0) time = 0;
-        timelinePosition = time;
-
-        if (isCustom && customPlayer != null) {
-            customPlayer.SetTimelinePosition(timelinePosition);
-            return;
-        }
-
-        if (songInstance.isValid()) {
-            songInstance.setTimelinePosition(timelinePosition);
-        }
+        customPlayer.SetTimelinePosition(time);
     }
 
     public void SetNormalizedTimelinePosition(float pos)
     {
-        if (isCustom && customPlayer != null) {
-            customPlayer.SetNormalizedPosition(pos);
-            return;
-        }
+        if (customPlayer == null) return;
+        customPlayer.SetNormalizedPosition(pos);
     }
 
     public void PlaySong()
     {
-        if (isCustom && customPlayer != null) {
-            customPlayer.Play();
-            if (EditorUI.instance != null) {
-                EditorUI.instance.DisplayPause(true);
-            }
-            return;
-        }
+        if (customPlayer == null) return;
 
-        if (songInstance.isValid()) {
-            Debug.Log("song started");
-            songInstance.start();
-        } else {
-            Debug.LogWarning("Invalid Instance");
+        customPlayer.Play();
+        if (EditorUI.instance != null) {
+            EditorUI.instance.DisplayPause(true);
         }
     }
 
     public void StopSong()
     {
-        if (isCustom && customPlayer != null) {
-            customPlayer.Stop();
-            if (EditorUI.instance != null) {
-                EditorUI.instance.DisplayPause(false);
-            }
-            return;
-        }
+        if (customPlayer == null) return;
 
-        if (songInstance.isValid()) {
-            Debug.Log("song started");
-            songInstance.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
-        } else {
-            Debug.LogWarning("Invalid Instance");
+        customPlayer.Stop();
+        if (EditorUI.instance != null) {
+            EditorUI.instance.DisplayPause(false);
         }
     }
 
     public void PauseSong()
     {
-        if (isCustom && customPlayer != null) {
-            customPlayer.Pause(true);
-            if (EditorUI.instance != null) {
-                EditorUI.instance.DisplayPause(false);
-            }
-            return;
-        }
+        if (customPlayer == null) return;
 
+        customPlayer.Pause(true);
+        if (EditorUI.instance != null) {
+            EditorUI.instance.DisplayPause(false);
+        }
     }
 
     public bool IsPaused()
     {
-        if (isCustom && customPlayer != null) {
-            return customPlayer.IsPaused;
-        }
-        return true;
+        if (customPlayer == null) return true;
+        return customPlayer.IsPaused;
     }
 
     public void SetMetronomeSound(bool on)
@@ -277,9 +221,6 @@ public class Metronome : MonoBehaviour
         {
             customPlayer.Dispose();
         }
-        ReleaseSongInstance();
-        beepInstance.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
-        beepInstance.release();
     }
 }
 

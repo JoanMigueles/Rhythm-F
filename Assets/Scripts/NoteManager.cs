@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -30,7 +31,11 @@ public class NoteManager : MonoBehaviour
     [SerializeField] private GameObject multipleSlashPrefab;
 
     protected SongData songData;
-    protected List<Note> activeNotes;
+    public List<Note> activeNotes;
+
+    private const int HEADSTART = 2000;
+    private float headstartTimer;
+    private bool songStarted = false;
 
     protected virtual void Awake()
     {
@@ -44,13 +49,37 @@ public class NoteManager : MonoBehaviour
         if (GameManager.instance.IsSongSelected()) {
             LoadSelectedSong(GameManager.instance.GetSelectedSong());
         }
-        else return;
+        else {
+            SongDataResource loaded = Resources.Load<SongDataResource>("SongData");
+            songData = loaded.data;
+            string songPath = SaveData.GetAudioFilePath(songData.metadata.audioFileName);
+            if (File.Exists(songPath)) {
+                Metronome.instance.SetCustomSong(songPath);
+            }
+        }
 
-        SpawnDifficultyNotes(1);
+        SpawnDifficultyNotes(Difficulty.Normal);
+        List<NoteData> notesData = GetDifficultyNoteData(Difficulty.Normal);
+        if (notesData.Count > 0) {
+            if (notesData[0].time > HEADSTART) {
+                headstartTimer = 0;
+            } else {
+                headstartTimer = HEADSTART - notesData[0].time;
+            }
+        }
     }
 
     private void Update()
     {
+        if (!songStarted) {
+            headstartTimer -= Time.deltaTime * 1000f;
+
+            if (headstartTimer <= 0f) {
+                songStarted = true;
+                headstartTimer = 0f;
+                Metronome.instance.PlaySong();
+            }
+        }
         UpdateNotesPosition();
     }
 
@@ -88,6 +117,7 @@ public class NoteManager : MonoBehaviour
     public virtual void SpawnDifficultyNotes(int diff)
     {
         difficulty = (Difficulty)diff;
+        Debug.Log("Spawning difficulty: " +  difficulty.ToString());
 
         List<NoteData> notesData = GetDifficultyNoteData((Difficulty)diff);
         foreach (NoteData noteData in notesData) {
@@ -135,12 +165,12 @@ public class NoteManager : MonoBehaviour
     // ---------------------------------------------------------------------------------------------------------------------------------------------
     public int GetTimeFromPosition(float horizontalPos)
     {
-        return Mathf.RoundToInt(Metronome.instance.GetTimelinePosition() + (horizontalPos / noteSpeed * 1000f));
+        return Mathf.RoundToInt(Metronome.instance.GetTimelinePosition() - headstartTimer + (horizontalPos / noteSpeed * 1000f));
     }
 
     public float GetPositionFromTime(int time)
     {
-        return (time - Metronome.instance.GetTimelinePosition()) / 1000f * noteSpeed;
+        return (time - Metronome.instance.GetTimelinePosition() + headstartTimer) / 1000f * noteSpeed;
     }
 
     public float GetDistanceFromTime(int time)

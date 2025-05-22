@@ -1,4 +1,6 @@
 using UnityEngine;
+
+[System.Serializable]
 public enum NoteType
 {
     Hit,
@@ -16,10 +18,10 @@ public enum NoteType
 [System.Serializable]
 public struct NoteData
 {
-    public int time { get; set; }
-    public int lane { get; set; }
-    public NoteType type { get; private set; }
-    public int duration { get; set; }
+    public int time;
+    public int lane;
+    public NoteType type;
+    public int duration;
 
     public NoteData(int time, int lane)
     {

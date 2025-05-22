@@ -35,6 +35,7 @@ public class SongData
     }
 }
 
+[System.Serializable]
 public struct SongMetadata
 {
     public string localPath;

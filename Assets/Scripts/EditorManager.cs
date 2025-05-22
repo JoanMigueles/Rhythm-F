@@ -79,7 +79,7 @@ public class EditorManager : NoteManager
         EditorUI.instance.DisplaySongData(songData.metadata);
 
         //  SPAWN INITAL ELEMENTS
-        SpawnDifficultyNotes(1);
+        SpawnDifficultyNotes(Difficulty.Normal);
         foreach (BPMFlag flag in songData.BPMFlags) {
             SpawnMarker(flag);
         }
@@ -152,7 +152,7 @@ public class EditorManager : NoteManager
     public IEnumerator SaveAndLoadCustomAudioFile(string filePath)
     {
         // Save
-        Metronome.instance.ReleaseCustomSong();
+        Metronome.instance.ReleaseCustomPlayer();
         SaveData.CreateAudioFile(songData, filePath);
 
         // Load
@@ -301,7 +301,6 @@ public class EditorManager : NoteManager
     private void HandleElementClick(TimelineElement element, float clickPosition)
     {
         if (element is BPMMarker marker) {
-            ClearSelection();
             Select(marker);
             StartMoving(clickPosition);
             return;
@@ -446,8 +445,8 @@ public class EditorManager : NoteManager
     {
         if (!Input.GetMouseButtonDown(0)) return;
 
+        int time = GetSnappedTime(worldPos.x);
         int lane = worldPos.y > 0 ? 0 : 1;
-        int time = GetTimeFromPosition(notePreview.transform.position.x);
         int timeThreshold = 2; // 2ms
         // Check if a note already exists at this time and lane
         bool noteExists = activeNotes.Exists(n =>
@@ -497,23 +496,14 @@ public class EditorManager : NoteManager
         float horizontalPosition = (worldPos.x > 0) ? worldPos.x : 0;
         float verticalPosition = worldPos.y;
 
-        if (Input.GetKey(KeyCode.LeftControl) || !beatSnapping) {
-            float yPos;
-            if (isBig) yPos = 0;
-            else {
-                yPos = verticalPosition > 0 ? 1.5f : -1.5f;
-            }
-            notePreview.transform.position = new Vector3(horizontalPosition, yPos, 0f);
-        }
+        float yPos;
+        if (isBig) yPos = 0;
         else {
-            float xPos = GetPositionFromBeat(GetClosestBeatSnappingFromPosition(horizontalPosition));
-            float yPos;
-            if (isBig) yPos = 0;
-            else {
-                yPos = verticalPosition > 0 ? 1.5f : -1.5f;
-            }
-            notePreview.transform.position = new Vector3(xPos, yPos, 0);
+            yPos = verticalPosition > 0 ? 1.5f : -1.5f;
         }
+
+        float xPos = GetSnappedHorizontalPosition(horizontalPosition);
+        notePreview.transform.position = new Vector3(xPos, yPos, 0f);
     }
 
     public void CreateSliderPreview(NoteData noteData)
@@ -634,6 +624,7 @@ public class EditorManager : NoteManager
         if (deleteMarker != null) {
             // Remove from the list
             activeMarkers.Remove(deleteMarker);
+            selectedElements.Remove(deleteMarker);
             Destroy(deleteMarker.gameObject);
         }
         else {
@@ -672,7 +663,6 @@ public class EditorManager : NoteManager
             history.AddCommand(editCommand);
             Debug.Log("edited marker");
         }
-
     }
 
     public void DeleteSelection()
@@ -800,6 +790,7 @@ public class EditorManager : NoteManager
 
     public void Select(TimelineElement element)
     {
+        if (element is BPMMarker) ClearSelection();
         selectedElements.Add(element);
         element.SetSelected(true);
     }
@@ -954,4 +945,21 @@ public class EditorManager : NoteManager
     {
         return Mathf.Round(Metronome.instance.GetBeatFromTime(time) * noteSubdivisionSnapping) / noteSubdivisionSnapping;
     }
+
+    public int GetSnappedTime(float horizontalPosition)
+    {
+        if (Input.GetKey(KeyCode.LeftControl) || !beatSnapping) {
+            return GetTimeFromPosition(horizontalPosition);
+        } 
+        return Metronome.instance.GetTimeFromBeat(GetClosestBeatSnappingFromPosition(horizontalPosition));
+    }
+
+    public float GetSnappedHorizontalPosition(float horizontalPosition)
+    {
+        if (Input.GetKey(KeyCode.LeftControl) || !beatSnapping) {
+            return horizontalPosition;
+        }
+        return GetPositionFromBeat(GetClosestBeatSnappingFromPosition(horizontalPosition));
+    }
+
 }

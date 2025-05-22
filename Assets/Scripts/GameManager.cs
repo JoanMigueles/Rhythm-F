@@ -23,7 +23,7 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        Application.targetFrameRate = 30; // Sin límite de framerate
+        Application.targetFrameRate = 140; // Sin límite de framerate
         gameRunning = true;
     }
 
@@ -50,20 +50,20 @@ public class GameManager : MonoBehaviour
     // EDITOR OPENING
     public void OpenEditor()
     {
-        Metronome.instance.ReleaseCustomSong();
+        Metronome.instance.ReleaseCustomPlayer();
         SceneManager.LoadScene("LevelEditor");
     }
 
     // LIST OPENING
     public void OpenSongList()
     {
-        Metronome.instance.ReleaseCustomSong();
+        Metronome.instance.ReleaseCustomPlayer();
         SceneManager.LoadScene("List");
     }
 
     public void QuitGame()
     {
-        Metronome.instance.ReleaseCustomSong();
+        Metronome.instance.ReleaseCustomPlayer();
         Application.Quit();
     }
 

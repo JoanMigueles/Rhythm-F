@@ -139,7 +139,7 @@ public static class SongFileConverter
     private static void ParseNote(string line, List<NoteData> songDataNotes)
     {
         string[] parts = line.Split(':');
-        if (parts.Length != 5) return;
+        if (parts.Length != 4) return;
 
         int.TryParse(parts[0], out int time);
         int.TryParse(parts[1], out int lane);
