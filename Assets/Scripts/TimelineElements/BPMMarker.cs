@@ -1,4 +1,5 @@
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 
 [System.Serializable]
@@ -59,11 +60,6 @@ public class BPMMarker : TimelineElement
         }
     }
 
-    public override void UpdatePosition()
-    {
-        transform.position = new Vector3(NoteManager.instance.GetPositionFromTime(flag.offset), 3.3f, 0f);
-    }
-
     public void UpdateDisplay(float bpmValue)
     {
         Debug.Log("Updated display to " + bpmValue.ToString());
@@ -75,5 +71,10 @@ public class BPMMarker : TimelineElement
     public override void Move(int distance, bool laneSwap)
     {
         transform.position = new Vector3(NoteManager.instance.GetPositionFromTime(flag.offset + distance), 3.3f, 0f);
+    }
+
+    public override void UpdatePosition()
+    {
+        transform.position = new Vector3(NoteManager.instance.GetPositionFromTime(flag.offset), 3.3f, 0f);
     }
 }

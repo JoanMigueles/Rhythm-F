@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 [System.Serializable]
@@ -69,6 +70,7 @@ public class Note : TimelineElement
         else {
             yPos = data.lane == 0 ? 1.5f : -1.5f;
         }
+
         transform.position = new Vector3(NoteManager.instance.GetPositionFromTime(data.time + distance), yPos, 0f);
     }
 

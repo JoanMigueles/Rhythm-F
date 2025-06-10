@@ -1,4 +1,3 @@
-using FMOD.Studio;
 using FMODUnity;
 using System;
 using System.Collections.Generic;
@@ -19,7 +18,12 @@ public class Metronome : MonoBehaviour
     public float beatSecondInterval;
     public bool metronomeBeeps;
 
+    private bool smoothTimelineOn;
+    private float smoothTimeElapsed;
+    private const float SYNC_RATE = 5f;
+    private float syncTimer;
     private int timelinePosition;
+    private int previousTimelinePosition;
     private float timelineBeatPosition;
     private int lastBeat;
 
@@ -39,6 +43,8 @@ public class Metronome : MonoBehaviour
     private void Start()
     {
         lastBeat = 0;
+        smoothTimelineOn = false;
+        syncTimer = 0;
         if (BPMFlags == null || BPMFlags.Count == 0) {
             BPMFlags = new List<BPMFlag> {new BPMFlag(0)};
         }
@@ -53,7 +59,25 @@ public class Metronome : MonoBehaviour
 
         // GET TIME AND BEAT
         if (customPlayer != null) {
-            timelinePosition = customPlayer.GetTimelinePosition();
+            /*
+            if (smoothTimelineOn) {
+                smoothTimeElapsed += Time.deltaTime;
+                timelinePosition = (int)(smoothTimeElapsed * 1000);
+            } else {
+                timelinePosition = customPlayer.GetTimelinePosition();
+                smoothTimeElapsed = timelinePosition / 1000f;
+            }*/
+            
+            
+            if (smoothTimelineOn) {
+                smoothTimeElapsed += Time.deltaTime;
+                syncTimer += Time.deltaTime;
+                timelinePosition = (int)(smoothTimeElapsed * 1000);
+            } else {
+                timelinePosition = customPlayer.GetTimelinePosition();
+                smoothTimeElapsed = timelinePosition / 1000f;
+            }
+
             timelineBeatPosition = GetBeatFromTime(timelinePosition);
             if (timelinePosition >= customPlayer.LengthInMS - 100) {
                 PauseSong();
@@ -67,6 +91,12 @@ public class Metronome : MonoBehaviour
                 RuntimeManager.PlayOneShot(beepReference);
             }
             lastBeat = currentBeat;
+        }
+
+        if (syncTimer > SYNC_RATE) {
+            timelinePosition = customPlayer.GetTimelinePosition();
+            smoothTimeElapsed = timelinePosition / 1000f;
+            syncTimer = 0;
         }
     }
     // ---------------------------------------------------------------------------------------------------------------------------------------------
@@ -110,8 +140,9 @@ public class Metronome : MonoBehaviour
 
     public float GetNormalizedTimelinePosition()
     {
-        if (customPlayer == null) return 0f;
-        return customPlayer.GetNormalizedPosition();
+        if (customPlayer == null) return 0;
+        if (customPlayer.LengthInMS == 0) return 0;
+        return GetTimelinePosition() / (float)customPlayer.LengthInMS;
     }
 
     public float GetTimelineBeatPosition()
@@ -166,18 +197,23 @@ public class Metronome : MonoBehaviour
 
         if (time < 0) time = 0;
         customPlayer.SetTimelinePosition(time);
+        smoothTimelineOn = false;
     }
 
     public void SetNormalizedTimelinePosition(float pos)
     {
         if (customPlayer == null) return;
-        customPlayer.SetNormalizedPosition(pos);
+
+        pos = Math.Clamp(pos, 0f, 1f);
+        customPlayer.SetTimelinePosition((int)(pos * customPlayer.LengthInMS));
+        smoothTimelineOn = false;
     }
 
     public void PlaySong()
     {
         if (customPlayer == null) return;
 
+        smoothTimelineOn = true;
         customPlayer.Play();
         if (EditorUI.instance != null) {
             EditorUI.instance.DisplayPause(true);
@@ -188,6 +224,7 @@ public class Metronome : MonoBehaviour
     {
         if (customPlayer == null) return;
 
+        smoothTimelineOn = false;
         customPlayer.Stop();
         if (EditorUI.instance != null) {
             EditorUI.instance.DisplayPause(false);
@@ -198,6 +235,7 @@ public class Metronome : MonoBehaviour
     {
         if (customPlayer == null) return;
 
+        smoothTimelineOn = false;
         customPlayer.Pause(true);
         if (EditorUI.instance != null) {
             EditorUI.instance.DisplayPause(false);
@@ -342,17 +380,6 @@ public class FMODCustomMusicPlayer : IDisposable
         channel.setPosition(unsignedPosition, unit);
     }
 
-    public float GetNormalizedPosition()
-    {
-        if (lengthInMS == 0) return 0;
-        return GetTimelinePosition() / (float)lengthInMS;
-    }
-
-    public void SetNormalizedPosition(float normalizedPosition)
-    {
-        normalizedPosition = Math.Clamp(normalizedPosition, 0f, 1f);
-        SetTimelinePosition((int)(normalizedPosition * lengthInMS));
-    }
 
     // Volume control
     public float Volume {

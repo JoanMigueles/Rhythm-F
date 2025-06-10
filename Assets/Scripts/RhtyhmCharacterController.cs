@@ -1,4 +1,3 @@
-using FMOD.Studio;
 using FMODUnity;
 using UnityEngine;
 
@@ -10,9 +9,9 @@ public class RhtyhmCharacterController : MonoBehaviour
     [field: SerializeField] public EventReference hitReference { get; private set; }
 
     public GameObject popupPrefab;
-    public int PERFECT_WINDOW = 30;
-    public int GREAT_WINDOW = 60;
-    public int OK_WINDOW = 100;
+    public int PERFECT_WINDOW = 35;
+    public int PERFECT_SLASH_WINDOW = 65;
+    public int GREAT_WINDOW = 100;
     public int SLASH_WINDOW = 150;
     private const int SWITCH_GRACE_TIME = 100; // ms for allowing hit in previous lane after a switch
 
@@ -30,11 +29,10 @@ public class RhtyhmCharacterController : MonoBehaviour
 
     void Start()
     {
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
         lane = 1;
         nm = NoteManager.instance;
     }
+
 
     void Update()
     {
@@ -96,21 +94,21 @@ public class RhtyhmCharacterController : MonoBehaviour
                 RuntimeManager.PlayOneShot(hitReference);
                 holding = false;
                 holdedNote = null;
-                
                 return;
             } else if (lane != holdedNote.data.lane || !Input.GetMouseButton(0) || Input.GetMouseButtonUp(0)){
-                if (distanceHolded >= holdedNote.data.duration - OK_WINDOW) {
+                if (distanceHolded >= holdedNote.data.duration - GREAT_WINDOW) {
                     SpawnPopup("Perfect!", holdedNote.data.lane);
                     holdedNote.gameObject.SetActive(false);
                     RuntimeManager.PlayOneShot(hitReference);
+                } else {
+                    holdedNote.SetMissed();
                 }
                 holding = false;
                 holdedNote = null;
                 return;
             }
 
-            holdedNote.Move(distanceHolded, false);
-            holdedNote.durationHandle.Move(-distanceHolded, false);
+            holdedNote.SetConsumedDistance(distanceHolded);
         }
     }
 
@@ -121,21 +119,20 @@ public class RhtyhmCharacterController : MonoBehaviour
                 continue;
 
             int delta = note.data.time - currentTime;
-            if (Mathf.Abs(delta) > OK_WINDOW)
+            if (Mathf.Abs(delta) > GREAT_WINDOW)
                 continue;
 
             if (note.data.lane != inputLane)
                 continue;
 
             int absDelta = Mathf.Abs(delta);
-            if (absDelta <= PERFECT_WINDOW) {
-                SpawnPopup("Perfect!", note.data.lane);
-            }
-            else if (absDelta <= GREAT_WINDOW) {
-                SpawnPopup("Great", note.data.lane);
-            }
-            else {
-                SpawnPopup("OK", note.data.lane);
+            if (!RequiresSlash(note.data.type)) {
+                if (absDelta <= PERFECT_WINDOW) {
+                    SpawnPopup("Perfect!", note.data.lane);
+                }
+                else {
+                    SpawnPopup("Great", note.data.lane);
+                }
             }
 
             if (note is SliderNote slider) {
@@ -166,7 +163,7 @@ public class RhtyhmCharacterController : MonoBehaviour
 
             int absDelta = Mathf.Abs(delta);
             if (RequiresSlash(note.data.type)) {
-                if (absDelta <= GREAT_WINDOW) {
+                if (absDelta <= PERFECT_SLASH_WINDOW) {
                     SpawnPopup("Perfect!", note.data.lane);
                 }
                 else {
@@ -187,7 +184,7 @@ public class RhtyhmCharacterController : MonoBehaviour
             if (!note.gameObject.activeSelf)
                 continue;
 
-            if (currentTime - note.data.time > OK_WINDOW) {
+            if (currentTime - note.data.time > GREAT_WINDOW) {
                 //note.gameObject.SetActive(false);
             }
             else if (note.data.time > currentTime) {
@@ -202,10 +199,10 @@ public class RhtyhmCharacterController : MonoBehaviour
             if (!note.gameObject.activeSelf)
                 continue;
 
-            if (Mathf.Abs(note.data.time - currentTime) <= OK_WINDOW)
+            if (Mathf.Abs(note.data.time - currentTime) <= GREAT_WINDOW)
                 return true; // Still within window for some note
 
-            if (note.data.time > currentTime + OK_WINDOW)
+            if (note.data.time > currentTime + GREAT_WINDOW)
                 break; // Future notes — no need to wait
 
         }
@@ -218,10 +215,10 @@ public class RhtyhmCharacterController : MonoBehaviour
             if (!note.gameObject.activeSelf)
                 continue;
 
-            if (Mathf.Abs(note.data.time - currentTime) <= OK_WINDOW && RequiresSlash(note.data.type))
+            if (Mathf.Abs(note.data.time - currentTime) <= GREAT_WINDOW && RequiresSlash(note.data.type))
                 return true; // Still within window for some note
 
-            if (note.data.time > currentTime + OK_WINDOW)
+            if (note.data.time > currentTime + GREAT_WINDOW)
                 break; // Future notes — no need to wait
 
         }
@@ -242,5 +239,17 @@ public class RhtyhmCharacterController : MonoBehaviour
         } else {
             return false;
         }
+    }
+
+    private void OnDisable()
+    {
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+    }
+
+    private void OnEnable()
+    {
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
     }
 }

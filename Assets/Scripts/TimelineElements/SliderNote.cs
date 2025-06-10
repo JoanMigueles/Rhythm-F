@@ -1,14 +1,30 @@
+using DG.Tweening;
 using UnityEngine;
 
 public class SliderNote : Note
 {
     public NoteHandle durationHandle;
+    int consumedAmount;
 
     public override void UpdatePosition()
     {
-        base.UpdatePosition();
+        float yPos = data.lane == 0 ? 1.5f : -1.5f;
+        transform.position = new Vector3(NoteManager.instance.GetPositionFromTime(data.time + consumedAmount) , yPos, 0f);
         if (durationHandle != null) {
-            durationHandle.transform.localPosition = new Vector3(NoteManager.instance.GetDistanceFromTime(data.duration), 0f, 0f);
+            durationHandle.SetDuration(data.duration - consumedAmount);
+        }
+    }
+
+    public void SetConsumedDistance(int distance)
+    {
+        consumedAmount = distance;
+    }
+
+    public void SetMissed()
+    {
+        foreach (SpriteRenderer sr in GetComponentsInChildren<SpriteRenderer>()) {
+            Color color = sr.color;
+            sr.DOColor(new Color(color.r, color.g, color.b, 0.5f), 0.2f);
         }
     }
 }

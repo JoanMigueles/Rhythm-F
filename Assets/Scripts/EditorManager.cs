@@ -96,7 +96,6 @@ public class EditorManager : NoteManager
         }
 
         HandleNavigationInput();
-
         switch (editMode) {
             case EditMode.Select:
                 HandleSelectionInput();
@@ -634,8 +633,6 @@ public class EditorManager : NoteManager
         UpdateMetronomeFlags();
     }
 
-    
-
     // ---------------------------------------------------------------------------------------------------------------------------------------------
     // COMMANDS: ARE STORED IN A HISTORY, ALLOWING US TO UNDO AND REDO THESE ACTIONS
     // ---------------------------------------------------------------------------------------------------------------------------------------------
@@ -678,6 +675,11 @@ public class EditorManager : NoteManager
         List<NoteData> selectedNotesData = new List<NoteData>();
         foreach (TimelineElement element in selectedElements) {
             if (element is Note note) selectedNotesData.Add(note.data);
+            else if (element is NoteHandle handle) {
+                if (handle.note != null && !handle.note.isSelected) {
+                    selectedNotesData.Add(handle.note.data);
+                }
+            }
         }
         if (selectedNotesData.Count == 0) return;
 
