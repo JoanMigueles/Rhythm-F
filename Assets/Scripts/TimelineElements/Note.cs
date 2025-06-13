@@ -79,4 +79,20 @@ public class Note : TimelineElement
         float yPos = data.lane == 0 ? 1.5f : -1.5f;
         transform.position = new Vector3(NoteManager.instance.GetPositionFromTime(data.time), yPos, 0f);
     }
+
+    public virtual void SetDisplayMode(bool gameplay)
+    {
+        if (gameplay) {
+            // Notes on gameplay/testing
+            gameObject.SetActive(Metronome.instance.GetTimelinePosition() < data.time);
+        } else {
+            // Notes on editor
+            gameObject.SetActive(true);
+        }
+    }
+}
+
+public class DurationNote : Note
+{
+    public NoteHandle durationHandle;
 }

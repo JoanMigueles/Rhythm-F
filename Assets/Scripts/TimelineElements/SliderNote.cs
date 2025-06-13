@@ -1,9 +1,8 @@
 using DG.Tweening;
 using UnityEngine;
 
-public class SliderNote : Note
+public class SliderNote : DurationNote
 {
-    public NoteHandle durationHandle;
     int consumedAmount;
 
     public override void UpdatePosition()
@@ -25,6 +24,18 @@ public class SliderNote : Note
         foreach (SpriteRenderer sr in GetComponentsInChildren<SpriteRenderer>()) {
             Color color = sr.color;
             sr.DOColor(new Color(color.r, color.g, color.b, 0.5f), 0.2f);
+        }
+    }
+
+    public override void SetDisplayMode(bool gameplay)
+    {
+        base.SetDisplayMode(gameplay);
+
+        if (!gameplay) {
+            consumedAmount = 0;
+            foreach (SpriteRenderer sr in GetComponentsInChildren<SpriteRenderer>()) {
+                sr.color = new Color(sr.color.r, sr.color.g, sr.color.b, 1f);
+            }
         }
     }
 }

@@ -101,7 +101,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f8edc9f00c7c3c418004170d73ab723, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  noteIndex: 0
+  isSelected: 0
+  data:
+    time: 0
+    lane: 0
+    type: 0
+    duration: 0
 --- !u!61 &7724914381145081941
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -136,15 +141,15 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: -0.08}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.8513603, y: 1.6921035}
+    oldSize: {x: 1.6411765, y: 1.5}
     newSize: {x: 1.8513603, y: 1.6921035}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 1, y: 2}
+  m_Size: {x: 1.48, y: 1.43}
   m_EdgeRadius: 0

@@ -1,4 +1,6 @@
 using FMODUnity;
+using UnityEditor;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 public class RhtyhmCharacterController : MonoBehaviour
@@ -14,12 +16,17 @@ public class RhtyhmCharacterController : MonoBehaviour
     public int GREAT_WINDOW = 100;
     public int SLASH_WINDOW = 150;
     private const int SWITCH_GRACE_TIME = 100; // ms for allowing hit in previous lane after a switch
+    public float multihitTimeInterval = 1.5f;
 
-    //FLICK
+    // HIT
     private bool hitBuffered = false;
     // HOLD
     private SliderNote holdedNote;
     private bool holding;
+    // MULTIHIT
+    private MultihitNote multihitNote;
+    private bool multihitting;
+    private float multihitTimer;
     // FLICK
     public float flickThreshold = 1000; // Pixels per second
     private bool isFlicking = false;
@@ -36,14 +43,13 @@ public class RhtyhmCharacterController : MonoBehaviour
 
     void Update()
     {
+        if (!GameManager.instance.IsPlaying()) return;
         int currentTime = Metronome.instance.GetTimelinePosition();
 
         // --- Handle lane switch ---
         if (Input.GetKeyDown(KeyCode.Space)) {
             lane = lane == 0 ? 1 : 0;
         }
-
-        transform.position = new Vector3(transform.position.x, lane == 0 ? 1.5f : -1.5f, 0f);
 
         // --- Handle click buffer ---
         if (Input.GetMouseButtonDown(0)) {
@@ -110,10 +116,44 @@ public class RhtyhmCharacterController : MonoBehaviour
 
             holdedNote.SetConsumedDistance(distanceHolded);
         }
+
+        if (multihitting) {
+            int distanceHolded = Mathf.Abs(currentTime - multihitNote.data.time);
+            if (distanceHolded >= multihitNote.data.duration) {
+                multihitting = false;
+                multihitNote.SetHitting(false);
+                multihitNote.gameObject.SetActive(false);
+                multihitNote = null;
+                transform.position = new Vector3(transform.position.x, lane == 0 ? 1.5f : -1.5f, 0f);
+                return;
+                // End multihit
+            }
+            if (multihitTimer > multihitTimeInterval) {
+                multihitting = false;
+                multihitNote.SetHitting(false);
+                multihitNote = null;
+                transform.position = new Vector3(transform.position.x, lane == 0 ? 1.5f : -1.5f, 0f);
+                return;
+                // End multihit with damage taken
+            }
+            multihitTimer += Time.deltaTime;
+            transform.position = new Vector3(transform.position.x, 0f, 0f);
+        } else {
+            transform.position = new Vector3(transform.position.x, lane == 0 ? 1.5f : -1.5f, 0f);
+        }
     }
 
     bool TryHitNotes(int currentTime, int inputLane)
     {
+        if (multihitting && multihitNote != null) {
+            if (!RequiresSlash(multihitNote.data.type)) {
+                multihitTimer = 0;
+                multihitNote.Pulsate();
+            }
+            RuntimeManager.PlayOneShot(hitReference);
+            return true;
+        }
+
         foreach (var note in nm.activeNotes) {
             if (!note.gameObject.activeSelf)
                 continue;
@@ -121,6 +161,16 @@ public class RhtyhmCharacterController : MonoBehaviour
             int delta = note.data.time - currentTime;
             if (Mathf.Abs(delta) > GREAT_WINDOW)
                 continue;
+
+            if (note is MultihitNote multihit) {
+                if (!RequiresSlash(note.data.type)) {
+                    multihitNote = multihit;
+                    multihitting = true;
+                    multihit.SetHitting(true);
+                }
+                RuntimeManager.PlayOneShot(hitReference);
+                return true;
+            }
 
             if (note.data.lane != inputLane)
                 continue;
@@ -150,13 +200,34 @@ public class RhtyhmCharacterController : MonoBehaviour
 
     bool TrySlashNotes(int currentTime, int inputLane)
     {
+        if (multihitting && multihitNote != null) {
+            if (RequiresSlash(multihitNote.data.type)) {
+                multihitTimer = 0;
+                multihitNote.Pulsate();
+            }
+            RuntimeManager.PlayOneShot(hitReference);
+            return true;
+        }
+
         foreach (var note in nm.activeNotes) {
             if (!note.gameObject.activeSelf)
                 continue;
 
+            if (note is ShooterNote shooterNote && shooterNote.IsBeingAttacked()) continue;
+
             int delta = note.data.time - currentTime;
             if (Mathf.Abs(delta) > SLASH_WINDOW)
                 continue;
+
+            if (note is MultihitNote multihit) {
+                if (RequiresSlash(note.data.type)) {
+                    multihitNote = multihit;
+                    multihitting = true;
+                    multihit.SetHitting(true);
+                }
+                RuntimeManager.PlayOneShot(hitReference);
+                return true;
+            }
 
             if (note.data.lane != inputLane)
                 continue;
@@ -169,7 +240,11 @@ public class RhtyhmCharacterController : MonoBehaviour
                 else {
                     SpawnPopup("Great", note.data.lane);
                 }
-                note.gameObject.SetActive(false);
+                if (note is ShooterNote shooter) {
+                    shooter.ReturnBullet();
+                } else {
+                    note.gameObject.SetActive(false);
+                }
                 RuntimeManager.PlayOneShot(hitReference);
                 return true;
             }
@@ -184,7 +259,8 @@ public class RhtyhmCharacterController : MonoBehaviour
             if (!note.gameObject.activeSelf)
                 continue;
 
-            if (currentTime - note.data.time > GREAT_WINDOW) {
+            if (currentTime - note.data.time > SLASH_WINDOW) {
+                if (note is ShooterNote shooter && !shooter.IsLeaving()) shooter.Leave();
                 //note.gameObject.SetActive(false);
             }
             else if (note.data.time > currentTime) {
@@ -251,5 +327,10 @@ public class RhtyhmCharacterController : MonoBehaviour
     {
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+        holding = false;
+        holdedNote = null;
+        multihitting = false;
+        multihitNote = null;
+        multihitTimer = 0;
     }
 }

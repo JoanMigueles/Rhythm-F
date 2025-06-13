@@ -1,16 +1,9 @@
 using Unity.VisualScripting;
 using UnityEngine;
 
-public enum HandleType
-{
-    Duration,
-    Anticipation
-}
-
 public class NoteHandle : TimelineElement
 {
     public Note note;
-    public HandleType type;
 
     public override void Move(int distance, bool laneSwap)
     {

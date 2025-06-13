@@ -103,7 +103,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isSelected: 0
   note: {fileID: 8504228817218515941}
-  type: 0
 --- !u!61 &1858218296149298072
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -148,7 +147,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 1, y: 2}
+  m_Size: {x: 1.55, y: 1.36}
   m_EdgeRadius: 0
 --- !u!1 &6640256213729569200
 GameObject:
@@ -250,10 +249,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 6640256213729569200}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 52c520ec6d3ec9c429aa2fc884e40d5c, type: 3}
+  m_Script: {fileID: 11500000, guid: 21ad4003ce87757488c34a5f3be89bbe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   isSelected: 0
+  data:
+    time: 0
+    lane: 0
+    type: 0
+    duration: 0
   durationHandle: {fileID: 7027564695848800866}
 --- !u!61 &7724914381145081941
 BoxCollider2D:
@@ -299,7 +303,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 1, y: 2}
+  m_Size: {x: 1.55, y: 1.36}
   m_EdgeRadius: 0
 --- !u!1 &7190100114630797509
 GameObject:

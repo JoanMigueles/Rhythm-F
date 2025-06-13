@@ -67,6 +67,8 @@ public class NoteManager : MonoBehaviour
                 headstartTimer = HEADSTART - notesData[0].time;
             }
         }
+
+        GameManager.instance.SetPlaying(true);
     }
 
     private void Update()

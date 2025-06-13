@@ -22,10 +22,10 @@ public class EditorManager : NoteManager
     [SerializeField] private GameObject markerPrefab;
     [SerializeField] private GameObject notePreview;
     [SerializeField] private GameObject markerPreview;
-    private SliderNote sliderPreview;
+    private DurationNote draggedNotePreview;
     private NoteType currentNoteType;
-    private bool isSlider;
     private bool isBig;
+    private bool isDraggable;
 
     // SELECTION BOX
     [SerializeField] private RectTransform selectionBoxVisual; 
@@ -83,6 +83,8 @@ public class EditorManager : NoteManager
         foreach (BPMFlag flag in songData.BPMFlags) {
             SpawnMarker(flag);
         }
+
+        GameManager.instance.SetPlaying(false);
     }
 
     private void Update()
@@ -204,14 +206,23 @@ public class EditorManager : NoteManager
         if (EditorUI.instance.isPanelOpened) return;
         if ((EditorUI.instance.isHidden && Input.GetKeyDown(KeyCode.Escape)) || Input.GetKeyDown(KeyCode.T)) {
             EditorUI.instance.ToggleEditorPanels();
-            GameManager.instance.SetNotes(activeNotes);
         }
+    }
+
+
+    public void SetTestingData()
+    {
+        GameManager.instance.SetNotes(activeNotes);
+        foreach (Note note in activeNotes) {
+            note.SetDisplayMode(true);
+        }
+        ClearSelection();
     }
 
     public void ReactivateNotes()
     {
         foreach (Note note in activeNotes) {
-            note.gameObject.SetActive(true);
+            note.SetDisplayMode(false);
         }
     }
 
@@ -455,8 +466,8 @@ public class EditorManager : NoteManager
 
         if (isBig) lane = 0;
         NoteData newNoteData = new NoteData(time, lane, currentNoteType);
-        if (isSlider) {
-            CreateSliderPreview(newNoteData);
+        if (isDraggable) {
+            CreateDraggedNotePreview(newNoteData);
         } else {
             CreateNote(newNoteData);
         }
@@ -466,28 +477,28 @@ public class EditorManager : NoteManager
 
     private void HandleCreateDrag(Vector3 worldPos)
     {
-        if (!Input.GetMouseButton(0) || sliderPreview == null) return;
+        if (!Input.GetMouseButton(0) || draggedNotePreview == null) return;
 
         (int moveDist, bool changedLane) = CalculateMovedDistance(worldPos.x, worldPos.y);
-        sliderPreview.UpdatePosition();
-        if (sliderPreview.durationHandle != null) {
-            sliderPreview.durationHandle.Move(moveDist, changedLane);
+        draggedNotePreview.UpdatePosition();
+        if (draggedNotePreview.durationHandle != null) {
+            draggedNotePreview.durationHandle.Move(moveDist, changedLane);
         }
     }
 
     private void HandleCreateUp(Vector3 worldPos)
     {
-        if (!Input.GetMouseButtonUp(0) || sliderPreview == null) return;
+        if (!Input.GetMouseButtonUp(0) || draggedNotePreview == null) return;
 
         (int moveDist, bool changedLane) = CalculateMovedDistance(worldPos.x, worldPos.y);
-        sliderPreview.data.duration = moveDist;
-        if (sliderPreview.durationHandle != null) {
+        draggedNotePreview.data.duration = moveDist;
+        if (draggedNotePreview.durationHandle != null) {
             if (moveDist < 0) moveDist = 0;
-            sliderPreview.data.duration = moveDist;
+            draggedNotePreview.data.duration = moveDist;
         }
-        sliderPreview.UpdatePosition();
-        CreateNote(sliderPreview.data);
-        Destroy(sliderPreview.gameObject);
+        draggedNotePreview.UpdatePosition();
+        CreateNote(draggedNotePreview.data);
+        Destroy(draggedNotePreview.gameObject);
     }
 
     public void UpdateNotePreview(Vector3 worldPos)
@@ -505,12 +516,12 @@ public class EditorManager : NoteManager
         notePreview.transform.position = new Vector3(xPos, yPos, 0f);
     }
 
-    public void CreateSliderPreview(NoteData noteData)
+    public void CreateDraggedNotePreview(NoteData noteData)
     {
         GameObject prefab = GetNoteTypePrefab(noteData.type);
-        sliderPreview = Instantiate(prefab, transform).GetComponent<SliderNote>();
-        sliderPreview.data = noteData;
-        sliderPreview.UpdatePosition();
+        draggedNotePreview = Instantiate(prefab, transform).GetComponent<DurationNote>();
+        draggedNotePreview.data = noteData;
+        draggedNotePreview.UpdatePosition();
     }
 
     // -----------------------------------------------------------------------------------------------------------------------------
@@ -606,7 +617,7 @@ public class EditorManager : NoteManager
             // Remove from the list
             activeNotes.Remove(deleteNote);
             selectedElements.Remove(deleteNote);
-            if (deleteNote is SliderNote slider && slider.durationHandle != null) {
+            if (deleteNote is DurationNote slider && slider.durationHandle != null) {
                 selectedElements.Remove(slider.durationHandle);
             }
             Destroy(deleteNote.gameObject);
@@ -729,7 +740,7 @@ public class EditorManager : NoteManager
                 selectedNotesData.Add(note.data);
                 NoteData newNote = new NoteData(note.data);
                 newNote.time += distance;
-                if (laneSwap && note is not BigSliderNote) newNote.lane = newNote.lane == 0 ? 1 : 0;
+                if (laneSwap && note is not MultihitNote) newNote.lane = newNote.lane == 0 ? 1 : 0;
                 newNotesData.Add(newNote);
             } else if (element is NoteHandle handle) {
                 if (handle.note.isSelected) continue;
@@ -847,7 +858,7 @@ public class EditorManager : NoteManager
         int previousLane = -1;
         foreach (TimelineElement element in selectedElements) {
             if (element is Note note) {
-                if (note is BigSliderNote unique) return false;
+                if (note is MultihitNote unique) return false;
                 if (previousLane != note.data.lane) {
                     if (previousLane == -1) {
                         previousLane = note.data.lane;
@@ -929,8 +940,8 @@ public class EditorManager : NoteManager
     {
         if (System.Enum.TryParse(type, out NoteType noteType)) {
             currentNoteType = noteType;
-            isBig = GetNoteTypePrefab(currentNoteType).GetComponent<BigSliderNote>() != null;
-            isSlider = GetNoteTypePrefab(currentNoteType).GetComponent<SliderNote>() != null;
+            isBig = GetNoteTypePrefab(currentNoteType).GetComponent<MultihitNote>() != null;
+            isDraggable = GetNoteTypePrefab(currentNoteType).GetComponent<DurationNote>() != null;
             notePreview.GetComponent<SpriteRenderer>().sprite = GetNoteTypePrefab(noteType).GetComponent<SpriteRenderer>().sprite;
         }
     }

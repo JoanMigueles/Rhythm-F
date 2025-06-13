@@ -7,8 +7,7 @@ public class GameManager : MonoBehaviour
     public static GameManager instance;
     public List<Note> notes {  get; private set; }
     private string selectedSong;
-    private bool gameRunning;
-    private bool isNew;
+    private bool isPlaying;
 
     private void Awake()
     {
@@ -24,22 +23,16 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         Application.targetFrameRate = 140; // Sin límite de framerate
-        gameRunning = true;
     }
 
-    public bool IsGameRunning()
+    public bool IsPlaying()
     {
-        return gameRunning;
+        return isPlaying;
     }
 
-    public void PauseGame()
+    public void SetPlaying(bool playing)
     {
-        gameRunning = false;
-    }
-
-    public void ResumeGame()
-    {
-        gameRunning = true;
+        isPlaying = playing;
     }
 
     public void RestartLevel()

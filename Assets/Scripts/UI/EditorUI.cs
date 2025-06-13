@@ -217,6 +217,7 @@ public class EditorUI : UIManager
             panelSequence.Join(bottomPanel.DOAnchorPosY(bottomPanel.anchoredPosition.y - bottomPanel.rect.height, duration).SetEase(ease));
             panelSequence.Join(leftPanel.DOAnchorPosX(leftPanel.anchoredPosition.x - leftPanel.rect.width, duration).SetEase(ease));
             if (Metronome.instance.IsPaused()) Metronome.instance.PlaySong();
+            em.SetTestingData();
         }
         else {
             panelSequence.Join(topPanel.DOAnchorPosY(topPanel.anchoredPosition.y - topPanel.rect.height, duration).SetEase(ease));
@@ -227,6 +228,7 @@ public class EditorUI : UIManager
         }
 
         isHidden = !isHidden;
+        GameManager.instance.SetPlaying(isHidden);
         testDummy.SetActive(isHidden);
     }
 }
