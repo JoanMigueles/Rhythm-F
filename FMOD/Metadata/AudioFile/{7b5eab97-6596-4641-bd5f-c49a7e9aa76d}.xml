@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="AudioFile" id="{7b5eab97-6596-4641-bd5f-c49a7e9aa76d}">
+		<property name="assetPath">
+			<value>victory_fanfare.mp3</value>
+		</property>
+		<property name="isStreaming">
+			<value>true</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>48</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>62.712000000000003</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{2151ec24-aade-4e2d-a0fe-94a80de31355}</destination>
+		</relationship>
+	</object>
+</objects>

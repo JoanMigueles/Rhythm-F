@@ -464,6 +464,13 @@ MonoBehaviour:
     lane: 0
     type: 0
     duration: 0
+  <hitReference>k__BackingField:
+    Guid:
+      Data1: -1032950187
+      Data2: 1107193288
+      Data3: -1379719765
+      Data4: 1249203959
+    Path: event:/SoundEffects/KickDrum
   durationHandle: {fileID: 7027564695848800866}
   <warnReference>k__BackingField:
     Guid:

@@ -18,9 +18,10 @@ MonoBehaviour:
       songID: 0
       songName: TestingLevel
       artist: SDR
-      audioFileName: looperman-l-5125700-0299354-synth-vaporwave-drum-beat-4.wav
+      audioFileName: 
       coverFileName: 
       previewStartTime: 0
+      stage: 0
     BPMFlags:
     - offset: 0
       BPM: 120

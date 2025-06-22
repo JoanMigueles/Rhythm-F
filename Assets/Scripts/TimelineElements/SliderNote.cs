@@ -7,6 +7,7 @@ public class SliderNote : DurationNote
 
     public override void UpdatePosition()
     {
+        CheckForSound();
         float yPos = data.lane == 0 ? 1.5f : -1.5f;
         transform.position = new Vector3(NoteManager.instance.GetPositionFromTime(data.time + consumedAmount) , yPos, 0f);
         if (durationHandle != null) {
@@ -17,6 +18,11 @@ public class SliderNote : DurationNote
     public void SetConsumedDistance(int distance)
     {
         consumedAmount = distance;
+    }
+
+    public int GetConsumedDistance()
+    {
+        return consumedAmount;
     }
 
     public void SetMissed()

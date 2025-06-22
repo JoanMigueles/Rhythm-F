@@ -2,7 +2,14 @@ using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
 
-// Supporting data structures
+[System.Serializable]
+public enum Stage
+{
+    City,
+    Beach,
+    Future
+}
+
 [System.Serializable]
 public class SongData
 {
@@ -45,6 +52,7 @@ public struct SongMetadata
     public string audioFileName;
     public string coverFileName;
     public float previewStartTime;
+    public Stage stage;
 }
 
 public static class SaveData

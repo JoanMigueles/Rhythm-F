@@ -1,265 +1,270 @@
 using FMODUnity;
-using UnityEditor;
-using UnityEditor.Experimental.GraphView;
 using UnityEngine;
+
+// Enum to define interaction types
+public enum InteractionType
+{
+    Hit,
+    Flick
+}
 
 public class RhtyhmCharacterController : MonoBehaviour
 {
-    public int lane;
+    public int currentLane;
 
     [field: Header("Hit")]
     [field: SerializeField] public EventReference hitReference { get; private set; }
 
     public GameObject popupPrefab;
-    public int PERFECT_WINDOW = 35;
-    public int PERFECT_SLASH_WINDOW = 65;
-    public int GREAT_WINDOW = 100;
-    public int SLASH_WINDOW = 150;
+    public int perfectWindow = 50;
+    public int perfectSlashWindow = 65;
+    public int greatWindow = 120;
+    public int slashWindow = 150;
     private const int SWITCH_GRACE_TIME = 100; // ms for allowing hit in previous lane after a switch
     public float multihitTimeInterval = 1.5f;
+    public float sliderScoreInterval = 0.1f;
+    private float sliderScoreTimer;
+    private int score;
 
     // HIT
     private bool hitBuffered = false;
+    private int hitBufferTime = -1;
     // HOLD
-    private SliderNote holdedNote;
-    private bool holding;
+    private SliderNote heldNote;
+    private bool isHolding;
     // MULTIHIT
-    private MultihitNote multihitNote;
-    private bool multihitting;
+    private MultihitNote activeMultihitNote;
+    private bool isMultihitting;
     private float multihitTimer;
     // FLICK
     public float flickThreshold = 1000; // Pixels per second
     private bool isFlicking = false;
     private bool flickBuffered = false;
 
-    private NoteManager nm;
+    private NoteManager noteManager;
+    private Metronome metronome;
 
     void Start()
     {
-        lane = 1;
-        nm = NoteManager.instance;
+        score = 0;
+        currentLane = 1;
+        noteManager = NoteManager.instance;
+        metronome = Metronome.instance;
     }
 
 
     void Update()
     {
         if (!GameManager.instance.IsPlaying()) return;
-        int currentTime = Metronome.instance.GetTimelinePosition();
+        int currentTime = metronome.GetTimelinePosition();
+        HandleInput();
+        HandleNoteInteractions(currentTime);
+        UpdateCharacterPosition();
+    }
 
-        // --- Handle lane switch ---
+    private void HandleInput()
+    {
+        // Lane switching
         if (Input.GetKeyDown(KeyCode.Space)) {
-            lane = lane == 0 ? 1 : 0;
+            currentLane = currentLane == 0 ? 1 : 0;
         }
 
-        // --- Handle click buffer ---
+        // Hit buffer
         if (Input.GetMouseButtonDown(0)) {
             hitBuffered = true;
         }
 
-        // --- Handle flick buffer ---
+        // Flick detection
         float mouseSpeedX = Input.GetAxis("Mouse X") / Time.deltaTime;
         if (!isFlicking && Mathf.Abs(mouseSpeedX) >= flickThreshold) {
-            // Start of a flick
             isFlicking = true;
             flickBuffered = true;
         }
-        else if (isFlicking && Mathf.Abs(mouseSpeedX) < flickThreshold - flickThreshold/2) {
-            // Flick has ended
+        else if (isFlicking && Mathf.Abs(mouseSpeedX) < flickThreshold * 0.5f) {
             isFlicking = false;
         }
+    }
 
+    private void HandleNoteInteractions(int currentTime)
+    {
+        if (noteManager.activeNotes == null || noteManager.activeNotes.Count == 0) return;
 
-        if (nm.activeNotes != null && nm.activeNotes.Count > 0) {
-            HandleMissedNotes(currentTime);
+        HandleMissedNotes(currentTime);
 
-            // Try resolving buffered click
-            if (hitBuffered) {
-                bool hit = TryHitNotes(currentTime, lane);
-
-                // Mark buffer as consumed either on success or if outside the hit window
-                if (hit || !InNoteWindow(currentTime)) {
-                    Debug.Log("Air attack");
-                    hitBuffered = false;
-                }
-            }
-            if (flickBuffered) {
-                bool slash = TrySlashNotes(currentTime, lane);
-
-                // Mark buffer as consumed either on success or if outside the hit window
-                if (slash || !InSlashWindow(currentTime)) {
-                    flickBuffered = false;
-                }
+        // Try resolving buffered inputs
+        if (hitBuffered) {
+            bool hitSuccess = TryHitNotes(currentTime, currentLane, InteractionType.Hit);
+            if (hitSuccess || !IsInNoteWindow(currentTime, InteractionType.Hit)) {
+                hitBuffered = false;
             }
         }
 
-        if (holding) {
-            int distanceHolded = Mathf.Abs(currentTime - holdedNote.data.time);
-            if (distanceHolded >= holdedNote.data.duration) {
-                SpawnPopup("Perfect!", holdedNote.data.lane);
-                holdedNote.gameObject.SetActive(false);
+        if (flickBuffered) {
+            bool slashSuccess = TryHitNotes(currentTime, currentLane, InteractionType.Flick);
+            if (slashSuccess || !IsInNoteWindow(currentTime, InteractionType.Flick)) {
+                flickBuffered = false;
+            }
+        }
+
+        HandleHoldNote(currentTime);
+        HandleMultihitNote(currentTime);
+    }
+
+    private void HandleHoldNote(int currentTime)
+    {
+        if (!isHolding || heldNote == null) return;
+
+        int distanceHeld = Mathf.Abs(currentTime - heldNote.data.time);
+
+        sliderScoreTimer += Time.deltaTime;
+        if (sliderScoreTimer >= sliderScoreInterval) {
+            sliderScoreTimer = 0;
+            score += 10;
+        }
+
+        if (distanceHeld >= heldNote.data.duration) {
+            CompleteHoldNote("Perfect!", heldNote);
+            return;
+        }
+
+        if (currentLane != heldNote.data.lane || !Input.GetMouseButton(0) || Input.GetMouseButtonUp(0)) {
+            if (distanceHeld >= heldNote.data.duration - greatWindow) {
+                CompleteHoldNote("Perfect!", heldNote);
+            }
+            else {
+                sliderScoreTimer = 0;
+                heldNote.SetMissed();
+            }
+            isHolding = false;
+            heldNote = null;
+            return;
+        }
+
+        heldNote.SetConsumedDistance(distanceHeld);
+    }
+
+    private void CompleteHoldNote(string rating, SliderNote note)
+    {
+        sliderScoreTimer = 0;
+        SpawnPopup(rating, note.data.lane);
+        note.gameObject.SetActive(false);
+        isHolding = false;
+        heldNote = null;
+    }
+
+    private void HandleMultihitNote(int currentTime)
+    {
+        if (!isMultihitting || activeMultihitNote == null) return;
+
+        int distanceHeld = Mathf.Abs(currentTime - activeMultihitNote.data.time);
+
+        if (distanceHeld >= activeMultihitNote.data.duration || multihitTimer > multihitTimeInterval) {
+            EndMultihit();
+            return;
+        }
+
+        multihitTimer += Time.deltaTime;
+    }
+
+    private void EndMultihit()
+    {
+        isMultihitting = false;
+        if (activeMultihitNote != null) {
+            activeMultihitNote.SetHitting(false);
+            activeMultihitNote.gameObject.SetActive(false);
+            activeMultihitNote = null;
+        }
+    }
+
+    private void UpdateCharacterPosition()
+    {
+        float yPosition = isMultihitting ? 0f : (currentLane == 0 ? 1.5f : -1.5f);
+        transform.position = new Vector3(transform.position.x, yPosition, 0f);
+    }
+
+    bool TryHitNotes(int currentTime, int inputLane, InteractionType interaction)
+    {
+        // Determine parameters based on interaction type
+        bool requiresSlash = interaction == InteractionType.Flick;
+        int windowSize = requiresSlash ? slashWindow : greatWindow;
+        int perfectWindowSize = requiresSlash ? perfectSlashWindow : perfectWindow;
+
+        // Handle multihit notes first
+        if (isMultihitting && activeMultihitNote != null) {
+            if (RequiresSlash(activeMultihitNote.data.type) == requiresSlash) {
+                activeMultihitNote.Pulsate();
+                multihitTimer = 0;
                 RuntimeManager.PlayOneShot(hitReference);
-                holding = false;
-                holdedNote = null;
-                return;
-            } else if (lane != holdedNote.data.lane || !Input.GetMouseButton(0) || Input.GetMouseButtonUp(0)){
-                if (distanceHolded >= holdedNote.data.duration - GREAT_WINDOW) {
-                    SpawnPopup("Perfect!", holdedNote.data.lane);
-                    holdedNote.gameObject.SetActive(false);
+                score += 50;
+                return true;
+            }
+            return false;
+        }
+
+        foreach (Note note in noteManager.activeNotes) {
+            if (!note.gameObject.activeSelf) continue;
+
+            // Skip shooter notes that are being attacked
+            if (note is ShooterNote shooterNote &&
+                shooterNote.IsBeingAttacked())
+                continue;
+
+            int delta = note.data.time - currentTime;
+            if (Mathf.Abs(delta) > windowSize) continue;
+
+            // Handle multihit notes
+            if (note is MultihitNote multihit) {
+                if (RequiresSlash(multihit.data.type) == requiresSlash) {
+                    activeMultihitNote = multihit;
+                    isMultihitting = true;
+                    multihit.SetHitting(true);
+                    multihitTimer = 0;
                     RuntimeManager.PlayOneShot(hitReference);
+                    score += 50;
+                    return true;
+                }
+                continue;
+            }
+
+            if (note.data.lane != inputLane) continue;
+
+            // For the correct interaction type (slash or normal hit)
+            if (RequiresSlash(note.data.type) == requiresSlash) {
+                if (Mathf.Abs(delta) <= perfectWindowSize) {
+                    SpawnPopup("Perfect!", note.data.lane);
+                    score += 150;
                 } else {
-                    holdedNote.SetMissed();
-                }
-                holding = false;
-                holdedNote = null;
-                return;
-            }
-
-            holdedNote.SetConsumedDistance(distanceHolded);
-        }
-
-        if (multihitting) {
-            int distanceHolded = Mathf.Abs(currentTime - multihitNote.data.time);
-            if (distanceHolded >= multihitNote.data.duration) {
-                multihitting = false;
-                multihitNote.SetHitting(false);
-                multihitNote.gameObject.SetActive(false);
-                multihitNote = null;
-                transform.position = new Vector3(transform.position.x, lane == 0 ? 1.5f : -1.5f, 0f);
-                return;
-                // End multihit
-            }
-            if (multihitTimer > multihitTimeInterval) {
-                multihitting = false;
-                multihitNote.SetHitting(false);
-                multihitNote = null;
-                transform.position = new Vector3(transform.position.x, lane == 0 ? 1.5f : -1.5f, 0f);
-                return;
-                // End multihit with damage taken
-            }
-            multihitTimer += Time.deltaTime;
-            transform.position = new Vector3(transform.position.x, 0f, 0f);
-        } else {
-            transform.position = new Vector3(transform.position.x, lane == 0 ? 1.5f : -1.5f, 0f);
-        }
-    }
-
-    bool TryHitNotes(int currentTime, int inputLane)
-    {
-        if (multihitting && multihitNote != null) {
-            if (!RequiresSlash(multihitNote.data.type)) {
-                multihitTimer = 0;
-                multihitNote.Pulsate();
-            }
-            RuntimeManager.PlayOneShot(hitReference);
-            return true;
-        }
-
-        foreach (var note in nm.activeNotes) {
-            if (!note.gameObject.activeSelf)
-                continue;
-
-            int delta = note.data.time - currentTime;
-            if (Mathf.Abs(delta) > GREAT_WINDOW)
-                continue;
-
-            if (note is MultihitNote multihit) {
-                if (!RequiresSlash(note.data.type)) {
-                    multihitNote = multihit;
-                    multihitting = true;
-                    multihit.SetHitting(true);
-                }
-                RuntimeManager.PlayOneShot(hitReference);
-                return true;
-            }
-
-            if (note.data.lane != inputLane)
-                continue;
-
-            int absDelta = Mathf.Abs(delta);
-            if (!RequiresSlash(note.data.type)) {
-                if (absDelta <= PERFECT_WINDOW) {
-                    SpawnPopup("Perfect!", note.data.lane);
-                }
-                else {
                     SpawnPopup("Great", note.data.lane);
+                    score += 100;
                 }
-            }
 
-            if (note is SliderNote slider) {
-                holdedNote = slider;
-                holding = true;
-            } else {
-                note.gameObject.SetActive(false);
-            }
-
-            RuntimeManager.PlayOneShot(hitReference);
-            return true;
-        }
-        return false;
-    }
-
-    bool TrySlashNotes(int currentTime, int inputLane)
-    {
-        if (multihitting && multihitNote != null) {
-            if (RequiresSlash(multihitNote.data.type)) {
-                multihitTimer = 0;
-                multihitNote.Pulsate();
-            }
-            RuntimeManager.PlayOneShot(hitReference);
-            return true;
-        }
-
-        foreach (var note in nm.activeNotes) {
-            if (!note.gameObject.activeSelf)
-                continue;
-
-            if (note is ShooterNote shooterNote && shooterNote.IsBeingAttacked()) continue;
-
-            int delta = note.data.time - currentTime;
-            if (Mathf.Abs(delta) > SLASH_WINDOW)
-                continue;
-
-            if (note is MultihitNote multihit) {
-                if (RequiresSlash(note.data.type)) {
-                    multihitNote = multihit;
-                    multihitting = true;
-                    multihit.SetHitting(true);
-                }
-                RuntimeManager.PlayOneShot(hitReference);
-                return true;
-            }
-
-            if (note.data.lane != inputLane)
-                continue;
-
-            int absDelta = Mathf.Abs(delta);
-            if (RequiresSlash(note.data.type)) {
-                if (absDelta <= PERFECT_SLASH_WINDOW) {
-                    SpawnPopup("Perfect!", note.data.lane);
-                }
-                else {
-                    SpawnPopup("Great", note.data.lane);
-                }
                 if (note is ShooterNote shooter) {
-                    shooter.ReturnBullet();
-                } else {
+                    if (interaction == InteractionType.Flick) {
+                        shooter.ReturnBullet();
+                    }
+                }
+                else if (note is SliderNote slider && interaction == InteractionType.Hit) {
+                    heldNote = slider;
+                    isHolding = true;
+                }
+                else {
                     note.gameObject.SetActive(false);
                 }
+
                 RuntimeManager.PlayOneShot(hitReference);
                 return true;
             }
-            
         }
         return false;
     }
 
     void HandleMissedNotes(int currentTime)
     {
-        foreach (var note in nm.activeNotes) {
+        foreach (var note in noteManager.activeNotes) {
             if (!note.gameObject.activeSelf)
                 continue;
 
-            if (currentTime - note.data.time > SLASH_WINDOW) {
+            if (currentTime - note.data.time > slashWindow) {
                 if (note is ShooterNote shooter && !shooter.IsLeaving()) shooter.Leave();
                 //note.gameObject.SetActive(false);
             }
@@ -269,40 +274,27 @@ public class RhtyhmCharacterController : MonoBehaviour
         }
     }
 
-    bool InNoteWindow(int currentTime)
+    private bool IsInNoteWindow(int currentTime, InteractionType interaction)
     {
-        foreach (var note in nm.activeNotes) {
-            if (!note.gameObject.activeSelf)
-                continue;
+        int windowSize = interaction == InteractionType.Flick ? slashWindow : greatWindow;
 
-            if (Mathf.Abs(note.data.time - currentTime) <= GREAT_WINDOW)
-                return true; // Still within window for some note
+        foreach (var note in noteManager.activeNotes) {
+            if (!note.gameObject.activeSelf) continue;
 
-            if (note.data.time > currentTime + GREAT_WINDOW)
-                break; // Future notes — no need to wait
+            // Check if we've passed all relevant notes
+            if (note.data.time > currentTime + windowSize)
+                break;
 
-        }
-        return false;
-    }
-
-    bool InSlashWindow(int currentTime)
-    {
-        foreach (var note in nm.activeNotes) {
-            if (!note.gameObject.activeSelf)
-                continue;
-
-            if (Mathf.Abs(note.data.time - currentTime) <= GREAT_WINDOW && RequiresSlash(note.data.type))
-                return true; // Still within window for some note
-
-            if (note.data.time > currentTime + GREAT_WINDOW)
-                break; // Future notes — no need to wait
-
+            // Check if note is within window
+            bool inWindow = Mathf.Abs(note.data.time - currentTime) <= windowSize;
+            return true;
         }
         return false;
     }
 
     public void SpawnPopup(string result, int lane)
     {
+        Debug.Log("Spawn");
         float yPos = lane == 0 ? 2f : -1f;
         GameObject popup = Instantiate(popupPrefab, new Vector3(0.2f, yPos, 0), Quaternion.identity);
         popup.GetComponent<PopupText>().Show(result);
@@ -310,11 +302,14 @@ public class RhtyhmCharacterController : MonoBehaviour
 
     public bool RequiresSlash(NoteType type)
     {
-        if (type == NoteType.Slash || type == NoteType.Warn_Slash || type == NoteType.Multiple_Slash) {
-            return true;
-        } else {
-            return false;
-        }
+        return type == NoteType.Slash ||
+               type == NoteType.Warn_Slash ||
+               type == NoteType.Multiple_Slash;
+    }
+
+    public int GetScore()
+    {
+        return score;
     }
 
     private void OnDisable()
@@ -327,10 +322,10 @@ public class RhtyhmCharacterController : MonoBehaviour
     {
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
-        holding = false;
-        holdedNote = null;
-        multihitting = false;
-        multihitNote = null;
+        isHolding = false;
+        heldNote = null;
+        isMultihitting = false;
+        activeMultihitNote = null;
         multihitTimer = 0;
     }
 }

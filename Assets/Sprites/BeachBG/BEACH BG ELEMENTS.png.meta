@@ -1,0 +1,1235 @@
+fileFormatVersion: 2
+guid: 88a929ae8277eec4691e6842c3e232df
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 4774736294572532296
+    second: BEACH BG ELEMENTS_0
+  - first:
+      213: -3063232816493031463
+    second: BEACH BG ELEMENTS_1
+  - first:
+      213: 472459720012042963
+    second: BEACH BG ELEMENTS_2
+  - first:
+      213: 992099205535543972
+    second: BEACH BG ELEMENTS_3
+  - first:
+      213: 2557939664919435016
+    second: BEACH BG ELEMENTS_4
+  - first:
+      213: 7084766040673200797
+    second: BEACH BG ELEMENTS_5
+  - first:
+      213: -6890022708397853303
+    second: BEACH BG ELEMENTS_6
+  - first:
+      213: 1999291062318049420
+    second: BEACH BG ELEMENTS_7
+  - first:
+      213: 4566855959538135787
+    second: BEACH BG ELEMENTS_8
+  - first:
+      213: 3043498575486942330
+    second: BEACH BG ELEMENTS_9
+  - first:
+      213: -7516566510674772968
+    second: BEACH BG ELEMENTS_10
+  - first:
+      213: 5048514454022657146
+    second: BEACH BG ELEMENTS_11
+  - first:
+      213: 7814852388940326790
+    second: BEACH BG ELEMENTS_12
+  - first:
+      213: -5118095205911448679
+    second: BEACH BG ELEMENTS_13
+  - first:
+      213: -656782973463931972
+    second: BEACH BG ELEMENTS_14
+  - first:
+      213: 1233168677601075989
+    second: BEACH BG ELEMENTS_15
+  - first:
+      213: -9106293176898215955
+    second: BEACH BG ELEMENTS_16
+  - first:
+      213: 1075540361904400943
+    second: BEACH BG ELEMENTS_17
+  - first:
+      213: -5391086020164858764
+    second: BEACH BG ELEMENTS_18
+  - first:
+      213: 7350864044577273816
+    second: BEACH BG ELEMENTS_19
+  - first:
+      213: -6757828072831618370
+    second: BEACH BG ELEMENTS_20
+  - first:
+      213: 7879469154287845440
+    second: BEACH BG ELEMENTS_21
+  - first:
+      213: 2271408905990227632
+    second: BEACH BG ELEMENTS_22
+  - first:
+      213: -7757693971522636746
+    second: BEACH BG ELEMENTS_23
+  - first:
+      213: -466603236455135999
+    second: BEACH BG ELEMENTS_24
+  - first:
+      213: 4451698096952587743
+    second: BEACH BG ELEMENTS_25
+  - first:
+      213: -3112150322811020729
+    second: BEACH BG ELEMENTS_26
+  - first:
+      213: 7431640754031045524
+    second: BEACH BG ELEMENTS_27
+  - first:
+      213: -6240241030268853900
+    second: BEACH BG ELEMENTS_28
+  - first:
+      213: 1365790666797689621
+    second: BEACH BG ELEMENTS_29
+  - first:
+      213: 4649235564543544488
+    second: BEACH BG ELEMENTS_30
+  - first:
+      213: 1193846252169446652
+    second: BEACH BG ELEMENTS_31
+  - first:
+      213: 6409953352299005390
+    second: BEACH BG ELEMENTS_32
+  - first:
+      213: -8348371530247129061
+    second: BEACH BG ELEMENTS_33
+  - first:
+      213: -3915813632303210123
+    second: BEACH BG ELEMENTS_34
+  - first:
+      213: 8518648419171298496
+    second: BEACH BG ELEMENTS_35
+  - first:
+      213: 954463778581008644
+    second: BEACH BG ELEMENTS_36
+  - first:
+      213: -5943937959994734472
+    second: BEACH BG ELEMENTS_37
+  - first:
+      213: 6766666595635096743
+    second: BEACH BG ELEMENTS_38
+  - first:
+      213: -2299438077332193976
+    second: BEACH BG ELEMENTS_39
+  - first:
+      213: -8384536089418238587
+    second: BEACH BG ELEMENTS_40
+  - first:
+      213: 840922234551295581
+    second: BEACH BG ELEMENTS_41
+  - first:
+      213: 5446045623794888936
+    second: BEACH BG ELEMENTS_42
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 0
+    wrapV: 0
+    wrapW: 0
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 0
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 8192
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 2
+    compressionQuality: 50
+    crunchedCompression: 1
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: BEACH BG ELEMENTS_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 500
+        width: 1461
+        height: 1270
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 842292ebc55434240800000000000000
+      internalID: 4774736294572532296
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BEACH BG ELEMENTS_1
+      rect:
+        serializedVersion: 2
+        x: 2271
+        y: 1729
+        width: 7
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9df0d9cabf53d75d0800000000000000
+      internalID: -3063232816493031463
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BEACH BG ELEMENTS_2
+      rect:
+        serializedVersion: 2
+        x: 1621
+        y: 536
+        width: 2328
+        height: 1192
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3d29ff5bc938e8600800000000000000
+      internalID: 472459720012042963
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BEACH BG ELEMENTS_3
+      rect:
+        serializedVersion: 2
+        x: 2899
+        y: 577
+        width: 123
+        height: 227
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4a2b4e798f4a4cd00800000000000000
+      internalID: 992099205535543972
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BEACH BG ELEMENTS_4
+      rect:
+        serializedVersion: 2
+        x: 3946
+        y: 512
+        width: 232
+        height: 242
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 807976c9290af7320800000000000000
+      internalID: 2557939664919435016
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BEACH BG ELEMENTS_5
+      rect:
+        serializedVersion: 2
+        x: 4197
+        y: 679
+        width: 379
+        height: 248
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d9aa3136d25225260800000000000000
+      internalID: 7084766040673200797
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BEACH BG ELEMENTS_6
+      rect:
+        serializedVersion: 2
+        x: 4401
+        y: 575
+        width: 205
+        height: 109
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 98532930ad8b160a0800000000000000
+      internalID: -6890022708397853303
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BEACH BG ELEMENTS_7
+      rect:
+        serializedVersion: 2
+        x: 4672
+        y: 575
+        width: 192
+        height: 110
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c88a414e0a8eebb10800000000000000
+      internalID: 1999291062318049420
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BEACH BG ELEMENTS_8
+      rect:
+        serializedVersion: 2
+        x: 4708
+        y: 681
+        width: 326
+        height: 240
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: be275a88c4bb06f30800000000000000
+      internalID: 4566855959538135787
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BEACH BG ELEMENTS_9
+      rect:
+        serializedVersion: 2
+        x: 5119
+        y: 406
+        width: 1097
+        height: 363
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a7c7e4a44ddac3a20800000000000000
+      internalID: 3043498575486942330
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BEACH BG ELEMENTS_10
+      rect:
+        serializedVersion: 2
+        x: 6287
+        y: 508
+        width: 547
+        height: 443
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 81cf1a0459acfa790800000000000000
+      internalID: -7516566510674772968
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BEACH BG ELEMENTS_11
+      rect:
+        serializedVersion: 2
+        x: 6748
+        y: 511
+        width: 206
+        height: 196
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a741273d52def0640800000000000000
+      internalID: 5048514454022657146
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BEACH BG ELEMENTS_12
+      rect:
+        serializedVersion: 2
+        x: 6992
+        y: 461
+        width: 1076
+        height: 1103
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 687a6e6c7dee37c60800000000000000
+      internalID: 7814852388940326790
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BEACH BG ELEMENTS_13
+      rect:
+        serializedVersion: 2
+        x: 8081
+        y: 679
+        width: 380
+        height: 248
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 993b40de68fd8f8b0800000000000000
+      internalID: -5118095205911448679
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BEACH BG ELEMENTS_14
+      rect:
+        serializedVersion: 2
+        x: 8285
+        y: 575
+        width: 206
+        height: 109
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cb3582c8d53a2e6f0800000000000000
+      internalID: -656782973463931972
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BEACH BG ELEMENTS_15
+      rect:
+        serializedVersion: 2
+        x: 8556
+        y: 575
+        width: 193
+        height: 110
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 513ec80f0681d1110800000000000000
+      internalID: 1233168677601075989
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BEACH BG ELEMENTS_16
+      rect:
+        serializedVersion: 2
+        x: 8592
+        y: 681
+        width: 327
+        height: 240
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: def1b625a92ff9180800000000000000
+      internalID: -9106293176898215955
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BEACH BG ELEMENTS_17
+      rect:
+        serializedVersion: 2
+        x: 2474
+        y: 541
+        width: 38
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f2a28ecb2461dee00800000000000000
+      internalID: 1075540361904400943
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BEACH BG ELEMENTS_18
+      rect:
+        serializedVersion: 2
+        x: 2489
+        y: 557
+        width: 7
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 47ccf7ee3d30f25b0800000000000000
+      internalID: -5391086020164858764
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BEACH BG ELEMENTS_19
+      rect:
+        serializedVersion: 2
+        x: 2505
+        y: 557
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8d73839e6e3830660800000000000000
+      internalID: 7350864044577273816
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BEACH BG ELEMENTS_20
+      rect:
+        serializedVersion: 2
+        x: 2512
+        y: 552
+        width: 9
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: eb275b91c2f5732a0800000000000000
+      internalID: -6757828072831618370
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BEACH BG ELEMENTS_21
+      rect:
+        serializedVersion: 2
+        x: 2526
+        y: 527
+        width: 7
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 04089f7d27f795d60800000000000000
+      internalID: 7879469154287845440
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BEACH BG ELEMENTS_22
+      rect:
+        serializedVersion: 2
+        x: 2529
+        y: 534
+        width: 11
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0b6c4359d5aa58f10800000000000000
+      internalID: 2271408905990227632
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BEACH BG ELEMENTS_23
+      rect:
+        serializedVersion: 2
+        x: 2532
+        y: 520
+        width: 35
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 63434375f62275490800000000000000
+      internalID: -7757693971522636746
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BEACH BG ELEMENTS_24
+      rect:
+        serializedVersion: 2
+        x: 2471
+        y: 501
+        width: 13
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1054b0024da4689f0800000000000000
+      internalID: -466603236455135999
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BEACH BG ELEMENTS_25
+      rect:
+        serializedVersion: 2
+        x: 2476
+        y: 485
+        width: 44
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fd5342445db97cd30800000000000000
+      internalID: 4451698096952587743
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BEACH BG ELEMENTS_26
+      rect:
+        serializedVersion: 2
+        x: 2491
+        y: 510
+        width: 9
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 74a5b3135cb6fc4d0800000000000000
+      internalID: -3112150322811020729
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BEACH BG ELEMENTS_27
+      rect:
+        serializedVersion: 2
+        x: 2518
+        y: 496
+        width: 9
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 49b265a24ed722760800000000000000
+      internalID: 7431640754031045524
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BEACH BG ELEMENTS_28
+      rect:
+        serializedVersion: 2
+        x: 2548
+        y: 490
+        width: 12
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 471e10e58d53669a0800000000000000
+      internalID: -6240241030268853900
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BEACH BG ELEMENTS_29
+      rect:
+        serializedVersion: 2
+        x: 2563
+        y: 494
+        width: 12
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 51b250c006344f210800000000000000
+      internalID: 1365790666797689621
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BEACH BG ELEMENTS_30
+      rect:
+        serializedVersion: 2
+        x: 2578
+        y: 495
+        width: 12
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8ac0bbdfc17658040800000000000000
+      internalID: 4649235564543544488
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BEACH BG ELEMENTS_31
+      rect:
+        serializedVersion: 2
+        x: 2538
+        y: 482
+        width: 12
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cf4cdf057d4619010800000000000000
+      internalID: 1193846252169446652
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BEACH BG ELEMENTS_32
+      rect:
+        serializedVersion: 2
+        x: 2548
+        y: 468
+        width: 43
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ec54b9ecc9ab4f850800000000000000
+      internalID: 6409953352299005390
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BEACH BG ELEMENTS_33
+      rect:
+        serializedVersion: 2
+        x: 2479
+        y: 447
+        width: 13
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b18b2a62350a42c80800000000000000
+      internalID: -8348371530247129061
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BEACH BG ELEMENTS_34
+      rect:
+        serializedVersion: 2
+        x: 2494
+        y: 454
+        width: 11
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5716fef8f3c38a9c0800000000000000
+      internalID: -3915813632303210123
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BEACH BG ELEMENTS_35
+      rect:
+        serializedVersion: 2
+        x: 2512
+        y: 456
+        width: 10
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0cce52f7a91583670800000000000000
+      internalID: 8518648419171298496
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BEACH BG ELEMENTS_36
+      rect:
+        serializedVersion: 2
+        x: 2523
+        y: 452
+        width: 9
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4015c49efbfee3d00800000000000000
+      internalID: 954463778581008644
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BEACH BG ELEMENTS_37
+      rect:
+        serializedVersion: 2
+        x: 2487
+        y: 431
+        width: 43
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 878cd8feae3e28da0800000000000000
+      internalID: -5943937959994734472
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BEACH BG ELEMENTS_38
+      rect:
+        serializedVersion: 2
+        x: 2559
+        y: 404
+        width: 12
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7ace45ada6708ed50800000000000000
+      internalID: 6766666595635096743
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BEACH BG ELEMENTS_39
+      rect:
+        serializedVersion: 2
+        x: 2573
+        y: 415
+        width: 11
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 84d7b996041c610e0800000000000000
+      internalID: -2299438077332193976
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BEACH BG ELEMENTS_40
+      rect:
+        serializedVersion: 2
+        x: 2592
+        y: 418
+        width: 12
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 58578cf89d424ab80800000000000000
+      internalID: -8384536089418238587
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BEACH BG ELEMENTS_41
+      rect:
+        serializedVersion: 2
+        x: 2609
+        y: 409
+        width: 13
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d5e5822215e8bab00800000000000000
+      internalID: 840922234551295581
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BEACH BG ELEMENTS_42
+      rect:
+        serializedVersion: 2
+        x: 2569
+        y: 390
+        width: 47
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8e07dd4f3ad349b40800000000000000
+      internalID: 5446045623794888936
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      BEACH BG ELEMENTS_0: 4774736294572532296
+      BEACH BG ELEMENTS_1: -3063232816493031463
+      BEACH BG ELEMENTS_10: -7516566510674772968
+      BEACH BG ELEMENTS_11: 5048514454022657146
+      BEACH BG ELEMENTS_12: 7814852388940326790
+      BEACH BG ELEMENTS_13: -5118095205911448679
+      BEACH BG ELEMENTS_14: -656782973463931972
+      BEACH BG ELEMENTS_15: 1233168677601075989
+      BEACH BG ELEMENTS_16: -9106293176898215955
+      BEACH BG ELEMENTS_17: 1075540361904400943
+      BEACH BG ELEMENTS_18: -5391086020164858764
+      BEACH BG ELEMENTS_19: 7350864044577273816
+      BEACH BG ELEMENTS_2: 472459720012042963
+      BEACH BG ELEMENTS_20: -6757828072831618370
+      BEACH BG ELEMENTS_21: 7879469154287845440
+      BEACH BG ELEMENTS_22: 2271408905990227632
+      BEACH BG ELEMENTS_23: -7757693971522636746
+      BEACH BG ELEMENTS_24: -466603236455135999
+      BEACH BG ELEMENTS_25: 4451698096952587743
+      BEACH BG ELEMENTS_26: -3112150322811020729
+      BEACH BG ELEMENTS_27: 7431640754031045524
+      BEACH BG ELEMENTS_28: -6240241030268853900
+      BEACH BG ELEMENTS_29: 1365790666797689621
+      BEACH BG ELEMENTS_3: 992099205535543972
+      BEACH BG ELEMENTS_30: 4649235564543544488
+      BEACH BG ELEMENTS_31: 1193846252169446652
+      BEACH BG ELEMENTS_32: 6409953352299005390
+      BEACH BG ELEMENTS_33: -8348371530247129061
+      BEACH BG ELEMENTS_34: -3915813632303210123
+      BEACH BG ELEMENTS_35: 8518648419171298496
+      BEACH BG ELEMENTS_36: 954463778581008644
+      BEACH BG ELEMENTS_37: -5943937959994734472
+      BEACH BG ELEMENTS_38: 6766666595635096743
+      BEACH BG ELEMENTS_39: -2299438077332193976
+      BEACH BG ELEMENTS_4: 2557939664919435016
+      BEACH BG ELEMENTS_40: -8384536089418238587
+      BEACH BG ELEMENTS_41: 840922234551295581
+      BEACH BG ELEMENTS_42: 5446045623794888936
+      BEACH BG ELEMENTS_5: 7084766040673200797
+      BEACH BG ELEMENTS_6: -6890022708397853303
+      BEACH BG ELEMENTS_7: 1999291062318049420
+      BEACH BG ELEMENTS_8: 4566855959538135787
+      BEACH BG ELEMENTS_9: 3043498575486942330
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

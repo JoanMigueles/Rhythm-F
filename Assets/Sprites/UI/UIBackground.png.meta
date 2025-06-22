@@ -1,0 +1,3991 @@
+fileFormatVersion: 2
+guid: 0968593a983bdf44b8bb45d22adfa89e
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -7293247971040982761
+    second: UIBackground 1_0
+  - first:
+      213: 4580756140095447453
+    second: UIBackground 1_1
+  - first:
+      213: -4693775586363406332
+    second: UIBackground 1_2
+  - first:
+      213: -726166349368392484
+    second: UIBackground 1_3
+  - first:
+      213: -5556187848939227939
+    second: UIBackground 1_4
+  - first:
+      213: -7816272946054940429
+    second: UIBackground 1_5
+  - first:
+      213: 3726838402399633525
+    second: UIBackground 1_6
+  - first:
+      213: 6137645650818628901
+    second: UIBackground 1_7
+  - first:
+      213: 8464800000721436126
+    second: UIBackground 1_8
+  - first:
+      213: -7658888817547370539
+    second: UIBackground 1_9
+  - first:
+      213: -3128145365168756636
+    second: UIBackground 1_10
+  - first:
+      213: -3233561280276749807
+    second: UIBackground 1_11
+  - first:
+      213: -5596902949439025948
+    second: UIBackground 1_12
+  - first:
+      213: 434206823494801394
+    second: UIBackground 1_13
+  - first:
+      213: -8042933988299025305
+    second: UIBackground 1_14
+  - first:
+      213: -3998984626992463087
+    second: UIBackground 1_15
+  - first:
+      213: -6014216322071806082
+    second: UIBackground 1_16
+  - first:
+      213: -3859575062319412891
+    second: UIBackground 1_17
+  - first:
+      213: -6502079827179927994
+    second: UIBackground 1_18
+  - first:
+      213: 7441986405164925652
+    second: UIBackground 1_19
+  - first:
+      213: 1841049429577524321
+    second: UIBackground 1_20
+  - first:
+      213: 6561978771526729235
+    second: UIBackground 1_21
+  - first:
+      213: -5308465625322535578
+    second: UIBackground 1_22
+  - first:
+      213: 1377298385335690384
+    second: UIBackground 1_23
+  - first:
+      213: 7637180459953105628
+    second: UIBackground 1_24
+  - first:
+      213: -5211648123016571302
+    second: UIBackground 1_25
+  - first:
+      213: -3477861578822849793
+    second: UIBackground 1_26
+  - first:
+      213: 5374985832669461656
+    second: UIBackground 1_27
+  - first:
+      213: 2182460611974598027
+    second: UIBackground 1_28
+  - first:
+      213: 2101224440915765383
+    second: UIBackground 1_29
+  - first:
+      213: -1773087811893079873
+    second: UIBackground 1_30
+  - first:
+      213: 3727577812645403066
+    second: UIBackground 1_31
+  - first:
+      213: 3179743062977795120
+    second: UIBackground 1_32
+  - first:
+      213: -4024509386943301391
+    second: UIBackground 1_33
+  - first:
+      213: -7387389585934482166
+    second: UIBackground 1_34
+  - first:
+      213: -2428833212284130015
+    second: UIBackground 1_35
+  - first:
+      213: 294327914105715327
+    second: UIBackground 1_36
+  - first:
+      213: 2083280988808779517
+    second: UIBackground 1_37
+  - first:
+      213: 2711769736188736280
+    second: UIBackground 1_38
+  - first:
+      213: 6537038113848969305
+    second: UIBackground 1_39
+  - first:
+      213: 9037619496537725366
+    second: UIBackground 1_40
+  - first:
+      213: -3639097318272501967
+    second: UIBackground 1_41
+  - first:
+      213: -2104918146244204640
+    second: UIBackground 1_42
+  - first:
+      213: -1667196216217076718
+    second: UIBackground 1_43
+  - first:
+      213: 6084206405273799858
+    second: UIBackground 1_44
+  - first:
+      213: 279796061417035519
+    second: UIBackground 1_45
+  - first:
+      213: -2775014977079789776
+    second: UIBackground 1_46
+  - first:
+      213: -3336592084062966411
+    second: UIBackground 1_47
+  - first:
+      213: 554199153104438524
+    second: UIBackground 1_48
+  - first:
+      213: 2782838092267932030
+    second: UIBackground 1_49
+  - first:
+      213: 5206934170670341990
+    second: UIBackground 1_50
+  - first:
+      213: -7816105405955680586
+    second: UIBackground 1_51
+  - first:
+      213: 8860712785586893989
+    second: UIBackground 1_52
+  - first:
+      213: -9221169970173357394
+    second: UIBackground 1_53
+  - first:
+      213: -8434536490055756279
+    second: UIBackground 1_54
+  - first:
+      213: 3985872437203670962
+    second: UIBackground 1_55
+  - first:
+      213: 150769565716580165
+    second: UIBackground 1_56
+  - first:
+      213: 11022871278015198
+    second: UIBackground 1_57
+  - first:
+      213: -3515570871067982305
+    second: UIBackground 1_58
+  - first:
+      213: -5575616406148082430
+    second: UIBackground 1_59
+  - first:
+      213: -9112334292088058941
+    second: UIBackground 1_60
+  - first:
+      213: -215396209281689320
+    second: UIBackground 1_61
+  - first:
+      213: -8123242312735845822
+    second: UIBackground 1_62
+  - first:
+      213: 8145607657813504755
+    second: UIBackground 1_63
+  - first:
+      213: 7646616760267666904
+    second: UIBackground 1_64
+  - first:
+      213: -3953458334202760461
+    second: UIBackground 1_65
+  - first:
+      213: 5399174743969084083
+    second: UIBackground 1_66
+  - first:
+      213: 3655786037211361646
+    second: UIBackground 1_67
+  - first:
+      213: -7811042889291696934
+    second: UIBackground 1_68
+  - first:
+      213: 2300367349979776453
+    second: UIBackground 1_69
+  - first:
+      213: 8055308868761888212
+    second: UIBackground 1_70
+  - first:
+      213: 5031374763881204027
+    second: UIBackground 1_71
+  - first:
+      213: -8841348241823296848
+    second: UIBackground 1_72
+  - first:
+      213: 4758571684049880891
+    second: UIBackground 1_73
+  - first:
+      213: 1740485459284798724
+    second: UIBackground 1_74
+  - first:
+      213: 5552825612899166304
+    second: UIBackground 1_75
+  - first:
+      213: 1418305675468816360
+    second: UIBackground 1_76
+  - first:
+      213: -1972429954946474395
+    second: UIBackground 1_77
+  - first:
+      213: 7683526789023762950
+    second: UIBackground 1_78
+  - first:
+      213: 4140023822644073716
+    second: UIBackground 1_79
+  - first:
+      213: -7797617246034122152
+    second: UIBackground 1_80
+  - first:
+      213: 7426633566056419722
+    second: UIBackground 1_81
+  - first:
+      213: 7104360863380738451
+    second: UIBackground 1_82
+  - first:
+      213: 9193637624638322054
+    second: UIBackground 1_83
+  - first:
+      213: 6958393875319522539
+    second: UIBackground 1_84
+  - first:
+      213: 9001211170404657350
+    second: UIBackground 1_85
+  - first:
+      213: 1123268085357383884
+    second: UIBackground 1_86
+  - first:
+      213: 2891133572047497440
+    second: UIBackground 1_87
+  - first:
+      213: -6605916474552819948
+    second: UIBackground 1_88
+  - first:
+      213: -5778752478581775482
+    second: UIBackground 1_89
+  - first:
+      213: -1704275092180359132
+    second: UIBackground 1_90
+  - first:
+      213: 7547522372885293889
+    second: UIBackground 1_91
+  - first:
+      213: -6498053492210774610
+    second: UIBackground 1_92
+  - first:
+      213: 4634382642917836272
+    second: UIBackground 1_93
+  - first:
+      213: -8799695354729599908
+    second: UIBackground 1_94
+  - first:
+      213: 2701200374814361431
+    second: UIBackground 1_95
+  - first:
+      213: 2197899793026610199
+    second: UIBackground 1_96
+  - first:
+      213: 8242059785511524115
+    second: UIBackground 1_97
+  - first:
+      213: 2036918812722429224
+    second: UIBackground 1_98
+  - first:
+      213: -6185579090006138874
+    second: UIBackground 1_99
+  - first:
+      213: 3602671909529258782
+    second: UIBackground 1_100
+  - first:
+      213: -6960810202925391415
+    second: UIBackground 1_101
+  - first:
+      213: 3898960494542051113
+    second: UIBackground 1_102
+  - first:
+      213: 5731393626441746817
+    second: UIBackground 1_103
+  - first:
+      213: -1035898764105295875
+    second: UIBackground 1_104
+  - first:
+      213: 549743404703938328
+    second: UIBackground 1_105
+  - first:
+      213: -3337797870941901687
+    second: UIBackground 1_106
+  - first:
+      213: -1736182392927965405
+    second: UIBackground 1_107
+  - first:
+      213: 6194734990868244787
+    second: UIBackground 1_108
+  - first:
+      213: 1921356633205904036
+    second: UIBackground 1_109
+  - first:
+      213: -364841522236774656
+    second: UIBackground 1_110
+  - first:
+      213: 9210310405106840730
+    second: UIBackground 1_111
+  - first:
+      213: 7909624681817144145
+    second: UIBackground 1_112
+  - first:
+      213: 2858225516640165268
+    second: UIBackground 1_113
+  - first:
+      213: -4569720151938001331
+    second: UIBackground 1_114
+  - first:
+      213: -8764064953134912631
+    second: UIBackground 1_115
+  - first:
+      213: -3154995280187255470
+    second: UIBackground 1_116
+  - first:
+      213: 8676294609124634575
+    second: UIBackground 1_117
+  - first:
+      213: 4839129491646044705
+    second: UIBackground 1_118
+  - first:
+      213: -6860269193888792832
+    second: UIBackground 1_119
+  - first:
+      213: 488922067570448174
+    second: UIBackground 1_120
+  - first:
+      213: 3069441142880776706
+    second: UIBackground 1_121
+  - first:
+      213: -8661784660069899732
+    second: UIBackground 1_122
+  - first:
+      213: -3520656969613288144
+    second: UIBackground 1_123
+  - first:
+      213: -1388828150942474472
+    second: UIBackground 1_124
+  - first:
+      213: 6033596760173095636
+    second: UIBackground 1_125
+  - first:
+      213: 3478679303990153535
+    second: UIBackground 1_126
+  - first:
+      213: -136085000041536667
+    second: UIBackground 1_127
+  - first:
+      213: 3590566691852302353
+    second: UIBackground 1_128
+  - first:
+      213: -6776256048384544092
+    second: UIBackground 1_129
+  - first:
+      213: 6407193149393258002
+    second: UIBackground 1_130
+  - first:
+      213: 1315869132530637232
+    second: UIBackground 1_131
+  - first:
+      213: -5262464569440333061
+    second: UIBackground 1_132
+  - first:
+      213: 7041411088938149508
+    second: UIBackground 1_133
+  - first:
+      213: 8204660926669696428
+    second: UIBackground 1_134
+  - first:
+      213: 7783537722067249040
+    second: UIBackground 1_135
+  - first:
+      213: -7507857302621403919
+    second: UIBackground 1_136
+  - first:
+      213: -4586128386859656881
+    second: UIBackground 1_137
+  - first:
+      213: -2458421645386114412
+    second: UIBackground 1_138
+  - first:
+      213: 5430878635667033542
+    second: UIBackground 1_139
+  - first:
+      213: 5458865358774641509
+    second: UIBackground 1_140
+  - first:
+      213: 4555614231248781708
+    second: UIBackground 1_141
+  - first:
+      213: -3502688811637874856
+    second: UIBackground 1_142
+  - first:
+      213: 5704234870435861697
+    second: UIBackground 1_143
+  - first:
+      213: -6747205799244124443
+    second: UIBackground 1_144
+  - first:
+      213: 7148723538978694979
+    second: UIBackground 1_145
+  - first:
+      213: -7051821266550828807
+    second: UIBackground 1_146
+  - first:
+      213: 429973605610378537
+    second: UIBackground 1_147
+  - first:
+      213: 5858906485406238652
+    second: UIBackground 1_148
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 0
+    wrapV: 0
+    wrapW: 0
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 0
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 4096
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: UIBackground 1_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 895
+        width: 89
+        height: 106
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 71983439c9d29ca90800000000000000
+      internalID: -7293247971040982761
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UIBackground 1_1
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 959
+        width: 22
+        height: 38
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d912415807d129f30800000000000000
+      internalID: 4580756140095447453
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UIBackground 1_2
+      rect:
+        serializedVersion: 2
+        x: 55
+        y: 976
+        width: 79
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 408886f09fb5cdeb0800000000000000
+      internalID: -4693775586363406332
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UIBackground 1_3
+      rect:
+        serializedVersion: 2
+        x: 153
+        y: 963
+        width: 37
+        height: 37
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cd40e0a7d832ce5f0800000000000000
+      internalID: -726166349368392484
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UIBackground 1_4
+      rect:
+        serializedVersion: 2
+        x: 197
+        y: 982
+        width: 94
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dd4b2aed69474e2b0800000000000000
+      internalID: -5556187848939227939
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UIBackground 1_5
+      rect:
+        serializedVersion: 2
+        x: 311
+        y: 975
+        width: 22
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3f836eefa25078390800000000000000
+      internalID: -7816272946054940429
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UIBackground 1_6
+      rect:
+        serializedVersion: 2
+        x: 321
+        y: 864
+        width: 210
+        height: 160
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 570805608c368b330800000000000000
+      internalID: 3726838402399633525
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UIBackground 1_7
+      rect:
+        serializedVersion: 2
+        x: 508
+        y: 927
+        width: 85
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 52df346633c4d2550800000000000000
+      internalID: 6137645650818628901
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UIBackground 1_8
+      rect:
+        serializedVersion: 2
+        x: 591
+        y: 977
+        width: 126
+        height: 47
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: edd3ab190c2097570800000000000000
+      internalID: 8464800000721436126
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UIBackground 1_9
+      rect:
+        serializedVersion: 2
+        x: 707
+        y: 983
+        width: 30
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5df90efe23926b590800000000000000
+      internalID: -7658888817547370539
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UIBackground 1_10
+      rect:
+        serializedVersion: 2
+        x: 749
+        y: 980
+        width: 164
+        height: 44
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 468e45f2d589694d0800000000000000
+      internalID: -3128145365168756636
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UIBackground 1_11
+      rect:
+        serializedVersion: 2
+        x: 900
+        y: 992
+        width: 13
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 112a5a1d5251023d0800000000000000
+      internalID: -3233561280276749807
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UIBackground 1_12
+      rect:
+        serializedVersion: 2
+        x: 943
+        y: 976
+        width: 65
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4ecc950db6ec352b0800000000000000
+      internalID: -5596902949439025948
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UIBackground 1_13
+      rect:
+        serializedVersion: 2
+        x: 1005
+        y: 959
+        width: 19
+        height: 38
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2f755713ecc960600800000000000000
+      internalID: 434206823494801394
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UIBackground 1_14
+      rect:
+        serializedVersion: 2
+        x: 123
+        y: 971
+        width: 8
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7645583a622c16090800000000000000
+      internalID: -8042933988299025305
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UIBackground 1_15
+      rect:
+        serializedVersion: 2
+        x: 133
+        y: 784
+        width: 190
+        height: 193
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 113cdd55ba0c088c0800000000000000
+      internalID: -3998984626992463087
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UIBackground 1_16
+      rect:
+        serializedVersion: 2
+        x: 735
+        y: 879
+        width: 112
+        height: 101
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e7fbd88ae16398ca0800000000000000
+      internalID: -6014216322071806082
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UIBackground 1_17
+      rect:
+        serializedVersion: 2
+        x: 872
+        y: 919
+        width: 137
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 569ce720ee8007ac0800000000000000
+      internalID: -3859575062319412891
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UIBackground 1_18
+      rect:
+        serializedVersion: 2
+        x: 39
+        y: 893
+        width: 17
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 64605bfb8d8f3c5a0800000000000000
+      internalID: -6502079827179927994
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UIBackground 1_19
+      rect:
+        serializedVersion: 2
+        x: 316
+        y: 897
+        width: 13
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4d24427c43f374760800000000000000
+      internalID: 7441986405164925652
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UIBackground 1_20
+      rect:
+        serializedVersion: 2
+        x: 427
+        y: 839
+        width: 102
+        height: 103
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 16467efa3b8bc8910800000000000000
+      internalID: 1841049429577524321
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UIBackground 1_21
+      rect:
+        serializedVersion: 2
+        x: 537
+        y: 906
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 31e31840de4d01b50800000000000000
+      internalID: 6561978771526729235
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UIBackground 1_22
+      rect:
+        serializedVersion: 2
+        x: 550
+        y: 887
+        width: 15
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6654744a3aa8456b0800000000000000
+      internalID: -5308465625322535578
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UIBackground 1_23
+      rect:
+        serializedVersion: 2
+        x: 583
+        y: 781
+        width: 145
+        height: 180
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 09427af85952d1310800000000000000
+      internalID: 1377298385335690384
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UIBackground 1_24
+      rect:
+        serializedVersion: 2
+        x: 831
+        y: 794
+        width: 142
+        height: 153
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cda2f013a27bcf960800000000000000
+      internalID: 7637180459953105628
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UIBackground 1_25
+      rect:
+        serializedVersion: 2
+        x: 937
+        y: 824
+        width: 57
+        height: 95
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a56144505a18ca7b0800000000000000
+      internalID: -5211648123016571302
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UIBackground 1_26
+      rect:
+        serializedVersion: 2
+        x: 88
+        y: 863
+        width: 40
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ffae84012572cbfc0800000000000000
+      internalID: -3477861578822849793
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UIBackground 1_27
+      rect:
+        serializedVersion: 2
+        x: 334
+        y: 868
+        width: 11
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 89c350d0329c79a40800000000000000
+      internalID: 5374985832669461656
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UIBackground 1_28
+      rect:
+        serializedVersion: 2
+        x: 551
+        y: 854
+        width: 18
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b8d07090d58a94e10800000000000000
+      internalID: 2182460611974598027
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UIBackground 1_29
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 831
+        width: 40
+        height: 40
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 788272a0f7c092d10800000000000000
+      internalID: 2101224440915765383
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UIBackground 1_30
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 778
+        width: 135
+        height: 74
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fb0d980870ab467e0800000000000000
+      internalID: -1773087811893079873
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UIBackground 1_31
+      rect:
+        serializedVersion: 2
+        x: 61
+        y: 844
+        width: 23
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ab95b5365440bb330800000000000000
+      internalID: 3727577812645403066
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UIBackground 1_32
+      rect:
+        serializedVersion: 2
+        x: 742
+        y: 852
+        width: 8
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 034ddc10877b02c20800000000000000
+      internalID: 3179743062977795120
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UIBackground 1_33
+      rect:
+        serializedVersion: 2
+        x: 999
+        y: 847
+        width: 19
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1f8f40c09021628c0800000000000000
+      internalID: -4024509386943301391
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UIBackground 1_34
+      rect:
+        serializedVersion: 2
+        x: 299
+        y: 710
+        width: 146
+        height: 137
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a0584f8cf48ba7990800000000000000
+      internalID: -7387389585934482166
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UIBackground 1_35
+      rect:
+        serializedVersion: 2
+        x: 455
+        y: 737
+        width: 114
+        height: 106
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 12d222bdf0d0b4ed0800000000000000
+      internalID: -2428833212284130015
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UIBackground 1_36
+      rect:
+        serializedVersion: 2
+        x: 981
+        y: 831
+        width: 14
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f7ab0cfada9a51400800000000000000
+      internalID: 294327914105715327
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UIBackground 1_37
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 756
+        width: 19
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: df69549850d49ec10800000000000000
+      internalID: 2083280988808779517
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UIBackground 1_38
+      rect:
+        serializedVersion: 2
+        x: 137
+        y: 711
+        width: 63
+        height: 65
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8133f2e153422a520800000000000000
+      internalID: 2711769736188736280
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UIBackground 1_39
+      rect:
+        serializedVersion: 2
+        x: 275
+        y: 771
+        width: 15
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9584823a78938ba50800000000000000
+      internalID: 6537038113848969305
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UIBackground 1_40
+      rect:
+        serializedVersion: 2
+        x: 559
+        y: 674
+        width: 106
+        height: 110
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6b9964a7c031c6d70800000000000000
+      internalID: 9037619496537725366
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UIBackground 1_41
+      rect:
+        serializedVersion: 2
+        x: 675
+        y: 606
+        width: 233
+        height: 213
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1377a4115445f7dc0800000000000000
+      internalID: -3639097318272501967
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UIBackground 1_42
+      rect:
+        serializedVersion: 2
+        x: 903
+        y: 711
+        width: 74
+        height: 100
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0a727db2914d9c2e0800000000000000
+      internalID: -2104918146244204640
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UIBackground 1_43
+      rect:
+        serializedVersion: 2
+        x: 983
+        y: 767
+        width: 41
+        height: 55
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 21c7181efddecd8e0800000000000000
+      internalID: -1667196216217076718
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UIBackground 1_44
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 640
+        width: 81
+        height: 113
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2bc40867d717f6450800000000000000
+      internalID: 6084206405273799858
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UIBackground 1_45
+      rect:
+        serializedVersion: 2
+        x: 215
+        y: 641
+        width: 120
+        height: 120
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ff6d052190902e300800000000000000
+      internalID: 279796061417035519
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UIBackground 1_46
+      rect:
+        serializedVersion: 2
+        x: 983
+        y: 743
+        width: 18
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 03735ccb49a2d79d0800000000000000
+      internalID: -2775014977079789776
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UIBackground 1_47
+      rect:
+        serializedVersion: 2
+        x: 87
+        y: 670
+        width: 42
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 57deb057d2b02b1d0800000000000000
+      internalID: -3336592084062966411
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UIBackground 1_48
+      rect:
+        serializedVersion: 2
+        x: 446
+        y: 717
+        width: 23
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cf4cc978139e0b700800000000000000
+      internalID: 554199153104438524
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UIBackground 1_49
+      rect:
+        serializedVersion: 2
+        x: 983
+        y: 716
+        width: 21
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e794e053080ae9620800000000000000
+      internalID: 2782838092267932030
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UIBackground 1_50
+      rect:
+        serializedVersion: 2
+        x: 994
+        y: 647
+        width: 30
+        height: 95
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 66f16ab6a0fb24840800000000000000
+      internalID: 5206934170670341990
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UIBackground 1_51
+      rect:
+        serializedVersion: 2
+        x: 40
+        y: 515
+        width: 187
+        height: 182
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6b650077b8d978390800000000000000
+      internalID: -7816105405955680586
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UIBackground 1_52
+      rect:
+        serializedVersion: 2
+        x: 354
+        y: 673
+        width: 27
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5a43ba9155397fa70800000000000000
+      internalID: 8860712785586893989
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UIBackground 1_53
+      rect:
+        serializedVersion: 2
+        x: 380
+        y: 588
+        width: 119
+        height: 112
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ea2515a94c2d70080800000000000000
+      internalID: -9221169970173357394
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UIBackground 1_54
+      rect:
+        serializedVersion: 2
+        x: 495
+        y: 693
+        width: 15
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 906182910c182fa80800000000000000
+      internalID: -8434536490055756279
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UIBackground 1_55
+      rect:
+        serializedVersion: 2
+        x: 521
+        y: 658
+        width: 32
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2b79b831dd9a05730800000000000000
+      internalID: 3985872437203670962
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UIBackground 1_56
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 579
+        width: 30
+        height: 47
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5470a770f14a71200800000000000000
+      internalID: 150769565716580165
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UIBackground 1_57
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 600
+        width: 25
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ed25ee63e39272000800000000000000
+      internalID: 11022871278015198
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UIBackground 1_58
+      rect:
+        serializedVersion: 2
+        x: 279
+        y: 575
+        width: 58
+        height: 58
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f1648474bee263fc0800000000000000
+      internalID: -3515570871067982305
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UIBackground 1_59
+      rect:
+        serializedVersion: 2
+        x: 326
+        y: 619
+        width: 11
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 20514b36b6e6f92b0800000000000000
+      internalID: -5575616406148082430
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UIBackground 1_60
+      rect:
+        serializedVersion: 2
+        x: 355
+        y: 604
+        width: 19
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3cb0b759d3c7a8180800000000000000
+      internalID: -9112334292088058941
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UIBackground 1_61
+      rect:
+        serializedVersion: 2
+        x: 515
+        y: 595
+        width: 131
+        height: 91
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8199cc3f942c20df0800000000000000
+      internalID: -215396209281689320
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UIBackground 1_62
+      rect:
+        serializedVersion: 2
+        x: 536
+        y: 552
+        width: 122
+        height: 76
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 24215f4c722744f80800000000000000
+      internalID: -8123242312735845822
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UIBackground 1_63
+      rect:
+        serializedVersion: 2
+        x: 679
+        y: 558
+        width: 41
+        height: 87
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3f2fcabe1030b0170800000000000000
+      internalID: 8145607657813504755
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UIBackground 1_64
+      rect:
+        serializedVersion: 2
+        x: 864
+        y: 599
+        width: 30
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8d57d411e6d3e1a60800000000000000
+      internalID: 7646616760267666904
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UIBackground 1_65
+      rect:
+        serializedVersion: 2
+        x: 902
+        y: 594
+        width: 87
+        height: 89
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3f27983679e7229c0800000000000000
+      internalID: -3953458334202760461
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UIBackground 1_66
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 585
+        width: 35
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3b2b986d2d8bdea40800000000000000
+      internalID: 5399174743969084083
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UIBackground 1_67
+      rect:
+        serializedVersion: 2
+        x: 703
+        y: 440
+        width: 130
+        height: 154
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e61f0da1806fbb230800000000000000
+      internalID: 3655786037211361646
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UIBackground 1_68
+      rect:
+        serializedVersion: 2
+        x: 720
+        y: 580
+        width: 16
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ad47d6a70e9999390800000000000000
+      internalID: -7811042889291696934
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UIBackground 1_69
+      rect:
+        serializedVersion: 2
+        x: 839
+        y: 592
+        width: 13
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5c5837cbaeb8cef10800000000000000
+      internalID: 2300367349979776453
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UIBackground 1_70
+      rect:
+        serializedVersion: 2
+        x: 839
+        y: 490
+        width: 102
+        height: 105
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4d52b9ebcb43acf60800000000000000
+      internalID: 8055308868761888212
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UIBackground 1_71
+      rect:
+        serializedVersion: 2
+        x: 983
+        y: 580
+        width: 16
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b39010db0b803d540800000000000000
+      internalID: 5031374763881204027
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UIBackground 1_72
+      rect:
+        serializedVersion: 2
+        x: 1001
+        y: 580
+        width: 23
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0b219961e983d4580800000000000000
+      internalID: -8841348241823296848
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UIBackground 1_73
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 391
+        width: 64
+        height: 185
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b3786021cb7d90240800000000000000
+      internalID: 4758571684049880891
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UIBackground 1_74
+      rect:
+        serializedVersion: 2
+        x: 206
+        y: 483
+        width: 85
+        height: 105
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 40d2761cd42772810800000000000000
+      internalID: 1740485459284798724
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UIBackground 1_75
+      rect:
+        serializedVersion: 2
+        x: 350
+        y: 552
+        width: 29
+        height: 37
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 068ab8c89799f0d40800000000000000
+      internalID: 5552825612899166304
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UIBackground 1_76
+      rect:
+        serializedVersion: 2
+        x: 364
+        y: 367
+        width: 193
+        height: 202
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8ef3d315f75dea310800000000000000
+      internalID: 1418305675468816360
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UIBackground 1_77
+      rect:
+        serializedVersion: 2
+        x: 405
+        y: 546
+        width: 19
+        height: 41
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 56e5317086580a4e0800000000000000
+      internalID: -1972429954946474395
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UIBackground 1_78
+      rect:
+        serializedVersion: 2
+        x: 516
+        y: 558
+        width: 22
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 60a85f1d7ee51aa60800000000000000
+      internalID: 7683526789023762950
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UIBackground 1_79
+      rect:
+        serializedVersion: 2
+        x: 574
+        y: 522
+        width: 63
+        height: 44
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4f4da5e5bb1547930800000000000000
+      internalID: 4140023822644073716
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UIBackground 1_80
+      rect:
+        serializedVersion: 2
+        x: 952
+        y: 393
+        width: 72
+        height: 183
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 85a2da3ad6c49c390800000000000000
+      internalID: -7797617246034122152
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UIBackground 1_81
+      rect:
+        serializedVersion: 2
+        x: 304
+        y: 527
+        width: 33
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a8119cd51e3b01760800000000000000
+      internalID: 7426633566056419722
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UIBackground 1_82
+      rect:
+        serializedVersion: 2
+        x: 71
+        y: 508
+        width: 8
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3911ff19092c79260800000000000000
+      internalID: 7104360863380738451
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UIBackground 1_83
+      rect:
+        serializedVersion: 2
+        x: 110
+        y: 433
+        width: 55
+        height: 79
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 685bb3aa5bc569f70800000000000000
+      internalID: 9193637624638322054
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UIBackground 1_84
+      rect:
+        serializedVersion: 2
+        x: 308
+        y: 482
+        width: 48
+        height: 40
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: be48ca9cc5e219060800000000000000
+      internalID: 6958393875319522539
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UIBackground 1_85
+      rect:
+        serializedVersion: 2
+        x: 608
+        y: 490
+        width: 31
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6c86f387ed9baec70800000000000000
+      internalID: 9001211170404657350
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UIBackground 1_86
+      rect:
+        serializedVersion: 2
+        x: 638
+        y: 509
+        width: 12
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cc0924f4f56a69f00800000000000000
+      internalID: 1123268085357383884
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UIBackground 1_87
+      rect:
+        serializedVersion: 2
+        x: 642
+        y: 468
+        width: 23
+        height: 45
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0e8e8187aae5f1820800000000000000
+      internalID: 2891133572047497440
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UIBackground 1_88
+      rect:
+        serializedVersion: 2
+        x: 231
+        y: 447
+        width: 26
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 41fd06e47f11354a0800000000000000
+      internalID: -6605916474552819948
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UIBackground 1_89
+      rect:
+        serializedVersion: 2
+        x: 569
+        y: 460
+        width: 24
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 683a935ec3fbdcfa0800000000000000
+      internalID: -5778752478581775482
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UIBackground 1_90
+      rect:
+        serializedVersion: 2
+        x: 606
+        y: 455
+        width: 39
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4282b0355d23958e0800000000000000
+      internalID: -1704275092180359132
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UIBackground 1_91
+      rect:
+        serializedVersion: 2
+        x: 608
+        y: 472
+        width: 26
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 14b24221c9f2eb860800000000000000
+      internalID: 7547522372885293889
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UIBackground 1_92
+      rect:
+        serializedVersion: 2
+        x: 626
+        y: 473
+        width: 22
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ead4a49e6c642d5a0800000000000000
+      internalID: -6498053492210774610
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UIBackground 1_93
+      rect:
+        serializedVersion: 2
+        x: 637
+        y: 464
+        width: 17
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0f58a50b572a05040800000000000000
+      internalID: 4634382642917836272
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UIBackground 1_94
+      rect:
+        serializedVersion: 2
+        x: 823
+        y: 391
+        width: 82
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c5cefa992b331e580800000000000000
+      internalID: -8799695354729599908
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UIBackground 1_95
+      rect:
+        serializedVersion: 2
+        x: 904
+        y: 473
+        width: 21
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 75746f7ed679c7520800000000000000
+      internalID: 2701200374814361431
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UIBackground 1_96
+      rect:
+        serializedVersion: 2
+        x: 21
+        y: 174
+        width: 196
+        height: 292
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 714714f7732808e10800000000000000
+      internalID: 2197899793026610199
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UIBackground 1_97
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 439
+        width: 57
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 31752f4e4bda16270800000000000000
+      internalID: 8242059785511524115
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UIBackground 1_98
+      rect:
+        serializedVersion: 2
+        x: 536
+        y: 333
+        width: 106
+        height: 135
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 82d71ac3ed6944c10800000000000000
+      internalID: 2036918812722429224
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UIBackground 1_99
+      rect:
+        serializedVersion: 2
+        x: 659
+        y: 431
+        width: 60
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 600a91a1798682aa0800000000000000
+      internalID: -6185579090006138874
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UIBackground 1_100
+      rect:
+        serializedVersion: 2
+        x: 698
+        y: 333
+        width: 93
+        height: 116
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e1b05c193034ff130800000000000000
+      internalID: 3602671909529258782
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UIBackground 1_101
+      rect:
+        serializedVersion: 2
+        x: 867
+        y: 373
+        width: 78
+        height: 84
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9c1a7b9100c366f90800000000000000
+      internalID: -6960810202925391415
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UIBackground 1_102
+      rect:
+        serializedVersion: 2
+        x: 201
+        y: 265
+        width: 160
+        height: 173
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 927d57689e3eb1630800000000000000
+      internalID: 3898960494542051113
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UIBackground 1_103
+      rect:
+        serializedVersion: 2
+        x: 346
+        y: 403
+        width: 15
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1898ff313200a8f40800000000000000
+      internalID: 5731393626441746817
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UIBackground 1_104
+      rect:
+        serializedVersion: 2
+        x: 643
+        y: 397
+        width: 41
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: df7dc3eff8fbf91f0800000000000000
+      internalID: -1035898764105295875
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UIBackground 1_105
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 356
+        width: 17
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 817fdf2c6b411a700800000000000000
+      internalID: 549743404703938328
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UIBackground 1_106
+      rect:
+        serializedVersion: 2
+        x: 648
+        y: 354
+        width: 33
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 98ce3725582cda1d0800000000000000
+      internalID: -3337797870941901687
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UIBackground 1_107
+      rect:
+        serializedVersion: 2
+        x: 783
+        y: 98
+        width: 224
+        height: 295
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 32fad34ff47d7e7e0800000000000000
+      internalID: -1736182392927965405
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UIBackground 1_108
+      rect:
+        serializedVersion: 2
+        x: 1017
+        y: 367
+        width: 7
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 339626037ae18f550800000000000000
+      internalID: 6194734990868244787
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UIBackground 1_109
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 253
+        width: 38
+        height: 91
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4a214199da70aaa10800000000000000
+      internalID: 1921356633205904036
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UIBackground 1_110
+      rect:
+        serializedVersion: 2
+        x: 373
+        y: 146
+        width: 178
+        height: 214
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 007a3cb8192dfeaf0800000000000000
+      internalID: -364841522236774656
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UIBackground 1_111
+      rect:
+        serializedVersion: 2
+        x: 479
+        y: 87
+        width: 218
+        height: 251
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a943a7fd38891df70800000000000000
+      internalID: 9210310405106840730
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UIBackground 1_112
+      rect:
+        serializedVersion: 2
+        x: 588
+        y: 281
+        width: 61
+        height: 57
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 15b7f5abdb1a4cd60800000000000000
+      internalID: 7909624681817144145
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UIBackground 1_113
+      rect:
+        serializedVersion: 2
+        x: 755
+        y: 319
+        width: 18
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 49d5b4fb6f47aa720800000000000000
+      internalID: 2858225516640165268
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UIBackground 1_114
+      rect:
+        serializedVersion: 2
+        x: 991
+        y: 247
+        width: 33
+        height: 88
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d469ac4bbb71590c0800000000000000
+      internalID: -4569720151938001331
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UIBackground 1_115
+      rect:
+        serializedVersion: 2
+        x: 135
+        y: 128
+        width: 136
+        height: 140
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 98b61ffeb59cf5680800000000000000
+      internalID: -8764064953134912631
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UIBackground 1_116
+      rect:
+        serializedVersion: 2
+        x: 649
+        y: 205
+        width: 95
+        height: 112
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 255976032843734d0800000000000000
+      internalID: -3154995280187255470
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UIBackground 1_117
+      rect:
+        serializedVersion: 2
+        x: 737
+        y: 248
+        width: 30
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fcfa28f5af3686870800000000000000
+      internalID: 8676294609124634575
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UIBackground 1_118
+      rect:
+        serializedVersion: 2
+        x: 750
+        y: 263
+        width: 27
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 12adda342aa082340800000000000000
+      internalID: 4839129491646044705
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UIBackground 1_119
+      rect:
+        serializedVersion: 2
+        x: 758
+        y: 191
+        width: 99
+        height: 126
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 00ff3b2f38d6bc0a0800000000000000
+      internalID: -6860269193888792832
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UIBackground 1_120
+      rect:
+        serializedVersion: 2
+        x: 7
+        y: 239
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e27d260b70009c600800000000000000
+      internalID: 488922067570448174
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UIBackground 1_121
+      rect:
+        serializedVersion: 2
+        x: 284
+        y: 236
+        width: 10
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 202b064f478d89a20800000000000000
+      internalID: 3069441142880776706
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UIBackground 1_122
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 134
+        width: 133
+        height: 119
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c222b976eb82bc780800000000000000
+      internalID: -8661784660069899732
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UIBackground 1_123
+      rect:
+        serializedVersion: 2
+        x: 742
+        y: 231
+        width: 27
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 03d523ea32d142fc0800000000000000
+      internalID: -3520656969613288144
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UIBackground 1_124
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 199
+        width: 9
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 81fd201b724e9bce0800000000000000
+      internalID: -1388828150942474472
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UIBackground 1_125
+      rect:
+        serializedVersion: 2
+        x: 915
+        y: 55
+        width: 109
+        height: 164
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4daa0183944abb350800000000000000
+      internalID: 6033596760173095636
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UIBackground 1_126
+      rect:
+        serializedVersion: 2
+        x: 7
+        y: 144
+        width: 19
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f3116d96560c64030800000000000000
+      internalID: 3478679303990153535
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UIBackground 1_127
+      rect:
+        serializedVersion: 2
+        x: 102
+        y: 160
+        width: 16
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 563e349d9678c1ef0800000000000000
+      internalID: -136085000041536667
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UIBackground 1_128
+      rect:
+        serializedVersion: 2
+        x: 453
+        y: 144
+        width: 18
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 118b432f16144d130800000000000000
+      internalID: 3590566691852302353
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UIBackground 1_129
+      rect:
+        serializedVersion: 2
+        x: 695
+        y: 111
+        width: 74
+        height: 74
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4a272f0b607e5f1a0800000000000000
+      internalID: -6776256048384544092
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UIBackground 1_130
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 74
+        width: 108
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 216c6ecf83ceae850800000000000000
+      internalID: 6407193149393258002
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UIBackground 1_131
+      rect:
+        serializedVersion: 2
+        x: 258
+        y: 112
+        width: 23
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0b9d3671108e24210800000000000000
+      internalID: 1315869132530637232
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UIBackground 1_132
+      rect:
+        serializedVersion: 2
+        x: 418
+        y: 132
+        width: 14
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bf21e671b58f7f6b0800000000000000
+      internalID: -5262464569440333061
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UIBackground 1_133
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 72
+        width: 26
+        height: 56
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 486a7a1141e18b160800000000000000
+      internalID: 7041411088938149508
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UIBackground 1_134
+      rect:
+        serializedVersion: 2
+        x: 174
+        y: 47
+        width: 67
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cadaca484afccd170800000000000000
+      internalID: 8204660926669696428
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UIBackground 1_135
+      rect:
+        serializedVersion: 2
+        x: 292
+        y: 70
+        width: 181
+        height: 44
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 097ebabb15ea40c60800000000000000
+      internalID: 7783537722067249040
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UIBackground 1_136
+      rect:
+        serializedVersion: 2
+        x: 575
+        y: 0
+        width: 162
+        height: 109
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1f4cde4cf8bbec790800000000000000
+      internalID: -7507857302621403919
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UIBackground 1_137
+      rect:
+        serializedVersion: 2
+        x: 783
+        y: 108
+        width: 13
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f4915eec78cca50c0800000000000000
+      internalID: -4586128386859656881
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UIBackground 1_138
+      rect:
+        serializedVersion: 2
+        x: 56
+        y: 0
+        width: 87
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 49a11aee98ee1edd0800000000000000
+      internalID: -2458421645386114412
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UIBackground 1_139
+      rect:
+        serializedVersion: 2
+        x: 255
+        y: 51
+        width: 17
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6cd0139585b5e5b40800000000000000
+      internalID: 5430878635667033542
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UIBackground 1_140
+      rect:
+        serializedVersion: 2
+        x: 292
+        y: 60
+        width: 40
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 563a27a1f19c1cb40800000000000000
+      internalID: 5458865358774641509
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UIBackground 1_141
+      rect:
+        serializedVersion: 2
+        x: 319
+        y: 0
+        width: 73
+        height: 65
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c814c43b10bc83f30800000000000000
+      internalID: 4555614231248781708
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UIBackground 1_142
+      rect:
+        serializedVersion: 2
+        x: 523
+        y: 63
+        width: 37
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 85fd6977513f36fc0800000000000000
+      internalID: -3502688811637874856
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UIBackground 1_143
+      rect:
+        serializedVersion: 2
+        x: 744
+        y: 0
+        width: 185
+        height: 105
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1c4d9bf6463892f40800000000000000
+      internalID: 5704234870435861697
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UIBackground 1_144
+      rect:
+        serializedVersion: 2
+        x: 943
+        y: 32
+        width: 35
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5ee2995e21c1d52a0800000000000000
+      internalID: -6747205799244124443
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UIBackground 1_145
+      rect:
+        serializedVersion: 2
+        x: 197
+        y: 0
+        width: 94
+        height: 38
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3476c42ee2e553360800000000000000
+      internalID: 7148723538978694979
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UIBackground 1_146
+      rect:
+        serializedVersion: 2
+        x: 409
+        y: 0
+        width: 55
+        height: 61
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9f051b39be5e22e90800000000000000
+      internalID: -7051821266550828807
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UIBackground 1_147
+      rect:
+        serializedVersion: 2
+        x: 466
+        y: 0
+        width: 89
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 925533957b297f500800000000000000
+      internalID: 429973605610378537
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UIBackground 1_148
+      rect:
+        serializedVersion: 2
+        x: 945
+        y: 0
+        width: 64
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cb70fda18640f4150800000000000000
+      internalID: 5858906485406238652
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      UIBackground 1_0: -7293247971040982761
+      UIBackground 1_1: 4580756140095447453
+      UIBackground 1_10: -3128145365168756636
+      UIBackground 1_100: 3602671909529258782
+      UIBackground 1_101: -6960810202925391415
+      UIBackground 1_102: 3898960494542051113
+      UIBackground 1_103: 5731393626441746817
+      UIBackground 1_104: -1035898764105295875
+      UIBackground 1_105: 549743404703938328
+      UIBackground 1_106: -3337797870941901687
+      UIBackground 1_107: -1736182392927965405
+      UIBackground 1_108: 6194734990868244787
+      UIBackground 1_109: 1921356633205904036
+      UIBackground 1_11: -3233561280276749807
+      UIBackground 1_110: -364841522236774656
+      UIBackground 1_111: 9210310405106840730
+      UIBackground 1_112: 7909624681817144145
+      UIBackground 1_113: 2858225516640165268
+      UIBackground 1_114: -4569720151938001331
+      UIBackground 1_115: -8764064953134912631
+      UIBackground 1_116: -3154995280187255470
+      UIBackground 1_117: 8676294609124634575
+      UIBackground 1_118: 4839129491646044705
+      UIBackground 1_119: -6860269193888792832
+      UIBackground 1_12: -5596902949439025948
+      UIBackground 1_120: 488922067570448174
+      UIBackground 1_121: 3069441142880776706
+      UIBackground 1_122: -8661784660069899732
+      UIBackground 1_123: -3520656969613288144
+      UIBackground 1_124: -1388828150942474472
+      UIBackground 1_125: 6033596760173095636
+      UIBackground 1_126: 3478679303990153535
+      UIBackground 1_127: -136085000041536667
+      UIBackground 1_128: 3590566691852302353
+      UIBackground 1_129: -6776256048384544092
+      UIBackground 1_13: 434206823494801394
+      UIBackground 1_130: 6407193149393258002
+      UIBackground 1_131: 1315869132530637232
+      UIBackground 1_132: -5262464569440333061
+      UIBackground 1_133: 7041411088938149508
+      UIBackground 1_134: 8204660926669696428
+      UIBackground 1_135: 7783537722067249040
+      UIBackground 1_136: -7507857302621403919
+      UIBackground 1_137: -4586128386859656881
+      UIBackground 1_138: -2458421645386114412
+      UIBackground 1_139: 5430878635667033542
+      UIBackground 1_14: -8042933988299025305
+      UIBackground 1_140: 5458865358774641509
+      UIBackground 1_141: 4555614231248781708
+      UIBackground 1_142: -3502688811637874856
+      UIBackground 1_143: 5704234870435861697
+      UIBackground 1_144: -6747205799244124443
+      UIBackground 1_145: 7148723538978694979
+      UIBackground 1_146: -7051821266550828807
+      UIBackground 1_147: 429973605610378537
+      UIBackground 1_148: 5858906485406238652
+      UIBackground 1_15: -3998984626992463087
+      UIBackground 1_16: -6014216322071806082
+      UIBackground 1_17: -3859575062319412891
+      UIBackground 1_18: -6502079827179927994
+      UIBackground 1_19: 7441986405164925652
+      UIBackground 1_2: -4693775586363406332
+      UIBackground 1_20: 1841049429577524321
+      UIBackground 1_21: 6561978771526729235
+      UIBackground 1_22: -5308465625322535578
+      UIBackground 1_23: 1377298385335690384
+      UIBackground 1_24: 7637180459953105628
+      UIBackground 1_25: -5211648123016571302
+      UIBackground 1_26: -3477861578822849793
+      UIBackground 1_27: 5374985832669461656
+      UIBackground 1_28: 2182460611974598027
+      UIBackground 1_29: 2101224440915765383
+      UIBackground 1_3: -726166349368392484
+      UIBackground 1_30: -1773087811893079873
+      UIBackground 1_31: 3727577812645403066
+      UIBackground 1_32: 3179743062977795120
+      UIBackground 1_33: -4024509386943301391
+      UIBackground 1_34: -7387389585934482166
+      UIBackground 1_35: -2428833212284130015
+      UIBackground 1_36: 294327914105715327
+      UIBackground 1_37: 2083280988808779517
+      UIBackground 1_38: 2711769736188736280
+      UIBackground 1_39: 6537038113848969305
+      UIBackground 1_4: -5556187848939227939
+      UIBackground 1_40: 9037619496537725366
+      UIBackground 1_41: -3639097318272501967
+      UIBackground 1_42: -2104918146244204640
+      UIBackground 1_43: -1667196216217076718
+      UIBackground 1_44: 6084206405273799858
+      UIBackground 1_45: 279796061417035519
+      UIBackground 1_46: -2775014977079789776
+      UIBackground 1_47: -3336592084062966411
+      UIBackground 1_48: 554199153104438524
+      UIBackground 1_49: 2782838092267932030
+      UIBackground 1_5: -7816272946054940429
+      UIBackground 1_50: 5206934170670341990
+      UIBackground 1_51: -7816105405955680586
+      UIBackground 1_52: 8860712785586893989
+      UIBackground 1_53: -9221169970173357394
+      UIBackground 1_54: -8434536490055756279
+      UIBackground 1_55: 3985872437203670962
+      UIBackground 1_56: 150769565716580165
+      UIBackground 1_57: 11022871278015198
+      UIBackground 1_58: -3515570871067982305
+      UIBackground 1_59: -5575616406148082430
+      UIBackground 1_6: 3726838402399633525
+      UIBackground 1_60: -9112334292088058941
+      UIBackground 1_61: -215396209281689320
+      UIBackground 1_62: -8123242312735845822
+      UIBackground 1_63: 8145607657813504755
+      UIBackground 1_64: 7646616760267666904
+      UIBackground 1_65: -3953458334202760461
+      UIBackground 1_66: 5399174743969084083
+      UIBackground 1_67: 3655786037211361646
+      UIBackground 1_68: -7811042889291696934
+      UIBackground 1_69: 2300367349979776453
+      UIBackground 1_7: 6137645650818628901
+      UIBackground 1_70: 8055308868761888212
+      UIBackground 1_71: 5031374763881204027
+      UIBackground 1_72: -8841348241823296848
+      UIBackground 1_73: 4758571684049880891
+      UIBackground 1_74: 1740485459284798724
+      UIBackground 1_75: 5552825612899166304
+      UIBackground 1_76: 1418305675468816360
+      UIBackground 1_77: -1972429954946474395
+      UIBackground 1_78: 7683526789023762950
+      UIBackground 1_79: 4140023822644073716
+      UIBackground 1_8: 8464800000721436126
+      UIBackground 1_80: -7797617246034122152
+      UIBackground 1_81: 7426633566056419722
+      UIBackground 1_82: 7104360863380738451
+      UIBackground 1_83: 9193637624638322054
+      UIBackground 1_84: 6958393875319522539
+      UIBackground 1_85: 9001211170404657350
+      UIBackground 1_86: 1123268085357383884
+      UIBackground 1_87: 2891133572047497440
+      UIBackground 1_88: -6605916474552819948
+      UIBackground 1_89: -5778752478581775482
+      UIBackground 1_9: -7658888817547370539
+      UIBackground 1_90: -1704275092180359132
+      UIBackground 1_91: 7547522372885293889
+      UIBackground 1_92: -6498053492210774610
+      UIBackground 1_93: 4634382642917836272
+      UIBackground 1_94: -8799695354729599908
+      UIBackground 1_95: 2701200374814361431
+      UIBackground 1_96: 2197899793026610199
+      UIBackground 1_97: 8242059785511524115
+      UIBackground 1_98: 2036918812722429224
+      UIBackground 1_99: -6185579090006138874
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

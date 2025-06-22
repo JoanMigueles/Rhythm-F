@@ -1,3 +1,5 @@
+using FMOD;
+using FMODUnity;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -61,6 +63,10 @@ public class Note : TimelineElement
 {
     public NoteData data;
 
+    [field: Header("Hit")]
+    [field: SerializeField] public EventReference hitReference { get; private set; }
+    bool soundMade = false;
+
     public override void Move(int distance, bool laneSwap)
     {
         float yPos;
@@ -76,6 +82,7 @@ public class Note : TimelineElement
 
     public override void UpdatePosition()
     {
+        CheckForSound();
         float yPos = data.lane == 0 ? 1.5f : -1.5f;
         transform.position = new Vector3(NoteManager.instance.GetPositionFromTime(data.time), yPos, 0f);
     }
@@ -88,6 +95,15 @@ public class Note : TimelineElement
         } else {
             // Notes on editor
             gameObject.SetActive(true);
+        }
+    }
+
+    public void CheckForSound()
+    {
+        if (Metronome.instance.IsPaused() || GameManager.instance.IsPlaying()) soundMade = false;
+        else if (!soundMade && Metronome.instance.GetTimelinePosition() > data.time && Metronome.instance.GetTimelinePosition() < data.time + 100) {
+            RuntimeManager.PlayOneShot(hitReference);
+            soundMade = true;
         }
     }
 }

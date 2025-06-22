@@ -1,9 +1,11 @@
+using FMODUnity;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using UnityEngine;
 
+[System.Serializable]
 public enum Difficulty
 {
     Easy,
@@ -17,6 +19,12 @@ public class NoteManager : MonoBehaviour
     public static NoteManager instance { get; private set; }
     public float noteSpeed = 5f;
     public Difficulty difficulty = Difficulty.Normal;
+    public float headstart = 3f;
+
+    [field: Header("Test Song")]
+    [field: SerializeField] public EventReference testSongReference { get; private set; }
+    [field: Header("Ready Go")]
+    [field: SerializeField] public EventReference readyReference { get; private set; }
 
     // NOTE PREFABS
     [SerializeField] private GameObject hitPrefab;
@@ -33,10 +41,6 @@ public class NoteManager : MonoBehaviour
     protected SongData songData;
     public List<Note> activeNotes;
 
-    private const int HEADSTART = 2000;
-    private float headstartTimer;
-    private bool songStarted = false;
-
     protected virtual void Awake()
     {
         instance = this;
@@ -47,41 +51,30 @@ public class NoteManager : MonoBehaviour
         activeNotes = new List<Note>();
 
         if (GameManager.instance.IsSongSelected()) {
-            LoadSelectedSong(GameManager.instance.GetSelectedSong());
+            var song = GameManager.instance.GetSelectedSong();
+            if (song.HasValue)
+                LoadSelectedSong(song.Value);
         }
         else {
             SongDataResource loaded = Resources.Load<SongDataResource>("SongData");
             songData = loaded.data;
-            string songPath = SaveData.GetAudioFilePath(songData.metadata.audioFileName);
-            if (File.Exists(songPath)) {
-                Metronome.instance.SetCustomSong(songPath);
-            }
+            Metronome.instance.SetSong(testSongReference);
         }
 
         SpawnDifficultyNotes(Difficulty.Normal);
         List<NoteData> notesData = GetDifficultyNoteData(Difficulty.Normal);
-        if (notesData.Count > 0) {
-            if (notesData[0].time > HEADSTART) {
-                headstartTimer = 0;
-            } else {
-                headstartTimer = HEADSTART - notesData[0].time;
-            }
+        float delay = headstart;
+        if (notesData.Count > 0 && notesData[0].time <= headstart) {
+            delay = headstart - notesData[0].time;
         }
-
+        Metronome.instance.PlaySongHeadstart(delay);
+        RuntimeManager.PlayOneShot(readyReference);
+        Metronome.instance.smoothTimelineOn = true;
         GameManager.instance.SetPlaying(true);
     }
 
     private void Update()
     {
-        if (!songStarted) {
-            headstartTimer -= Time.deltaTime * 1000f;
-
-            if (headstartTimer <= 0f) {
-                songStarted = true;
-                headstartTimer = 0f;
-                Metronome.instance.PlaySong();
-            }
-        }
         UpdateNotesPosition();
     }
 
@@ -92,9 +85,9 @@ public class NoteManager : MonoBehaviour
         }
     }
 
-    protected virtual void LoadSelectedSong(string songFilePath)
+    protected virtual void LoadSelectedSong(SongMetadata metadata)
     {
-        songData = SaveData.LoadCustomSong(songFilePath);
+        songData = SaveData.LoadCustomSong(metadata.localPath);
         string songPath = SaveData.GetAudioFilePath(songData.metadata.audioFileName);
         if (File.Exists(songPath)) {
             Metronome.instance.SetCustomSong(songPath);
@@ -167,12 +160,12 @@ public class NoteManager : MonoBehaviour
     // ---------------------------------------------------------------------------------------------------------------------------------------------
     public int GetTimeFromPosition(float horizontalPos)
     {
-        return Mathf.RoundToInt(Metronome.instance.GetTimelinePosition() - headstartTimer + (horizontalPos / noteSpeed * 1000f));
+        return Mathf.RoundToInt(Metronome.instance.GetTimelinePosition() + (horizontalPos / noteSpeed * 1000f));
     }
 
     public float GetPositionFromTime(int time)
     {
-        return (time - Metronome.instance.GetTimelinePosition() + headstartTimer) / 1000f * noteSpeed;
+        return (time - Metronome.instance.GetTimelinePosition()) / 1000f * noteSpeed;
     }
 
     public float GetDistanceFromTime(int time)

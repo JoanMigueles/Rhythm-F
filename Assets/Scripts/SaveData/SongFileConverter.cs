@@ -15,6 +15,7 @@ public static class SongFileConverter
             writer.WriteLine($"AudioFile:{songData.metadata.audioFileName}");
             writer.WriteLine($"CoverFile:{songData.metadata.coverFileName}");
             writer.WriteLine($"PreviewStart:{songData.metadata.previewStartTime}");
+            writer.WriteLine($"StageBackground:{songData.metadata.stage}");
             writer.WriteLine();
 
             // Write BPM Changes section
@@ -121,6 +122,9 @@ public static class SongFileConverter
                 break;
             case "PreviewStart":
                 float.TryParse(value, out songData.metadata.previewStartTime);
+                break;
+            case "StageBackground":
+                Enum.TryParse(value, out songData.metadata.stage);
                 break;
         }
     }

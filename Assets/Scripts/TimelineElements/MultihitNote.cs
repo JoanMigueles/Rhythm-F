@@ -13,6 +13,7 @@ public class MultihitNote : DurationNote
 
     public override void UpdatePosition()
     {
+        CheckForSound();
         if (beingHit) { 
             transform.position = new Vector3(0f, 0f, 0f); 
         } 

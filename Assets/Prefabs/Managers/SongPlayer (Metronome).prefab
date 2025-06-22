@@ -44,20 +44,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb6cd5e7832589b40a9ec68fb02c5dfc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <songs>k__BackingField:
-  - Guid:
-      Data1: -1485310095
-      Data2: 1281423242
-      Data3: 1272657329
-      Data4: 1597510158
-    Path: event:/Tricolor Circus - AAAA
-  <customSongReference>k__BackingField:
-    Guid:
-      Data1: -1785230349
-      Data2: 1150819385
-      Data3: -1223271781
-      Data4: -865256942
-    Path: event:/Custom Song
   <beepReference>k__BackingField:
     Guid:
       Data1: -566500808
@@ -69,4 +55,6 @@ MonoBehaviour:
     offset: 0
     BPM: 0
   beatSecondInterval: 0
-  metronomeBeeps: 1
+  metronomeBeeps: 0
+  isCustom: 0
+  smoothTimelineOn: 0

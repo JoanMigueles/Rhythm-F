@@ -1,20 +1,21 @@
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
+using DG.Tweening;
+using System;
+using UnityEngine.UIElements;
 
 public class CenteredSnapScroll : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDragHandler
 {
     [SerializeField] private RectTransform viewport;
     [SerializeField] private RectTransform content;
-    //[SerializeField] private float snapSpeed = 10f;
-    //[SerializeField] private float scaleFactor = 0.5f;
-    //[SerializeField] private float minScale = 0.7f;
     [SerializeField] private float decelerationRate = 0.95f; // How quickly momentum slows down
     [SerializeField] private float maxMomentum = 2000f; // Maximum speed
-    [SerializeField] private Color selectedColor;
-    [SerializeField] private Color color;
+    [SerializeField] private float elasticity = 100f; // how far user can overshoot beyond limits
+    [SerializeField] private float elasticitySnapSpeed = 10f; // speed to snap back inside limits
 
     private RectTransform[] items;
+    private RectTransform hoveredItem;
     private bool isDragging;
     private Vector2 cursorPos;
     private Vector2 lastCursorPos;
@@ -25,9 +26,29 @@ public class CenteredSnapScroll : MonoBehaviour, IBeginDragHandler, IEndDragHand
 
     private void Update()
     {
+        if (!isDragging) {
+            int hoveredIndex = Array.IndexOf(items, hoveredItem);
+            int newIndex = 0;
+            if (Input.GetKeyDown(KeyCode.UpArrow) || Input.mouseScrollDelta.y > 0f) {
+                newIndex = hoveredIndex - 1;
+                if (newIndex < 0)  newIndex = 0;
+                SnapToItem(items[newIndex], true);
+            }
+            else if (Input.GetKeyDown(KeyCode.DownArrow) || Input.mouseScrollDelta.y < 0f) {
+                newIndex = hoveredIndex + 1;
+                if (newIndex >= items.Length) newIndex = items.Length - 1;
+                SnapToItem(items[newIndex], true);
+            }
+        }
+
         if (!isDragging && hasMomentum) {
             // Apply momentum
             content.anchoredPosition += Vector2.up * momentum * Time.deltaTime;
+            if (content.anchoredPosition.y < viewport.rect.height / 2) {
+                momentum = momentum / (viewport.rect.height / 2 - content.anchoredPosition.y);
+            } else if (content.anchoredPosition.y + content.rect.height > viewport.rect.height / 2) {
+                momentum = momentum / (content.anchoredPosition.y + content.rect.height - viewport.rect.height / 2);
+            }
 
             // Gradually reduce momentum
             momentum *= decelerationRate;
@@ -38,14 +59,20 @@ public class CenteredSnapScroll : MonoBehaviour, IBeginDragHandler, IEndDragHand
                 hasMomentum = false;
             }
         }
-        else {
-            SnapToNearestItem();
+
+        RectTransform nearestItem = CalculateNearesItem();
+        if (nearestItem != null) {
+            if (!DOTween.IsTweening(content))
+                SnapToItem(nearestItem, true);
+            if (nearestItem != hoveredItem)
+                SetHoveredItem(nearestItem);
         }
+
     }
 
-    private void SnapToNearestItem()
+    private RectTransform CalculateNearesItem()
     {
-        if (content == null || viewport == null) return;
+        if (content == null || viewport == null) return null;
 
         float nearestDistance = float.MaxValue;
         float viewportCenter = viewport.rect.height / 2f;
@@ -68,38 +95,46 @@ public class CenteredSnapScroll : MonoBehaviour, IBeginDragHandler, IEndDragHand
             }
         }
 
-        if (nearestItem == null) return;
+        return nearestItem;
+    }
 
-        SongPanel panel = nearestItem.GetComponent<SongPanel>();
+    public void SnapToItem(RectTransform item, bool smooth)
+    {
+        if (isDragging || hasMomentum) return;
+        // Calculate target position to center the nearest item
+        float targetY = -item.anchoredPosition.y - (viewport.rect.height) / 2f;
+
+        // Kill any previous tweens to avoid conflicts
+        content.DOKill();
+
+        if (smooth) {
+            content.DOAnchorPosY(targetY, 0.3f).SetEase(Ease.OutCubic);
+        } else {
+            content.anchoredPosition = new Vector2(content.anchoredPosition.x, targetY);
+        }
+    }
+
+    private void SetHoveredItem(RectTransform item)
+    {
+        if (hoveredItem != null) {
+            SongPanel previousPanel = hoveredItem.GetComponent<SongPanel>();
+            if (previousPanel != null)
+                previousPanel.SetHovered(false);
+        }
+
+        hoveredItem = item;
+        SongPanel panel = hoveredItem.GetComponent<SongPanel>();
+
         if (panel != null) {
+            panel.SetHovered(true);
+            SongMetadata metadata = panel.GetSongMetadata();
             LevelListUI.instance.SetHoveredSong(panel.GetSongMetadata());
-        }
-
-        // Update visual feedback
-        foreach (RectTransform child in items) {
-            if (child == null) continue;
-
-            Image img = child.GetComponent<Image>();
-            if (img != null) {
-                img.color = (child == nearestItem) ? selectedColor : color;
-            }
-        }
-
-        if (!isDragging && !hasMomentum) {
-            // Calculate target position to center the nearest item
-            float targetY = -nearestItem.anchoredPosition.y - (viewport.rect.height) / 2f;
-
-            // Apply with smoothing
-            content.anchoredPosition = Vector2.Lerp(
-                content.anchoredPosition,
-                new Vector2(content.anchoredPosition.x, targetY),
-                Time.deltaTime * 10f
-            );
         }
     }
 
     public void OnBeginDrag(PointerEventData data)
     {
+        content.DOKill();
         isDragging = true;
         hasMomentum = false;
         momentum = 0f;
@@ -117,7 +152,9 @@ public class CenteredSnapScroll : MonoBehaviour, IBeginDragHandler, IEndDragHand
         momentum = deltaY / Time.deltaTime;
         momentum = Mathf.Clamp(momentum, -maxMomentum, maxMomentum);
 
-        content.anchoredPosition = new Vector2(content.anchoredPosition.x, cursorPos.y - offsetY);
+        float newY = cursorPos.y - offsetY;
+
+        content.anchoredPosition = new Vector2(content.anchoredPosition.x, newY);
         lastCursorPos = cursorPos;
     }
 
@@ -134,5 +171,14 @@ public class CenteredSnapScroll : MonoBehaviour, IBeginDragHandler, IEndDragHand
         for (int i = 0; i < content.childCount; i++) {
             items[i] = content.GetChild(i) as RectTransform;
         }
+
+        if (items.Length > 0) {
+            SnapToItem(items[0], false);
+        }
+    }
+
+    private void OnDestroy()
+    {
+        content.DOKill();
     }
 }

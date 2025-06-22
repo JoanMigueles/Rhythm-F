@@ -195,6 +195,13 @@ MonoBehaviour:
     lane: 0
     type: 0
     duration: 0
+  <hitReference>k__BackingField:
+    Guid:
+      Data1: -1032950187
+      Data2: 1107193288
+      Data3: -1379719765
+      Data4: 1249203959
+    Path: event:/SoundEffects/KickDrum
   <warnReference>k__BackingField:
     Guid:
       Data1: -123252508
@@ -204,6 +211,7 @@ MonoBehaviour:
     Path: event:/SoundEffects/LaserWarn
   laser: {fileID: 1692238337283741064}
   appearingTime: 500
+  laserDuration: 400
 --- !u!61 &7724914381145081941
 BoxCollider2D:
   m_ObjectHideFlags: 0

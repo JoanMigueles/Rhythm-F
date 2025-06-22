@@ -69,7 +69,9 @@ public class EditorManager : NoteManager
         activeMarkers = new List<BPMMarker>();
 
         if (GameManager.instance.IsSongSelected()) {
-            LoadSelectedSong(GameManager.instance.GetSelectedSong());
+            var song = GameManager.instance.GetSelectedSong();
+            if (song.HasValue)
+                LoadSelectedSong(song.Value);
         }
         if (songData == null) {
             CreateSong();
@@ -129,12 +131,13 @@ public class EditorManager : NoteManager
 
     public void CreateSong()
     {
+        Metronome.instance.ReleasePlayers();
         songData = new SongData();
     }
 
-    protected override void LoadSelectedSong(string songFilePath)
+    protected override void LoadSelectedSong(SongMetadata metadata)
     {
-        base.LoadSelectedSong(songFilePath);
+        base.LoadSelectedSong(metadata);
         EditorUI.instance.ApplyWaveformTexture();
     }
 
@@ -153,7 +156,7 @@ public class EditorManager : NoteManager
     public IEnumerator SaveAndLoadCustomAudioFile(string filePath)
     {
         // Save
-        Metronome.instance.ReleaseCustomPlayer();
+        Metronome.instance.ReleasePlayers();
         SaveData.CreateAudioFile(songData, filePath);
 
         // Load
@@ -840,6 +843,7 @@ public class EditorManager : NoteManager
 
     public void ClearActiveNotes()
     {
+        ClearSelection();
         history.Clear();
         foreach (Note note in activeNotes) {
             Destroy(note.gameObject);

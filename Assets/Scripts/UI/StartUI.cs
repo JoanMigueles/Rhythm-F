@@ -1,10 +1,16 @@
+using DG.Tweening;
+using FMODUnity;
 using UnityEngine;
 
-public class StartUI : MonoBehaviour
+public class StartUI : UIManager
 {
-    public void PlayButton()
+    public GameObject splashArt;
+    private void Start()
     {
-        GameManager.instance.OpenSongList();
+        PlayMenuTheme();
+        splashArt.transform.DOMoveX(-11f, 0.5f)
+            .SetRelative()
+            .SetEase(Ease.InOutSine);
     }
 
     public void QuitButton()

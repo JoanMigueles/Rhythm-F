@@ -20,6 +20,8 @@ public class WarnNote : DurationNote
     public override void UpdatePosition()
     {
         if (!gameObject.activeSelf) return;
+
+        CheckForSound();
         float yPos = data.lane == 0 ? 1.5f : -1.5f;
         transform.position = new Vector3(NoteManager.instance.GetPositionFromTime(data.time), yPos, 0f);
         if (durationHandle == null) return;

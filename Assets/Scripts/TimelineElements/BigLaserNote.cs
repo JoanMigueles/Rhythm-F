@@ -17,6 +17,7 @@ public class BigLaserNote : Note
     public override void UpdatePosition()
     {
         if (!gameObject.activeSelf) return;
+        CheckForSound();
         float yPos = data.lane == 0 ? 1.5f : -1.5f;
 
         // Editor behavior

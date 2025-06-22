@@ -124,19 +124,6 @@ public class EditorUI : UIManager
         em.SetSongArtist(artist);
     }
 
-    // SAVE AND EXIT BUTTON
-    public void SaveAndExitButton()
-    {
-        em.SaveChanges();
-        GameManager.instance.OpenSongList();
-    }
-
-    // SAVE AND EXIT BUTTON
-    public void ExitButton()
-    {
-        GameManager.instance.OpenSongList();
-    }
-
     // METRONOME TOGGLE
     public void MetronomeToggle(bool on)
     {

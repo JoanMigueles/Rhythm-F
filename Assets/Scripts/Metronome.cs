@@ -1,5 +1,7 @@
+using FMOD.Studio;
 using FMODUnity;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -18,16 +20,19 @@ public class Metronome : MonoBehaviour
     public float beatSecondInterval;
     public bool metronomeBeeps;
 
-    private bool smoothTimelineOn;
-    private float smoothTimeElapsed;
-    private const float SYNC_RATE = 5f;
-    private float syncTimer;
+    public bool isCustom;
+    public bool smoothTimelineOn;
+    private float headstartTimer;
     private int timelinePosition;
+    private float smoothTimelinePosition;
     private int previousTimelinePosition;
     private float timelineBeatPosition;
     private int lastBeat;
 
     private FMODCustomMusicPlayer customPlayer;
+    private EventInstance instancePlayer;
+    private EventReference currentEventRef;
+    public EventReference CurrentEventRef => currentEventRef;
 
     private void Awake()
     {
@@ -43,8 +48,8 @@ public class Metronome : MonoBehaviour
     private void Start()
     {
         lastBeat = 0;
+        isCustom = false;
         smoothTimelineOn = false;
-        syncTimer = 0;
         if (BPMFlags == null || BPMFlags.Count == 0) {
             BPMFlags = new List<BPMFlag> {new BPMFlag(0)};
         }
@@ -57,46 +62,42 @@ public class Metronome : MonoBehaviour
         currentBPMFlag = GetCurrentBPMFlag();
         beatSecondInterval = 60f / currentBPMFlag.BPM;
 
-        // GET TIME AND BEAT
-        if (customPlayer != null) {
-            /*
-            if (smoothTimelineOn) {
-                smoothTimeElapsed += Time.deltaTime;
-                timelinePosition = (int)(smoothTimeElapsed * 1000);
-            } else {
-                timelinePosition = customPlayer.GetTimelinePosition();
-                smoothTimeElapsed = timelinePosition / 1000f;
-            }*/
-            
-            
-            if (smoothTimelineOn) {
-                smoothTimeElapsed += Time.deltaTime;
-                syncTimer += Time.deltaTime;
-                timelinePosition = (int)(smoothTimeElapsed * 1000);
-            } else {
-                timelinePosition = customPlayer.GetTimelinePosition();
-                smoothTimeElapsed = timelinePosition / 1000f;
-            }
-
-            timelineBeatPosition = GetBeatFromTime(timelinePosition);
-            if (timelinePosition >= customPlayer.LengthInMS - 100) {
-                PauseSong();
+        // OBTAIN THE TIMELINE POSITION
+        if (headstartTimer > 0) {
+            headstartTimer -= Time.deltaTime;
+            if (headstartTimer <= 0f && GameManager.instance.IsPlaying() && IsPaused()) {
+                PlaySong();
+                headstartTimer = 0f;
             }
         }
 
+        if (isCustom && customPlayer != null) {
+            timelinePosition = customPlayer.GetTimelinePosition() - (int)(headstartTimer * 1000);
+        }
+        else if (instancePlayer.isValid()) {
+            instancePlayer.getTimelinePosition(out timelinePosition);
+            timelinePosition -= (int)(headstartTimer * 1000);
+        }
+
+        // IF IS PLAYING, USE A SMOOTHER POSITION
+        if (!IsPaused() && smoothTimelineOn) {
+            smoothTimelinePosition += Time.deltaTime;
+            timelinePosition = (int)(smoothTimelinePosition * 1000) - (int)(headstartTimer * 1000);
+        }
+
+        // SONG END DETECTION FOR CUSTOM SONGS
+        if (isCustom && customPlayer != null && timelinePosition >= customPlayer.LengthInMS) {
+            PauseSong();
+        }
+
         // BEAT CHANGE DETECTION
+        timelineBeatPosition = GetBeatFromTime(timelinePosition);
         int currentBeat = Mathf.FloorToInt(timelineBeatPosition);
         if (currentBeat != lastBeat) {
             if (metronomeBeeps && !IsPaused()) {
                 RuntimeManager.PlayOneShot(beepReference);
             }
             lastBeat = currentBeat;
-        }
-
-        if (syncTimer > SYNC_RATE) {
-            timelinePosition = customPlayer.GetTimelinePosition();
-            smoothTimeElapsed = timelinePosition / 1000f;
-            syncTimer = 0;
         }
     }
     // ---------------------------------------------------------------------------------------------------------------------------------------------
@@ -166,66 +167,107 @@ public class Metronome : MonoBehaviour
     }
 
     // ---------------------------------------------------------------------------------------------------------------------------------------------
-    // PLAYER
+    // PLAYERS
     // ---------------------------------------------------------------------------------------------------------------------------------------------
     public void SetCustomSong(string songPath)
     {
-        ReleaseCustomPlayer();
+        ReleasePlayers();
+        Debug.Log("Setting custom song...");
+        isCustom = true;
+        currentEventRef = new EventReference();
         customPlayer = new FMODCustomMusicPlayer(songPath);
     }
 
-    public void ReleaseCustomPlayer()
+    public void SetSong(EventReference eventRef)
     {
+        ReleasePlayers();
+        Debug.Log("Setting song...");
+        isCustom = false;
+        currentEventRef = eventRef;
+        instancePlayer = RuntimeManager.CreateInstance(eventRef);
+        instancePlayer.start();
+        instancePlayer.setPaused(true);
+    }
+
+    public void ReleasePlayers()
+    {
+        Debug.Log("Releasing players...");
         if (customPlayer != null) customPlayer.Dispose();
+        if (instancePlayer.isValid()) {
+            instancePlayer.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
+            instancePlayer.release();
+        }
     }
 
     public uint GetSongLength()
     {
-        if (customPlayer != null) return customPlayer.LengthInMS;
+        if (isCustom && customPlayer != null) return customPlayer.LengthInMS;
+        else if (instancePlayer.isValid()) {
+            instancePlayer.getDescription(out EventDescription description);
+            description.getLength(out int lengthMS); // length in milliseconds
+            return (uint)lengthMS;
+        }
         return 0;
     }
 
     public Texture2D GetSongWaveformTexture()
     {
-        if (customPlayer == null) return null;
+        if (isCustom && customPlayer == null) return null;
         return customPlayer.GenerateWaveformTexture((int)(customPlayer.LengthInMS / 1000f * 50), 200);
     }
 
     public void SetTimelinePosition(int time)
     {
-        if (customPlayer == null) return;
-
         if (time < 0) time = 0;
-        customPlayer.SetTimelinePosition(time);
-        smoothTimelineOn = false;
+        if (isCustom && customPlayer != null)
+            customPlayer.SetTimelinePosition(time);
+        else if (instancePlayer.isValid())
+            instancePlayer.setTimelinePosition(time);
+
+        headstartTimer = 0;
+        smoothTimelinePosition = time / 1000f;
     }
 
     public void SetNormalizedTimelinePosition(float pos)
     {
-        if (customPlayer == null) return;
-
         pos = Math.Clamp(pos, 0f, 1f);
-        customPlayer.SetTimelinePosition((int)(pos * customPlayer.LengthInMS));
-        smoothTimelineOn = false;
+        int time = (int)(pos * customPlayer.LengthInMS);
+        if (isCustom && customPlayer != null) 
+            customPlayer.SetTimelinePosition(time);
+        else if (instancePlayer.isValid())
+            instancePlayer.setTimelinePosition(time);
+
+        headstartTimer = 0;
+        smoothTimelinePosition = time / 1000f;
     }
 
     public void PlaySong()
     {
-        if (customPlayer == null) return;
+        if (isCustom && customPlayer != null)
+            customPlayer.Play();
+        else if (instancePlayer.isValid())
+            instancePlayer.setPaused(false);
 
-        smoothTimelineOn = true;
-        customPlayer.Play();
+        headstartTimer = 0;
+        smoothTimelinePosition = timelinePosition / 1000f;
         if (EditorUI.instance != null) {
             EditorUI.instance.DisplayPause(true);
         }
     }
 
+    public void PlaySongHeadstart(float headstart)
+    {
+        headstartTimer = headstart;
+    }
+
     public void StopSong()
     {
-        if (customPlayer == null) return;
+        if (isCustom && customPlayer != null)
+            customPlayer.Stop();
+        else if (instancePlayer.isValid())
+            instancePlayer.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
 
-        smoothTimelineOn = false;
-        customPlayer.Stop();
+        smoothTimelinePosition = timelinePosition / 1000f;
         if (EditorUI.instance != null) {
             EditorUI.instance.DisplayPause(false);
         }
@@ -233,10 +275,12 @@ public class Metronome : MonoBehaviour
 
     public void PauseSong()
     {
-        if (customPlayer == null) return;
+        if (isCustom && customPlayer != null)
+            customPlayer.Pause(true);
+        else if (instancePlayer.isValid())
+            instancePlayer.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
 
-        smoothTimelineOn = false;
-        customPlayer.Pause(true);
+        headstartTimer = 0;
         if (EditorUI.instance != null) {
             EditorUI.instance.DisplayPause(false);
         }
@@ -244,8 +288,113 @@ public class Metronome : MonoBehaviour
 
     public bool IsPaused()
     {
-        if (customPlayer == null) return true;
-        return customPlayer.IsPaused;
+        if (isCustom && customPlayer != null)
+            return customPlayer.IsPaused;
+        else if (instancePlayer.isValid()) {
+            instancePlayer.getPaused(out bool paused);
+            return paused;
+        }
+        return true;
+    }
+
+    public IEnumerator FadeIn(float duration = 2f)
+    {
+        if (isCustom && customPlayer != null) {
+            customPlayer.Volume = 0;
+            yield return new WaitForSeconds(0.2f);
+            customPlayer.Pause(false);
+
+            float elapsed = 0f;
+            while (elapsed < duration) {
+                if (customPlayer == null)
+                    yield break;
+
+                if (!customPlayer.IsPlaying || customPlayer.IsPaused)
+                    yield break;
+
+                elapsed += Time.deltaTime;
+                float volume = Mathf.Clamp01(elapsed / duration);
+                customPlayer.Volume = volume;
+
+                yield return null;
+            }
+
+            customPlayer.Volume = 1f;
+        }
+        else if (instancePlayer.isValid()) {
+            instancePlayer.setVolume(0f);
+            instancePlayer.setPaused(false);
+
+            float elapsed = 0f;
+            while (elapsed < duration) {
+                if (!instancePlayer.isValid())
+                    yield break;
+
+                instancePlayer.getPlaybackState(out PLAYBACK_STATE state);
+                instancePlayer.getPaused(out bool paused);
+
+                if (state == PLAYBACK_STATE.STOPPED || state == PLAYBACK_STATE.STOPPING || state == PLAYBACK_STATE.SUSTAINING || paused)
+                    yield break;
+
+                elapsed += Time.deltaTime;
+                float volume = Mathf.Clamp01(elapsed / duration);
+                instancePlayer.setVolume(volume);
+
+                yield return null;
+            }
+
+            instancePlayer.setVolume(1f);
+        }
+    }
+
+    public IEnumerator FadeOut(float duration = 2f)
+    {
+        if (isCustom && customPlayer != null) {
+            customPlayer.Volume = 0;
+            customPlayer.Pause(false);
+
+            float elapsed = 0f;
+            while (elapsed < duration) {
+                if (customPlayer == null)
+                    yield break;
+
+                if (!customPlayer.IsPlaying || customPlayer.IsPaused)
+                    yield break;
+
+                elapsed += Time.deltaTime;
+                float volume = Mathf.Lerp(1f, 0f, elapsed / duration);
+                customPlayer.Volume = volume;
+
+                yield return null;
+            }
+
+            customPlayer.Volume = 0f;
+            customPlayer.Pause(true);
+        }
+        else if (instancePlayer.isValid()) {
+            instancePlayer.setVolume(0f);
+
+            float elapsed = 0f;
+            while (elapsed < duration) {
+                if (!instancePlayer.isValid())
+                    yield break;
+
+                instancePlayer.getPlaybackState(out PLAYBACK_STATE state);
+                instancePlayer.getPaused(out bool paused);
+
+                if (state == PLAYBACK_STATE.STOPPED || state == PLAYBACK_STATE.STOPPING || state == PLAYBACK_STATE.SUSTAINING || paused)
+                    yield break;
+
+                elapsed += Time.deltaTime;
+                float volume = Mathf.Lerp(1f, 0f, elapsed / duration);
+                instancePlayer.setVolume(volume);
+
+                yield return null;
+            }
+
+            instancePlayer.setVolume(0f);
+            instancePlayer.setPaused(true);
+        }
     }
 
     public void SetMetronomeSound(bool on)
@@ -258,6 +407,10 @@ public class Metronome : MonoBehaviour
         if (customPlayer != null)
         {
             customPlayer.Dispose();
+        }
+        if (instancePlayer.isValid()) {
+            instancePlayer.release();
+            instancePlayer.clearHandle();
         }
     }
 }
@@ -342,7 +495,6 @@ public class FMODCustomMusicPlayer : IDisposable
     public void Pause(bool pause)
     {
         if (isDisposed || !channel.hasHandle()) return;
-
         channel.setPaused(pause);
     }
 
@@ -436,9 +588,6 @@ public class FMODCustomMusicPlayer : IDisposable
 
     public Texture2D GenerateWaveformTexture(int texWidth, int texHeight)
     {
-        System.Diagnostics.Stopwatch stopwatch = new System.Diagnostics.Stopwatch();
-
-        stopwatch.Start();
         // === 1. Read PCM data ===
         FMOD.Sound sound;
         RuntimeManager.CoreSystem.createSound(
@@ -457,11 +606,8 @@ public class FMODCustomMusicPlayer : IDisposable
         byte[] buffer = new byte[totalBytes];
         sound.readData(buffer, out uint bytesRead);
         sound.release();
-        stopwatch.Stop();
-        Debug.Log($"Time - Byte buffer extraction: {stopwatch.ElapsedMilliseconds} ms");
 
         // === 2. Convert byte buffer to float samples ===
-        stopwatch.Restart();
         int sampleCount = (int)(bytesRead / bytesPerSample / channels);
         float[] samples = new float[sampleCount];
 
@@ -476,11 +622,8 @@ public class FMODCustomMusicPlayer : IDisposable
                 samples[i] = ((left + right) / 2f) / 32768f;
             }
         }
-        stopwatch.Stop();
-        Debug.Log($"Time - Byte to float samples: {stopwatch.ElapsedMilliseconds} ms");
 
         // === 3. Downsample ===
-        stopwatch.Restart();
         float[] amplitudes = new float[texWidth];
         int samplesPerPixel = samples.Length / texWidth;
         for (int i = 0; i < texWidth; i++) {
@@ -491,22 +634,15 @@ public class FMODCustomMusicPlayer : IDisposable
             }
             amplitudes[i] = sum / samplesPerPixel;
         }
-        stopwatch.Stop();
-        Debug.Log($"Time - Downsampling: {stopwatch.ElapsedMilliseconds} ms");
 
         // === 4. Normalize ===
-        stopwatch.Restart();
         float maxAmp = amplitudes.Max();
         if (maxAmp > 0) {
             for (int i = 0; i < amplitudes.Length; i++)
                 amplitudes[i] /= maxAmp;
         }
-        stopwatch.Stop();
-        Debug.Log($"Time - Normalizing: {stopwatch.ElapsedMilliseconds} ms");
 
         // === 5. Generate texture ===
-        stopwatch.Restart();
-
         Texture2D tex = new Texture2D(texWidth, texHeight, TextureFormat.Alpha8, false);
         tex.filterMode = FilterMode.Point;
 
@@ -527,8 +663,6 @@ public class FMODCustomMusicPlayer : IDisposable
         // Asignar los datos directamente
         tex.SetPixelData(alphaData, 0);
         tex.Apply(false, true);
-        stopwatch.Stop();
-        Debug.Log($"Time - Texture generation: {stopwatch.ElapsedMilliseconds} ms");
 
         return tex;
     }

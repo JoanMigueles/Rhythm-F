@@ -6,7 +6,8 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
     public List<Note> notes {  get; private set; }
-    private string selectedSong;
+    private SongMetadata? selectedSong;
+    private Difficulty selectedDifficulty;
     private bool isPlaying;
 
     private void Awake()
@@ -41,39 +42,54 @@ public class GameManager : MonoBehaviour
     }
 
     // EDITOR OPENING
-    public void OpenEditor()
+    public void OpenScene(string sceneName)
     {
-        Metronome.instance.ReleaseCustomPlayer();
-        SceneManager.LoadScene("LevelEditor");
+        SceneManager.LoadScene(sceneName);
     }
 
-    // LIST OPENING
-    public void OpenSongList()
+    public void OpenLevelScene(Stage stage)
     {
-        Metronome.instance.ReleaseCustomPlayer();
-        SceneManager.LoadScene("List");
+        string sceneName = "";
+        switch (stage) {
+            case Stage.City:
+                sceneName = "CityLevel";
+                break;
+            case Stage.Beach:
+                sceneName = "BeachLevel";
+                break;
+            case Stage.Future:
+                sceneName = "FutueLevel";
+                break;
+        }
+
+        Metronome.instance.ReleasePlayers();
+        SceneManager.LoadScene(sceneName);
     }
 
     public void QuitGame()
     {
-        Metronome.instance.ReleaseCustomPlayer();
+        Metronome.instance.ReleasePlayers();
         Application.Quit();
     }
 
     // SELECTED SONG
-    public void SetSelectedSong(string songPath)
+    public void SetSelectedSong(SongMetadata song)
     {
-        selectedSong = songPath;
+        selectedSong = song;
+    }
+    public void SetSelectedDifficulty(Difficulty diff)
+    {
+        selectedDifficulty = diff;
     }
 
-    public string GetSelectedSong()
+    public SongMetadata? GetSelectedSong()
     {
         return selectedSong;
     }
 
     public bool IsSongSelected()
     {
-        return !string.IsNullOrEmpty(selectedSong);
+        return selectedSong.HasValue;
     }
 
     // NOTES

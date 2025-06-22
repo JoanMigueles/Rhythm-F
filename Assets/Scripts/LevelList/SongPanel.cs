@@ -4,23 +4,55 @@ using UnityEngine.UI;
 
 public class SongPanel : MonoBehaviour
 {
+    public bool openEditor;
     [SerializeField] TMP_Text titleText;
     [SerializeField] TMP_Text artistText;
     [SerializeField] Button button;
+    [SerializeField] private Color selectedColor;
+    [SerializeField] private Color color;
+
+    private CenteredSnapScroll scroll;
     private SongMetadata metadata;
+    private bool isHovered;
+
+    public void SetScroller(CenteredSnapScroll scroller)
+    {
+        scroll = scroller;
+    }
 
     public void SetSongMetadata(SongMetadata songMetadata) {
         metadata = songMetadata;
         titleText.text = songMetadata.songName;
         artistText.text = songMetadata.artist;
         button.onClick.AddListener(() => {
-            GameManager.instance.SetSelectedSong(songMetadata.localPath);
-            GameManager.instance.OpenEditor();
+            if (isHovered) {
+                GameManager.instance.SetSelectedSong(songMetadata);
+                if (openEditor)
+                    GameManager.instance.OpenScene("LevelEditor");
+                else GameManager.instance.OpenLevelScene(metadata.stage);
+            } else {
+                RectTransform rt = GetComponent<RectTransform>();
+                scroll.SnapToItem(rt, true);
+            }
         });
     }
+
     public SongMetadata GetSongMetadata()
     {
         return metadata;
+    }
+
+    public void SetHovered(bool hovered)
+    {
+        isHovered = hovered;
+        Pulsator pulse = GetComponent<Pulsator>();
+        GetComponent<Image>().color = hovered ? selectedColor : color;
+        if (hovered) {
+            PulsatorManager.instance.AddPulsator(pulse);
+        } else {
+            PulsatorManager.instance.RemovePulsator(pulse);
+        }
+        
     }
 }
 
