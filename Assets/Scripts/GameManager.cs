@@ -77,6 +77,7 @@ public class GameManager : MonoBehaviour
     {
         selectedSong = song;
     }
+
     public void SetSelectedDifficulty(Difficulty diff)
     {
         selectedDifficulty = diff;
@@ -85,6 +86,11 @@ public class GameManager : MonoBehaviour
     public SongMetadata? GetSelectedSong()
     {
         return selectedSong;
+    }
+
+    public Difficulty GetSelectedDifficulty()
+    {
+        return selectedDifficulty;
     }
 
     public bool IsSongSelected()

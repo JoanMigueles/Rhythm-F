@@ -1,5 +1,4 @@
 using FMODUnity;
-using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -63,6 +62,7 @@ public class NoteManager : MonoBehaviour
 
         SpawnDifficultyNotes(Difficulty.Normal);
         List<NoteData> notesData = GetDifficultyNoteData(Difficulty.Normal);
+        
         float delay = headstart;
         if (notesData.Count > 0 && notesData[0].time <= headstart) {
             delay = headstart - notesData[0].time;
@@ -71,6 +71,11 @@ public class NoteManager : MonoBehaviour
         RuntimeManager.PlayOneShot(readyReference);
         Metronome.instance.smoothTimelineOn = true;
         GameManager.instance.SetPlaying(true);
+
+        foreach (var note in activeNotes) {
+            note.SetDisplayMode(true);
+        }
+
     }
 
     private void Update()
@@ -87,10 +92,19 @@ public class NoteManager : MonoBehaviour
 
     protected virtual void LoadSelectedSong(SongMetadata metadata)
     {
-        songData = SaveData.LoadCustomSong(metadata.localPath);
-        string songPath = SaveData.GetAudioFilePath(songData.metadata.audioFileName);
-        if (File.Exists(songPath)) {
-            Metronome.instance.SetCustomSong(songPath);
+        if (metadata.songID == -1) {
+            songData = SaveData.LoadCustomSong(metadata.localPath);
+            Metronome.instance.SetBPMFlags(songData.BPMFlags);
+            string songPath = SaveData.GetAudioFilePath(songData.metadata.audioFileName);
+            if (File.Exists(songPath)) {
+                Metronome.instance.SetCustomSong(songPath);
+            }
+        } else {
+
+            songData = ResourceLoader.LoadSong(metadata.songID);
+            Metronome.instance.SetBPMFlags(songData.BPMFlags);
+            EventReference reference = ResourceLoader.LoadEventReference(metadata.songID);
+            Metronome.instance.SetSong(reference);
         }
     }
 
@@ -153,6 +167,36 @@ public class NoteManager : MonoBehaviour
             case NoteType.Multiple_Slash: return multipleSlashPrefab;
             default: return hitPrefab;
         }
+    }
+
+    public bool IsPastLastNote()
+    {
+        List<NoteData> notes = GetDifficultyNoteData(difficulty);
+        return Metronome.instance.GetTimelinePosition() >= notes[notes.Count - 1].time;
+    }
+
+    public float GetAccuracy(int perfects, int greats, int misses)
+    {
+        List<NoteData> notes = GetDifficultyNoteData(difficulty);
+        float maxPossibleGrade = 0;
+        foreach (NoteData note in notes) {
+            switch (note.type) {
+                case NoteType.Slider:
+                    maxPossibleGrade += 2;
+                    break;
+                case NoteType.Saw:
+                case NoteType.Laser:
+                    break;
+                default:
+                    maxPossibleGrade += 1;
+                    break;
+            }
+        }
+
+
+        if (perfects + greats + misses != maxPossibleGrade) Debug.LogWarning($"Incoherence found between hits and max possible hits: {perfects + greats + misses}, {maxPossibleGrade}");
+        return (perfects + greats * (2 / 3)) / maxPossibleGrade * 100;
+
     }
 
     // ---------------------------------------------------------------------------------------------------------------------------------------------

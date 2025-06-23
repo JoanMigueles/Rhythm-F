@@ -19,8 +19,10 @@ public class MultihitNote : DurationNote
         } 
         else {
             transform.position = new Vector3(NoteManager.instance.GetPositionFromTime(data.time), 0f, 0f);
+            if (GameManager.instance.IsPlaying() && transform.position.x <= -10 - NoteManager.instance.GetDistanceFromTime(data.duration))
+                gameObject.SetActive(false);
         }
-        
+
         if (durationHandle != null) {
             durationHandle.transform.localPosition = new Vector3(NoteManager.instance.GetDistanceFromTime(data.duration), 0f, 0f);
         }

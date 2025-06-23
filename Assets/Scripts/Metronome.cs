@@ -257,6 +257,7 @@ public class Metronome : MonoBehaviour
 
     public void PlaySongHeadstart(float headstart)
     {
+        timelinePosition = 0;
         headstartTimer = headstart;
     }
 

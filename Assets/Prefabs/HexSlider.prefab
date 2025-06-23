@@ -258,6 +258,8 @@ MonoBehaviour:
     lane: 0
     type: 0
     duration: 0
+  damage: 0
+  hitPlayer: 0
   <hitReference>k__BackingField:
     Guid:
       Data1: -1032950187

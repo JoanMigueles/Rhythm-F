@@ -11,13 +11,14 @@ public class DifficultySelector : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        SetSelectedDifficulty(1);
+        SetSelectedDifficulty((int)GameManager.instance.GetSelectedDifficulty());
     }
 
     public void SetSelectedDifficulty(int diff)
     {
         Difficulty difficulty = (Difficulty)diff;
         selectedDifficulty = difficulty;
+        GameManager.instance.SetSelectedDifficulty(selectedDifficulty);
         Image[] images = GetComponentsInChildren<Image>();
         bool isEven;
         for (int i = 0; i < images.Length; i++) {

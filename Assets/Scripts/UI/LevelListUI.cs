@@ -1,3 +1,4 @@
+using FMODUnity;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
@@ -31,10 +32,17 @@ public class LevelListUI : UIManager
         }
         hoveredSong = null;
 
-        List<SongMetadata> songMetadataList = SaveData.LoadAllCustomSongsMetadata();
+        List<SongMetadata> songMetadataList = ResourceLoader.LoadAllSongsMetadata();
+        List<SongMetadata> customSongMetadataList = SaveData.LoadAllCustomSongsMetadata();
 
-        if (songMetadataList.Count > 0) {
-            foreach (SongMetadata metadata in songMetadataList) {
+        foreach (SongMetadata metadata in songMetadataList) {
+            SongPanel panel = Instantiate(songPanelPrefab, content.transform);
+            panel.SetScroller(scroll);
+            panel.SetSongMetadata(metadata);
+        }
+
+        if (customSongMetadataList.Count > 0) {
+            foreach (SongMetadata metadata in customSongMetadataList) {
                 SongPanel panel = Instantiate(songPanelPrefab, content.transform);
                 panel.SetScroller(scroll);
                 panel.SetSongMetadata(metadata);
@@ -42,7 +50,7 @@ public class LevelListUI : UIManager
         }
 
         if (noSongsSign != null) {
-            noSongsSign.SetActive(songMetadataList.Count == 0);
+            noSongsSign.SetActive(customSongMetadataList.Count == 0);
             PlayMenuTheme();
         }
 
@@ -71,9 +79,27 @@ public class LevelListUI : UIManager
         Metronome.instance.ReleasePlayers();
         yield return new WaitForSeconds(0.5f);
 
-        string audioPath = SaveData.GetAudioFilePath(metadata.audioFileName);
-        if (File.Exists(audioPath))
-            Metronome.instance.SetCustomSong(SaveData.GetAudioFilePath(audioPath));
+        if (metadata.songID == -1) {
+            string audioPath = SaveData.GetAudioFilePath(metadata.audioFileName);
+            if (File.Exists(audioPath)) {
+                Metronome.instance.SetCustomSong(SaveData.GetAudioFilePath(audioPath));
+
+                SongData song = SaveData.LoadCustomSong(metadata.localPath);
+                Metronome.instance.SetBPMFlags(song.BPMFlags);
+            }
+            else {
+                PlayMenuTheme();
+            }
+        } else {
+            SongData song = ResourceLoader.LoadSong(metadata.songID);
+            EventReference reference = ResourceLoader.LoadEventReference(metadata.songID);
+
+            Metronome.instance.SetBPMFlags(song.BPMFlags);
+            Metronome.instance.SetSong(reference);
+
+        }
+        
+
         yield return Metronome.instance.FadeIn(2f);
     }
 }

@@ -89,6 +89,7 @@ public static class SaveData
 
         if (File.Exists(songFilePath)) {
             song = SongFileConverter.LoadFromTextFormat(songFilePath);
+            song.metadata.songID = -1;
         }
 
         return song;

@@ -23,6 +23,7 @@ public class SongPanel : MonoBehaviour
     public void SetSongMetadata(SongMetadata songMetadata) {
         metadata = songMetadata;
         titleText.text = songMetadata.songName;
+        if (songMetadata.songID != -1) titleText.text += "(*)";
         artistText.text = songMetadata.artist;
         button.onClick.AddListener(() => {
             if (isHovered) {

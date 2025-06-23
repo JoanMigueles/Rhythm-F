@@ -54,7 +54,7 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 0
---- !u!114 &-4983458039256276038
+--- !u!114 &-3724619288284701439
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -64,14 +64,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/Tricolor Circus - AAAA
+  m_Name: event:/Songs/TriColor Circus
   m_EditorClassIdentifier: 
-  Path: event:/Tricolor Circus - AAAA
+  Path: event:/Songs/TriColor Circus
   Guid:
-    Data1: -1485310095
-    Data2: 1281423242
-    Data3: 1272657329
-    Data4: 1597510158
+    Data1: -898380105
+    Data2: 1100223179
+    Data3: -2104095102
+    Data4: -1271374983
   Banks:
   - {fileID: -1751657219509329858}
   IsStream: 1
@@ -80,7 +80,7 @@ MonoBehaviour:
   Parameters: []
   MinDistance: 1
   MaxDistance: 20
-  Length: 130500
+  Length: 134661
 --- !u!114 &-2189506377255230233
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -123,10 +123,10 @@ MonoBehaviour:
   Path: FMOD/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 638861697809771299
+  lastModified: 638862585022493285
   FileSizes:
   - Name: Desktop
-    Value: 4280832
+    Value: 7111392
   Exists: 1
 --- !u!114 &11400000
 MonoBehaviour:
@@ -145,20 +145,20 @@ MonoBehaviour:
   - {fileID: -1751657219509329858}
   EditorEvents:
   - {fileID: -5848251324872358444}
-  - {fileID: -4983458039256276038}
-  - {fileID: 8753710572888305244}
   - {fileID: 5169908476968712566}
   - {fileID: -8260645927357740630}
   - {fileID: -2189506377255230233}
   - {fileID: 3294593636158727282}
   - {fileID: 3809763503777295944}
   - {fileID: 2984281992703464697}
+  - {fileID: 4857077373068774366}
+  - {fileID: -3724619288284701439}
   EditorParameters: []
   MasterBanks:
   - {fileID: -1751657219509329858}
   StringsBanks:
   - {fileID: 2413521439291127005}
-  cacheTime: 638861697809796621
+  cacheTime: 638862585022521085
   cacheVersion: 131622
 --- !u!114 &2413521439291127005
 MonoBehaviour:
@@ -175,10 +175,10 @@ MonoBehaviour:
   Path: FMOD/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 638861697809796621
+  lastModified: 638862585022521085
   FileSizes:
   - Name: Desktop
-    Value: 1128
+    Value: 1134
   Exists: 1
 --- !u!114 &2984281992703464697
 MonoBehaviour:
@@ -261,6 +261,33 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 8000
+--- !u!114 &4857077373068774366
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Songs/Daydream
+  m_EditorClassIdentifier: 
+  Path: event:/Songs/Daydream
+  Guid:
+    Data1: 2114493477
+    Data2: 1324103031
+    Data3: 1506861204
+    Data4: -234407232
+  Banks:
+  - {fileID: -1751657219509329858}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 225123
 --- !u!114 &5169908476968712566
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -288,30 +315,3 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 0
---- !u!114 &8753710572888305244
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/Custom Song
-  m_EditorClassIdentifier: 
-  Path: event:/Custom Song
-  Guid:
-    Data1: -1785230349
-    Data2: 1150819385
-    Data3: -1223271781
-    Data4: -865256942
-  Banks:
-  - {fileID: -1751657219509329858}
-  IsStream: 0
-  Is3D: 0
-  IsOneShot: 1
-  Parameters: []
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 38000

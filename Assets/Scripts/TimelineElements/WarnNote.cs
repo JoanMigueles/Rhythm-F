@@ -46,6 +46,9 @@ public class WarnNote : DurationNote
         } else if (!attacked) {
             durationHandle.SetDuration(data.duration);
         }
+
+        if (transform.position.x <= -10)
+            gameObject.SetActive(false);
     }
 
     protected void Warn()

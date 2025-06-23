@@ -5,12 +5,10 @@ public class ShooterNote : WarnNote
 {
     public Transform shootPosition;
     public GameObject shootProjectile;
-    private bool isLeaving = false;
     private bool isBeingAttacked = false;
 
     public void Leave()
     {
-        isLeaving = true;
         durationHandle.transform.DOMoveY(8f, 0.5f)
             .SetEase(Ease.InBack)
             .OnComplete(() => {
@@ -67,7 +65,6 @@ public class ShooterNote : WarnNote
         shootProjectile.GetComponent<SpriteRenderer>().enabled = !hide;
     }
 
-    public bool IsLeaving() { return isLeaving; }
 
     public bool IsBeingAttacked() { return isBeingAttacked; }
 
@@ -78,7 +75,6 @@ public class ShooterNote : WarnNote
         if (!gameplay) {
             shootProjectile.transform.DOKill();
             shootProjectile.gameObject.SetActive(false);
-            isLeaving = false;
             isBeingAttacked = false;
         }
     }

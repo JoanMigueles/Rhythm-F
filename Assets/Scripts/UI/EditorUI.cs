@@ -11,6 +11,7 @@ public class EditorUI : UIManager
     public TMP_Text beat;
     public TMP_Text subdivision;
     public TMP_Text songTitle;
+    public TMP_Text currentBPM;
 
     public TMP_InputField titleField;
     public TMP_InputField artistField;
@@ -52,6 +53,7 @@ public class EditorUI : UIManager
         // UPDATE TIMERS
         timer.text = FormatTimeMS(Metronome.instance.GetTimelinePosition());
         beat.text = Metronome.instance.GetTimelineBeatPosition().ToString("F2");
+        currentBPM.text = Metronome.instance.currentBPMFlag.BPM.ToString();
         
         // UPDATE WAVEFORM POSITION
         foreach (WaveformTexture waveformTexture in waveformTextures) {

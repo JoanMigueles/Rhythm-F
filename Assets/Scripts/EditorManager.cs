@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -137,7 +138,11 @@ public class EditorManager : NoteManager
 
     protected override void LoadSelectedSong(SongMetadata metadata)
     {
-        base.LoadSelectedSong(metadata);
+        songData = SaveData.LoadCustomSong(metadata.localPath);
+        string songPath = SaveData.GetAudioFilePath(songData.metadata.audioFileName);
+        if (File.Exists(songPath)) {
+            Metronome.instance.SetCustomSong(songPath);
+        }
         EditorUI.instance.ApplyWaveformTexture();
     }
 

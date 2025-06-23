@@ -13,6 +13,9 @@ public class SliderNote : DurationNote
         if (durationHandle != null) {
             durationHandle.SetDuration(data.duration - consumedAmount);
         }
+
+        if (GameManager.instance.IsPlaying() && transform.position.x <= -10 - NoteManager.instance.GetDistanceFromTime(data.duration))
+            gameObject.SetActive(false);
     }
 
     public void SetConsumedDistance(int distance)
@@ -25,11 +28,15 @@ public class SliderNote : DurationNote
         return consumedAmount;
     }
 
-    public void SetMissed()
+    public void SetMissed(bool missed)
     {
         foreach (SpriteRenderer sr in GetComponentsInChildren<SpriteRenderer>()) {
+            sr.DOKill(); // Cancela cualquier tween anterior en este SpriteRenderer
+
             Color color = sr.color;
-            sr.DOColor(new Color(color.r, color.g, color.b, 0.5f), 0.2f);
+            float targetAlpha = missed ? 0.5f : 1f;
+
+            sr.DOColor(new Color(color.r, color.g, color.b, targetAlpha), 0.2f);
         }
     }
 
@@ -39,9 +46,7 @@ public class SliderNote : DurationNote
 
         if (!gameplay) {
             consumedAmount = 0;
-            foreach (SpriteRenderer sr in GetComponentsInChildren<SpriteRenderer>()) {
-                sr.color = new Color(sr.color.r, sr.color.g, sr.color.b, 1f);
-            }
+            SetMissed(false);
         }
     }
 }

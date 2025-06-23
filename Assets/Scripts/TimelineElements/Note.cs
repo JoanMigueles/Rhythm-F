@@ -62,6 +62,9 @@ public struct NoteData
 public class Note : TimelineElement
 {
     public NoteData data;
+    public int damage = 20;
+    public bool hitPlayer = false;
+    public bool missed = false;
 
     [field: Header("Hit")]
     [field: SerializeField] public EventReference hitReference { get; private set; }
@@ -85,13 +88,26 @@ public class Note : TimelineElement
         CheckForSound();
         float yPos = data.lane == 0 ? 1.5f : -1.5f;
         transform.position = new Vector3(NoteManager.instance.GetPositionFromTime(data.time), yPos, 0f);
+
+        if (GameManager.instance.IsPlaying() && transform.position.x <= -10)
+            gameObject.SetActive(false);
     }
 
     public virtual void SetDisplayMode(bool gameplay)
     {
         if (gameplay) {
             // Notes on gameplay/testing
-            gameObject.SetActive(Metronome.instance.GetTimelinePosition() < data.time);
+            if (Metronome.instance.GetTimelinePosition() > data.time) {
+                gameObject.SetActive(false);
+                UnityEngine.Debug.Log(Metronome.instance.GetTimelinePosition());
+                UnityEngine.Debug.Log("hidden note");
+                hitPlayer = true;
+                missed = true;
+            } else {
+                hitPlayer = false;
+                missed = false;
+            }
+            
         } else {
             // Notes on editor
             gameObject.SetActive(true);
@@ -101,7 +117,7 @@ public class Note : TimelineElement
     public void CheckForSound()
     {
         if (Metronome.instance.IsPaused() || GameManager.instance.IsPlaying()) soundMade = false;
-        else if (!soundMade && Metronome.instance.GetTimelinePosition() > data.time && Metronome.instance.GetTimelinePosition() < data.time + 100) {
+        else if (!soundMade && Metronome.instance.GetTimelinePosition() > data.time && Metronome.instance.GetTimelinePosition() < data.time + 100 && data.type != NoteType.Saw && data.type != NoteType.Laser) {
             RuntimeManager.PlayOneShot(hitReference);
             soundMade = true;
         }

@@ -1,5 +1,6 @@
 using DG.Tweening;
 using FMODUnity;
+using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -20,7 +21,15 @@ public class GameplayUI : UIManager
     [SerializeField] private GameObject rankIcon;
     [SerializeField] private float startingsRankIconScale = 1.5f;
     [SerializeField] private TMP_Text[] resultTexts;
+
     [SerializeField] private TMP_Text scoreDisplay;
+    [SerializeField] private Slider comboSlider;
+    [SerializeField] private TMP_Text comboMultiplierDisplay;
+    [SerializeField] private Slider healthSlider;
+    [SerializeField] private TMP_Text healthDisplay;
+    [SerializeField] private Color comboHighlight;
+    [SerializeField] private Color comboNormal;
+
     private Vector3 bottomBarTargetPos;
     private Vector3 topBarTargetPos;
     private Vector3 backgroundTargetPos;
@@ -28,15 +37,20 @@ public class GameplayUI : UIManager
     private Vector3 resultsPanelTargetPos;
     private Vector2[] resultTextTargetPositions;
 
+    private bool songEnded;
+
     void Start()
     {
+        songEnded = false;
+
+        // Get the desired position for each element in the result screen (predetermined in the scene)
         bottomBarTargetPos = bottomBar.transform.localPosition;
         topBarTargetPos = topBar.transform.localPosition;
         backgroundTargetPos = resultsBackground.transform.localPosition;
         splashTargetPos = roboSplash.transform.position;
         resultsPanelTargetPos = resultsPanel.transform.localPosition;
-        backButton.SetActive(false);
 
+        // Move the result screen off the screen and hide it
         bottomBar.transform.localPosition = bottomBarTargetPos + Vector3.left * Screen.width;
         topBar.transform.localPosition = topBarTargetPos + Vector3.right * Screen.width;
         resultsBackground.transform.localPosition = backgroundTargetPos + Vector3.up * Screen.height;
@@ -47,10 +61,9 @@ public class GameplayUI : UIManager
         CanvasGroup canvasGroup = rankIcon.GetComponent<CanvasGroup>();
         if (canvasGroup == null)
             canvasGroup = rankIcon.AddComponent<CanvasGroup>();
-
-        // Reset state
         rankIcon.transform.localScale = Vector3.one * startingsRankIconScale;
         canvasGroup.alpha = 0f;
+        backButton.SetActive(false);
 
         for (int i = 0; i < resultTexts.Length; i++) {
             RectTransform rt = resultTexts[i].rectTransform;
@@ -61,13 +74,64 @@ public class GameplayUI : UIManager
             resultTexts[i].alpha = 0f;
             childText.alpha = 0f;
         }
+
+        // Set the max slider values from the character controller params
+        comboSlider.maxValue = robo.comboMultiplierInterval;
+        healthSlider.maxValue = robo.maxHealth;
     }
 
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.W)) ShowResults();
         scoreDisplay.text = robo.GetScore().ToString();
+
+        int multiplier = robo.GetComboMultiplier();
+        comboMultiplierDisplay.text = "x" + multiplier.ToString();
+        if (multiplier == robo.maxComboMultiplier) {
+            comboSlider.value = robo.comboMultiplierInterval;
+            comboSlider.fillRect.GetComponent<Image>().color = comboHighlight;
+        } else {
+            comboSlider.value = robo.GetCombo() % robo.comboMultiplierInterval;
+            comboSlider.fillRect.GetComponent<Image>().color = comboNormal;
+        }
+
+        int health = robo.GetHealth();
+        healthSlider.value = health;
+        healthDisplay.text = health.ToString() + "/" + robo.maxHealth;
+
+        if (NoteManager.instance.IsPastLastNote() && !songEnded) {
+            songEnded = true;
+            StartCoroutine(EndLevel());
+        }
     }
+
+    private IEnumerator EndLevel()
+    {
+        yield return new WaitForSeconds(2.5f);
+        SetResults();
+        yield return Metronome.instance.FadeOut();
+        ShowResults();
+    }
+
+    public void SetResults()
+    {
+        // Score
+        resultTexts[0].transform.GetChild(0).GetComponent<TMP_Text>().text = robo.GetScore().ToString();
+
+        // Hit stats
+        (int perfects, int greats, int misses) = robo.GetHitStats();
+        resultTexts[1].transform.GetChild(0).GetComponent<TMP_Text>().text = perfects.ToString();
+        resultTexts[2].transform.GetChild(0).GetComponent<TMP_Text>().text = greats.ToString();
+        resultTexts[3].transform.GetChild(0).GetComponent<TMP_Text>().text = misses.ToString();
+
+        // Max combo
+        resultTexts[4].transform.GetChild(0).GetComponent<TMP_Text>().text = robo.GetMaxCombo().ToString();
+
+        // Accuracy
+        resultTexts[5].transform.GetChild(0).GetComponent<TMP_Text>().text = NoteManager.instance.GetAccuracy(perfects, greats, misses).ToString();
+
+    }
+
     public void ShowResults()
     {
         float duration = 1f;
