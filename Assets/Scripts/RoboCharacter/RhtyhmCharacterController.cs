@@ -55,6 +55,7 @@ public class RhtyhmCharacterController : MonoBehaviour
 
     private NoteManager noteManager;
     private Metronome metronome;
+    private CharacterPoseSwapper swapper;
 
     void Start()
     {
@@ -62,8 +63,8 @@ public class RhtyhmCharacterController : MonoBehaviour
         currentLane = 1;
         noteManager = NoteManager.instance;
         metronome = Metronome.instance;
+        swapper = GetComponent<CharacterPoseSwapper>();
     }
-
 
     void Update()
     {
@@ -75,8 +76,32 @@ public class RhtyhmCharacterController : MonoBehaviour
 
     private void HandleInput(int currentTime)
     {
+        // Lane switching
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            currentLane = currentLane == 0 ? 1 : 0;
+            if (currentLane == 1) swapper.SetBasePose(BaseAnimationState.Running);
+            else
+            {
+                if (!isMultihitting) swapper.TriggerJump();
+                swapper.SetBasePose(BaseAnimationState.Surfing);
+            }
+
+            if (hitBuffered)
+            {
+                TryHitNotes(currentTime, currentLane, InteractionType.Hit);
+                hitBuffered = false;
+            }
+            else if (flickBuffered)
+            {
+                TryHitNotes(currentTime, currentLane, InteractionType.Flick);
+                flickBuffered = false;
+            }
+        }
+
         // Hit detection
         if (Input.GetMouseButtonDown(0)) {
+            swapper.TriggerHit();
             bool hitSuccess = TryHitNotes(currentTime, currentLane, InteractionType.Hit);
             if (!hitSuccess) {
                 hitBuffered = true;
@@ -87,6 +112,7 @@ public class RhtyhmCharacterController : MonoBehaviour
         // Flick detection
         float mouseSpeedX = Input.GetAxis("Mouse X") / Time.deltaTime;
         if (!isFlicking && Mathf.Abs(mouseSpeedX) >= flickThreshold) {
+            swapper.TriggerSlash(mouseSpeedX < 0);
             isFlicking = true;
             bool flickSuccess = TryHitNotes(currentTime, currentLane, InteractionType.Flick);
             if (!flickSuccess) {
@@ -102,19 +128,7 @@ public class RhtyhmCharacterController : MonoBehaviour
         if (hitBuffered && currentTime > hitBufferEndTime) hitBuffered = false;
         if (flickBuffered && currentTime > flickBufferEndTime) flickBuffered = false;
 
-        // Lane switching
-        if (Input.GetKeyDown(KeyCode.Space)) {
-            currentLane = currentLane == 0 ? 1 : 0;
-
-            if (hitBuffered) {
-                TryHitNotes(currentTime, currentLane, InteractionType.Hit);
-                hitBuffered = false;
-            }
-            else if (flickBuffered) {
-                TryHitNotes(currentTime, currentLane, InteractionType.Flick);
-                flickBuffered = false;
-            }
-        }
+        
 
         HandleMissedNotes(currentTime);
         HandleHoldNote(currentTime);
@@ -147,6 +161,10 @@ public class RhtyhmCharacterController : MonoBehaviour
         // Completion
         if (newConsumed >= maxScore) {
             CompleteHoldNote("Perfect!", heldNote);
+            isHolding = false;
+            heldNote = null;
+            if (currentLane == 1) swapper.SetBasePose(BaseAnimationState.Running);
+            else swapper.SetBasePose(BaseAnimationState.Surfing);
             return;
         }
 
@@ -162,6 +180,8 @@ public class RhtyhmCharacterController : MonoBehaviour
             }
             isHolding = false;
             heldNote = null;
+            if (currentLane == 1) swapper.SetBasePose(BaseAnimationState.Running);
+            else swapper.SetBasePose(BaseAnimationState.Surfing);
             return;
         }
     }
@@ -172,8 +192,6 @@ public class RhtyhmCharacterController : MonoBehaviour
         perfects++;
         combo++;
         note.gameObject.SetActive(false);
-        isHolding = false;
-        heldNote = null;
     }
 
     private void HandleMultihitNote(int currentTime)
@@ -284,6 +302,7 @@ public class RhtyhmCharacterController : MonoBehaviour
                 else if (note is SliderNote slider && interaction == InteractionType.Hit) {
                     heldNote = slider;
                     isHolding = true;
+                    swapper.SetBasePose(BaseAnimationState.Holding);
                 }
                 else {
                     note.gameObject.SetActive(false);
@@ -460,6 +479,7 @@ public class RhtyhmCharacterController : MonoBehaviour
     {
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+        swapper.SetBasePose(BaseAnimationState.Running);
 
         hitBuffered = false;
         hitBufferEndTime = 0;

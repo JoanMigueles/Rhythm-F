@@ -418,7 +418,7 @@ MonoBehaviour:
       Value: 256
       HasValue: 1
     DSPBufferCount:
-      Value: 4
+      Value: 12
       HasValue: 1
     Plugins:
       Value: []
@@ -571,11 +571,11 @@ MonoBehaviour:
       Value: 256
       HasValue: 0
     DSPBufferLength:
-      Value: 0
-      HasValue: 0
+      Value: 256
+      HasValue: 1
     DSPBufferCount:
-      Value: 0
-      HasValue: 0
+      Value: 12
+      HasValue: 1
     Plugins:
       Value: []
       HasValue: 0

@@ -14,6 +14,7 @@ public class BigLaserNote : Note
     private bool appeared = false;
     private bool shot = false;
     private bool leaving = false;
+        
     public override void UpdatePosition()
     {
         if (!gameObject.activeSelf) return;
@@ -85,6 +86,9 @@ public class BigLaserNote : Note
             appeared = false;
             shot = false;
             leaving = false;
+        } else
+        {
+            transform.position = new Vector3(30f, 10f, 0f);
         }
     }
 }
