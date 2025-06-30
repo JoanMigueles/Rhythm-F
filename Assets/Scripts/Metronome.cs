@@ -414,7 +414,33 @@ public class Metronome : MonoBehaviour
             instancePlayer.clearHandle();
         }
     }
+
+    void OnApplicationFocus(bool hasFocus)
+    {
+        if (!hasFocus)
+        {
+            customPlayer?.Pause(true); // Pause when focus is lost
+        }
+        else
+        {
+            customPlayer?.Pause(false); // Resume if needed
+        }
+    }
+
+    void OnApplicationPause(bool isPaused)
+    {
+        if (isPaused)
+        {
+            customPlayer?.Pause(true); // Pause on app suspend
+        }
+        else
+        {
+            customPlayer?.Pause(false); // Resume if appropriate
+        }
+    }
 }
+
+
 
 public class FMODCustomMusicPlayer : IDisposable
 {

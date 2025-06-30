@@ -31,4 +31,30 @@ public class ResourceCreator : MonoBehaviour
 
         Debug.Log("SongDataResource saved to " + assetPath);
     }
+
+    [MenuItem("Tools/Export SongData From Asset To Text")]
+    public static void ExportSongDataFromAsset()
+    {
+        // Open file panel to select the ScriptableObject asset
+        string assetPath = EditorUtility.OpenFilePanel("Select SongDataResource Asset", "Assets", "asset");
+        if (string.IsNullOrEmpty(assetPath)) return;
+
+        // Convert absolute path to relative path (Unity requires this for AssetDatabase)
+        string relativePath = "Assets" + assetPath.Substring(Application.dataPath.Length);
+
+        // Load the asset
+        SongDataResource resource = AssetDatabase.LoadAssetAtPath<SongDataResource>(relativePath);
+        if (resource == null || resource.data == null)
+        {
+            Debug.LogError("Failed to load SongDataResource from selected file.");
+            return;
+        }
+
+        // Open a file save panel
+        string savePath = EditorUtility.SaveFilePanel("Export SongData To Text", "", "SongDataExport", "songdata");
+        if (string.IsNullOrEmpty(savePath)) return;
+
+        // Save the SongData to a text format
+        SongFileConverter.SaveToTextFormat(resource.data, savePath);
+    }
 }

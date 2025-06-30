@@ -60,8 +60,8 @@ public class NoteManager : MonoBehaviour
             Metronome.instance.SetSong(testSongReference);
         }
 
-        SpawnDifficultyNotes(Difficulty.Normal);
-        List<NoteData> notesData = GetDifficultyNoteData(Difficulty.Normal);
+        SpawnDifficultyNotes(GameManager.instance.GetSelectedDifficulty());
+        List<NoteData> notesData = GetDifficultyNoteData(GameManager.instance.GetSelectedDifficulty());
         
         float delay = headstart;
         if (notesData.Count > 0 && notesData[0].time <= headstart) {
