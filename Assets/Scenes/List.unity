@@ -2609,15 +2609,15 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 2009478635}
-        m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
-        m_MethodName: OpenScene
-        m_Mode: 5
+        m_TargetAssemblyTypeName: LevelListUI, Assembly-CSharp
+        m_MethodName: ExportHoveredSong
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: LevelEditor
+          m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &1238532688
@@ -3447,8 +3447,6 @@ MonoBehaviour:
   content: {fileID: 1579756555}
   decelerationRate: 0.98
   maxMomentum: 2000
-  elasticity: 100
-  elasticitySnapSpeed: 10
 --- !u!1001 &1717914120
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3872,7 +3870,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1795241876}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2009478635}
+        m_TargetAssemblyTypeName: LevelListUI, Assembly-CSharp
+        m_MethodName: EditHoveredSong
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1795241876
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4267,6 +4277,11 @@ MonoBehaviour:
   content: {fileID: 1579756554}
   noSongsSign: {fileID: 1501588667}
   scroll: {fileID: 1708761846}
+  nameDisplay: {fileID: 0}
+  artistDisplay: {fileID: 0}
+  bpmDisplay: {fileID: 0}
+  coverImage: {fileID: 0}
+  customsOnly: 1
 --- !u!114 &2009478636
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4466,15 +4481,15 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 2009478635}
-        m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
-        m_MethodName: OpenScene
-        m_Mode: 5
+        m_TargetAssemblyTypeName: LevelListUI, Assembly-CSharp
+        m_MethodName: ImportSong
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: LevelEditor
+          m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &2133399678

@@ -7,6 +7,7 @@ public class SongPanel : MonoBehaviour
     public bool openEditor;
     [SerializeField] TMP_Text titleText;
     [SerializeField] TMP_Text artistText;
+    [SerializeField] Image coverImage;
     [SerializeField] Button button;
     [SerializeField] private Color selectedColor;
     [SerializeField] private Color color;
@@ -25,6 +26,7 @@ public class SongPanel : MonoBehaviour
         titleText.text = songMetadata.songName;
         if (songMetadata.songID != -1) titleText.text += "(*)";
         artistText.text = songMetadata.artist;
+        coverImage.sprite = SaveData.GetCoverSprite(SaveData.GetCoverFilePath(metadata.coverFileName));
         button.onClick.AddListener(() => {
             if (isHovered) {
                 GameManager.instance.SetSelectedSong(songMetadata);

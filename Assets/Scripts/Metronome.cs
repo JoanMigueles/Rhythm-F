@@ -20,7 +20,6 @@ public class Metronome : MonoBehaviour
     public float beatSecondInterval;
     public bool metronomeBeeps;
 
-    public bool isCustom;
     public bool smoothTimelineOn;
     private float headstartTimer;
     private int timelinePosition;
@@ -31,8 +30,6 @@ public class Metronome : MonoBehaviour
 
     private FMODCustomMusicPlayer customPlayer;
     private EventInstance instancePlayer;
-    private EventReference currentEventRef;
-    public EventReference CurrentEventRef => currentEventRef;
 
     private void Awake()
     {
@@ -48,7 +45,6 @@ public class Metronome : MonoBehaviour
     private void Start()
     {
         lastBeat = 0;
-        isCustom = false;
         smoothTimelineOn = false;
         if (BPMFlags == null || BPMFlags.Count == 0) {
             BPMFlags = new List<BPMFlag> {new BPMFlag(0)};
@@ -71,7 +67,7 @@ public class Metronome : MonoBehaviour
             }
         }
 
-        if (isCustom && customPlayer != null) {
+        if (customPlayer != null) {
             timelinePosition = customPlayer.GetTimelinePosition() - (int)(headstartTimer * 1000);
         }
         else if (instancePlayer.isValid()) {
@@ -86,7 +82,7 @@ public class Metronome : MonoBehaviour
         }
 
         // SONG END DETECTION FOR CUSTOM SONGS
-        if (isCustom && customPlayer != null && timelinePosition >= customPlayer.LengthInMS) {
+        if (customPlayer != null && timelinePosition >= customPlayer.LengthInMS) {
             PauseSong();
         }
 
@@ -173,8 +169,6 @@ public class Metronome : MonoBehaviour
     {
         ReleasePlayers();
         Debug.Log("Setting custom song...");
-        isCustom = true;
-        currentEventRef = new EventReference();
         customPlayer = new FMODCustomMusicPlayer(songPath);
     }
 
@@ -182,8 +176,6 @@ public class Metronome : MonoBehaviour
     {
         ReleasePlayers();
         Debug.Log("Setting song...");
-        isCustom = false;
-        currentEventRef = eventRef;
         instancePlayer = RuntimeManager.CreateInstance(eventRef);
         instancePlayer.start();
         instancePlayer.setPaused(true);
@@ -192,7 +184,10 @@ public class Metronome : MonoBehaviour
     public void ReleasePlayers()
     {
         Debug.Log("Releasing players...");
-        if (customPlayer != null) customPlayer.Dispose();
+        if (customPlayer != null) {
+            customPlayer.Dispose();
+            customPlayer = null;
+        }
         if (instancePlayer.isValid()) {
             instancePlayer.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
             instancePlayer.release();
@@ -201,7 +196,7 @@ public class Metronome : MonoBehaviour
 
     public uint GetSongLength()
     {
-        if (isCustom && customPlayer != null) return customPlayer.LengthInMS;
+        if (customPlayer != null) return customPlayer.LengthInMS;
         else if (instancePlayer.isValid()) {
             instancePlayer.getDescription(out EventDescription description);
             description.getLength(out int lengthMS); // length in milliseconds
@@ -212,14 +207,14 @@ public class Metronome : MonoBehaviour
 
     public Texture2D GetSongWaveformTexture()
     {
-        if (isCustom && customPlayer == null) return null;
+        if (customPlayer == null) return null;
         return customPlayer.GenerateWaveformTexture((int)(customPlayer.LengthInMS / 1000f * 50), 200);
     }
 
     public void SetTimelinePosition(int time)
     {
         if (time < 0) time = 0;
-        if (isCustom && customPlayer != null)
+        if (customPlayer != null)
             customPlayer.SetTimelinePosition(time);
         else if (instancePlayer.isValid())
             instancePlayer.setTimelinePosition(time);
@@ -232,7 +227,7 @@ public class Metronome : MonoBehaviour
     {
         pos = Math.Clamp(pos, 0f, 1f);
         int time = (int)(pos * customPlayer.LengthInMS);
-        if (isCustom && customPlayer != null) 
+        if (customPlayer != null) 
             customPlayer.SetTimelinePosition(time);
         else if (instancePlayer.isValid())
             instancePlayer.setTimelinePosition(time);
@@ -243,7 +238,7 @@ public class Metronome : MonoBehaviour
 
     public void PlaySong()
     {
-        if (isCustom && customPlayer != null)
+        if (customPlayer != null)
             customPlayer.Play();
         else if (instancePlayer.isValid())
             instancePlayer.setPaused(false);
@@ -263,7 +258,7 @@ public class Metronome : MonoBehaviour
 
     public void StopSong()
     {
-        if (isCustom && customPlayer != null)
+        if (customPlayer != null)
             customPlayer.Stop();
         else if (instancePlayer.isValid())
             instancePlayer.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
@@ -276,7 +271,7 @@ public class Metronome : MonoBehaviour
 
     public void PauseSong()
     {
-        if (isCustom && customPlayer != null)
+        if (customPlayer != null)
             customPlayer.Pause(true);
         else if (instancePlayer.isValid())
             instancePlayer.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
@@ -289,7 +284,7 @@ public class Metronome : MonoBehaviour
 
     public bool IsPaused()
     {
-        if (isCustom && customPlayer != null)
+        if (customPlayer != null)
             return customPlayer.IsPaused;
         else if (instancePlayer.isValid()) {
             instancePlayer.getPaused(out bool paused);
@@ -298,9 +293,18 @@ public class Metronome : MonoBehaviour
         return true;
     }
 
+    public void Fade(bool fadeOut)
+    {
+        if (fadeOut) {
+
+        } else {
+
+        }
+    }
+
     public IEnumerator FadeIn(float duration = 2f)
     {
-        if (isCustom && customPlayer != null) {
+        if (customPlayer != null) {
             customPlayer.Volume = 0;
             yield return new WaitForSeconds(0.2f);
             customPlayer.Pause(false);
@@ -350,7 +354,7 @@ public class Metronome : MonoBehaviour
 
     public IEnumerator FadeOut(float duration = 2f)
     {
-        if (isCustom && customPlayer != null) {
+        if (customPlayer != null) {
             customPlayer.Volume = 0;
             customPlayer.Pause(false);
 
@@ -415,6 +419,7 @@ public class Metronome : MonoBehaviour
         }
     }
 
+    /*
     void OnApplicationFocus(bool hasFocus)
     {
         if (!hasFocus)
@@ -437,7 +442,7 @@ public class Metronome : MonoBehaviour
         {
             customPlayer?.Pause(false); // Resume if appropriate
         }
-    }
+    }*/
 }
 
 

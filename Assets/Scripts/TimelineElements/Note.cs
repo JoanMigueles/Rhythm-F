@@ -1,6 +1,4 @@
-using FMOD;
 using FMODUnity;
-using Unity.VisualScripting;
 using UnityEngine;
 
 [System.Serializable]
@@ -63,6 +61,7 @@ public class Note : TimelineElement
 {
     public NoteData data;
     public int damage = 20;
+    public bool defeated = false;
     public bool hitPlayer = false;
     public bool missed = false;
 
@@ -70,50 +69,63 @@ public class Note : TimelineElement
     [field: SerializeField] public EventReference hitReference { get; private set; }
     bool soundMade = false;
 
+    public ParticleSystem killParticles;
+
+    // Overrides the updating of positions while moving notes on the editor
     public override void Move(int distance, bool laneSwap)
     {
         float yPos;
-        if (laneSwap) {
+        if (laneSwap)
             yPos = data.lane == 0 ? -1.5f : 1.5f;
-        }
-        else {
+        else
             yPos = data.lane == 0 ? 1.5f : -1.5f;
-        }
-
         transform.position = new Vector3(NoteManager.instance.GetPositionFromTime(data.time + distance), yPos, 0f);
     }
 
+    // Updates position for this note (called from NoteManager)
     public override void UpdatePosition()
     {
-        CheckForSound();
         float yPos = data.lane == 0 ? 1.5f : -1.5f;
         transform.position = new Vector3(NoteManager.instance.GetPositionFromTime(data.time), yPos, 0f);
-
-        if (GameManager.instance.IsPlaying() && transform.position.x <= -10)
-            gameObject.SetActive(false);
+        CheckForSound();
+        CheckForAppearance();
     }
 
+    // Toggles the appearance of the note from the editor view to the playing/testing view mode (hiding ghosts, lines, etc...)
     public virtual void SetDisplayMode(bool gameplay)
     {
         if (gameplay) {
             // Notes on gameplay/testing
+            gameObject.SetActive(false);
             if (Metronome.instance.GetTimelinePosition() > data.time) {
-                gameObject.SetActive(false);
-                UnityEngine.Debug.Log(Metronome.instance.GetTimelinePosition());
-                UnityEngine.Debug.Log("hidden note");
+                defeated = true;
                 hitPlayer = true;
                 missed = true;
-            } else {
+            }
+            else {
+                defeated = false;
                 hitPlayer = false;
                 missed = false;
             }
-            
+            CheckForAppearance();
         } else {
             // Notes on editor
             gameObject.SetActive(true);
+            SetAnimated(false);
         }
     }
 
+    // Sets the note as defeated while playing
+    public virtual void Kill()
+    {
+        defeated = true;
+        if (killParticles != null) {
+            Instantiate(killParticles, transform.position, Quaternion.identity);
+        }
+        gameObject.SetActive(false);
+    }
+
+    // Sound cue for each note when playing the song on the editor
     public void CheckForSound()
     {
         if (Metronome.instance.IsPaused() || GameManager.instance.IsPlaying()) soundMade = false;
@@ -122,9 +134,68 @@ public class Note : TimelineElement
             soundMade = true;
         }
     }
+
+    // Checks the appearance of the note on screen when playing
+    public virtual void CheckForAppearance()
+    {
+        if (!GameManager.instance.IsPlaying()) return;
+
+        float screenLeft = Camera.main.ViewportToWorldPoint(new Vector3(0, 0, transform.position.z)).x - 5f;
+        float screenRight = Camera.main.ViewportToWorldPoint(new Vector3(1, 0, transform.position.z)).x + 5f;
+
+        if (transform.position.x <= screenLeft || transform.position.x >= screenRight) {
+            if (gameObject.activeSelf) {
+                gameObject.SetActive(false);
+            }
+        } else if (!gameObject.activeSelf && !defeated) {
+            gameObject.SetActive(true);
+            SetAnimated(true);
+        }
+    }
+
+    // Set the appearance of the note to an idle animation (for gameplay) or not animated (for editor)
+    public void SetAnimated(bool animated)
+    {
+        Float[] floatingSprites = GetComponentsInChildren<Float>();
+        Spin[] spinningSprites = GetComponentsInChildren<Spin>();
+        if (animated) {
+            foreach (Float f in floatingSprites) {
+                f.StartFloating();
+            }
+            foreach (Spin spin in spinningSprites) {
+                spin.StartSpinning();
+            }
+        }
+        else {
+            foreach (Float f in floatingSprites) {
+                f.StopFloating();
+            }
+            foreach (Spin spin in spinningSprites) {
+                spin.StopSpinning();
+            }
+        }
+    }
 }
 
 public class DurationNote : Note
 {
     public NoteHandle durationHandle;
+
+    public override void CheckForAppearance()
+    {
+        if (!GameManager.instance.IsPlaying()) return;
+
+        float screenLeft = Camera.main.ViewportToWorldPoint(new Vector3(0, 0, transform.position.z)).x - 5f;
+        float screenRight = Camera.main.ViewportToWorldPoint(new Vector3(1, 0, transform.position.z)).x + 5f;
+
+        if (transform.position.x <= screenLeft - NoteManager.instance.GetDistanceFromTime(data.duration) || transform.position.x >= screenRight) {
+            if (gameObject.activeSelf) {
+                gameObject.SetActive(false);
+            }
+        }
+        else if (!gameObject.activeSelf && !defeated) {
+            gameObject.SetActive(true);
+            SetAnimated(true);
+        }
+    }
 }

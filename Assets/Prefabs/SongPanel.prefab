@@ -111,8 +111,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 60, y: 0}
-  m_SizeDelta: {x: 160, y: 160}
+  m_AnchoredPosition: {x: 14.874329, y: -0.3581}
+  m_SizeDelta: {x: 205, y: 205}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!222 &2983812734877319977
 CanvasRenderer:
@@ -442,6 +442,7 @@ MonoBehaviour:
   openEditor: 1
   titleText: {fileID: 162647532862518340}
   artistText: {fileID: 6241170724187159377}
+  coverImage: {fileID: 1382213226031344705}
   button: {fileID: 2251801836281205478}
   selectedColor: {r: 0.3803922, g: 0.21568629, b: 0.6784314, a: 1}
   color: {r: 0.20392159, g: 0.16078432, b: 0.25490198, a: 1}

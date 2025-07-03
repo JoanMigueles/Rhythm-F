@@ -3,19 +3,18 @@ using UnityEngine;
 
 public class SliderNote : DurationNote
 {
-    int consumedAmount;
+    public ParticleSystem glowParticles;
+    private int consumedAmount;
 
     public override void UpdatePosition()
     {
-        CheckForSound();
         float yPos = data.lane == 0 ? 1.5f : -1.5f;
         transform.position = new Vector3(NoteManager.instance.GetPositionFromTime(data.time + consumedAmount) , yPos, 0f);
         if (durationHandle != null) {
             durationHandle.SetDuration(data.duration - consumedAmount);
         }
-
-        if (GameManager.instance.IsPlaying() && transform.position.x <= -10 - NoteManager.instance.GetDistanceFromTime(data.duration))
-            gameObject.SetActive(false);
+        CheckForSound();
+        CheckForAppearance();
     }
 
     public void SetConsumedDistance(int distance)
@@ -26,6 +25,14 @@ public class SliderNote : DurationNote
     public int GetConsumedDistance()
     {
         return consumedAmount;
+    }
+
+    public void SetHoldingGlowActive(bool glow)
+    {
+        glowParticles.gameObject.SetActive(glow);
+
+        if (glow) glowParticles.Play();
+        else glowParticles.Stop();
     }
 
     public void SetMissed(bool missed)
@@ -44,8 +51,12 @@ public class SliderNote : DurationNote
     {
         base.SetDisplayMode(gameplay);
 
-        if (!gameplay) {
+        if (gameplay) {
+            // Notes on gameplay/testing
+        } else {
+            // Notes on editor
             consumedAmount = 0;
+            SetHoldingGlowActive(false);
             SetMissed(false);
         }
     }

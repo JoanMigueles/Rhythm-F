@@ -8694,7 +8694,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 4403778230986458875}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6c0cfe6fc8e6590459bc21b81219fe52, type: 3}
+  m_Script: {fileID: 11500000, guid: 93980f69fc315ae4da9d0134be47cda3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   currentLane: 0
@@ -8706,13 +8706,13 @@ MonoBehaviour:
       Data4: 1249203959
     Path: event:/SoundEffects/KickDrum
   popupPrefab: {fileID: 2566514160695570110, guid: b07073dddf07a064e9cfe1ff6a2aecae, type: 3}
-  perfectWindow: 50
+  perfectWindow: 35
   perfectSlashWindow: 65
   greatWindow: 120
   slashWindow: 150
-  multihitTimeInterval: 1.5
+  multihitTimeInterval: 0.8
   sliderScoreInterval: 0.1
-  comboMultiplierInterval: 5
+  comboMultiplierInterval: 9
   maxComboMultiplier: 6
   maxHealth: 120
   flickThreshold: 1000

@@ -1,9 +1,7 @@
 using UnityEngine;
-using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using DG.Tweening;
 using System;
-using UnityEngine.UIElements;
 
 public class CenteredSnapScroll : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDragHandler
 {
@@ -11,8 +9,6 @@ public class CenteredSnapScroll : MonoBehaviour, IBeginDragHandler, IEndDragHand
     [SerializeField] private RectTransform content;
     [SerializeField] private float decelerationRate = 0.95f; // How quickly momentum slows down
     [SerializeField] private float maxMomentum = 2000f; // Maximum speed
-    [SerializeField] private float elasticity = 100f; // how far user can overshoot beyond limits
-    [SerializeField] private float elasticitySnapSpeed = 10f; // speed to snap back inside limits
 
     private RectTransform[] items;
     private RectTransform hoveredItem;

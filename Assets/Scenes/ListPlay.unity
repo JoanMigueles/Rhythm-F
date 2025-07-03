@@ -1050,7 +1050,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 1, y: 0.5, z: 0}
   m_AnchorMin: {x: 1, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: -0.00030517578, y: -401.48}
+  m_AnchoredPosition: {x: -0.00024414062, y: -401.48}
   m_SizeDelta: {x: 497.88, y: 190.48}
   m_Pivot: {x: 1, y: 0.5}
 --- !u!114 &480002310
@@ -1622,7 +1622,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5386875634416823582, guid: 608b7be0002371849a4fd1c9827b058f, type: 3}
       propertyPath: m_text
-      value: 522000242
+      value: 10000
       objectReference: {fileID: 0}
     - target: {fileID: 5386875634416823582, guid: 608b7be0002371849a4fd1c9827b058f, type: 3}
       propertyPath: m_fontSize
@@ -2013,7 +2013,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Tricolor Circus
+  m_text: Title
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: f83c9193f304afc449324a90c5203ff5, type: 2}
   m_sharedMaterial: {fileID: -4264477907441281798, guid: f83c9193f304afc449324a90c5203ff5, type: 2}
@@ -2048,7 +2048,7 @@ MonoBehaviour:
   m_fontSizeMax: 72
   m_fontStyle: 0
   m_HorizontalAlignment: 1
-  m_VerticalAlignment: 256
+  m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
@@ -2592,7 +2592,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Artists
+  m_text: Artist
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: f83c9193f304afc449324a90c5203ff5, type: 2}
   m_sharedMaterial: {fileID: -4264477907441281798, guid: f83c9193f304afc449324a90c5203ff5, type: 2}
@@ -4036,7 +4036,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -35.975, y: 59.819}
+  m_AnchoredPosition: {x: -35.975098, y: 59.81897}
   m_SizeDelta: {x: 1016, y: 119.645}
   m_Pivot: {x: 1, y: 0.5}
 --- !u!114 &1708761843
@@ -4684,7 +4684,13 @@ MonoBehaviour:
     BPM: 0
   songPanelPrefab: {fileID: 2082388933633356729, guid: 95f0f316a7f7731458af637d2f274f98, type: 3}
   content: {fileID: 1579756554}
+  noSongsSign: {fileID: 0}
   scroll: {fileID: 1708761846}
+  nameDisplay: {fileID: 1099460631}
+  artistDisplay: {fileID: 1275421148}
+  bpmDisplay: {fileID: 0}
+  coverImage: {fileID: 1116219373}
+  customsOnly: 0
 --- !u!114 &2009478636
 MonoBehaviour:
   m_ObjectHideFlags: 0

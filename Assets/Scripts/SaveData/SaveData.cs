@@ -101,6 +101,12 @@ public static class SaveData
         return Path.Combine(audioFilesPath, name);
     }
 
+    // COVER PATH FROM NAME
+    public static string GetCoverFilePath(string name)
+    {
+        return Path.Combine(coverFilesPath, name);
+    }
+
     // FILE NAME FORMAT
     private static string GenerateFileName(SongData songData)
     {
@@ -164,6 +170,9 @@ public static class SaveData
         if (Directory.Exists(audioFilesPath) && !string.IsNullOrEmpty(metadata.audioFileName))
             File.Delete(GetAudioFilePath(metadata.audioFileName));
 
+        if (Directory.Exists(coverFilesPath) && !string.IsNullOrEmpty(metadata.coverFileName))
+            File.Delete(GetCoverFilePath(metadata.coverFileName));
+
         File.Delete(metadata.localPath);
     }
 
@@ -191,18 +200,51 @@ public static class SaveData
         SaveCustomSongData(songData);
     }
 
-    // REMOVE AUDIO
-    public static void RemoveAudioFile(SongData songData)
+    // CREATE COVER
+    public static void CreateCoverFile(SongData songData, string filePath)
     {
-        if (!Directory.Exists(audioFilesPath))
-            return;
+        if (!Directory.Exists(coverFilesPath))
+            Directory.CreateDirectory(coverFilesPath);
 
-        string audioPath = Path.Combine(audioFilesPath, songData.metadata.audioFileName);
+        if (!string.IsNullOrEmpty(songData.metadata.coverFileName))
+            File.Delete(GetCoverFilePath(songData.metadata.coverFileName));
 
-        File.Delete(audioPath);
-        songData.metadata.audioFileName = "";
+        string coverName = Path.GetFileNameWithoutExtension(filePath);
+        string coverExtension = Path.GetExtension(filePath);
+
+        string coverPath = Path.Combine(coverFilesPath, $"{coverName}{coverExtension}");
+        int rev = 1;
+        while (File.Exists(coverPath)) {
+            coverPath = Path.Combine(coverFilesPath, $"{coverName}_{rev}{coverExtension}");
+            rev++;
+        }
+
+        File.Copy(filePath, coverPath);
+        songData.metadata.coverFileName = Path.GetFileName(coverPath);
         SaveCustomSongData(songData);
     }
+
+    // GET COVER SPRITE
+    public static Sprite GetCoverSprite(string filePath)
+    {
+        if (!File.Exists(filePath)) return null;
+
+        byte[] fileData = File.ReadAllBytes(filePath);
+        Texture2D texture = new Texture2D(2, 2);
+        if (texture.LoadImage(fileData)) {
+            Sprite sprite = Sprite.Create(
+                texture,
+                new Rect(0, 0, texture.width, texture.height),
+                new Vector2(0.5f, 0.5f) // pivot
+            );
+            return sprite;
+        }
+        else {
+            Debug.LogError("Could not load image data into texture.");
+            return null;
+        }
+    }
+
 
     // IS SAVED
     private static bool IsLocallySaved(SongData songData)

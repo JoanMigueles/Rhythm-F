@@ -56,5 +56,4 @@ MonoBehaviour:
     BPM: 0
   beatSecondInterval: 0
   metronomeBeeps: 0
-  isCustom: 0
   smoothTimelineOn: 0

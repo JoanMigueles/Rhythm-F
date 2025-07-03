@@ -1,11 +1,11 @@
 using DG.Tweening;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class MultihitNote : DurationNote
 {
-    public GameObject durationLine;
     private bool beingHit = false;
+    private int consumedAmount;
+
     public override void Move(int distance, bool laneSwap)
     {
         transform.position = new Vector3(NoteManager.instance.GetPositionFromTime(data.time + distance), 0f, 0f);
@@ -13,19 +13,18 @@ public class MultihitNote : DurationNote
 
     public override void UpdatePosition()
     {
-        CheckForSound();
-        if (beingHit) { 
-            transform.position = new Vector3(0f, 0f, 0f); 
-        } 
-        else {
-            transform.position = new Vector3(NoteManager.instance.GetPositionFromTime(data.time), 0f, 0f);
-            if (GameManager.instance.IsPlaying() && transform.position.x <= -10 - NoteManager.instance.GetDistanceFromTime(data.duration))
-                gameObject.SetActive(false);
-        }
-
+        float xPos = beingHit ? 0f : NoteManager.instance.GetPositionFromTime(data.time + consumedAmount);
+        transform.position = new Vector3(xPos, 0f, 0f);
         if (durationHandle != null) {
-            durationHandle.transform.localPosition = new Vector3(NoteManager.instance.GetDistanceFromTime(data.duration), 0f, 0f);
+            durationHandle.SetDuration(data.duration - consumedAmount);
         }
+        CheckForSound();
+        CheckForAppearance();
+    }
+
+    public void SetConsumedDistance(int distance)
+    {
+        consumedAmount = distance;
     }
 
     public void SetHitting(bool hitting)
@@ -35,19 +34,19 @@ public class MultihitNote : DurationNote
 
     public void Pulsate()
     {
+        transform.DOKill();
+        transform.localScale = Vector3.one * 1.10f;
 
+        transform.DOScale(Vector3.one, 0.15f)
+                 .SetEase(Ease.InQuad);
     }
-    private void HideHandle(bool hide)
-    {
-        durationHandle.GetComponent<SpriteRenderer>().enabled = !hide;
-        durationLine.GetComponent<SpriteRenderer>().enabled = !hide;
-    }
+
     public override void SetDisplayMode(bool gameplay)
     {
         base.SetDisplayMode(gameplay);
-        HideHandle(gameplay);
-
+        durationHandle.gameObject.SetActive(gameplay);
         if (!gameplay) {
+            consumedAmount = 0;
             beingHit = false;
         }
     }
