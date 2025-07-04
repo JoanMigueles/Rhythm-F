@@ -1,27 +1,30 @@
 using UnityEngine;
-using UnityEngine.UI;
 using DG.Tweening;
-
 public class Pulsator : MonoBehaviour
 {
-    [Header("Pulsation Settings")]
     [SerializeField] private float pulseScale = 1.05f;
     [SerializeField] private float pulseDuration = 0.25f;
     [SerializeField] private Ease pulseEase = Ease.InQuad;
 
     private Vector3 originalScale;
+    private Tween pulseTween;
 
     private void Start()
     {
         originalScale = transform.localScale;
+        PulsatorManager.instance.AddPulsator(this);
     }
 
     public void Pulse()
     {
-        transform.DOKill();
-        transform.localScale = Vector3.one * pulseScale;
+        if (!enabled) return;
+        // Kill the previous pulse tween if it's still active
+        if (pulseTween != null && pulseTween.IsActive())
+            pulseTween.Kill();
 
-        transform.DOScale(Vector3.one, pulseDuration)
+        transform.localScale = originalScale * pulseScale;
+
+        pulseTween = transform.DOScale(originalScale, pulseDuration)
                  .SetEase(pulseEase);
     }
 

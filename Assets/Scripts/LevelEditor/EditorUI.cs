@@ -35,7 +35,6 @@ public class EditorUI : UIManager
 
     private EditorManager em;
 
-
     private void Awake()
     {
         instance = this;
@@ -54,7 +53,7 @@ public class EditorUI : UIManager
         // UPDATE TIMERS
         timer.text = FormatTimeMS(Metronome.instance.GetTimelinePosition());
         beat.text = Metronome.instance.GetTimelineBeatPosition().ToString("F2");
-        currentBPM.text = Metronome.instance.currentBPMFlag.BPM.ToString();
+        currentBPM.text = Metronome.instance.GetCurrentBPM().ToString();
         
         // UPDATE WAVEFORM POSITION
         foreach (WaveformTexture waveformTexture in waveformTextures) {

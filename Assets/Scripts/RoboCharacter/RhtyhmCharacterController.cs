@@ -77,7 +77,12 @@ public class RhtyhmCharacterController : MonoBehaviour
     {
         if (!GameManager.instance.IsPlaying()) return;
         if (dead) return;
-        
+
+        if (Input.GetKeyDown(KeyCode.L) && GameplayUI.instance != null) {
+            Lose();
+            NoteManager.instance.gameObject.SetActive(false);
+        }
+
         int currentTime = metronome.GetTimelinePosition();
         
         // Regenrate health
@@ -203,6 +208,7 @@ public class RhtyhmCharacterController : MonoBehaviour
                 heldNote.missed = true;
                 heldNote = null;
                 misses++;
+                combo = 0;
             }
             if (currentLane == 1) swapper.SetBasePose(BaseAnimationState.Running);
             else swapper.SetBasePose(BaseAnimationState.Surfing);
@@ -346,7 +352,6 @@ public class RhtyhmCharacterController : MonoBehaviour
                     if (currentTime < note.data.time + enemyHitDuration && currentTime > note.data.time - enemyHitDuration) {
                         if (note.data.lane == currentLane) {
                             TakeDamage(note);
-                            combo = 0;
                         }
                     }
                     break;
@@ -442,18 +447,30 @@ public class RhtyhmCharacterController : MonoBehaviour
     private void TakeDamage(Note note)
     {
         if (note.hitPlayer) return;
+
+        combo = 0;
         health -= note.damage;
         note.hitPlayer = true;
+
+        swapper.TriggerDamage();
 
         if (health <= 0) {
             health = 0;
             Lose();
         }
+
     }
 
     private void Lose()
     {
+        Debug.Log("LOST");
+        swapper.SetBasePose(BaseAnimationState.Dead);
         dead = true;
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+        if (GameplayUI.instance != null) {
+            StartCoroutine(GameplayUI.instance.LoseLevel());
+        }
     }
 
     private void MissNote(Note note)

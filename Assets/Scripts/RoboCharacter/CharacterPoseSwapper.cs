@@ -5,7 +5,8 @@ public enum BaseAnimationState
 {
     Running,
     Surfing,
-    Holding
+    Holding,
+    Dead
 }
 
 public class CharacterPoseSwapper : MonoBehaviour
@@ -14,12 +15,14 @@ public class CharacterPoseSwapper : MonoBehaviour
     public GameObject runPose;
     public GameObject surfPose;
     public GameObject holdingPose;
+    public GameObject deadPose;
 
     [Header("Action Poses")]
     public List<GameObject> hitPoses;
     public GameObject slashRightPose;
     public GameObject slashLeftPose;
     public GameObject jumpPose;
+    public GameObject damagePose;
 
     private GameObject currentBasePose;
     private GameObject currentActionPose;
@@ -46,6 +49,9 @@ public class CharacterPoseSwapper : MonoBehaviour
                 currentBasePose = holdingPose;
                 ReturnToBasePose();
                 break;
+            case BaseAnimationState.Dead:
+                currentBasePose = deadPose;
+                break;
         }
         
         if (currentActionPose == null)
@@ -55,6 +61,11 @@ public class CharacterPoseSwapper : MonoBehaviour
     public void TriggerJump()
     {
         PlayActionPose(jumpPose, "Jump");
+    }
+
+    public void TriggerDamage()
+    {
+        PlayActionPose(damagePose, "Damage");
     }
 
     public void TriggerHit()

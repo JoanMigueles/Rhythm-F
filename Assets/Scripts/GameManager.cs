@@ -1,14 +1,15 @@
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+// GameManager handles all the persistent data between scenes and the navigation between scenes too
 public class GameManager : MonoBehaviour
 {
-    public static GameManager instance;
-    public List<Note> notes {  get; private set; }
+    public static GameManager instance { get; private set; }
+
     private SongMetadata? selectedSong;
     private Difficulty selectedDifficulty;
     private bool isPlaying;
+    private bool wasPaused;
 
     private void Awake()
     {
@@ -24,8 +25,12 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         Application.targetFrameRate = 140; // Sin límite de framerate
+        selectedSong = null;
+        isPlaying = false;
+        wasPaused = true;
     }
 
+    // ISPLAYING: Only true if we're on the gameplay screen or testing in the editor
     public bool IsPlaying()
     {
         return isPlaying;
@@ -36,17 +41,19 @@ public class GameManager : MonoBehaviour
         isPlaying = playing;
     }
 
+    // Restart the level from the retry button
     public void RestartLevel()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
-    // EDITOR OPENING
+    // Scene loading by name
     public void OpenScene(string sceneName)
     {
         SceneManager.LoadScene(sceneName);
     }
 
+    // Scene loading by stage type (only for levels)
     public void OpenLevelScene(Stage stage)
     {
         string sceneName = "";
@@ -66,21 +73,17 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene(sceneName);
     }
 
+    // Quitting the game
     public void QuitGame()
     {
         Metronome.instance.ReleasePlayers();
         Application.Quit();
     }
 
-    // SELECTED SONG
-    public void SetSelectedSong(SongMetadata song)
+    // SELECTED SONG: to know in any scene the song selected in the song list scene
+    public void SetSelectedSong(SongMetadata? song)
     {
         selectedSong = song;
-    }
-
-    public void SetSelectedDifficulty(Difficulty diff)
-    {
-        selectedDifficulty = diff;
     }
 
     public SongMetadata? GetSelectedSong()
@@ -88,19 +91,36 @@ public class GameManager : MonoBehaviour
         return selectedSong;
     }
 
-    public Difficulty GetSelectedDifficulty()
-    {
-        return selectedDifficulty;
-    }
-
     public bool IsSongSelected()
     {
         return selectedSong.HasValue;
     }
 
-    // NOTES
-    public void SetNotes(List<Note> notes)
+    // SELECTED DIFFICULTY: to know in any scene the difficulty selected in the song list scene
+    public void SetSelectedDifficulty(Difficulty diff)
     {
-        this.notes = notes;
+        selectedDifficulty = diff;
+    }
+
+    public Difficulty GetSelectedDifficulty()
+    {
+        return selectedDifficulty;
+    }
+
+    public void TogglePause()
+    {
+        if (isPlaying) {
+            SetPlaying(false);
+            Time.timeScale = 0f;
+            wasPaused = Metronome.instance.IsPaused();
+            if (!wasPaused)
+                Metronome.instance.PauseSong();
+        } else {
+            SetPlaying(true);
+            Time.timeScale = 1f;
+            if (!wasPaused)
+                Metronome.instance.PlaySong();
+        }
+        
     }
 }

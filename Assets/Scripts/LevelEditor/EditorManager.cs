@@ -1,4 +1,3 @@
-using DG.Tweening.Plugins.Core.PathCore;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
@@ -144,9 +143,9 @@ public class EditorManager : NoteManager
     protected override void LoadSelectedSong(SongMetadata metadata)
     {
         songData = SaveData.LoadCustomSong(metadata.localPath);
-        if (!string.IsNullOrEmpty(metadata.audioFileName)) return;
-
+        if (string.IsNullOrEmpty(metadata.audioFileName)) return;
         string songPath = SaveData.GetAudioFilePath(metadata.audioFileName);
+        Metronome.instance.SetBPMFlags(songData.BPMFlags);
         if (File.Exists(songPath)) {
             Metronome.instance.SetCustomSong(songPath);
         }
@@ -231,7 +230,7 @@ public class EditorManager : NoteManager
     // ---------------------------------------------------------------------------------------------------------------------------------------------
     private void HandleTestingInput()
     {
-        if (EditorUI.instance.isPanelOpened) return;
+        if (EditorUI.instance.IsPanelOpened()) return;
         if ((EditorUI.instance.isHidden && Input.GetKeyDown(KeyCode.Escape)) || Input.GetKeyDown(KeyCode.T)) {
             EditorUI.instance.ToggleEditorPanels();
         }
@@ -240,7 +239,6 @@ public class EditorManager : NoteManager
 
     public void SetTestingData()
     {
-        GameManager.instance.SetNotes(activeNotes);
         foreach (Note note in activeNotes) {
             note.SetDisplayMode(true);
         }
@@ -259,7 +257,7 @@ public class EditorManager : NoteManager
     // ---------------------------------------------------------------------------------------------------------------------------------------------
     private void HandleNavigationInput()
     {
-        if (EditorUI.instance.isPanelOpened) return;
+        if (EditorUI.instance.IsPanelOpened()) return;
 
         float scroll = Input.GetAxis("Mouse ScrollWheel");
 

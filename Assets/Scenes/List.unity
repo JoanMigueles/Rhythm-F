@@ -1716,8 +1716,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -566.9564, y: -99}
-  m_SizeDelta: {x: 632.038, y: 106.4}
+  m_AnchoredPosition: {x: -596.98, y: -99}
+  m_SizeDelta: {x: 572, y: 106.4}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &480002310
 MonoBehaviour:
@@ -1930,15 +1930,15 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 2009478635}
-        m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
-        m_MethodName: OpenScene
-        m_Mode: 5
+        m_TargetAssemblyTypeName: LevelListUI, Assembly-CSharp
+        m_MethodName: EditNewSong
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: LevelEditor
+          m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &561007959
@@ -1961,8 +1961,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: 4adcd1dc89df82143975dfe017122585, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -2546,8 +2546,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -566.95996, y: 53.200012}
-  m_SizeDelta: {x: 632.04, y: 106.4}
+  m_AnchoredPosition: {x: -596.98, y: 53.200012}
+  m_SizeDelta: {x: 572, y: 106.4}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1238532686
 MonoBehaviour:
@@ -4030,8 +4030,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 60.013367, y: 0}
-  m_SizeDelta: {x: -120.0267, y: 0}
+  m_AnchoredPosition: {x: 36.895, y: 0}
+  m_SizeDelta: {x: -166.263, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1907452142
 MonoBehaviour:
@@ -4294,13 +4294,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19cf3890903a2f44e88554ef58d16edc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pulsators:
-  - {fileID: 1795241873}
-  - {fileID: 561007962}
-  - {fileID: 2133399680}
-  - {fileID: 1238532690}
-  - {fileID: 480002314}
-  animators: []
 --- !u!1 &2023954143
 GameObject:
   m_ObjectHideFlags: 0
@@ -4418,8 +4411,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -566.96, y: 206}
-  m_SizeDelta: {x: 632.04, y: 106.3981}
+  m_AnchoredPosition: {x: -596.97864, y: 206}
+  m_SizeDelta: {x: 572.003, y: 106.398}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2133399676
 MonoBehaviour:

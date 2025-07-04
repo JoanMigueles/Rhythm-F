@@ -8,7 +8,7 @@ public class UIManager : MonoBehaviour
     [field: Header("Menu Theme")]
     [field: SerializeField] public EventReference menuReference { get; private set; }
     [SerializeField] private BPMFlag menuBPM;
-    public bool isPanelOpened {  get; private set; }
+    private bool isPanelOpened;
 
     // OPEN MENU PANEL
     public void OpenPanel(GameObject panel)
@@ -28,17 +28,30 @@ public class UIManager : MonoBehaviour
         isPanelOpened = false;
     }
 
+    // PANEL OPENED CHECK
+    public bool IsPanelOpened()
+    {
+        return isPanelOpened;
+    }
+
     // LOAD SCENE
     public void OpenScene(string sceneName)
     {
+        Metronome.instance.SetMetronomeSound(false);
         GameManager.instance.OpenScene(sceneName);
     }
 
+    // RELOAD SCENE
+    public void ReloadScene()
+    {
+        GameManager.instance.RestartLevel();
+    }
+
+    // PLAY MENU THEME
     public void PlayMenuTheme()
     {
+        Metronome.instance.SetBPMFlags(new List<BPMFlag> { menuBPM });
         Metronome.instance.SetSong(menuReference);
-        Metronome.instance.SetBPMFlags(new List<BPMFlag> {menuBPM});
         Metronome.instance.PlaySong();
-        StartCoroutine(Metronome.instance.FadeIn());
     }
 }

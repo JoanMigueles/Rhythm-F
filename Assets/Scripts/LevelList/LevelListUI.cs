@@ -5,7 +5,6 @@ using System.Collections.Generic;
 using System.IO;
 using TMPro;
 using UnityEngine;
-using UnityEngine.Assertions.Must;
 using UnityEngine.UI;
 
 public class LevelListUI : UIManager
@@ -31,7 +30,6 @@ public class LevelListUI : UIManager
 
     private void Start()
     {
-        PlayMenuTheme();
         ReloadList();
     }
 
@@ -43,7 +41,6 @@ public class LevelListUI : UIManager
         hoveredSong = null;
 
         List<SongMetadata> songMetadataList = ResourceLoader.LoadAllSongsMetadata();
-
         if (!customsOnly) {
             foreach (SongMetadata metadata in songMetadataList) {
                 SongPanel panel = Instantiate(songPanelPrefab, content.transform);
@@ -53,18 +50,17 @@ public class LevelListUI : UIManager
         }
 
         List<SongMetadata> customSongMetadataList = SaveData.LoadAllCustomSongsMetadata();
-        if (customSongMetadataList.Count > 0) {
-            foreach (SongMetadata metadata in customSongMetadataList) {
-                SongPanel panel = Instantiate(songPanelPrefab, content.transform);
-                panel.SetScroller(scroll);
-                panel.SetSongMetadata(metadata);
-            }
-
-            if (noSongsSign != null) {
-                noSongsSign.SetActive(customSongMetadataList.Count == 0);
-                PlayMenuTheme();
-            }
+        foreach (SongMetadata metadata in customSongMetadataList) {
+            SongPanel panel = Instantiate(songPanelPrefab, content.transform);
+            panel.SetScroller(scroll);
+            panel.SetSongMetadata(metadata);
         }
+
+        if (noSongsSign != null) {
+            noSongsSign.SetActive(customSongMetadataList.Count == 0);
+        }
+
+        PlayMenuTheme();
         scroll.SetItems();
     }
 
@@ -86,8 +82,21 @@ public class LevelListUI : UIManager
 
     public void EditHoveredSong()
     {
-        if (!hoveredSong.HasValue) return;
-        GameManager.instance.SetSelectedSong(hoveredSong.Value);
+
+        Metronome.instance.ReleasePlayers();
+        if (hoveredSong.HasValue) {
+            GameManager.instance.SetSelectedSong(hoveredSong.Value);
+        } else {
+            GameManager.instance.SetSelectedSong(null);
+        }
+        
+        GameManager.instance.OpenScene("LevelEditor");
+    }
+
+    public void EditNewSong()
+    {
+        Metronome.instance.ReleasePlayers();
+        GameManager.instance.SetSelectedSong(null);
         GameManager.instance.OpenScene("LevelEditor");
     }
 
@@ -131,15 +140,15 @@ public class LevelListUI : UIManager
             coverImage.sprite = SaveData.GetCoverSprite(SaveData.GetCoverFilePath(metadata.coverFileName));
 
         Metronome.instance.ReleasePlayers();
+        Metronome.instance.SetBPMFlags(new List<BPMFlag> { new BPMFlag(0, 0)});
         yield return new WaitForSeconds(0.5f);
 
         if (metadata.songID == -1) {
             string audioPath = SaveData.GetAudioFilePath(metadata.audioFileName);
             if (File.Exists(audioPath)) {
-                Metronome.instance.SetCustomSong(SaveData.GetAudioFilePath(audioPath));
-
                 SongData song = SaveData.LoadCustomSong(metadata.localPath);
                 Metronome.instance.SetBPMFlags(song.BPMFlags);
+                Metronome.instance.SetCustomSong(SaveData.GetAudioFilePath(audioPath));
             }
             else {
                 PlayMenuTheme();
@@ -150,10 +159,8 @@ public class LevelListUI : UIManager
 
             Metronome.instance.SetBPMFlags(song.BPMFlags);
             Metronome.instance.SetSong(reference);
-
         }
-        
 
-        yield return Metronome.instance.FadeIn(2f);
+        Metronome.instance.AddFade(true, 2f);
     }
 }

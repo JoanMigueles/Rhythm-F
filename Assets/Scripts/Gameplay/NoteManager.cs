@@ -40,8 +40,6 @@ public class NoteManager : MonoBehaviour
     protected SongData songData;
     public List<Note> activeNotes;
 
-    private bool songEnded;
-
     protected virtual void Awake()
     {
         instance = this;
@@ -59,25 +57,28 @@ public class NoteManager : MonoBehaviour
         else {
             SongDataResource loaded = Resources.Load<SongDataResource>("SongData");
             songData = loaded.data;
+            Metronome.instance.SetBPMFlags(new List<BPMFlag>());
             Metronome.instance.SetSong(testSongReference);
         }
 
-        SpawnDifficultyNotes(GameManager.instance.GetSelectedDifficulty());
-        List<NoteData> notesData = GetDifficultyNoteData(GameManager.instance.GetSelectedDifficulty());
+        difficulty = GameManager.instance.GetSelectedDifficulty();
+        SpawnDifficultyNotes(difficulty);
+        List<NoteData> notesData = GetDifficultyNoteData(difficulty);
         
         float delay = headstart;
         if (notesData.Count > 0 && notesData[0].time <= headstart) {
             delay = headstart - notesData[0].time;
         }
         Metronome.instance.PlaySongHeadstart(delay);
+        Metronome.instance.SetSmoothTimeline(true);
+
         RuntimeManager.PlayOneShot(readyReference);
-        Metronome.instance.smoothTimelineOn = true;
         GameManager.instance.SetPlaying(true);
 
         foreach (var note in activeNotes) {
             note.SetDisplayMode(true);
+            note.gameObject.SetActive(false);
         }
-
     }
 
     private void Update()
@@ -96,13 +97,13 @@ public class NoteManager : MonoBehaviour
     {
         if (metadata.songID == -1) {
             songData = SaveData.LoadCustomSong(metadata.localPath);
+            if (string.IsNullOrEmpty(metadata.audioFileName)) return;
+            string songPath = SaveData.GetAudioFilePath(metadata.audioFileName);
             Metronome.instance.SetBPMFlags(songData.BPMFlags);
-            string songPath = SaveData.GetAudioFilePath(songData.metadata.audioFileName);
             if (File.Exists(songPath)) {
                 Metronome.instance.SetCustomSong(songPath);
             }
         } else {
-
             songData = ResourceLoader.LoadSong(metadata.songID);
             Metronome.instance.SetBPMFlags(songData.BPMFlags);
             EventReference reference = ResourceLoader.LoadEventReference(metadata.songID);
@@ -174,7 +175,8 @@ public class NoteManager : MonoBehaviour
     public bool IsPastLastNote()
     {
         List<NoteData> notes = GetDifficultyNoteData(difficulty);
-        return Metronome.instance.GetTimelinePosition() >= notes[notes.Count - 1].time;
+        if (notes.Count == 0) return true;
+        return Metronome.instance.GetTimelinePosition() >= notes[notes.Count - 1].time + notes[notes.Count - 1].duration;
     }
 
     public float GetAccuracy(int perfects, int greats, int misses)
@@ -222,7 +224,7 @@ public class NoteManager : MonoBehaviour
     public float GetBeatFromPosition(float horizontalPosition)
     {
         // Add to current timeline beat position
-        return Metronome.instance.GetTimelineBeatPosition() + horizontalPosition / noteSpeed / Metronome.instance.beatSecondInterval;
+        return Metronome.instance.GetTimelineBeatPosition() + horizontalPosition / noteSpeed / Metronome.instance.GetBeatSecondInterval();
     }
 
     public float GetPositionFromBeat(float beat)

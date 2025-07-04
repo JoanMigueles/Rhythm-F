@@ -1,19 +1,19 @@
-using NUnit.Framework;
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 
 public class PulsatorManager : MonoBehaviour
 {
     public static PulsatorManager instance;
-    public List<Pulsator> pulsators;
-    public List<AnimationPulsator> animators;
+    private List<Pulsator> pulsators;
+    private List<AnimationPulsator> animators;
 
     private int lastBeat = -1;
 
     private void Awake()
     {
         instance = this;
+        pulsators = new List<Pulsator>();
+        animators = new List<AnimationPulsator>();
     }
 
     private void Update()
@@ -25,11 +25,16 @@ public class PulsatorManager : MonoBehaviour
         if (currentBeat != lastBeat) {
             lastBeat = currentBeat;
             foreach (var pul in pulsators) {
-                pul.Pulse();
+                if (pul != null && pul.gameObject.activeSelf) {
+                    pul.Pulse();
+                }
             }
             if (currentBeat % 2 == 0) {
                 foreach (var animator in animators) {
-                    animator.Pulse();
+                    if (animator != null && animator.gameObject.activeSelf)
+                    {
+                        animator.Pulse();
+                    }
                 }
             }
         }
@@ -40,8 +45,18 @@ public class PulsatorManager : MonoBehaviour
         pulsators.Add(pul);
     }
 
+    public void AddPulsator(AnimationPulsator anim)
+    {
+        animators.Add(anim);
+    }
+
     public void RemovePulsator(Pulsator pul)
     {
         pulsators.Remove(pul);
+    }
+
+    public void RemovePulsator(AnimationPulsator anim)
+    {
+        animators.Add(anim);
     }
 }

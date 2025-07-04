@@ -1,10 +1,16 @@
 fileFormatVersion: 2
-guid: 8bbcdb8c081430743a79801c1f65f1cd
+guid: e6db1819765bedd40aa572b177e9b1e9
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 1070692413575874930
-    second: Hex@2x_0
+      213: -442781906064097188
+    second: Recurso 22@2x_0
+  - first:
+      213: 2492136503275328941
+    second: Recurso 22@2x_1
+  - first:
+      213: 4312564591713115516
+    second: Recurso 22@2x_2
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -46,13 +52,13 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 2
+  spriteMode: 1
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
   spritePixelsToUnits: 100
-  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteBorder: {x: 415, y: 0, z: 359, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
   alphaIsTransparency: 1
@@ -100,23 +106,67 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Hex@2x_0
+      name: Recurso 22@2x_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 454
-        height: 392
+        width: 250
+        height: 201
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 27945eec31ddbde00800000000000000
-      internalID: 1070692413575874930
+      spriteID: c504410d33cead9f0800000000000000
+      internalID: -442781906064097188
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Recurso 22@2x_1
+      rect:
+        serializedVersion: 2
+        x: 182
+        y: 0
+        width: 1659
+        height: 320
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: da5928122f8d59220800000000000000
+      internalID: 2492136503275328941
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Recurso 22@2x_2
+      rect:
+        serializedVersion: 2
+        x: 1788
+        y: 0
+        width: 213
+        height: 201
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c7ddcffa5ae49db30800000000000000
+      internalID: 4312564591713115516
       vertices: []
       indices: 
       edges: []
@@ -125,8 +175,8 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
-    internalID: 0
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 1537655665
     vertices: []
     indices: 
     edges: []
@@ -134,7 +184,10 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Recurso 22@2x_0: -442781906064097188
+      Recurso 22@2x_1: 2492136503275328941
+      Recurso 22@2x_2: 4312564591713115516
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

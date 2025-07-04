@@ -1,25 +1,22 @@
 fileFormatVersion: 2
-guid: 200cd8c48b791874f8e1942355f62333
+guid: 311115f3779fd204082363789a2f62dd
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 662189846464213481
-    second: robo_0
+      213: 1793819242510022795
+    second: Recurso 24@2x_0
   - first:
-      213: 5733970696965615235
-    second: robo_1
+      213: 4708775387637144241
+    second: Recurso 24@2x_1
   - first:
-      213: -1526456316337196122
-    second: robo_2
+      213: -1692396475842735826
+    second: Recurso 24@2x_2
   - first:
-      213: -6699099699979318045
-    second: robo_3
+      213: 4593622294721343501
+    second: Recurso 24@2x_3
   - first:
-      213: -197796837191877321
-    second: robo_4
-  - first:
-      213: 7899279460556259456
-    second: robo_5
+      213: 3328098920029411874
+    second: Recurso 24@2x_4
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -66,7 +63,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 691.9
+  spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -87,10 +84,10 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 4
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 4096
+    maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 2
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -115,13 +112,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: robo_0
+      name: Recurso 24@2x_0
       rect:
         serializedVersion: 2
-        x: 95
-        y: 874
-        width: 30
-        height: 19
+        x: 131
+        y: 349
+        width: 211
+        height: 123
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -130,20 +127,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 9e1be5c2822903900800000000000000
-      internalID: 662189846464213481
+      spriteID: b88f115d81de4e810800000000000000
+      internalID: 1793819242510022795
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: robo_1
+      name: Recurso 24@2x_1
       rect:
         serializedVersion: 2
-        x: 104
-        y: 22
-        width: 1594
-        height: 2080
+        x: 0
+        y: 131
+        width: 123
+        height: 211
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -152,20 +149,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 38e622118f7239f40800000000000000
-      internalID: 5733970696965615235
+      spriteID: 1bad633544ee85140800000000000000
+      internalID: 4708775387637144241
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: robo_2
+      name: Recurso 24@2x_2
       rect:
         serializedVersion: 2
-        x: 83
-        y: 850
-        width: 9
-        height: 22
+        x: 166
+        y: 166
+        width: 140
+        height: 140
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -174,20 +171,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 6a3f19b5110f0dae0800000000000000
-      internalID: -1526456316337196122
+      spriteID: e2155463f566388e0800000000000000
+      internalID: -1692396475842735826
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: robo_3
+      name: Recurso 24@2x_3
       rect:
         serializedVersion: 2
-        x: 89
-        y: 842
-        width: 16
-        height: 25
+        x: 349
+        y: 130
+        width: 123
+        height: 211
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -196,20 +193,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 3ec8ec3f0540803a0800000000000000
-      internalID: -6699099699979318045
+      spriteID: d003e259323dfbf30800000000000000
+      internalID: 4593622294721343501
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: robo_4
+      name: Recurso 24@2x_4
       rect:
         serializedVersion: 2
-        x: 100
-        y: 823
-        width: 7
-        height: 7
+        x: 130
+        y: 0
+        width: 211
+        height: 123
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -218,30 +215,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 73d7b7513d8414df0800000000000000
-      internalID: -197796837191877321
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: robo_5
-      rect:
-        serializedVersion: 2
-        x: 102
-        y: 802
-        width: 9
-        height: 18
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 080cef331d0ef9d60800000000000000
-      internalID: 7899279460556259456
+      spriteID: 22ad6b1b558cf2e20800000000000000
+      internalID: 3328098920029411874
       vertices: []
       indices: 
       edges: []
@@ -260,12 +235,11 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      robo_0: 662189846464213481
-      robo_1: 5733970696965615235
-      robo_2: -1526456316337196122
-      robo_3: -6699099699979318045
-      robo_4: -197796837191877321
-      robo_5: 7899279460556259456
+      Recurso 24@2x_0: 1793819242510022795
+      Recurso 24@2x_1: 4708775387637144241
+      Recurso 24@2x_2: -1692396475842735826
+      Recurso 24@2x_3: 4593622294721343501
+      Recurso 24@2x_4: 3328098920029411874
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

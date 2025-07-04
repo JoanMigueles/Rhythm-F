@@ -5,12 +5,20 @@ public class Spin : MonoBehaviour
 {
     public float rotationSpeed = 360f; // Degrees per second
     public bool clockwise = false;
+    public bool startSpinning = false;
 
     private Tween rotationTween;
 
     private void OnDisable()
     {
         StopSpinning();
+    }
+
+    private void Start()
+    {
+        if (startSpinning) {
+            StartSpinning();
+        }
     }
 
     public void StartSpinning()

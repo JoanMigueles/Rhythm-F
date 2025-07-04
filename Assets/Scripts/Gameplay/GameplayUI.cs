@@ -1,6 +1,5 @@
 using DG.Tweening;
 using FMODUnity;
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -51,6 +50,10 @@ public class GameplayUI : UIManager
     private Vector3 resultsPanelTargetPos;
     private Vector2[] resultTextTargetPositions;
 
+    private void Awake()
+    {
+        instance = this;
+    }
 
     void Start()
     {
@@ -90,11 +93,8 @@ public class GameplayUI : UIManager
     private void Update()
     {
         // For testing
-        if (Input.GetKeyDown(KeyCode.W)) ShowResults();
-        if (Input.GetKeyDown(KeyCode.L)) {
-            NoteManager.instance.gameObject.SetActive(false);
-            ShowLoseScreen();
-        }
+        if (Input.GetKeyDown(KeyCode.W)) StartCoroutine(WinLevel());
+        if (Input.GetKeyDown(KeyCode.Escape)) GameManager.instance.TogglePause();
 
         scoreDisplay.text = robo.GetScore().ToString();
 
@@ -118,16 +118,28 @@ public class GameplayUI : UIManager
         yield return new WaitForSeconds(2.5f);
         SetResults();
         NoteManager.instance.gameObject.SetActive(false);
-        yield return Metronome.instance.FadeOut();
+
+        Metronome.instance.AddFade(false, 2f);
+        yield return new WaitForSeconds(2f);
+
+        Metronome.instance.SetBPMFlags(new List<BPMFlag> { winBPM });
+        Metronome.instance.SetSong(winReference);
+        Metronome.instance.PlaySong();
+
         ShowResults();
     }
 
     public IEnumerator LoseLevel()
     {
         NoteManager.instance.gameObject.SetActive(false);
-        yield return Metronome.instance.FadeOut();
-        yield return new WaitForSeconds(0.5f);
         ShowLoseScreen();
+
+        Metronome.instance.AddFade(false, 0.5f);
+        yield return new WaitForSeconds(1f);
+
+        Metronome.instance.SetBPMFlags(new List<BPMFlag>());
+        Metronome.instance.SetSong(loseReference);
+        Metronome.instance.PlaySong();
     }
 
     public void SetResults()
@@ -153,9 +165,6 @@ public class GameplayUI : UIManager
     {
         float duration = 1f;
 
-        Metronome.instance.SetSong(winReference);
-        Metronome.instance.SetBPMFlags(new List<BPMFlag>{ winBPM });
-        Metronome.instance.PlaySong();
         bottomBar.transform.DOLocalMove(bottomBarTargetPos, duration/2).SetEase(Ease.OutCubic);
         topBar.transform.DOLocalMove(topBarTargetPos, duration/2).SetEase(Ease.OutCubic);
         resultsBackground.transform.DOLocalMove(backgroundTargetPos, duration)
@@ -183,7 +192,7 @@ public class GameplayUI : UIManager
                         rankSeq.Join(rankIcon.transform.DOScale(Vector3.one, 1f)
                             .SetEase(Ease.OutBounce))
                             .OnComplete(() => {
-                                PulsatorManager.instance.AddPulsator(rankIcon.GetComponent<Pulsator>());
+                                rankIcon.GetComponent<Pulsator>().enabled = true;
                             });
                         rankSeq.Join(rankIcon.DOFade(1f, 0.4f));
                     });
@@ -194,10 +203,6 @@ public class GameplayUI : UIManager
     public void ShowLoseScreen()
     {
         float duration = 1f;
-
-        Metronome.instance.SetSong(loseReference);
-        Metronome.instance.SetBPMFlags(new List<BPMFlag>());
-        Metronome.instance.PlaySong();
 
         RectTransform scoreRect = scorePanel.GetComponent<RectTransform>();
         scoreRect.DOAnchorPosY(scoreRect.anchoredPosition.y + scoreRect.rect.height + 200, duration).SetEase(Ease.InOutCubic);
@@ -214,5 +219,10 @@ public class GameplayUI : UIManager
                 loseButtons.interactable = true;
             });
         });
+    }
+
+    private void OnDestroy()
+    {
+        DOTween.KillAll();
     }
 }

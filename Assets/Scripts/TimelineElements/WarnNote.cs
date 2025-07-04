@@ -102,7 +102,7 @@ public class WarnNote : DurationNote
         }
 
         if (gameObject.activeSelf) {
-            if (Metronome.instance.GetTimelinePosition() > data.time - (Metronome.instance.beatSecondInterval * 1000) && !warning && !attacked) {
+            if (Metronome.instance.GetTimelinePosition() > data.time - (Metronome.instance.GetBeatSecondInterval() * 1000) && !warning && !attacked) {
                 Warn();
             }
             if (Metronome.instance.GetTimelinePosition() > data.time - attackDuration && warning && !attacked) {

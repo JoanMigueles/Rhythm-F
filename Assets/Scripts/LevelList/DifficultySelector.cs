@@ -24,7 +24,7 @@ public class DifficultySelector : MonoBehaviour
         for (int i = 0; i < images.Length; i++) {
             if (diff == i) {
                 images[i].color = difficultyColors[i];
-                PulsatorManager.instance.AddPulsator(images[i].GetComponent<Pulsator>());
+                images[i].GetComponent<Pulsator>().enabled = true;
             }
             else {
                 isEven = i % 2 == 0;
@@ -34,7 +34,7 @@ public class DifficultySelector : MonoBehaviour
                 else {
                     images[i].color = oddColor;
                 }
-                PulsatorManager.instance.RemovePulsator(images[i].GetComponent<Pulsator>());
+                images[i].GetComponent<Pulsator>().enabled = false;
             }
         }
     }

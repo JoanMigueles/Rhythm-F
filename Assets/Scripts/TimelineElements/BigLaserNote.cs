@@ -97,7 +97,7 @@ public class BigLaserNote : Note
         if (!GameManager.instance.IsPlaying()) return;
 
         // Game behavior
-        if (Metronome.instance.GetTimelinePosition() > data.time - (Metronome.instance.beatSecondInterval * 1000) - appearingTime && !appeared) {
+        if (Metronome.instance.GetTimelinePosition() > data.time - (Metronome.instance.GetBeatSecondInterval() * 1000) - appearingTime && !appeared) {
             appeared = true;
             Appear();
         }

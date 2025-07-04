@@ -29,6 +29,7 @@ public class SongPanel : MonoBehaviour
         coverImage.sprite = SaveData.GetCoverSprite(SaveData.GetCoverFilePath(metadata.coverFileName));
         button.onClick.AddListener(() => {
             if (isHovered) {
+                Metronome.instance.ReleasePlayers();
                 GameManager.instance.SetSelectedSong(songMetadata);
                 if (openEditor)
                     GameManager.instance.OpenScene("LevelEditor");
@@ -49,13 +50,8 @@ public class SongPanel : MonoBehaviour
     {
         isHovered = hovered;
         Pulsator pulse = GetComponent<Pulsator>();
+        pulse.enabled = hovered;
         GetComponent<Image>().color = hovered ? selectedColor : color;
-        if (hovered) {
-            PulsatorManager.instance.AddPulsator(pulse);
-        } else {
-            PulsatorManager.instance.RemovePulsator(pulse);
-        }
-        
     }
 }
 
