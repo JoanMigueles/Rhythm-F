@@ -51,6 +51,7 @@ public class UIManager : MonoBehaviour
     public void PlayMenuTheme()
     {
         Metronome.instance.SetBPMFlags(new List<BPMFlag> { menuBPM });
+        Metronome.instance.SetLooping(false);
         Metronome.instance.SetSong(menuReference);
         Metronome.instance.PlaySong();
     }

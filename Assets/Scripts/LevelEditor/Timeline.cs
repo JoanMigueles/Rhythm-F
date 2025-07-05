@@ -23,6 +23,6 @@ public class Timeline : MonoBehaviour
     {
         material.SetFloat("_Tiling", Metronome.instance.GetCurrentBPM() / 60f / EditorManager.instance.noteSpeed);
         material.SetFloat("_Subdivision", em.noteSubdivisionSnapping);
-        material.SetFloat("_Offset", -Metronome.instance.GetTimelineBeatPosition());
+        material.SetFloat("_Offset", -Metronome.instance.GetSmoothTimelineBeatPosition());
     }
 }

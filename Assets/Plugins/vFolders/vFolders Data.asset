@@ -24,6 +24,7 @@ MonoBehaviour:
     - 57e25b4a578dba94c9353f4633b20549
     - f54d1bd14bd3ca042bd867b519fee8cc
     - c7dca8ae168f8ba41873023d2bbcfdb6
+    - 0dd26d8708149794cbc5fb42a14b1eb7
     values:
     - colorIndex: 0
       iconNameOrGuid: cs Script Icon
@@ -45,3 +46,5 @@ MonoBehaviour:
       iconNameOrGuid: Font Icon
     - colorIndex: 0
       iconNameOrGuid: AnimatorController Icon
+    - colorIndex: 0
+      iconNameOrGuid: ScriptableObject Icon

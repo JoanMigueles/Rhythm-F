@@ -449,9 +449,13 @@ public class RhtyhmCharacterController : MonoBehaviour
         if (note.hitPlayer) return;
 
         combo = 0;
-        health -= note.damage;
-        note.hitPlayer = true;
 
+        // Inmune while testing
+        if (EditorUI.instance == null) {
+            health -= note.damage;
+        }
+
+        note.hitPlayer = true;
         swapper.TriggerDamage();
 
         if (health <= 0) {

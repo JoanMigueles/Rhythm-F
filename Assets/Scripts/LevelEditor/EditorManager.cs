@@ -9,7 +9,7 @@ public enum EditMode
 {
     Object,
     Select,
-    BPMMarker
+    BPMMarker,
 }
 
 public class EditorManager : NoteManager
@@ -146,6 +146,7 @@ public class EditorManager : NoteManager
         if (string.IsNullOrEmpty(metadata.audioFileName)) return;
         string songPath = SaveData.GetAudioFilePath(metadata.audioFileName);
         Metronome.instance.SetBPMFlags(songData.BPMFlags);
+        Metronome.instance.SetLooping(false);
         if (File.Exists(songPath)) {
             Metronome.instance.SetCustomSong(songPath);
         }
@@ -172,6 +173,7 @@ public class EditorManager : NoteManager
         SaveData.CreateAudioFile(songData, filePath);
 
         // Load
+        Metronome.instance.SetLooping(false);
         Metronome.instance.SetCustomSong(SaveData.GetAudioFilePath(songData.metadata.audioFileName));
         EditorUI.instance.DisplaySongData(songData.metadata);
         EditorUI.instance.ApplyWaveformTexture();
@@ -262,7 +264,9 @@ public class EditorManager : NoteManager
         float scroll = Input.GetAxis("Mouse ScrollWheel");
 
         if (scroll != 0f && !isNavigating) {
-            Metronome.instance.SetTimelinePosition((int)(Metronome.instance.GetTimelinePosition() + scroll * 1000));
+            int newTime = (int)(Metronome.instance.GetTimelinePosition() + scroll * 1000);
+            newTime = Mathf.Clamp(newTime, 0, (int)Metronome.instance.GetSongLength());
+            Metronome.instance.SetTimelinePosition(newTime);
         }
 
         if (Input.GetKeyDown(KeyCode.Space)) {
@@ -292,7 +296,9 @@ public class EditorManager : NoteManager
 
             // Convert world delta to time delta — you define how many units of world = how many milliseconds
             int timeDelta = (int)(worldDelta * 1000 / noteSpeed);
-            Metronome.instance.SetTimelinePosition(navigationStartTime - timeDelta);
+            int newTime = navigationStartTime - timeDelta;
+            newTime = Mathf.Clamp(newTime, 0, (int)Metronome.instance.GetSongLength());
+            Metronome.instance.SetTimelinePosition(newTime);
         }
 
         if (Input.GetMouseButtonUp(1) || Input.GetMouseButtonUp(2)) {

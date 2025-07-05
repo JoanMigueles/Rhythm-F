@@ -148,6 +148,7 @@ public class LevelListUI : UIManager
             if (File.Exists(audioPath)) {
                 SongData song = SaveData.LoadCustomSong(metadata.localPath);
                 Metronome.instance.SetBPMFlags(song.BPMFlags);
+                Metronome.instance.SetLooping(true);
                 Metronome.instance.SetCustomSong(SaveData.GetAudioFilePath(audioPath));
             }
             else {
@@ -158,6 +159,7 @@ public class LevelListUI : UIManager
             EventReference reference = ResourceLoader.LoadEventReference(metadata.songID);
 
             Metronome.instance.SetBPMFlags(song.BPMFlags);
+            Metronome.instance.SetLooping(true);
             Metronome.instance.SetSong(reference);
         }
 

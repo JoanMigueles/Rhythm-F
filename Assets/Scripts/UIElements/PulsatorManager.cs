@@ -16,25 +16,17 @@ public class PulsatorManager : MonoBehaviour
         animators = new List<AnimationPulsator>();
     }
 
-    private void Update()
+    public void Pulse(int currentBeat)
     {
-        if (Metronome.instance == null) return;
-
-        int currentBeat = Mathf.FloorToInt(Metronome.instance.GetTimelineBeatPosition());
-
-        if (currentBeat != lastBeat) {
-            lastBeat = currentBeat;
-            foreach (var pul in pulsators) {
-                if (pul != null && pul.gameObject.activeSelf) {
-                    pul.Pulse();
-                }
+        foreach (var pul in pulsators) {
+            if (pul != null && pul.gameObject.activeSelf) {
+                pul.Pulse();
             }
-            if (currentBeat % 2 == 0) {
-                foreach (var animator in animators) {
-                    if (animator != null && animator.gameObject.activeSelf)
-                    {
-                        animator.Pulse();
-                    }
+        }
+        if (currentBeat % 2 == 0) {
+            foreach (var animator in animators) {
+                if (animator != null && animator.gameObject.activeSelf) {
+                    animator.Pulse();
                 }
             }
         }

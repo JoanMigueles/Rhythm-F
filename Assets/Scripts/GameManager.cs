@@ -110,14 +110,14 @@ public class GameManager : MonoBehaviour
     public void TogglePause()
     {
         if (isPlaying) {
-            SetPlaying(false);
             Time.timeScale = 0f;
+            SetPlaying(false);
             wasPaused = Metronome.instance.IsPaused();
             if (!wasPaused)
                 Metronome.instance.PauseSong();
         } else {
-            SetPlaying(true);
             Time.timeScale = 1f;
+            SetPlaying(true);
             if (!wasPaused)
                 Metronome.instance.PlaySong();
         }

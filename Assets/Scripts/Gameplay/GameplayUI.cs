@@ -123,6 +123,7 @@ public class GameplayUI : UIManager
         yield return new WaitForSeconds(2f);
 
         Metronome.instance.SetBPMFlags(new List<BPMFlag> { winBPM });
+        Metronome.instance.SetLooping(false);
         Metronome.instance.SetSong(winReference);
         Metronome.instance.PlaySong();
 
@@ -138,6 +139,7 @@ public class GameplayUI : UIManager
         yield return new WaitForSeconds(1f);
 
         Metronome.instance.SetBPMFlags(new List<BPMFlag>());
+        Metronome.instance.SetLooping(false);
         Metronome.instance.SetSong(loseReference);
         Metronome.instance.PlaySong();
     }
