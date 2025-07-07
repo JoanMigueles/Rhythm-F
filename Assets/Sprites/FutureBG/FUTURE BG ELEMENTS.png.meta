@@ -1,0 +1,533 @@
+fileFormatVersion: 2
+guid: ce3370d4c0e0c194284e931ac8821e0a
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 9208805127119142130
+    second: FUTURE BG ELEMENTS_0
+  - first:
+      213: -2912974287937232825
+    second: FUTURE BG ELEMENTS_1
+  - first:
+      213: 689268417666128020
+    second: FUTURE BG ELEMENTS_2
+  - first:
+      213: -5035814324003900236
+    second: FUTURE BG ELEMENTS_3
+  - first:
+      213: -1112310178564216526
+    second: FUTURE BG ELEMENTS_4
+  - first:
+      213: 6858995418518358825
+    second: FUTURE BG ELEMENTS_5
+  - first:
+      213: -6847957446459169668
+    second: FUTURE BG ELEMENTS_6
+  - first:
+      213: 4911488043387508099
+    second: FUTURE BG ELEMENTS_7
+  - first:
+      213: 7945862318223727783
+    second: FUTURE BG ELEMENTS_8
+  - first:
+      213: -6450837145268396543
+    second: FUTURE BG ELEMENTS_9
+  - first:
+      213: -3940313602342973199
+    second: FUTURE BG ELEMENTS_10
+  - first:
+      213: 5507841545712291748
+    second: FUTURE BG ELEMENTS_11
+  - first:
+      213: -2106332470845784124
+    second: FUTURE BG ELEMENTS_12
+  - first:
+      213: 6558408472629684664
+    second: FUTURE BG ELEMENTS_13
+  - first:
+      213: 366871001021019223
+    second: FUTURE BG ELEMENTS_14
+  - first:
+      213: 1363809211186300461
+    second: FUTURE BG ELEMENTS_15
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 0
+    wrapV: 0
+    wrapW: 0
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 1
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 16384
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: FUTURE BG ELEMENTS_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 24
+        width: 3870
+        height: 1045
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2fc7bb7097f3ccf70800000000000000
+      internalID: 9208805127119142130
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FUTURE BG ELEMENTS_1
+      rect:
+        serializedVersion: 2
+        x: 4121
+        y: 783
+        width: 89
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 740a7a791590397d0800000000000000
+      internalID: -2912974287937232825
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FUTURE BG ELEMENTS_2
+      rect:
+        serializedVersion: 2
+        x: 4139
+        y: 725
+        width: 174
+        height: 72
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 49892e559f5c09900800000000000000
+      internalID: 689268417666128020
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FUTURE BG ELEMENTS_3
+      rect:
+        serializedVersion: 2
+        x: 4144
+        y: 668
+        width: 2075
+        height: 401
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4b47cee9d813d1ab0800000000000000
+      internalID: -5035814324003900236
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FUTURE BG ELEMENTS_4
+      rect:
+        serializedVersion: 2
+        x: 5894
+        y: 534
+        width: 663
+        height: 342
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 239e0ae29c74090f0800000000000000
+      internalID: -1112310178564216526
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FUTURE BG ELEMENTS_5
+      rect:
+        serializedVersion: 2
+        x: 6792
+        y: 507
+        width: 1095
+        height: 562
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 92b81dc1efb003f50800000000000000
+      internalID: 6858995418518358825
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FUTURE BG ELEMENTS_6
+      rect:
+        serializedVersion: 2
+        x: 7854
+        y: 97
+        width: 2048
+        height: 972
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c746fc60cfa27f0a0800000000000000
+      internalID: -6847957446459169668
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FUTURE BG ELEMENTS_7
+      rect:
+        serializedVersion: 2
+        x: 9759
+        y: 53
+        width: 1703
+        height: 1016
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 385d0b07a5c192440800000000000000
+      internalID: 4911488043387508099
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FUTURE BG ELEMENTS_8
+      rect:
+        serializedVersion: 2
+        x: 3052
+        y: 12
+        width: 373
+        height: 607
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7ac13efedaf554e60800000000000000
+      internalID: 7945862318223727783
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FUTURE BG ELEMENTS_9
+      rect:
+        serializedVersion: 2
+        x: 3366
+        y: 0
+        width: 364
+        height: 644
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 10ed16c5bc50a76a0800000000000000
+      internalID: -6450837145268396543
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FUTURE BG ELEMENTS_10
+      rect:
+        serializedVersion: 2
+        x: 3857
+        y: 53
+        width: 746
+        height: 626
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1f015b4c7a13159c0800000000000000
+      internalID: -3940313602342973199
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FUTURE BG ELEMENTS_11
+      rect:
+        serializedVersion: 2
+        x: 5756
+        y: 45
+        width: 1865
+        height: 396
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4afc15b34b8cf6c40800000000000000
+      internalID: 5507841545712291748
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FUTURE BG ELEMENTS_12
+      rect:
+        serializedVersion: 2
+        x: 6080
+        y: 441
+        width: 262
+        height: 81
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4cfbd5017cdc4c2e0800000000000000
+      internalID: -2106332470845784124
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FUTURE BG ELEMENTS_13
+      rect:
+        serializedVersion: 2
+        x: 7871
+        y: 0
+        width: 365
+        height: 644
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8b9210702c5240b50800000000000000
+      internalID: 6558408472629684664
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FUTURE BG ELEMENTS_14
+      rect:
+        serializedVersion: 2
+        x: 8176
+        y: 6
+        width: 372
+        height: 613
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 754ff3e4b33671500800000000000000
+      internalID: 366871001021019223
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FUTURE BG ELEMENTS_15
+      rect:
+        serializedVersion: 2
+        x: 10997
+        y: 8
+        width: 428
+        height: 451
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d264a2670493de210800000000000000
+      internalID: 1363809211186300461
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      FUTURE BG ELEMENTS_0: 9208805127119142130
+      FUTURE BG ELEMENTS_1: -2912974287937232825
+      FUTURE BG ELEMENTS_10: -3940313602342973199
+      FUTURE BG ELEMENTS_11: 5507841545712291748
+      FUTURE BG ELEMENTS_12: -2106332470845784124
+      FUTURE BG ELEMENTS_13: 6558408472629684664
+      FUTURE BG ELEMENTS_14: 366871001021019223
+      FUTURE BG ELEMENTS_15: 1363809211186300461
+      FUTURE BG ELEMENTS_2: 689268417666128020
+      FUTURE BG ELEMENTS_3: -5035814324003900236
+      FUTURE BG ELEMENTS_4: -1112310178564216526
+      FUTURE BG ELEMENTS_5: 6858995418518358825
+      FUTURE BG ELEMENTS_6: -6847957446459169668
+      FUTURE BG ELEMENTS_7: 4911488043387508099
+      FUTURE BG ELEMENTS_8: 7945862318223727783
+      FUTURE BG ELEMENTS_9: -6450837145268396543
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

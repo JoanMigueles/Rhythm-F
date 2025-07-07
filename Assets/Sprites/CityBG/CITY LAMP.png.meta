@@ -1,0 +1,611 @@
+fileFormatVersion: 2
+guid: 4d0061d3b53e7f0429040f873f38657b
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 1767277698191060013
+    second: CITY LAMP_0
+  - first:
+      213: -6135372415897917486
+    second: CITY LAMP_1
+  - first:
+      213: 5357964286248596468
+    second: CITY LAMP_2
+  - first:
+      213: -9049063802999485036
+    second: CITY LAMP_3
+  - first:
+      213: 431466825372649968
+    second: CITY LAMP_4
+  - first:
+      213: 1777526160746286609
+    second: CITY LAMP_5
+  - first:
+      213: -1365286492751691622
+    second: CITY LAMP_6
+  - first:
+      213: 490967738315745128
+    second: CITY LAMP_7
+  - first:
+      213: -5944947546883648070
+    second: CITY LAMP_8
+  - first:
+      213: 1373651001427012244
+    second: CITY LAMP_9
+  - first:
+      213: -6993773192873401711
+    second: CITY LAMP_10
+  - first:
+      213: 3267071717954534987
+    second: CITY LAMP_11
+  - first:
+      213: -3520481466605742090
+    second: CITY LAMP_12
+  - first:
+      213: 1507404897387275661
+    second: CITY LAMP_13
+  - first:
+      213: 4196895647977164925
+    second: CITY LAMP_14
+  - first:
+      213: -8381552779127097672
+    second: CITY LAMP_15
+  - first:
+      213: 5798885329911182806
+    second: CITY LAMP_16
+  - first:
+      213: 6354743675167236141
+    second: CITY LAMP_17
+  - first:
+      213: -5500741216164868129
+    second: CITY LAMP_18
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 0
+    wrapV: 0
+    wrapW: 0
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 1
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 4096
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: CITY LAMP_0
+      rect:
+        serializedVersion: 2
+        x: 809
+        y: 0
+        width: 747
+        height: 1096
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d2ce52cf3b1a68810800000000000000
+      internalID: 1767277698191060013
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CITY LAMP_1
+      rect:
+        serializedVersion: 2
+        x: 1543
+        y: 101
+        width: 11
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2d7aca95b47cadaa0800000000000000
+      internalID: -6135372415897917486
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CITY LAMP_2
+      rect:
+        serializedVersion: 2
+        x: 828
+        y: 36
+        width: 10
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4f3b31171205b5a40800000000000000
+      internalID: 5357964286248596468
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CITY LAMP_3
+      rect:
+        serializedVersion: 2
+        x: 831
+        y: 44
+        width: 12
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 49dce584a644b6280800000000000000
+      internalID: -9049063802999485036
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CITY LAMP_4
+      rect:
+        serializedVersion: 2
+        x: 846
+        y: 37
+        width: 14
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0f9c3baaac0ecf500800000000000000
+      internalID: 431466825372649968
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CITY LAMP_5
+      rect:
+        serializedVersion: 2
+        x: 861
+        y: 43
+        width: 11
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 11e0f3e10aa0ba810800000000000000
+      internalID: 1777526160746286609
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CITY LAMP_6
+      rect:
+        serializedVersion: 2
+        x: 870
+        y: 48
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a9085ee1b278d0de0800000000000000
+      internalID: -1365286492751691622
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CITY LAMP_7
+      rect:
+        serializedVersion: 2
+        x: 881
+        y: 45
+        width: 11
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 867ac768e8440d600800000000000000
+      internalID: 490967738315745128
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CITY LAMP_8
+      rect:
+        serializedVersion: 2
+        x: 882
+        y: 34
+        width: 10
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ab59bab24bd4f7da0800000000000000
+      internalID: -5944947546883648070
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CITY LAMP_9
+      rect:
+        serializedVersion: 2
+        x: 893
+        y: 43
+        width: 18
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 49aaa61de40301310800000000000000
+      internalID: 1373651001427012244
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CITY LAMP_10
+      rect:
+        serializedVersion: 2
+        x: 897
+        y: 39
+        width: 6
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 192a12fe55021fe90800000000000000
+      internalID: -6993773192873401711
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CITY LAMP_11
+      rect:
+        serializedVersion: 2
+        x: 919
+        y: 37
+        width: 18
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b4eb764fa68f65d20800000000000000
+      internalID: 3267071717954534987
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CITY LAMP_12
+      rect:
+        serializedVersion: 2
+        x: 946
+        y: 43
+        width: 17
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6f75e9822ccb42fc0800000000000000
+      internalID: -3520481466605742090
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CITY LAMP_13
+      rect:
+        serializedVersion: 2
+        x: 968
+        y: 37
+        width: 12
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d85e37184c06be410800000000000000
+      internalID: 1507404897387275661
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CITY LAMP_14
+      rect:
+        serializedVersion: 2
+        x: 981
+        y: 40
+        width: 18
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d70df011b5e5e3a30800000000000000
+      internalID: 4196895647977164925
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CITY LAMP_15
+      rect:
+        serializedVersion: 2
+        x: 855
+        y: 35
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8b6f0fd972ebeab80800000000000000
+      internalID: -8381552779127097672
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CITY LAMP_16
+      rect:
+        serializedVersion: 2
+        x: 870
+        y: 29
+        width: 15
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6d57496db77c97050800000000000000
+      internalID: 5798885329911182806
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CITY LAMP_17
+      rect:
+        serializedVersion: 2
+        x: 896
+        y: 31
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d20e00524b5903850800000000000000
+      internalID: 6354743675167236141
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CITY LAMP_18
+      rect:
+        serializedVersion: 2
+        x: 917
+        y: 27
+        width: 7
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fdf8421120179a3b0800000000000000
+      internalID: -5500741216164868129
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      CITY LAMP_0: 1767277698191060013
+      CITY LAMP_1: -6135372415897917486
+      CITY LAMP_10: -6993773192873401711
+      CITY LAMP_11: 3267071717954534987
+      CITY LAMP_12: -3520481466605742090
+      CITY LAMP_13: 1507404897387275661
+      CITY LAMP_14: 4196895647977164925
+      CITY LAMP_15: -8381552779127097672
+      CITY LAMP_16: 5798885329911182806
+      CITY LAMP_17: 6354743675167236141
+      CITY LAMP_18: -5500741216164868129
+      CITY LAMP_2: 5357964286248596468
+      CITY LAMP_3: -9049063802999485036
+      CITY LAMP_4: 431466825372649968
+      CITY LAMP_5: 1777526160746286609
+      CITY LAMP_6: -1365286492751691622
+      CITY LAMP_7: 490967738315745128
+      CITY LAMP_8: -5944947546883648070
+      CITY LAMP_9: 1373651001427012244
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

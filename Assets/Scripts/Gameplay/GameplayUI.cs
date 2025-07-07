@@ -4,6 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SocialPlatforms.Impl;
 using UnityEngine.UI;
 
 public class GameplayUI : UIManager
@@ -16,6 +17,11 @@ public class GameplayUI : UIManager
     // Character
     [SerializeField] private RhtyhmCharacterController robo;
 
+    // Screens
+    [SerializeField] private GameObject winScreen;
+    [SerializeField] private GameObject loseScreen;
+    [SerializeField] private GameObject pauseScreen;
+
     // Win results screen elements
     [SerializeField] private GameObject bottomBar;
     [SerializeField] private GameObject backButton;
@@ -26,6 +32,15 @@ public class GameplayUI : UIManager
     [SerializeField] private CanvasGroup[] resultTexts;
     [SerializeField] private CanvasGroup rankIcon;
     [SerializeField] private float startingsRankIconScale = 1.5f;
+
+    // Rank sprites
+    [SerializeField] private Sprite spRankSprite;
+    [SerializeField] private Sprite sRankSprite;
+    [SerializeField] private Sprite aRankSprite;
+    [SerializeField] private Sprite bRankSprite;
+    [SerializeField] private Sprite cRankSprite;
+    [SerializeField] private Sprite dRankSprite;
+
 
     // Lose screen elements
     [SerializeField] private CanvasGroup loseBackground;
@@ -94,7 +109,9 @@ public class GameplayUI : UIManager
     {
         // For testing
         if (Input.GetKeyDown(KeyCode.W)) StartCoroutine(WinLevel());
-        if (Input.GetKeyDown(KeyCode.Escape)) GameManager.instance.TogglePause();
+        if (Input.GetKeyDown(KeyCode.Escape) && !robo.IsDead()) {
+            TogglePauseScreen();
+        }
 
         scoreDisplay.text = robo.GetScore().ToString();
 
@@ -146,11 +163,15 @@ public class GameplayUI : UIManager
 
     public void SetResults()
     {
+        int score = robo.GetScore();
+        (int perfects, int greats, int misses) = robo.GetHitStats();
+        float accuracy = NoteManager.instance.GetAccuracy(perfects, greats, misses);
+        GameManager.instance.RegisterScore(score, accuracy);
+
         // Score
-        resultTexts[0].transform.GetChild(0).GetComponent<TMP_Text>().text = robo.GetScore().ToString();
+        resultTexts[0].transform.GetChild(0).GetComponent<TMP_Text>().text = score.ToString();
 
         // Hit stats
-        (int perfects, int greats, int misses) = robo.GetHitStats();
         resultTexts[1].transform.GetChild(0).GetComponent<TMP_Text>().text = perfects.ToString();
         resultTexts[2].transform.GetChild(0).GetComponent<TMP_Text>().text = greats.ToString();
         resultTexts[3].transform.GetChild(0).GetComponent<TMP_Text>().text = misses.ToString();
@@ -159,13 +180,17 @@ public class GameplayUI : UIManager
         resultTexts[4].transform.GetChild(0).GetComponent<TMP_Text>().text = robo.GetMaxCombo().ToString();
 
         // Accuracy
-        resultTexts[5].transform.GetChild(0).GetComponent<TMP_Text>().text = NoteManager.instance.GetAccuracy(perfects, greats, misses).ToString();
-
+        resultTexts[5].transform.GetChild(0).GetComponent<TMP_Text>().text = accuracy.ToString("F1") + " %";
+        Sprite rankSprite = GetRankIcon(accuracy);
+        rankIcon.GetComponent<Image>().sprite = rankSprite;
     }
 
     public void ShowResults()
     {
         float duration = 1f;
+
+        winScreen.SetActive(true);
+        roboSplash.SetActive(true);
 
         bottomBar.transform.DOLocalMove(bottomBarTargetPos, duration/2).SetEase(Ease.OutCubic);
         topBar.transform.DOLocalMove(topBarTargetPos, duration/2).SetEase(Ease.OutCubic);
@@ -206,6 +231,8 @@ public class GameplayUI : UIManager
     {
         float duration = 1f;
 
+        loseScreen.SetActive(true);
+
         RectTransform scoreRect = scorePanel.GetComponent<RectTransform>();
         scoreRect.DOAnchorPosY(scoreRect.anchoredPosition.y + scoreRect.rect.height + 200, duration).SetEase(Ease.InOutCubic);
 
@@ -221,6 +248,22 @@ public class GameplayUI : UIManager
                 loseButtons.interactable = true;
             });
         });
+    }
+    
+    public void TogglePauseScreen()
+    {
+        bool paused = GameManager.instance.TogglePause();
+        pauseScreen.SetActive(paused);
+    }
+
+    private Sprite GetRankIcon(float accuracy)
+    {
+        if (accuracy >= 100) return spRankSprite;
+        else if (accuracy >= 95) return sRankSprite;
+        else if (accuracy >= 90) return aRankSprite;
+        else if (accuracy >= 85) return bRankSprite;
+        else if (accuracy >= 72) return cRankSprite;
+        else return dRankSprite;
     }
 
     private void OnDestroy()

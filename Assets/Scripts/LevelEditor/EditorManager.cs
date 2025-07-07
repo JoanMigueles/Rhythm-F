@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
@@ -23,6 +24,7 @@ public class EditorManager : NoteManager
     [SerializeField] private GameObject markerPrefab;
     [SerializeField] private GameObject notePreview;
     [SerializeField] private GameObject markerPreview;
+    [SerializeField] private GameObject songStartMarkerPreview;
     private DurationNote draggedNotePreview;
     private NoteType currentNoteType;
     private bool isBig;
@@ -90,6 +92,7 @@ public class EditorManager : NoteManager
         foreach (BPMFlag flag in songData.BPMFlags) {
             SpawnMarker(flag);
         }
+        songStartMarkerPreview.transform.position = new Vector3(GetPositionFromTime(songData.metadata.previewStartTime), 0, 0);
 
         GameManager.instance.SetPlaying(false);
     }
@@ -137,20 +140,20 @@ public class EditorManager : NoteManager
     public void CreateSong()
     {
         Metronome.instance.ReleasePlayers();
+        Metronome.instance.SetBPMFlags(new List<BPMFlag> { new BPMFlag(0) });
         songData = new SongData();
     }
 
     protected override void LoadSelectedSong(SongMetadata metadata)
     {
         songData = SaveData.LoadCustomSong(metadata.localPath);
+        Metronome.instance.SetBPMFlags(songData.BPMFlags);
         if (string.IsNullOrEmpty(metadata.audioFileName)) return;
         string songPath = SaveData.GetAudioFilePath(metadata.audioFileName);
-        Metronome.instance.SetBPMFlags(songData.BPMFlags);
         Metronome.instance.SetLooping(false);
         if (File.Exists(songPath)) {
             Metronome.instance.SetCustomSong(songPath);
         }
-
         EditorUI.instance.ApplyWaveformTexture();
     }
 
@@ -164,6 +167,33 @@ public class EditorManager : NoteManager
     {
         songData.metadata.artist = artist;
         EditorUI.instance.DisplaySongData(songData.metadata);
+    }
+
+    public void SetSongStage(bool previous)
+    {
+        int totalStages = Enum.GetValues(typeof(Stage)).Length;
+        int currentStageIndex = (int)songData.metadata.stage;
+
+        if (previous) {
+            currentStageIndex--;
+            if (currentStageIndex < 0)
+                currentStageIndex = totalStages - 1;
+        }
+        else {
+            currentStageIndex++;
+            if (currentStageIndex >= totalStages)
+                currentStageIndex = 0;
+        }
+
+        songData.metadata.stage = (Stage)currentStageIndex;
+        EditorUI.instance.DisplaySongData(songData.metadata);
+    }
+
+    public void SetPreviewStart()
+    {
+        int time = Metronome.instance.GetTimelinePosition();
+        songData.metadata.previewStartTime = time;
+        songStartMarkerPreview.transform.position = new Vector3(GetPositionFromTime(time), 0, 0);
     }
 
     public IEnumerator SaveAndLoadCustomAudioFile(string filePath)
@@ -245,6 +275,8 @@ public class EditorManager : NoteManager
             note.SetDisplayMode(true);
         }
         ClearSelection();
+        notePreview.SetActive(false);
+        markerPreview.SetActive(false);
     }
 
     public void ReactivateNotes()
@@ -252,6 +284,8 @@ public class EditorManager : NoteManager
         foreach (Note note in activeNotes) {
             note.SetDisplayMode(false);
         }
+        notePreview.SetActive(editMode == EditMode.Object);
+        markerPreview.SetActive(editMode == EditMode.BPMMarker);
     }
 
     // ---------------------------------------------------------------------------------------------------------------------------------------------
@@ -817,6 +851,7 @@ public class EditorManager : NoteManager
         foreach (BPMMarker marker in activeMarkers) {
             marker.UpdatePosition();
         }
+        songStartMarkerPreview.transform.position = new Vector3(GetPositionFromTime(songData.metadata.previewStartTime), 0, 0);
     }
 
     private void UpdateMovingSelectionPosition()
@@ -860,6 +895,7 @@ public class EditorManager : NoteManager
 
         clipboardBeatPivot = GetClosestBeatSnappingFromTime(Metronome.instance.GetTimelinePosition());
         Debug.Log("Copy pivot: " + clipboardBeatPivot);
+        EditorUI.instance.ActionPopup("Copied!");
     }
 
     public void ClearSelection()
@@ -944,6 +980,7 @@ public class EditorManager : NoteManager
         SaveBPMFlags();
         SaveDifficultyNoteData(difficulty);
         SaveData.SaveCustomSongData(songData);
+        EditorUI.instance.ActionPopup("Saved!");
     }
 
     // ---------------------------------------------------------------------------------------------------------------------------------------------

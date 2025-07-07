@@ -30,7 +30,7 @@ public class ParallaxScroller : MonoBehaviour
         currentOffset += Time.deltaTime * worldScrollSpeed * effectiveTilingX;
         currentOffset %= 1f; // Loop between 0-1
 
-        propertyBlock.SetVector("_MainTex_ST",
+        propertyBlock.SetVector("_BaseMap_ST",
             new Vector4(
                 textureScale.x,
                 textureScale.y,

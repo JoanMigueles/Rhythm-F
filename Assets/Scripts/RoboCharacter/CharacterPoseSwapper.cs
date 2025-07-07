@@ -1,3 +1,4 @@
+using DG.Tweening;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -27,8 +28,16 @@ public class CharacterPoseSwapper : MonoBehaviour
     private GameObject currentBasePose;
     private GameObject currentActionPose;
 
+
+    [Header("Hoverboard")]
+    public GameObject hoverBoard;
+    public GameObject shadow;
+    public Tween hoverTween;
+
     void Start()
     {
+        hoverBoard.transform.SetParent(null); // detach from parent
+        hoverBoard.transform.position = new Vector3(-10f, -0.37f, 0f);
         SetBasePose(BaseAnimationState.Running); // Start with run
     }
 
@@ -41,9 +50,11 @@ public class CharacterPoseSwapper : MonoBehaviour
         {
             case BaseAnimationState.Running:
                 currentBasePose = runPose;
+                ShowHoverboard(false);
                 break;
             case BaseAnimationState.Surfing:
                 currentBasePose = surfPose;
+                ShowHoverboard(true);
                 break;
             case BaseAnimationState.Holding:
                 currentBasePose = holdingPose;
@@ -51,6 +62,8 @@ public class CharacterPoseSwapper : MonoBehaviour
                 break;
             case BaseAnimationState.Dead:
                 currentBasePose = deadPose;
+                ShowHoverboard(false);
+                shadow.SetActive(false);
                 break;
         }
         
@@ -84,6 +97,15 @@ public class CharacterPoseSwapper : MonoBehaviour
         PlayActionPose(slashPose, animationName);
     }
 
+    public void ShowHoverboard(bool show)
+    {
+        float targetX = show ? -1.75f : -10f;
+        if (hoverTween != null)
+            hoverTween.Kill();
+        hoverTween = hoverBoard.transform.DOMoveX(targetX, 0.4f)
+            .SetEase(Ease.InOutBack);
+    }
+
     private void PlayActionPose(GameObject poseObject, string animationName)
     {
         if (currentActionPose != null)
@@ -106,5 +128,19 @@ public class CharacterPoseSwapper : MonoBehaviour
 
         currentActionPose = null;
         currentBasePose.SetActive(true);
+    }
+
+    private void OnDisable()
+    {
+        if (hoverBoard == null) return;
+        hoverTween.Kill();
+        hoverBoard.SetActive(false);
+    }
+
+    private void OnEnable()
+    {
+        if (hoverBoard == null) return;
+        hoverBoard.SetActive(true);
+        hoverBoard.transform.position = new Vector3(-10f, -0.37f, 0f);
     }
 }

@@ -21,6 +21,7 @@ public class LevelListUI : UIManager
 
     [SerializeField] private bool customsOnly;
     private SongMetadata? hoveredSong;
+    private List<SongPanel> songPanels;
     private Coroutine hoveredSongCoroutine;
 
     private void Awake()
@@ -35,6 +36,7 @@ public class LevelListUI : UIManager
 
     public void ReloadList()
     {
+        songPanels = new List<SongPanel>();
         foreach (Transform child in content.transform) {
             Destroy(child.gameObject);
         }
@@ -46,6 +48,8 @@ public class LevelListUI : UIManager
                 SongPanel panel = Instantiate(songPanelPrefab, content.transform);
                 panel.SetScroller(scroll);
                 panel.SetSongMetadata(metadata);
+                
+                songPanels.Add(panel);
             }
         }
 
@@ -54,7 +58,10 @@ public class LevelListUI : UIManager
             SongPanel panel = Instantiate(songPanelPrefab, content.transform);
             panel.SetScroller(scroll);
             panel.SetSongMetadata(metadata);
+            songPanels.Add(panel);
         }
+
+        DisplayRanks();
 
         if (noSongsSign != null) {
             noSongsSign.SetActive(customSongMetadataList.Count == 0);
@@ -129,6 +136,22 @@ public class LevelListUI : UIManager
         }
     }
 
+    public void DisplayHoveredLeaderboard()
+    {
+        if (LeaderboardUI.instance == null) return;
+        if (hoveredSong.HasValue)
+            LeaderboardUI.instance.DisplayLeaderboard(GameManager.instance.GetTopScores(hoveredSong.Value));
+    }
+
+    public void DisplayRanks()
+    {
+        if (LeaderboardUI.instance == null) return;
+        if (songPanels == null) return;
+        foreach (SongPanel panel in songPanels) {
+            panel.DisplayRank();
+        }
+    }
+
     private IEnumerator SetHoveredSongCoroutine(SongMetadata metadata)
     {
         hoveredSong = metadata;
@@ -136,8 +159,13 @@ public class LevelListUI : UIManager
             nameDisplay.text = metadata.songName;
         if (artistDisplay != null)
             artistDisplay.text = metadata.artist;
-        if (coverImage != null)
-            coverImage.sprite = SaveData.GetCoverSprite(SaveData.GetCoverFilePath(metadata.coverFileName));
+        if (coverImage != null) {
+            if (metadata.songID != -1)
+                coverImage.sprite = ResourceLoader.LoadSongCover(metadata.songID);
+            else
+                coverImage.sprite = SaveData.GetCoverSprite(SaveData.GetCoverFilePath(metadata.coverFileName));
+        }
+        DisplayHoveredLeaderboard();
 
         Metronome.instance.ReleasePlayers();
         Metronome.instance.SetBPMFlags(new List<BPMFlag> { new BPMFlag(0, 0)});
@@ -150,6 +178,7 @@ public class LevelListUI : UIManager
                 Metronome.instance.SetBPMFlags(song.BPMFlags);
                 Metronome.instance.SetLooping(true);
                 Metronome.instance.SetCustomSong(SaveData.GetAudioFilePath(audioPath));
+                Metronome.instance.SetTimelinePosition(metadata.previewStartTime);
             }
             else {
                 PlayMenuTheme();
@@ -161,6 +190,7 @@ public class LevelListUI : UIManager
             Metronome.instance.SetBPMFlags(song.BPMFlags);
             Metronome.instance.SetLooping(true);
             Metronome.instance.SetSong(reference);
+            Metronome.instance.SetTimelinePosition(metadata.previewStartTime);
         }
 
         Metronome.instance.AddFade(true, 2f);

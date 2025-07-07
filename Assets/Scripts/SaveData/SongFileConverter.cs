@@ -12,6 +12,7 @@ public static class SongFileConverter
             writer.WriteLine("[Song Data]");
             writer.WriteLine($"Name:{songData.metadata.songName}");
             writer.WriteLine($"Artist:{songData.metadata.artist}");
+            writer.WriteLine($"GUID:{songData.metadata.songGUID}");
             writer.WriteLine($"AudioFile:{songData.metadata.audioFileName}");
             writer.WriteLine($"CoverFile:{songData.metadata.coverFileName}");
             writer.WriteLine($"PreviewStart:{songData.metadata.previewStartTime}");
@@ -114,6 +115,9 @@ public static class SongFileConverter
             case "Artist":
                 songData.metadata.artist = value;
                 break;
+            case "GUID":
+                songData.metadata.songGUID = Guid.Parse(value);
+                break;
             case "AudioFile":
                 songData.metadata.audioFileName = value;
                 break;
@@ -121,7 +125,7 @@ public static class SongFileConverter
                 songData.metadata.coverFileName = value;
                 break;
             case "PreviewStart":
-                float.TryParse(value, out songData.metadata.previewStartTime);
+                int.TryParse(value, out songData.metadata.previewStartTime);
                 break;
             case "StageBackground":
                 Enum.TryParse(value, out songData.metadata.stage);

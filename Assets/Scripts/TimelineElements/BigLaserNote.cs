@@ -15,7 +15,15 @@ public class BigLaserNote : Note
     public float startingHeight;
     private bool appeared = false;
     private bool shot = false;
-        
+
+    public GameObject warnSpeechBubble;
+    private Vector3 warnSpeechTargetScale = Vector3.one;
+
+    private void Start()
+    {
+        warnSpeechTargetScale = warnSpeechBubble.transform.localScale;
+    }
+
     public override void UpdatePosition()
     {
         float yPos = data.lane == 0 ? 1.5f : -1.5f;
@@ -29,6 +37,7 @@ public class BigLaserNote : Note
 
     private void Appear()
     {
+        gameObject.SetActive(true);
         transform.position = new Vector3(17f, data.lane == 0 ? 1.5f : -1.5f, 0f);
         transform.DOMoveX(11, appearingTime/1000f)
                 .SetEase(Ease.OutCubic)
@@ -39,12 +48,31 @@ public class BigLaserNote : Note
 
     private void Warn()
     {
+        ShowSpeechBubble();
         RuntimeManager.PlayOneShot(warnReference);
+    }
+
+    public void ShowSpeechBubble()
+    {
+        float rotationDegrees = 180f;
+        float duration = 0.3f;
+
+        warnSpeechBubble.transform.DOKill();
+
+        warnSpeechBubble.transform.gameObject.SetActive(true); ;
+        warnSpeechBubble.transform.localScale = Vector3.zero;
+        warnSpeechBubble.transform.rotation = Quaternion.Euler(0f, 0f, -rotationDegrees);
+
+        warnSpeechBubble.transform.DOScale(warnSpeechTargetScale, duration).SetEase(Ease.OutBack);
+        warnSpeechBubble.transform.DORotate(Vector3.zero, duration).SetEase(Ease.OutBack);
     }
 
     private void ShootLaser()
     {
         if (laser != null) {
+            warnSpeechBubble.transform.DOKill();
+            warnSpeechBubble.SetActive(false);
+
             laser.SetActive(true);
             SpriteRenderer sr = laser.GetComponent<SpriteRenderer>();
             sr.DOKill();
@@ -87,6 +115,8 @@ public class BigLaserNote : Note
             laser.GetComponent<SpriteRenderer>().DOKill();
             laser.transform.DOKill();
             laser.SetActive(false);
+            warnSpeechBubble.transform.DOKill();
+            warnSpeechBubble.SetActive(false);
             appeared = false;
             shot = false;
         }

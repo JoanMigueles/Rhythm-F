@@ -1,0 +1,533 @@
+fileFormatVersion: 2
+guid: 62b720c6e75782747b64dfbff029371c
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 6561369715387056058
+    second: FUTURE WALL_0
+  - first:
+      213: -3630089318803156215
+    second: FUTURE WALL_1
+  - first:
+      213: -6485083986154373769
+    second: FUTURE WALL_2
+  - first:
+      213: -4751087489052952807
+    second: FUTURE WALL_3
+  - first:
+      213: 282315363272874602
+    second: FUTURE WALL_4
+  - first:
+      213: -7327145787492309605
+    second: FUTURE WALL_5
+  - first:
+      213: 4602924396537192691
+    second: FUTURE WALL_6
+  - first:
+      213: 2354179331593418690
+    second: FUTURE WALL_7
+  - first:
+      213: -1674066071742724281
+    second: FUTURE WALL_8
+  - first:
+      213: 2692161327188070625
+    second: FUTURE WALL_9
+  - first:
+      213: 7472532812344865076
+    second: FUTURE WALL_10
+  - first:
+      213: 7571395095067352142
+    second: FUTURE WALL_11
+  - first:
+      213: -8820656384837725520
+    second: FUTURE WALL_12
+  - first:
+      213: 3149287190490998417
+    second: FUTURE WALL_13
+  - first:
+      213: 4822464111708131283
+    second: FUTURE WALL_14
+  - first:
+      213: -4518297617953777547
+    second: FUTURE WALL_15
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 0
+    wrapV: 0
+    wrapW: 0
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 1
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 16384
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: FUTURE WALL_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 2
+        width: 252
+        height: 580
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: abfb6a51efaae0b50800000000000000
+      internalID: 6561369715387056058
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FUTURE WALL_1
+      rect:
+        serializedVersion: 2
+        x: 294
+        y: 2
+        width: 253
+        height: 580
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9035cc16ff45f9dc0800000000000000
+      internalID: -3630089318803156215
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FUTURE WALL_2
+      rect:
+        serializedVersion: 2
+        x: 632
+        y: 244
+        width: 96
+        height: 399
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 77db1ba597a5006a0800000000000000
+      internalID: -6485083986154373769
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FUTURE WALL_3
+      rect:
+        serializedVersion: 2
+        x: 733
+        y: 0
+        width: 890
+        height: 629
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 917323ed91fb01eb0800000000000000
+      internalID: -4751087489052952807
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FUTURE WALL_4
+      rect:
+        serializedVersion: 2
+        x: 1634
+        y: 242
+        width: 77
+        height: 222
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a6ad38eb35cfae300800000000000000
+      internalID: 282315363272874602
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FUTURE WALL_5
+      rect:
+        serializedVersion: 2
+        x: 1724
+        y: 238
+        width: 93
+        height: 199
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b9565072abfb05a90800000000000000
+      internalID: -7327145787492309605
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FUTURE WALL_6
+      rect:
+        serializedVersion: 2
+        x: 1886
+        y: 3
+        width: 497
+        height: 738
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3f0249fe95fd0ef30800000000000000
+      internalID: 4602924396537192691
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FUTURE WALL_7
+      rect:
+        serializedVersion: 2
+        x: 2426
+        y: 2
+        width: 567
+        height: 859
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2c7313d01a9bba020800000000000000
+      internalID: 2354179331593418690
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FUTURE WALL_8
+      rect:
+        serializedVersion: 2
+        x: 3105
+        y: 7
+        width: 711
+        height: 617
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 747cd3ff6c584c8e0800000000000000
+      internalID: -1674066071742724281
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FUTURE WALL_9
+      rect:
+        serializedVersion: 2
+        x: 3946
+        y: 0
+        width: 461
+        height: 752
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1e0d611a67a7c5520800000000000000
+      internalID: 2692161327188070625
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FUTURE WALL_10
+      rect:
+        serializedVersion: 2
+        x: 4366
+        y: 2
+        width: 425
+        height: 437
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 431344c6005c3b760800000000000000
+      internalID: 7472532812344865076
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FUTURE WALL_11
+      rect:
+        serializedVersion: 2
+        x: 4832
+        y: 7
+        width: 485
+        height: 727
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e4cdf9759bff21960800000000000000
+      internalID: 7571395095067352142
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FUTURE WALL_12
+      rect:
+        serializedVersion: 2
+        x: 5395
+        y: 5
+        width: 706
+        height: 1016
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0b257f770cbb69580800000000000000
+      internalID: -8820656384837725520
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FUTURE WALL_13
+      rect:
+        serializedVersion: 2
+        x: 6186
+        y: 2
+        width: 511
+        height: 739
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 19667ec930484bb20800000000000000
+      internalID: 3149287190490998417
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FUTURE WALL_14
+      rect:
+        serializedVersion: 2
+        x: 6740
+        y: 7
+        width: 305
+        height: 842
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3dfce602f85dce240800000000000000
+      internalID: 4822464111708131283
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FUTURE WALL_15
+      rect:
+        serializedVersion: 2
+        x: 7148
+        y: 7
+        width: 309
+        height: 888
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5781f546148cb41c0800000000000000
+      internalID: -4518297617953777547
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      FUTURE WALL_0: 6561369715387056058
+      FUTURE WALL_1: -3630089318803156215
+      FUTURE WALL_10: 7472532812344865076
+      FUTURE WALL_11: 7571395095067352142
+      FUTURE WALL_12: -8820656384837725520
+      FUTURE WALL_13: 3149287190490998417
+      FUTURE WALL_14: 4822464111708131283
+      FUTURE WALL_15: -4518297617953777547
+      FUTURE WALL_2: -6485083986154373769
+      FUTURE WALL_3: -4751087489052952807
+      FUTURE WALL_4: 282315363272874602
+      FUTURE WALL_5: -7327145787492309605
+      FUTURE WALL_6: 4602924396537192691
+      FUTURE WALL_7: 2354179331593418690
+      FUTURE WALL_8: -1674066071742724281
+      FUTURE WALL_9: 2692161327188070625
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

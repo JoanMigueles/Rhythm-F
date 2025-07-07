@@ -446,6 +446,13 @@ MonoBehaviour:
   button: {fileID: 2251801836281205478}
   selectedColor: {r: 0.3803922, g: 0.21568629, b: 0.6784314, a: 1}
   color: {r: 0.20392159, g: 0.16078432, b: 0.25490198, a: 1}
+  rankIcon: {fileID: 0}
+  spRankSprite: {fileID: 21300000, guid: 67eb35beb7c950b43b95bf0cbe870fe6, type: 3}
+  sRankSprite: {fileID: 21300000, guid: 11916b5bd64e2d54d9c62be5403c681b, type: 3}
+  aRankSprite: {fileID: 21300000, guid: f7a03898e61a3b049921a9ee05be09e1, type: 3}
+  bRankSprite: {fileID: 21300000, guid: ee63704c56800fe429615e2bd21a60e8, type: 3}
+  cRankSprite: {fileID: 21300000, guid: 9074a93674d13264faf29680a87ce1c2, type: 3}
+  dRankSprite: {fileID: 21300000, guid: 1537adcd2cdafe04297a81d6955ebef1, type: 3}
 --- !u!114 &6813168917971026977
 MonoBehaviour:
   m_ObjectHideFlags: 0

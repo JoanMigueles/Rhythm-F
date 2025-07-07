@@ -16,9 +16,27 @@ public class WarnNote : DurationNote
     protected bool warning = false;
     protected bool attacked = false;
 
-    private void OnDisable()
+    public GameObject warnSpeechBubble;
+    private Vector3 warnSpeechTargetScale = Vector3.one;
+
+    private void Start()
     {
-        durationHandle.transform.DOKill();
+        warnSpeechTargetScale = warnSpeechBubble.transform.localScale;
+    }
+
+    public void ShowSpeechBubble()
+    {
+        float rotationDegrees = 180f;
+        float duration = 0.3f;
+
+        warnSpeechBubble.transform.DOKill();
+
+        warnSpeechBubble.transform.gameObject.SetActive(true);;
+        warnSpeechBubble.transform.localScale = Vector3.zero;
+        warnSpeechBubble.transform.rotation = Quaternion.Euler(0f, 0f, -rotationDegrees);
+
+        warnSpeechBubble.transform.DOScale(warnSpeechTargetScale, duration).SetEase(Ease.OutBack);
+        warnSpeechBubble.transform.DORotate(Vector3.zero, duration).SetEase(Ease.OutBack);
     }
 
     public override void UpdatePosition()
@@ -37,12 +55,14 @@ public class WarnNote : DurationNote
 
     protected void Warn()
     {
-        durationHandle.transform.DOKill();
-
         warning = true;
+
         frozenHandlePosition = durationHandle.transform.position;
         RuntimeManager.PlayOneShot(warnReference);
 
+        ShowSpeechBubble();
+
+        durationHandle.transform.DOKill();
         durationHandle.transform.DORotate(new Vector3(0, 0, 20), 0.05f)
             .SetEase(Ease.OutCubic);
     }
@@ -51,19 +71,21 @@ public class WarnNote : DurationNote
     {
         if (durationHandle == null) return;
 
-        durationHandle.transform.DOKill();
-
-        warning = false;
-        attacked = true;
-        durationHandle.transform.rotation = Quaternion.identity;
-        float durationSeconds = attackDuration / 1000f;
+        warnSpeechBubble.transform.DOKill();
+        warnSpeechBubble.SetActive(false);
 
         trail.emitting = true;
+        warning = false;
+        attacked = true;
+
+        durationHandle.transform.rotation = Quaternion.identity;
+        float durationSeconds = attackDuration / 1000f;
         float startX = durationHandle.transform.position.x;
         float speed = startX / durationSeconds; // Units per second
         float totalDistance = startX + 10;
         float totalDuration = totalDistance / speed;
-        
+
+        durationHandle.transform.DOKill();
         durationHandle.transform.DOMoveX(-10, totalDuration)
                 .SetEase(Ease.Linear)
                 .OnComplete(() => {
@@ -80,6 +102,10 @@ public class WarnNote : DurationNote
             durationHandle.transform.DOKill();
             durationHandle.transform.rotation = Quaternion.identity;
             durationHandle.SetDuration(data.duration);
+
+            warnSpeechBubble.transform.DOKill();
+            warnSpeechBubble.SetActive(false);
+
             trail.emitting = false;
             warning = false;
             attacked = false;
@@ -113,5 +139,10 @@ public class WarnNote : DurationNote
                 durationHandle.transform.position = frozenHandlePosition;
             }
         }
+    }
+
+    private void OnDisable()
+    {
+        durationHandle.transform.DOKill();
     }
 }

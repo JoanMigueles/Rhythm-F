@@ -7,31 +7,39 @@ using UnityEngine.UI;
 public class EditorUI : UIManager
 {
     public static EditorUI instance {  get; private set; }
-    public TMP_Text timer;
-    public TMP_Text beat;
-    public TMP_Text subdivision;
-    public TMP_Text songTitle;
-    public TMP_Text currentBPM;
-    public Image coverImage;
-
-    public TMP_InputField titleField;
-    public TMP_InputField artistField;
-    public TMP_Text audioField;
-
-    public Slider subdivisionSlider;
-    private readonly int[] valueMap = { 1, 1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 16 }; // Subdivision slider values
-    public SongSlider songSlider;
-    public WaveformTexture[] waveformTextures;
-
-    public Button playButton;
-    public Button pauseButton;
-
-    public RectTransform topPanel;
-    public RectTransform bottomPanel;
-    public RectTransform leftPanel;
-    private Sequence panelSequence;
-    public GameObject testDummy;
     public bool isHidden;
+
+    [SerializeField] private TMP_Text timer;
+    [SerializeField] private TMP_Text beat;
+    [SerializeField] private TMP_Text subdivision;
+    [SerializeField] private TMP_Text songTitle;
+    [SerializeField] private TMP_Text currentBPM;
+    [SerializeField] private Image coverImage;
+
+    [SerializeField] private TMP_Text stageName;
+    [SerializeField] private SpriteRenderer stageBackground;
+    [SerializeField] private Sprite[] stageSprites;
+
+    [SerializeField] private TMP_InputField titleField;
+    [SerializeField] private TMP_InputField artistField;
+    [SerializeField] private TMP_Text audioField;
+
+    [SerializeField] private Slider subdivisionSlider;
+    private readonly int[] valueMap = { 1, 1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 16 }; // Subdivision slider values
+    [SerializeField] private SongSlider songSlider;
+    [SerializeField] private WaveformTexture[] waveformTextures;
+
+    [SerializeField] private Button playButton;
+    [SerializeField] private Button pauseButton;
+
+    [SerializeField] private RectTransform topPanel;
+    [SerializeField] private RectTransform bottomPanel;
+    [SerializeField] private RectTransform leftPanel;
+    [SerializeField] private CanvasGroup actionPopup;
+    private Sequence panelSequence;
+    private ButtonModeHighlight currentModeButton;
+
+    [SerializeField] private GameObject testDummy;
 
     private EditorManager em;
 
@@ -72,6 +80,17 @@ public class EditorUI : UIManager
         return string.Format("{0:00}:{1:00}:{2:00}", minutes, seconds, centiseconds);
     }
 
+    // HIGHLIGHTED MODE
+    public void SetHighlightedButton(ButtonModeHighlight button)
+    {
+        if (currentModeButton != null) {
+            currentModeButton.Highlight(false);
+        }
+
+        currentModeButton = button;
+        currentModeButton.Highlight(true);
+    }
+
     // SONG DATA DISPLAY
     public void DisplaySongData(SongMetadata metadata)
     {
@@ -80,6 +99,7 @@ public class EditorUI : UIManager
         audioField.text = metadata.audioFileName;
 
         SetSongTitleDisplay(metadata.songName, metadata.artist);
+        SetBackgroundDisplay(metadata.stage);
     }
 
     private void SetSongTitleDisplay(string name, string artist)
@@ -96,7 +116,12 @@ public class EditorUI : UIManager
         else {
             songTitle.text = $"{name} - {artist}";
         }
-
+    }
+    
+    private void SetBackgroundDisplay(Stage stage)
+    {
+        stageName.text = stage.ToString();
+        stageBackground.sprite = stageSprites[(int)stage % stageSprites.Length];
     }
 
     // SUBDIVISION SLIDER
@@ -115,18 +140,6 @@ public class EditorUI : UIManager
         em.noteSubdivisionSnapping = valueMap[i];
     }
 
-    // SONG TITLE INPUT FIELD
-    public void SetSongName(string name)
-    {
-        em.SetSongName(name);
-    }
-
-    // SONG ARTIST INPUT FIELD
-    public void SetSongArtist(string artist)
-    {
-        em.SetSongArtist(artist);
-    }
-
     public void DisplayCoverImage(Sprite sprite)
     {
         coverImage.sprite = sprite;
@@ -136,12 +149,6 @@ public class EditorUI : UIManager
     public void MetronomeToggle(bool on)
     {
         Metronome.instance.SetMetronomeSound(on);
-    }
-
-    // SAVE BUTTON
-    public void SaveButton()
-    {
-        em.SaveChanges();
     }
 
     // PLAY BUTTON
@@ -165,6 +172,15 @@ public class EditorUI : UIManager
     // STOP BUTTON
     public void StopButton() {
         Metronome.instance.StopSong();
+    }
+
+    // TEXT POPUP
+    public void ActionPopup(string message)
+    {
+        actionPopup.transform.GetChild(0).GetComponent<TMP_Text>().text = message;
+        actionPopup.alpha = 1.0f;
+        actionPopup.DOKill();
+        actionPopup.DOFade(0f, 2f).SetEase(Ease.InOutQuad);
     }
 
     // LOAD AUDIO BUTTON
@@ -228,5 +244,10 @@ public class EditorUI : UIManager
         isHidden = !isHidden;
         GameManager.instance.SetPlaying(isHidden);
         testDummy.SetActive(isHidden);
+    }
+
+    private void OnDestroy()
+    {
+        actionPopup.DOKill();
     }
 }

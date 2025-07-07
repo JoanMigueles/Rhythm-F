@@ -19,6 +19,8 @@ public class DifficultySelector : MonoBehaviour
         Difficulty difficulty = (Difficulty)diff;
         selectedDifficulty = difficulty;
         GameManager.instance.SetSelectedDifficulty(selectedDifficulty);
+        LevelListUI.instance.DisplayHoveredLeaderboard();
+        LevelListUI.instance.DisplayRanks();
         Image[] images = GetComponentsInChildren<Image>();
         bool isEven;
         for (int i = 0; i < images.Length; i++) {
@@ -37,5 +39,6 @@ public class DifficultySelector : MonoBehaviour
                 images[i].GetComponent<Pulsator>().enabled = false;
             }
         }
+        
     }
 }

@@ -57,6 +57,9 @@ public class Metronome : MonoBehaviour
         }
 
         // Get the timeline position with each player
+        // -- Custom player is a class that manually sets FMOD channels at low level by loading audio files at runtime, since FMOD Event instances dont allow other audio files that are not from
+        // FMOD Studio Assets (making them useless for custom song playing)
+        // -- Instance player is the main way of playing bult-in sounds and songs (from FMOD Studio)
         if (customPlayer != null)
             timelinePositionMs = customPlayer.GetTimelinePosition();
         else if (instancePlayer.isValid())
@@ -66,12 +69,14 @@ public class Metronome : MonoBehaviour
 
         // ---- Explanation ----
         // Since FMOD is async, the time obtained from it is NOT updated each frame, making it look "not smooth" when determining the position of enemies with time info,
-        // for that reason delta time is used only while the song is playing. This also means that when paused, the time is synced back again with the audio system.
-        // It's not the prettiest solution but it's what works best.
+        // for that reason, delta time is used only while the song is playing, ensuring the synch of the custom timer with the start of the playing state.
+        // This also means that when paused, the time is synced back again with the audio system.
+        // And also allows to get times past and before the song length range (since FMOD's timeline position only allows values in the duration range of the sound)
+        // It's not the prettiest solution to the smooth time problem but it's what works best after testing many other options :)
         if (!IsPaused())
             timelinePosition += Time.deltaTime;
         else {
-            bool withinSongRange = timelinePosition >= 0 && timelinePosition <= GetSongLength();
+            bool withinSongRange = timelinePosition >= 0 && timelinePosition <= GetSongLength() / 1000f;
             if (withinSongRange) {
                 float newTimelinePosition = timelinePositionMs / 1000f;
                 timelinePosition = newTimelinePosition;

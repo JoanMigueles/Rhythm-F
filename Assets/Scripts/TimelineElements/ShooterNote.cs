@@ -26,6 +26,9 @@ public class ShooterNote : WarnNote
         durationHandle.transform.DOKill();
         shootProjectile.transform.DOKill();
 
+        warnSpeechBubble.transform.DOKill();
+        warnSpeechBubble.SetActive(false);
+
         warning = false;
         attacked = true;
         durationHandle.transform.rotation = Quaternion.identity;
@@ -54,6 +57,9 @@ public class ShooterNote : WarnNote
         // Ensure the projectile is active and positioned before tweening
         shootProjectile.gameObject.SetActive(true);
         projectileTween.Kill();
+
+        warnSpeechBubble.transform.DOKill();
+        warnSpeechBubble.SetActive(false);
 
         // Optional: force reset position if needed
         shootProjectile.transform.position = new Vector3(0f, shootProjectile.transform.position.y, 0f);

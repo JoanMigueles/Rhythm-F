@@ -6,7 +6,7 @@ public static class SaveBinary
 {
     private static string path = Application.persistentDataPath + "/leaderboard.score";
 
-    public static void SaveLeaderboard(LeaderboardData data)
+    public static void SaveLeaderboards(LeaderboardDataManager data)
     {
         BinaryFormatter formatter = new BinaryFormatter();
         using (FileStream stream = new FileStream(path, FileMode.Create))
@@ -15,18 +15,18 @@ public static class SaveBinary
         }
     }
 
-    public static LeaderboardData LoadLeaderboard()
+    public static LeaderboardDataManager LoadLeaderboards()
     {
         if (!File.Exists(path))
         {
-            Debug.LogError("Leaderboard file not found: " + path);
-            return new LeaderboardData(); // Return empty
+            Debug.LogWarning("Leaderboard file not found: " + path);
+            return new LeaderboardDataManager(); // Return empty
         }
 
         BinaryFormatter formatter = new BinaryFormatter();
         using (FileStream stream = new FileStream(path, FileMode.Open))
         {
-            return formatter.Deserialize(stream) as LeaderboardData;
+            return formatter.Deserialize(stream) as LeaderboardDataManager;
         }
     }
 }

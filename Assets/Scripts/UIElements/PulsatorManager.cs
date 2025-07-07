@@ -7,8 +7,6 @@ public class PulsatorManager : MonoBehaviour
     private List<Pulsator> pulsators;
     private List<AnimationPulsator> animators;
 
-    private int lastBeat = -1;
-
     private void Awake()
     {
         instance = this;

@@ -201,7 +201,7 @@ public class NoteManager : MonoBehaviour
 
 
         if (perfects + greats + misses != maxPossibleGrade) Debug.LogWarning($"Incoherence found between hits and max possible hits: {perfects + greats + misses}, {maxPossibleGrade}");
-        return (perfects + greats * (2 / 3)) / maxPossibleGrade * 100;
+        return ((float)perfects + (float)greats * (2f / 3f)) / maxPossibleGrade * 100f;
 
     }
 

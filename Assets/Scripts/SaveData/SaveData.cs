@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
@@ -23,17 +24,7 @@ public class SongData
     public SongData()
     {
         metadata = new SongMetadata();
-        BPMFlags = new List<BPMFlag>();
-        easyNotes = new List<NoteData>();
-        normalNotes = new List<NoteData>();
-        hardNotes = new List<NoteData>();
-        rumbleNotes = new List<NoteData>();
-    }
-
-    public SongData(string name)
-    {
-        metadata = new SongMetadata();
-        metadata.songName = name;
+        metadata.songGUID = Guid.NewGuid();
         BPMFlags = new List<BPMFlag>();
         easyNotes = new List<NoteData>();
         normalNotes = new List<NoteData>();
@@ -47,11 +38,12 @@ public struct SongMetadata
 {
     public string localPath;
     public int songID;
+    public Guid songGUID;
     public string songName;
     public string artist;
     public string audioFileName;
     public string coverFileName;
-    public float previewStartTime;
+    public int previewStartTime;
     public Stage stage;
 }
 

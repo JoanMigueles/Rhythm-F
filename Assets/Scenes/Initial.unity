@@ -1238,8 +1238,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: 4adcd1dc89df82143975dfe017122585, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -2046,12 +2046,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19cf3890903a2f44e88554ef58d16edc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pulsators:
-  - {fileID: 1385216185}
-  - {fileID: 1410037017}
-  animators:
-  - {fileID: 1626984655}
-  - {fileID: 1143547653}
 --- !u!1001 &1886926139
 PrefabInstance:
   m_ObjectHideFlags: 0

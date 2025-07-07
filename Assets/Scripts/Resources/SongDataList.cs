@@ -1,5 +1,6 @@
 using FMODUnity;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "SongDataList", menuName = "Scriptable Objects/SongDataList")]
@@ -17,9 +18,8 @@ public static class ResourceLoader
         list = Resources.Load<SongDataList>("SongDataList");
         List<SongMetadata> metadataList = new List<SongMetadata>();
         
-        for (int i = 0; i < list.songsList.Count; i++) {
-            list.songsList[i].data.metadata.songID = i;
-            metadataList.Add(list.songsList[i].data.metadata);
+        foreach (SongDataResource songResource in list.songsList) {
+            metadataList.Add(songResource.data.metadata);
         }
         return metadataList;
     }
@@ -27,12 +27,21 @@ public static class ResourceLoader
     public static SongData LoadSong(int id)
     {
         if (list == null) list = Resources.Load<SongDataList>("SongDataList");
-        return list.songsList[id].data;
+        SongData song = list.songsList.FirstOrDefault(s => s.data.metadata.songID == id).data;
+        return song;
     }
 
     public static EventReference LoadEventReference(int id)
     {
         if (list == null) list = Resources.Load<SongDataList>("SongDataList");
-        return list.songsList[id].songReference;
+        EventReference reference = list.songsList.FirstOrDefault(s => s.data.metadata.songID == id).songReference;
+        return reference;
+    }
+
+    public static Sprite LoadSongCover(int id)
+    {
+        if (list == null) list = Resources.Load<SongDataList>("SongDataList");
+        Sprite sprite = list.songsList.FirstOrDefault(s => s.data.metadata.songID == id).coverImage;
+        return sprite;
     }
 }

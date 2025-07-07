@@ -6,4 +6,5 @@ public class SongDataResource : ScriptableObject
 {
     public SongData data;
     [field: SerializeField] public EventReference songReference { get; private set; }
+    public Sprite coverImage;
 }

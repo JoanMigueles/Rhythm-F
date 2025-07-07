@@ -19,13 +19,13 @@ EditorBuildSettings:
     guid: 8c9cfa26abfee488c85f1582747f6a02
   - enabled: 1
     path: Assets/Scenes/CityLevel.unity
-    guid: 6490658d7572b114c89a9c9c1f964de7
+    guid: 5d2111a0b32e8164486510357eac18d7
   - enabled: 1
     path: Assets/Scenes/BeachLevel.unity
     guid: 65330ef2325335741bbb7d6bdc618f9f
   - enabled: 1
     path: Assets/Scenes/FutureLevel.unity
-    guid: d64bcc07798e30044be17f72607e0768
+    guid: fbe04ccaf73480c4e995101c4600c013
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   m_UseUCBPForAssetBundles: 0

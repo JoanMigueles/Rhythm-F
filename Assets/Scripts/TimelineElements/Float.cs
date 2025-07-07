@@ -4,6 +4,7 @@ using DG.Tweening;
 public class Float : MonoBehaviour
 {
     private Tween floatTween;
+    public float amount = 0.3f;
 
     private void OnDisable()
     {
@@ -15,7 +16,7 @@ public class Float : MonoBehaviour
         if (floatTween != null && floatTween.IsActive())
             return;
 
-        floatTween = transform.DOLocalMoveY(0.3f, 0.5f)
+        floatTween = transform.DOLocalMoveY(amount, 0.5f)
                             .SetRelative()
                             .SetLoops(-1, LoopType.Yoyo)
                             .SetEase(Ease.InOutSine);

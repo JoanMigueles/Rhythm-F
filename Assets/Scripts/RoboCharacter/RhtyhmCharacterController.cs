@@ -1,5 +1,4 @@
 using FMODUnity;
-using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 // Enum to define interaction types
@@ -290,7 +289,6 @@ public class RhtyhmCharacterController : MonoBehaviour
                     multihitTimer = 0;
                     RuntimeManager.PlayOneShot(hitReference);
                     AddScore(50);
-                    currentLane = 1;
                     return true;
                 }
                 continue;
@@ -336,7 +334,7 @@ public class RhtyhmCharacterController : MonoBehaviour
         foreach (var note in noteManager.activeNotes) {
 
             int enemyHitDuration = 60;
-            if (note.data.time > currentTime + enemyHitDuration) {
+            if (note.data.time > currentTime + enemyHitDuration / 2) {
                 break;
             }
 
@@ -349,7 +347,7 @@ public class RhtyhmCharacterController : MonoBehaviour
             switch (note.data.type) {
                 case NoteType.Saw:
                 case NoteType.Laser:
-                    if (currentTime < note.data.time + enemyHitDuration && currentTime > note.data.time - enemyHitDuration) {
+                    if (currentTime < note.data.time + enemyHitDuration / 2 && currentTime > note.data.time - enemyHitDuration / 2) {
                         if (note.data.lane == currentLane) {
                             TakeDamage(note);
                         }
@@ -423,6 +421,11 @@ public class RhtyhmCharacterController : MonoBehaviour
     public int GetHealth()
     {
         return health;
+    }
+
+    public bool IsDead()
+    {
+        return dead;
     }
 
     public int GetComboMultiplier()
@@ -521,5 +524,6 @@ public class RhtyhmCharacterController : MonoBehaviour
         perfects = 0;
         greats = 0;
         misses = 0;
+        currentLane = 1;
     }
 }
