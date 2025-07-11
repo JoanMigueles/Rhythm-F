@@ -1,4 +1,5 @@
 using FMODUnity;
+using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -48,6 +49,7 @@ public class NoteManager : MonoBehaviour
     protected virtual void Start()
     {
         activeNotes = new List<Note>();
+        GameManager.instance.SetPlaying(true);
 
         if (GameManager.instance.IsSongSelected()) {
             var song = GameManager.instance.GetSelectedSong();
@@ -61,12 +63,11 @@ public class NoteManager : MonoBehaviour
             Metronome.instance.SetBPMFlags(new List<BPMFlag>());
             Metronome.instance.SetLooping(false);
             Metronome.instance.SetSong(testSongReference);
+            GameManager.instance.SetSelectedDifficulty(Difficulty.Normal);
             if (DialogueMissionManager.instance != null) {
-                Metronome.instance.PlaySong();
-                GameManager.instance.SetPlaying(true);
+                StartCoroutine(StartTutorialTestSong());
                 return;
             }
-            GameManager.instance.SetSelectedDifficulty(Difficulty.Normal);
         }
 
         difficulty = GameManager.instance.GetSelectedDifficulty();
@@ -86,6 +87,13 @@ public class NoteManager : MonoBehaviour
             note.SetDisplayMode(true);
             note.gameObject.SetActive(false);
         }
+    }
+
+    private IEnumerator StartTutorialTestSong()
+    {
+        RuntimeManager.PlayOneShot(readyReference);
+        yield return new WaitForSeconds(3);
+        Metronome.instance.PlaySong();
     }
 
     private void Update()

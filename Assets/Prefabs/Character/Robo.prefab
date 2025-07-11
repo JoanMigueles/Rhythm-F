@@ -8708,6 +8708,13 @@ MonoBehaviour:
       Data3: -1379719765
       Data4: 1249203959
     Path: event:/SoundEffects/KickDrum
+  <whooshReference>k__BackingField:
+    Guid:
+      Data1: 1099273350
+      Data2: 1227236630
+      Data3: -1566409824
+      Data4: -31773831
+    Path: event:/SoundEffects/Whoosh
   popupPrefab: {fileID: 2566514160695570110, guid: b07073dddf07a064e9cfe1ff6a2aecae, type: 3}
   perfectWindow: 35
   perfectSlashWindow: 65

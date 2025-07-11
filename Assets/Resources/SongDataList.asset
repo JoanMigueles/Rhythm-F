@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: SongDataList
   m_EditorClassIdentifier: 
   songsList:
-  - {fileID: 11400000, guid: cd73f3235cd86cf40bbd389e3f90b218, type: 2}
-  - {fileID: 11400000, guid: b8d0a8de2cc6f95409054021dd6c3322, type: 2}
+  - {fileID: 11400000, guid: 67b58fd308cf4bb49bd845241ba9bb86, type: 2}
+  - {fileID: 11400000, guid: 995407bdb393ad1459545bdc0bc60e23, type: 2}
+  - {fileID: 11400000, guid: b734e86e81404fe459fe5c23066fea9b, type: 2}

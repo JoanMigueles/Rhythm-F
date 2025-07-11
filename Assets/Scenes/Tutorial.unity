@@ -303,7 +303,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 89.715}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 272.1, y: -29.100002}
+  m_AnchoredPosition: {x: 215.9, y: -15}
   m_SizeDelta: {x: 30, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &39275254
@@ -505,14 +505,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 8181016500072987071, guid: cdc9dde4f894a7e4495b67fa69ca8c94, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1486,8 +1486,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: 0, y: 10}
-  m_SizeDelta: {x: -160, y: 125.93}
+  m_AnchoredPosition: {x: 5.5600586, y: 13.949951}
+  m_SizeDelta: {x: -292.26, y: 76.71}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!114 &312505461
 MonoBehaviour:
@@ -1556,17 +1556,46 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speechText: {fileID: 2008776520}
   lines:
-  - Prueba
-  - Hola
-  - '[MISSION]'
-  - WOWO
-  - COOL
-  - '[MISSION]'
-  - loooool
-  - '[MISSION]'
-  - that's good
-  - '[MISSION]'
-  characterInterval: 0.05
+  - Yo dude! I've been looking for you everywhere!
+  - You really wanted to skip rehearsal that much?
+  - Sounds like you need to clear your mind a bit.
+  - Let's start with the basics.
+  - Hit green enemies with [LEFT CLICK] when they reach the marker!
+  - Woah, woah.
+  - I knew you had it in you.
+  - Really? You brought that hoverboard you bought from that shady website?
+  - Let's just hope it doesn't explode on your face.
+  - 'Change lanes by pressing [SPACE]'
+  - Woah it actually works well.
+  - 'Dodge red obstacles by pressing [SPACE]'
+  - Why are there floating saws around anyway?
+  - Careful, more bots are coming!
+  - Slash orange enemies by horizontally [SWIPING] the mouse
+  - Cut those fishies! You owe me sushi after this.
+  - Your guitar reeks of seawater now btw...
+  - '[HOLD LEFT CLICK] to complete a slider.'
+  - You ok? You were struggling there.
+  - Damn it, more of these guys?
+  - Impact drones will warn you before atacking. Hit [LEFT CLICK] the beat after
+    the warning to defeat it.
+  - These drones will attack with no hesitation if they see you!
+  - Sharpshoother drones will also warn you before atacking. Slash on the next beat
+    [SWIPING] to deflect the bullet.
+  - Home run! Yeah!
+  - Oh, these next lasers are very powerful! I would not mess with them.
+  - 'Dodge lasers by pressing [SPACE]'
+  - Swift moves with the board.
+  - Look ahead! Looks like its boxing time.
+  - Press [LEFT CLICK] repeatedly to defeat the punchbag.
+  - Punchies.
+  - There's like, one of those fishies over there... but it looks HUGE.
+  - Slash [SWIPING] repeatedly to defeat the giant pufferfish.
+  - Free sashimi LOL
+  - You made it look so easy!
+  - Hope you keep up the pace. Great job today.
+  - I think you have all figured out now.
+  - See you out there!
+  characterInterval: 0.02
   index: 0
 --- !u!114 &312505465
 MonoBehaviour:
@@ -1591,11 +1620,35 @@ MonoBehaviour:
     swapsLanes: 1
     currentAmount: 0
   - targetAmount: 3
+    requiredNoteType: 7
+    swapsLanes: 1
+    currentAmount: 0
+  - targetAmount: 3
     requiredNoteType: 1
     swapsLanes: 0
     currentAmount: 0
   - targetAmount: 2
     requiredNoteType: 2
+    swapsLanes: 0
+    currentAmount: 0
+  - targetAmount: 3
+    requiredNoteType: 3
+    swapsLanes: 0
+    currentAmount: 0
+  - targetAmount: 3
+    requiredNoteType: 4
+    swapsLanes: 0
+    currentAmount: 0
+  - targetAmount: 3
+    requiredNoteType: 5
+    swapsLanes: 1
+    currentAmount: 0
+  - targetAmount: 2
+    requiredNoteType: 8
+    swapsLanes: 0
+    currentAmount: 0
+  - targetAmount: 2
+    requiredNoteType: 9
     swapsLanes: 0
     currentAmount: 0
 --- !u!225 &312505466
@@ -4602,7 +4655,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Name
+  m_text: Donovan
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: f83c9193f304afc449324a90c5203ff5, type: 2}
   m_sharedMaterial: {fileID: -4264477907441281798, guid: f83c9193f304afc449324a90c5203ff5, type: 2}
@@ -4629,7 +4682,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 27
+  m_fontSize: 20.75
   m_fontSizeBase: 27.3
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -5953,8 +6006,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -55.44995, y: 5.7000046}
-  m_SizeDelta: {x: -434.91, y: 36.35}
+  m_AnchoredPosition: {x: -66.900024, y: 9.770004}
+  m_SizeDelta: {x: -388.87, y: 27.94}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &1638626406
 MonoBehaviour:
@@ -6197,7 +6250,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 309.52997, y: 200.1}
+  m_AnchoredPosition: {x: 309.5299, y: 200.09998}
   m_SizeDelta: {x: -609.93, y: -384.27}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1674197631
@@ -6440,7 +6493,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: -7.1, y: -12.159973}
+  m_AnchoredPosition: {x: -7.1, y: -12.159912}
   m_SizeDelta: {x: 446.9, y: 72.45}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!114 &1774866204
@@ -7021,8 +7074,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 48.100037, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
+  m_AnchoredPosition: {x: 33.369995, y: -2.040001}
+  m_SizeDelta: {x: 79.88, y: 77.72}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!114 &1979619190
 MonoBehaviour:
@@ -7050,7 +7103,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.078431375, g: 0.043137256, b: 0.078431375, a: 1}
+  m_Color: {r: 0.5952002, g: 0.26593092, b: 0.6792453, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -7250,8 +7303,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 61.63, y: -15.829998}
-  m_SizeDelta: {x: 439.25, y: 64.78}
+  m_AnchoredPosition: {x: 31.78, y: -14.507}
+  m_SizeDelta: {x: 325.34, y: 52.785}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2008776520
 MonoBehaviour:
@@ -7273,7 +7326,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: YO DUDE!
+  m_text: Yo dude! I've been looking for you everywhere!
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 02c5d21e41ee7b24fb088e1c65ca9880, type: 2}
   m_sharedMaterial: {fileID: -3053102097689071449, guid: 02c5d21e41ee7b24fb088e1c65ca9880, type: 2}
@@ -7300,12 +7353,12 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 20
+  m_fontSize: 16.2
   m_fontSizeBase: 24.84
   m_fontWeight: 400
   m_enableAutoSizing: 1
-  m_fontSizeMin: 11
-  m_fontSizeMax: 20
+  m_fontSizeMin: 4.1
+  m_fontSizeMax: 16.2
   m_fontStyle: 0
   m_HorizontalAlignment: 1
   m_VerticalAlignment: 256
@@ -7661,7 +7714,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -39.299988, y: -8.5}
+  m_AnchoredPosition: {x: -39.30005, y: -8.5}
   m_SizeDelta: {x: 220.76, y: 49.5}
   m_Pivot: {x: 1, y: 1}
 --- !u!114 &2137480875

@@ -54,7 +54,7 @@ public class Mission
             lastLaneWasZero = !lastLaneWasZero;
         }
 
-        Note note = NoteManager.instance.SpawnNote(new NoteData(time, lane, requiredNoteType, 500));
+        Note note = NoteManager.instance.SpawnNote(new NoteData(time, lane, requiredNoteType, 1000));
         note.transform.position = new Vector3(-10, 0, 0);
     }
 }

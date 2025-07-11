@@ -71,6 +71,13 @@ public class LevelListUI : UIManager
         scroll.SetItems();
     }
 
+    public void OpenTutorial()
+    {
+        Metronome.instance.ReleasePlayers();
+        GameManager.instance.SetSelectedSong(null);
+        GameManager.instance.OpenScene("Tutorial");
+    }
+
     public void DeleteCustomSongButton()
     {
         Metronome.instance.ReleasePlayers();
@@ -99,6 +106,22 @@ public class LevelListUI : UIManager
         
         GameManager.instance.OpenScene("LevelEditor");
     }
+
+    public void PlayHoveredSong()
+    {
+
+        Metronome.instance.ReleasePlayers();
+        if (hoveredSong.HasValue) {
+            GameManager.instance.SetSelectedSong(hoveredSong.Value);
+            GameManager.instance.OpenLevelScene(hoveredSong.Value.stage);
+        }
+        else {
+            GameManager.instance.SetSelectedSong(null);
+            GameManager.instance.OpenScene("Tutorial");
+        }
+
+    }
+
 
     public void EditNewSong()
     {

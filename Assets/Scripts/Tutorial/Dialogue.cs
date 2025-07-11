@@ -20,7 +20,7 @@ public class Dialogue : MonoBehaviour
                 speechText.text = lines[index];
 
                 // Trigger wait after mission marker
-                if (lines[index].Contains("[MISSION]")) {
+                if (lines[index].Contains("[")) {
                     DialogueMissionManager.instance.WaitForNextMission();
                 }
             }
@@ -44,7 +44,7 @@ public class Dialogue : MonoBehaviour
         }
 
         // Trigger wait after mission marker
-        if (lines[index].Contains("[MISSION]")) {
+        if (lines[index].Contains("[")) {
             DialogueMissionManager.instance.WaitForNextMission();
         }
     }

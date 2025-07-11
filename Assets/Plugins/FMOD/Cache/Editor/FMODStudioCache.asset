@@ -27,6 +27,33 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 0
+--- !u!114 &-7325300810312642941
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Songs/her smile
+  m_EditorClassIdentifier: 
+  Path: event:/Songs/her smile
+  Guid:
+    Data1: 90199530
+    Data2: 1162919351
+    Data3: 507673276
+    Data4: -665215970
+  Banks:
+  - {fileID: -1751657219509329858}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 235598
 --- !u!114 &-5848251324872358444
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -54,6 +81,33 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 0
+--- !u!114 &-5175445856706521333
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SoundEffects/Whoosh
+  m_EditorClassIdentifier: 
+  Path: event:/SoundEffects/Whoosh
+  Guid:
+    Data1: 1099273350
+    Data2: 1227236630
+    Data3: -1566409824
+    Data4: -31773831
+  Banks:
+  - {fileID: -1751657219509329858}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 260
 --- !u!114 &-3724619288284701439
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -123,10 +177,10 @@ MonoBehaviour:
   Path: FMOD/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 638878258559798580
+  lastModified: 638878528979812013
   FileSizes:
   - Name: Desktop
-    Value: 8821312
+    Value: 12180384
   Exists: 1
 --- !u!114 &11400000
 MonoBehaviour:
@@ -154,12 +208,14 @@ MonoBehaviour:
   - {fileID: 4857077373068774366}
   - {fileID: -3724619288284701439}
   - {fileID: 551447546871270630}
+  - {fileID: -7325300810312642941}
+  - {fileID: -5175445856706521333}
   EditorParameters: []
   MasterBanks:
   - {fileID: -1751657219509329858}
   StringsBanks:
   - {fileID: 2413521439291127005}
-  cacheTime: 638878258559823806
+  cacheTime: 638878528979851961
   cacheVersion: 131622
 --- !u!114 &551447546871270630
 MonoBehaviour:
@@ -203,10 +259,10 @@ MonoBehaviour:
   Path: FMOD/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 638878258559823806
+  lastModified: 638878528979851961
   FileSizes:
   - Name: Desktop
-    Value: 1170
+    Value: 1246
   Exists: 1
 --- !u!114 &2984281992703464697
 MonoBehaviour:

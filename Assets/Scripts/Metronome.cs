@@ -126,7 +126,6 @@ public class Metronome : MonoBehaviour
 
     private void ResetTimelinePosition()
     {
-        Debug.Log("reset");
         timelineBeatPosition = 0;
         lastBeat = 0;
         timelinePosition = 0;

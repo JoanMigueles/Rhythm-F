@@ -35,7 +35,6 @@ public class SongPanel : MonoBehaviour
         metadata = songMetadata;
         titleText.text = songMetadata.songName;
         if (songMetadata.songID != -1) {
-            titleText.text += "(*)";
             coverImage.sprite = ResourceLoader.LoadSongCover(songMetadata.songID);
         } else {
             coverImage.sprite = SaveData.GetCoverSprite(SaveData.GetCoverFilePath(metadata.coverFileName));

@@ -20,7 +20,7 @@ MonoBehaviour:
       artist: Eli Way
       audioFileName: 
       coverFileName: 
-      previewStartTime: 0
+      previewStartTime: 64116
       stage: 1
     BPMFlags:
     - offset: 116
@@ -34,7 +34,7 @@ MonoBehaviour:
       lane: 1
       type: 0
       duration: 0
-    - time: 1616
+    - time: 1449
       lane: 1
       type: 2
       duration: 500
@@ -78,19 +78,23 @@ MonoBehaviour:
       lane: 0
       type: 8
       duration: 1200
-    - time: 22116
+    - time: 21783
       lane: 1
       type: 0
       duration: 0
-    - time: 23449
-      lane: 0
+    - time: 22283
+      lane: 1
       type: 0
       duration: 0
-    - time: 23449
+    - time: 22783
       lane: 1
-      type: 7
+      type: 0
       duration: 0
-    - time: 24783
+    - time: 23283
+      lane: 1
+      type: 2
+      duration: 500
+    - time: 24616
       lane: 0
       type: 7
       duration: 0
@@ -101,24 +105,32 @@ MonoBehaviour:
     - time: 26116
       lane: 0
       type: 2
-      duration: 833
+      duration: 500
     - time: 26560
       lane: 1
       type: 7
       duration: 0
-    - time: 27449
+    - time: 27116
       lane: 0
       type: 0
       duration: 0
-    - time: 28283
+    - time: 27616
+      lane: 0
+      type: 0
+      duration: 0
+    - time: 28116
+      lane: 0
+      type: 0
+      duration: 0
+    - time: 28116
       lane: 1
       type: 7
       duration: 0
-    - time: 28783
+    - time: 28616
       lane: 0
-      type: 0
-      duration: 0
-    - time: 30116
+      type: 2
+      duration: 500
+    - time: 29949
       lane: 0
       type: 7
       duration: 0
@@ -130,43 +142,39 @@ MonoBehaviour:
       lane: 1
       type: 1
       duration: 0
-    - time: 32560
+    - time: 32449
+      lane: 1
+      type: 0
+      duration: 0
+    - time: 32949
       lane: 1
       type: 0
       duration: 0
     - time: 33449
       lane: 1
       type: 2
-      duration: 667
-    - time: 34616
-      lane: 1
-      type: 7
-      duration: 0
-    - time: 34783
-      lane: 0
-      type: 1
-      duration: 0
+      duration: 500
     - time: 35449
       lane: 0
-      type: 1
+      type: 0
       duration: 0
     - time: 36116
       lane: 0
       type: 2
-      duration: 500
-    - time: 36949
+      duration: 333
+    - time: 36783
       lane: 0
       type: 9
-      duration: 500
+      duration: 666
     - time: 38116
       lane: 1
       type: 0
       duration: 0
-    - time: 39393
+    - time: 39449
       lane: 1
       type: 0
       duration: 0
-    - time: 40449
+    - time: 40616
       lane: 1
       type: 7
       duration: 0
@@ -174,27 +182,35 @@ MonoBehaviour:
       lane: 0
       type: 0
       duration: 0
+    - time: 41449
+      lane: 1
+      type: 0
+      duration: 0
+    - time: 41783
+      lane: 1
+      type: 0
+      duration: 0
     - time: 42116
-      lane: 0
+      lane: 1
       type: 0
       duration: 0
     - time: 43116
+      lane: 1
+      type: 0
+      duration: 0
+    - time: 43283
       lane: 0
       type: 7
       duration: 0
-    - time: 43449
+    - time: 43616
       lane: 1
       type: 0
       duration: 0
-    - time: 44783
+    - time: 44116
       lane: 1
-      type: 0
-      duration: 0
+      type: 2
+      duration: 500
     - time: 45449
-      lane: 1
-      type: 0
-      duration: 0
-    - time: 46116
       lane: 1
       type: 0
       duration: 0
@@ -206,7 +222,11 @@ MonoBehaviour:
       lane: 0
       type: 2
       duration: 833
-    - time: 49449
+    - time: 48783
+      lane: 1
+      type: 0
+      duration: 0
+    - time: 49283
       lane: 0
       type: 7
       duration: 0
@@ -230,45 +250,45 @@ MonoBehaviour:
       lane: 0
       type: 7
       duration: 0
-    - time: 54116
+    - time: 53783
+      lane: 0
+      type: 0
+      duration: 0
+    - time: 54283
       lane: 0
       type: 0
       duration: 0
     - time: 54783
       lane: 0
-      type: 0
-      duration: 0
-    - time: 55449
-      lane: 0
-      type: 1
-      duration: 0
-    - time: 56116
-      lane: 0
-      type: 0
-      duration: 0
-    - time: 56116
+      type: 2
+      duration: 500
+    - time: 55949
       lane: 1
       type: 7
+      duration: 0
+    - time: 56116
+      lane: 0
+      type: 0
       duration: 0
     - time: 56783
       lane: 0
       type: 0
       duration: 0
-    - time: 57449
-      lane: 0
-      type: 2
-      duration: 500
-    - time: 57449
+    - time: 57283
       lane: 1
       type: 7
       duration: 0
-    - time: 58782
+    - time: 57449
       lane: 0
       type: 0
       duration: 0
-    - time: 59449
+    - time: 58116
       lane: 0
-      type: 1
+      type: 2
+      duration: 833
+    - time: 59449
+      lane: 1
+      type: 0
       duration: 0
     - time: 60783
       lane: 1
@@ -290,18 +310,14 @@ MonoBehaviour:
       lane: 1
       type: 0
       duration: 0
-    - time: 63583
+    - time: 64449
       lane: 0
       type: 7
       duration: 0
-    - time: 64116
+    - time: 64449
       lane: 1
       type: 2
       duration: 534
-    - time: 64516
-      lane: 0
-      type: 7
-      duration: 0
     - time: 65449
       lane: 0
       type: 7
@@ -310,27 +326,31 @@ MonoBehaviour:
       lane: 1
       type: 2
       duration: 533
-    - time: 67183
+    - time: 67116
       lane: 0
       type: 0
       duration: 0
-    - time: 67583
+    - time: 67616
       lane: 0
       type: 0
       duration: 0
-    - time: 68249
+    - time: 68116
       lane: 0
       type: 1
       duration: 0
-    - time: 69449
+    - time: 68616
+      lane: 0
+      type: 0
+      duration: 0
+    - time: 69783
       lane: 0
       type: 2
       duration: 534
     - time: 70783
       lane: 0
       type: 2
-      duration: 666
-    - time: 72383
+      duration: 500
+    - time: 72449
       lane: 1
       type: 0
       duration: 0
@@ -338,39 +358,39 @@ MonoBehaviour:
       lane: 0
       type: 7
       duration: 0
-    - time: 72916
+    - time: 72949
       lane: 1
       type: 0
       duration: 0
-    - time: 73449
+    - time: 73283
       lane: 1
-      type: 0
-      duration: 0
-    - time: 74783
+      type: 2
+      duration: 834
+    - time: 75116
       lane: 1
       type: 2
       duration: 533
     - time: 76116
       lane: 1
       type: 2
-      duration: 667
-    - time: 77849
+      duration: 500
+    - time: 77783
       lane: 0
       type: 0
       duration: 0
-    - time: 78249
+    - time: 78283
       lane: 0
       type: 0
       duration: 0
     - time: 78783
       lane: 0
-      type: 0
-      duration: 0
-    - time: 79317
-      lane: 0
       type: 1
       duration: 0
-    - time: 80116
+    - time: 79283
+      lane: 0
+      type: 0
+      duration: 0
+    - time: 80449
       lane: 0
       type: 2
       duration: 533
@@ -378,62 +398,74 @@ MonoBehaviour:
       lane: 0
       type: 2
       duration: 534
-    - time: 83049
+    - time: 83116
       lane: 0
       type: 0
       duration: 0
-    - time: 83849
+    - time: 83616
       lane: 0
       type: 0
       duration: 0
-    - time: 85449
-      lane: 0
-      type: 4
-      duration: 666
-    - time: 86802
+    - time: 83949
       lane: 0
       type: 2
-      duration: 533
-    - time: 88116
+      duration: 834
+    - time: 85449
+      lane: 0
+      type: 1
+      duration: 0
+    - time: 86783
+      lane: 0
+      type: 2
+      duration: 500
+    - time: 88117
       lane: 1
       type: 2
       duration: 400
-    - time: 88916
+    - time: 88949
+      lane: 1
+      type: 0
+      duration: 0
+    - time: 89283
       lane: 1
       type: 2
-      duration: 533
-    - time: 90916
-      lane: 1
-      type: 4
-      duration: 1067
-    - time: 91716
+      duration: 834
+    - time: 91116
       lane: 0
       type: 0
+      duration: 0
+    - time: 91616
+      lane: 0
+      type: 1
       duration: 0
     - time: 92116
       lane: 0
       type: 2
       duration: 667
-    - time: 93849
+    - time: 93783
+      lane: 1
+      type: 0
+      duration: 0
+    - time: 94283
+      lane: 1
+      type: 0
+      duration: 0
+    - time: 94616
+      lane: 1
+      type: 2
+      duration: 833
+    - time: 96449
       lane: 0
       type: 0
       duration: 0
-    - time: 94267
+    - time: 96949
       lane: 0
-      type: 0
+      type: 1
       duration: 0
-    - time: 94668
+    - time: 97449
       lane: 0
       type: 2
-      duration: 400
-    - time: 96116
-      lane: 0
-      type: 4
-      duration: 933
-    - time: 97468
-      lane: 0
-      type: 2
-      duration: 400
+      duration: 500
     - time: 98783
       lane: 1
       type: 2
@@ -442,26 +474,30 @@ MonoBehaviour:
       lane: 1
       type: 0
       duration: 0
-    - time: 101449
-      lane: 1
-      type: 4
-      duration: 801
-    - time: 102803
+    - time: 99949
       lane: 1
       type: 2
-      duration: 400
-    - time: 103849
+      duration: 834
+    - time: 101783
       lane: 1
       type: 0
       duration: 0
-    - time: 104516
+    - time: 102283
       lane: 1
-      type: 0
+      type: 1
       duration: 0
-    - time: 105449
+    - time: 102783
+      lane: 1
+      type: 2
+      duration: 499
+    - time: 103949
+      lane: 1
+      type: 2
+      duration: 834
+    - time: 105783
       lane: 0
-      type: 9
-      duration: 934
+      type: 8
+      duration: 1166
     normalNotes:
     - time: 449
       lane: 1
@@ -515,19 +551,27 @@ MonoBehaviour:
       lane: 0
       type: 8
       duration: 1200
-    - time: 22116
+    - time: 21783
       lane: 1
       type: 0
       duration: 0
+    - time: 22283
+      lane: 1
+      type: 1
+      duration: 0
+    - time: 22783
+      lane: 1
+      type: 1
+      duration: 0
+    - time: 23283
+      lane: 0
+      type: 2
+      duration: 666
     - time: 23283
       lane: 1
       type: 7
       duration: 0
-    - time: 23449
-      lane: 0
-      type: 0
-      duration: 0
-    - time: 24449
+    - time: 24616
       lane: 0
       type: 7
       duration: 0
@@ -535,31 +579,47 @@ MonoBehaviour:
       lane: 1
       type: 3
       duration: 0
+    - time: 25449
+      lane: 0
+      type: 0
+      duration: 0
     - time: 26116
       lane: 0
       type: 2
-      duration: 1000
-    - time: 26560
+      duration: 666
+    - time: 26228
       lane: 1
       type: 7
       duration: 0
-    - time: 27449
+    - time: 27116
+      lane: 1
+      type: 0
+      duration: 0
+    - time: 27283
       lane: 0
       type: 7
       duration: 0
-    - time: 27450
+    - time: 27616
       lane: 1
-      type: 3
+      type: 1
+      duration: 0
+    - time: 28116
+      lane: 0
+      type: 0
       duration: 0
     - time: 28283
       lane: 1
       type: 7
       duration: 0
-    - time: 28783
+    - time: 28616
       lane: 0
-      type: 3
-      duration: 0
+      type: 4
+      duration: 167
     - time: 29116
+      lane: 1
+      type: 2
+      duration: 667
+    - time: 29283
       lane: 0
       type: 7
       duration: 0
@@ -567,15 +627,23 @@ MonoBehaviour:
       lane: 1
       type: 4
       duration: 0
-    - time: 30449
+    - time: 30616
       lane: 1
       type: 7
+      duration: 0
+    - time: 30783
+      lane: 0
+      type: 0
+      duration: 0
+    - time: 31116
+      lane: 0
+      type: 0
       duration: 0
     - time: 31449
       lane: 0
       type: 4
       duration: 0
-    - time: 31783
+    - time: 31950
       lane: 0
       type: 7
       duration: 0
@@ -589,8 +657,12 @@ MonoBehaviour:
       duration: 0
     - time: 33449
       lane: 1
-      type: 2
-      duration: 667
+      type: 1
+      duration: 0
+    - time: 33949
+      lane: 1
+      type: 4
+      duration: 167
     - time: 34616
       lane: 1
       type: 7
@@ -606,28 +678,44 @@ MonoBehaviour:
     - time: 36116
       lane: 0
       type: 2
-      duration: 500
-    - time: 36949
+      duration: 333
+    - time: 36783
       lane: 0
       type: 9
       duration: 833
+    - time: 37784
+      lane: 1
+      type: 0
+      duration: 0
     - time: 38116
       lane: 0
       type: 5
       duration: 0
-    - time: 38116
+    - time: 38283
       lane: 1
       type: 0
       duration: 0
-    - time: 39449
+    - time: 38783
       lane: 1
-      type: 0
+      type: 1
       duration: 0
-    - time: 40449
+    - time: 39283
+      lane: 1
+      type: 3
+      duration: 167
+    - time: 40616
       lane: 1
       type: 7
       duration: 0
     - time: 40783
+      lane: 0
+      type: 0
+      duration: 0
+    - time: 41449
+      lane: 0
+      type: 0
+      duration: 0
+    - time: 41783
       lane: 0
       type: 0
       duration: 0
@@ -639,30 +727,38 @@ MonoBehaviour:
       lane: 0
       type: 7
       duration: 0
-    - time: 43449
+    - time: 43116
       lane: 1
       type: 0
+      duration: 0
+    - time: 43616
+      lane: 1
+      type: 1
+      duration: 0
+    - time: 44116
+      lane: 0
+      type: 1
       duration: 0
     - time: 44116
       lane: 1
       type: 7
       duration: 0
-    - time: 44783
+    - time: 44616
       lane: 0
-      type: 0
-      duration: 0
+      type: 4
+      duration: 166
     - time: 45449
       lane: 1
       type: 0
       duration: 0
     - time: 46116
-      lane: 1
-      type: 0
-      duration: 0
-    - time: 46783
       lane: 0
-      type: 0
-      duration: 0
+      type: 4
+      duration: 167
+    - time: 46783
+      lane: 1
+      type: 2
+      duration: 333
     - time: 47449
       lane: 0
       type: 7
@@ -670,16 +766,20 @@ MonoBehaviour:
     - time: 47449
       lane: 1
       type: 2
-      duration: 833
-    - time: 48445
-      lane: 0
-      type: 7
-      duration: 0
-    - time: 48783
+      duration: 666
+    - time: 48449
       lane: 1
       type: 1
       duration: 0
-    - time: 49449
+    - time: 48612
+      lane: 0
+      type: 7
+      duration: 0
+    - time: 48949
+      lane: 1
+      type: 0
+      duration: 0
+    - time: 49283
       lane: 0
       type: 7
       duration: 0
@@ -687,10 +787,10 @@ MonoBehaviour:
       lane: 1
       type: 0
       duration: 0
-    - time: 50116
+    - time: 49949
       lane: 1
-      type: 0
-      duration: 0
+      type: 4
+      duration: 167
     - time: 50783
       lane: 1
       type: 7
@@ -718,8 +818,12 @@ MonoBehaviour:
     - time: 53449
       lane: 1
       type: 4
-      duration: 334
-    - time: 54116
+      duration: 167
+    - time: 53783
+      lane: 1
+      type: 0
+      duration: 0
+    - time: 54283
       lane: 1
       type: 0
       duration: 0
@@ -731,7 +835,7 @@ MonoBehaviour:
       lane: 1
       type: 7
       duration: 0
-    - time: 55449
+    - time: 55283
       lane: 0
       type: 1
       duration: 0
@@ -977,7 +1081,7 @@ MonoBehaviour:
       duration: 0
     - time: 91616
       lane: 0
-      type: 0
+      type: 1
       duration: 0
     - time: 92116
       lane: 0
@@ -995,6 +1099,10 @@ MonoBehaviour:
       lane: 0
       type: 2
       duration: 334
+    - time: 93783
+      lane: 1
+      type: 0
+      duration: 0
     - time: 94283
       lane: 1
       type: 0
@@ -1085,26 +1193,26 @@ MonoBehaviour:
       duration: 0
     - time: 104449
       lane: 1
-      type: 0
+      type: 1
       duration: 0
     - time: 104949
       lane: 1
       type: 0
       duration: 0
-    - time: 105449
+    - time: 105782
       lane: 0
       type: 9
-      duration: 934
+      duration: 1100
     hardNotes:
     - time: 449
       lane: 1
       type: 2
       duration: 500
-    - time: 1649
+    - time: 1449
       lane: 1
       type: 1
       duration: 0
-    - time: 2116
+    - time: 1949
       lane: 1
       type: 1
       duration: 0
@@ -1120,11 +1228,15 @@ MonoBehaviour:
       lane: 1
       type: 2
       duration: 166
+    - time: 5116
+      lane: 0
+      type: 0
+      duration: 0
     - time: 5449
       lane: 0
       type: 1
       duration: 0
-    - time: 5982
+    - time: 5949
       lane: 0
       type: 1
       duration: 0
@@ -1132,6 +1244,10 @@ MonoBehaviour:
       lane: 0
       type: 2
       duration: 2166
+    - time: 9449
+      lane: 1
+      type: 2
+      duration: 1334
     - time: 11116
       lane: 1
       type: 2
@@ -1152,10 +1268,14 @@ MonoBehaviour:
       lane: 0
       type: 0
       duration: 0
-    - time: 14450
+    - time: 14449
       lane: 0
       type: 2
-      duration: 166
+      duration: 167
+    - time: 15783
+      lane: 0
+      type: 0
+      duration: 0
     - time: 16116
       lane: 0
       type: 1
@@ -1200,6 +1320,14 @@ MonoBehaviour:
       lane: 1
       type: 0
       duration: 0
+    - time: 22283
+      lane: 1
+      type: 4
+      duration: 166
+    - time: 22783
+      lane: 0
+      type: 0
+      duration: 0
     - time: 23116
       lane: 0
       type: 1
@@ -1209,6 +1337,10 @@ MonoBehaviour:
       type: 7
       duration: 0
     - time: 23449
+      lane: 0
+      type: 0
+      duration: 0
+    - time: 23783
       lane: 0
       type: 0
       duration: 0
@@ -1222,9 +1354,13 @@ MonoBehaviour:
       duration: 0
     - time: 24783
       lane: 1
+      type: 0
+      duration: 0
+    - time: 24949
+      lane: 1
       type: 3
-      duration: 1333
-    - time: 25616
+      duration: 166
+    - time: 25449
       lane: 1
       type: 0
       duration: 0
@@ -1234,25 +1370,37 @@ MonoBehaviour:
       duration: 0
     - time: 26116
       lane: 0
+      type: 0
+      duration: 0
+    - time: 26449
+      lane: 0
       type: 2
-      duration: 1000
+      duration: 84
     - time: 26560
       lane: 1
       type: 7
+      duration: 0
+    - time: 26616
+      lane: 0
+      type: 1
       duration: 0
     - time: 27449
       lane: 0
       type: 7
       duration: 0
-    - time: 27450
-      lane: 1
-      type: 3
-      duration: 1333
-    - time: 27616
+    - time: 27449
       lane: 1
       type: 0
       duration: 0
-    - time: 28283
+    - time: 27617
+      lane: 1
+      type: 3
+      duration: 167
+    - time: 28116
+      lane: 0
+      type: 0
+      duration: 0
+    - time: 28282
       lane: 1
       type: 7
       duration: 0
@@ -1263,54 +1411,78 @@ MonoBehaviour:
     - time: 28783
       lane: 0
       type: 3
-      duration: 1333
+      duration: 166
     - time: 29116
+      lane: 1
+      type: 0
+      duration: 0
+    - time: 29282
       lane: 0
       type: 7
       duration: 0
-    - time: 29949
+    - time: 29783
       lane: 1
       type: 1
       duration: 0
     - time: 30116
       lane: 1
       type: 4
-      duration: 1333
-    - time: 30449
+      duration: 167
+    - time: 30283
+      lane: 0
+      type: 0
+      duration: 0
+    - time: 30616
       lane: 1
       type: 7
       duration: 0
-    - time: 31283
+    - time: 30783
+      lane: 0
+      type: 0
+      duration: 0
+    - time: 31116
       lane: 0
       type: 1
       duration: 0
     - time: 31449
       lane: 0
       type: 4
-      duration: 1334
-    - time: 31783
+      duration: 167
+    - time: 31950
       lane: 0
       type: 7
       duration: 0
-    - time: 32516
+    - time: 32449
       lane: 1
       type: 0
       duration: 0
-    - time: 32916
+    - time: 32783
       lane: 1
       type: 0
+      duration: 0
+    - time: 32949
+      lane: 1
+      type: 1
       duration: 0
     - time: 33449
       lane: 1
       type: 2
-      duration: 667
+      duration: 334
+    - time: 33949
+      lane: 1
+      type: 0
+      duration: 0
+    - time: 34116
+      lane: 1
+      type: 4
+      duration: 167
+    - time: 34449
+      lane: 0
+      type: 0
+      duration: 0
     - time: 34616
       lane: 1
       type: 7
-      duration: 0
-    - time: 34783
-      lane: 0
-      type: 1
       duration: 0
     - time: 35116
       lane: 0
@@ -1318,37 +1490,45 @@ MonoBehaviour:
       duration: 0
     - time: 35449
       lane: 0
-      type: 1
-      duration: 0
+      type: 4
+      duration: 167
     - time: 36116
       lane: 0
       type: 2
-      duration: 367
+      duration: 333
+    - time: 36616
+      lane: 0
+      type: 1
+      duration: 0
     - time: 36783
       lane: 1
       type: 2
-      duration: 167
-    - time: 37283
+      duration: 166
+    - time: 37116
       lane: 1
-      type: 1
+      type: 2
+      duration: 333
+    - time: 37783
+      lane: 1
+      type: 0
       duration: 0
     - time: 38116
       lane: 1
-      type: 0
-      duration: 0
-    - time: 38249
-      lane: 1
-      type: 0
-      duration: 0
+      type: 3
+      duration: 166
     - time: 38783
       lane: 1
       type: 1
       duration: 0
-    - time: 39449
+    - time: 39283
       lane: 1
       type: 0
       duration: 0
-    - time: 39583
+    - time: 39449
+      lane: 1
+      type: 3
+      duration: 167
+    - time: 39783
       lane: 1
       type: 0
       duration: 0
@@ -1357,28 +1537,36 @@ MonoBehaviour:
       type: 1
       duration: 0
     - time: 40449
+      lane: 0
+      type: 0
+      duration: 0
+    - time: 40449
       lane: 1
       type: 7
       duration: 0
     - time: 40783
       lane: 0
-      type: 0
-      duration: 0
-    - time: 40916
-      lane: 0
-      type: 0
-      duration: 0
+      type: 3
+      duration: 166
     - time: 41449
+      lane: 0
+      type: 1
+      duration: 0
+    - time: 41783
       lane: 0
       type: 1
       duration: 0
     - time: 42116
       lane: 0
       type: 4
-      duration: 500
+      duration: 167
     - time: 43116
       lane: 0
       type: 7
+      duration: 0
+    - time: 43116
+      lane: 1
+      type: 0
       duration: 0
     - time: 43449
       lane: 1
@@ -1386,8 +1574,8 @@ MonoBehaviour:
       duration: 0
     - time: 43616
       lane: 1
-      type: 0
-      duration: 0
+      type: 3
+      duration: 167
     - time: 44116
       lane: 0
       type: 1
@@ -1396,26 +1584,30 @@ MonoBehaviour:
       lane: 1
       type: 7
       duration: 0
-    - time: 44783
+    - time: 44616
       lane: 0
       type: 0
       duration: 0
-    - time: 44949
+    - time: 44783
       lane: 0
+      type: 3
+      duration: 166
+    - time: 45116
+      lane: 1
       type: 0
       duration: 0
     - time: 45449
       lane: 1
       type: 1
       duration: 0
+    - time: 45783
+      lane: 1
+      type: 1
+      duration: 0
     - time: 46116
       lane: 1
-      type: 0
-      duration: 0
-    - time: 46283
-      lane: 1
-      type: 0
-      duration: 0
+      type: 4
+      duration: 167
     - time: 46783
       lane: 0
       type: 1
@@ -1427,19 +1619,27 @@ MonoBehaviour:
     - time: 47449
       lane: 1
       type: 2
-      duration: 833
+      duration: 166
+    - time: 47783
+      lane: 1
+      type: 2
+      duration: 84
+    - time: 47950
+      lane: 1
+      type: 1
+      duration: 0
     - time: 48445
       lane: 0
       type: 7
       duration: 0
-    - time: 48616
+    - time: 48449
       lane: 1
       type: 0
       duration: 0
     - time: 48783
       lane: 1
-      type: 0
-      duration: 0
+      type: 4
+      duration: 166
     - time: 49449
       lane: 0
       type: 7
@@ -1447,13 +1647,17 @@ MonoBehaviour:
     - time: 49449
       lane: 1
       type: 1
+      duration: 0
+    - time: 49949
+      lane: 1
+      type: 0
       duration: 0
     - time: 50116
       lane: 1
-      type: 0
-      duration: 0
-    - time: 50283
-      lane: 1
+      type: 3
+      duration: 167
+    - time: 50449
+      lane: 0
       type: 0
       duration: 0
     - time: 50783
@@ -1464,25 +1668,25 @@ MonoBehaviour:
       lane: 1
       type: 7
       duration: 0
+    - time: 51116
+      lane: 0
+      type: 0
+      duration: 0
     - time: 51449
       lane: 0
-      type: 0
-      duration: 0
-    - time: 51616
-      lane: 0
-      type: 0
-      duration: 0
+      type: 3
+      duration: 167
     - time: 52116
       lane: 0
       type: 1
       duration: 0
-    - time: 52783
+    - time: 52449
       lane: 1
       type: 0
       duration: 0
-    - time: 52916
+    - time: 52783
       lane: 1
-      type: 0
+      type: 1
       duration: 0
     - time: 53183
       lane: 0
@@ -1491,15 +1695,19 @@ MonoBehaviour:
     - time: 53449
       lane: 1
       type: 4
-      duration: 1334
+      duration: 167
+    - time: 53783
+      lane: 1
+      type: 0
+      duration: 0
     - time: 54116
       lane: 1
       type: 0
       duration: 0
-    - time: 54249
+    - time: 54283
       lane: 1
-      type: 0
-      duration: 0
+      type: 3
+      duration: 166
     - time: 54783
       lane: 0
       type: 1
@@ -1508,51 +1716,71 @@ MonoBehaviour:
       lane: 1
       type: 7
       duration: 0
-    - time: 55449
+    - time: 55283
       lane: 0
       type: 0
       duration: 0
-    - time: 55583
+    - time: 55449
       lane: 0
-      type: 0
+      type: 3
+      duration: 167
+    - time: 55783
+      lane: 1
+      type: 1
       duration: 0
     - time: 56116
       lane: 0
       type: 1
       duration: 0
-    - time: 56116
+    - time: 56283
       lane: 1
       type: 7
+      duration: 0
+    - time: 56449
+      lane: 0
+      type: 0
       duration: 0
     - time: 56783
       lane: 0
       type: 0
       duration: 0
-    - time: 56916
+    - time: 56949
       lane: 0
-      type: 0
-      duration: 0
+      type: 3
+      duration: 167
     - time: 57449
       lane: 0
       type: 2
-      duration: 500
+      duration: 334
     - time: 57449
       lane: 1
       type: 7
       duration: 0
-    - time: 58449
+    - time: 57949
       lane: 0
       type: 0
       duration: 0
-    - time: 58783
+    - time: 58116
       lane: 0
-      type: 4
-      duration: 666
-    - time: 59449
+      type: 1
+      duration: 0
+    - time: 58283
+      lane: 0
+      type: 1
+      duration: 0
+    - time: 58449
+      lane: 0
+      type: 2
+      duration: 334
+    - time: 59116
       lane: 1
       type: 1
       duration: 0
-    - time: 59583
+    - time: 59449
+      lane: 1
+      type: 4
+      duration: 167
+    - time: 59616
       lane: 1
       type: 1
       duration: 0
@@ -1560,13 +1788,17 @@ MonoBehaviour:
       lane: 1
       type: 0
       duration: 0
-    - time: 60783
+    - time: 60449
       lane: 0
       type: 1
       duration: 0
-    - time: 60916
+    - time: 60783
       lane: 0
-      type: 1
+      type: 4
+      duration: 166
+    - time: 61116
+      lane: 0
+      type: 0
       duration: 0
     - time: 61449
       lane: 0
@@ -1576,13 +1808,13 @@ MonoBehaviour:
       lane: 1
       type: 1
       duration: 0
-    - time: 62249
-      lane: 1
-      type: 1
-      duration: 0
     - time: 62783
       lane: 0
       type: 0
+      duration: 0
+    - time: 63116
+      lane: 1
+      type: 1
       duration: 0
     - time: 63449
       lane: 1
@@ -1592,22 +1824,26 @@ MonoBehaviour:
       lane: 0
       type: 7
       duration: 0
-    - time: 63583
-      lane: 1
-      type: 1
-      duration: 0
     - time: 64116
       lane: 1
       type: 2
       duration: 167
+    - time: 64449
+      lane: 1
+      type: 0
+      duration: 0
     - time: 64516
       lane: 0
       type: 7
       duration: 0
     - time: 64783
       lane: 1
-      type: 2
-      duration: 166
+      type: 1
+      duration: 0
+    - time: 64949
+      lane: 1
+      type: 3
+      duration: 0
     - time: 65449
       lane: 0
       type: 7
@@ -1616,34 +1852,46 @@ MonoBehaviour:
       lane: 1
       type: 2
       duration: 167
+    - time: 65949
+      lane: 1
+      type: 1
+      duration: 0
     - time: 66116
       lane: 1
       type: 4
-      duration: 667
-    - time: 67183
+      duration: 333
+    - time: 66783
       lane: 0
       type: 1
       duration: 0
-    - time: 67316
+    - time: 66949
       lane: 0
       type: 1
+      duration: 0
+    - time: 67116
+      lane: 0
+      type: 3
+      duration: 333
+    - time: 67449
+      lane: 1
+      type: 0
       duration: 0
     - time: 67616
+      lane: 1
+      type: 3
+      duration: 333
+    - time: 67949
       lane: 0
       type: 0
       duration: 0
     - time: 68116
+      lane: 0
+      type: 3
+      duration: 333
+    - time: 68616
       lane: 1
-      type: 1
-      duration: 0
-    - time: 68249
-      lane: 1
-      type: 1
-      duration: 0
-    - time: 68649
-      lane: 1
-      type: 0
-      duration: 0
+      type: 4
+      duration: 167
     - time: 69183
       lane: 1
       type: 7
@@ -1652,14 +1900,22 @@ MonoBehaviour:
       lane: 0
       type: 2
       duration: 167
+    - time: 69782
+      lane: 0
+      type: 0
+      duration: 0
     - time: 69849
       lane: 1
       type: 7
       duration: 0
     - time: 70116
       lane: 0
-      type: 2
-      duration: 166
+      type: 1
+      duration: 0
+    - time: 70282
+      lane: 0
+      type: 3
+      duration: 0
     - time: 70516
       lane: 1
       type: 7
@@ -1672,30 +1928,34 @@ MonoBehaviour:
       lane: 1
       type: 7
       duration: 0
-    - time: 71450
+    - time: 71284
       lane: 0
       type: 4
-      duration: 667
-    - time: 72383
+      duration: 334
+    - time: 72116
       lane: 1
-      type: 1
+      type: 0
       duration: 0
-    - time: 72516
+    - time: 72449
       lane: 1
-      type: 1
+      type: 0
       duration: 0
     - time: 72916
       lane: 0
       type: 7
       duration: 0
-    - time: 72916
+    - time: 72949
       lane: 1
-      type: 0
+      type: 1
       duration: 0
-    - time: 73316
+    - time: 73282
       lane: 1
       type: 2
-      duration: 533
+      duration: 334
+    - time: 73783
+      lane: 0
+      type: 2
+      duration: 666
     - time: 74516
       lane: 1
       type: 7
@@ -1703,55 +1963,67 @@ MonoBehaviour:
     - time: 74783
       lane: 0
       type: 2
-      duration: 167
+      duration: 166
+    - time: 75116
+      lane: 0
+      type: 1
+      duration: 0
     - time: 75182
       lane: 1
       type: 7
       duration: 0
-    - time: 75450
+    - time: 75616
       lane: 0
-      type: 2
-      duration: 166
+      type: 1
+      duration: 0
     - time: 75849
       lane: 1
       type: 7
       duration: 0
     - time: 76116
       lane: 0
-      type: 2
+      type: 4
       duration: 167
     - time: 76516
       lane: 1
       type: 7
       duration: 0
-    - time: 76784
+    - time: 76617
       lane: 0
       type: 4
-      duration: 667
-    - time: 77849
+      duration: 334
+    - time: 77449
       lane: 1
       type: 1
       duration: 0
-    - time: 77949
+    - time: 77616
       lane: 1
       type: 1
+      duration: 0
+    - time: 77783
+      lane: 1
+      type: 3
+      duration: 166
+    - time: 78116
+      lane: 0
+      type: 0
       duration: 0
     - time: 78283
+      lane: 0
+      type: 4
+      duration: 166
+    - time: 78616
       lane: 1
-      type: 0
+      type: 1
       duration: 0
     - time: 78783
-      lane: 0
-      type: 1
-      duration: 0
-    - time: 78916
-      lane: 0
-      type: 1
-      duration: 0
+      lane: 1
+      type: 3
+      duration: 166
     - time: 79283
-      lane: 0
-      type: 0
-      duration: 0
+      lane: 1
+      type: 4
+      duration: 166
     - time: 79849
       lane: 0
       type: 7
@@ -1760,46 +2032,54 @@ MonoBehaviour:
       lane: 1
       type: 2
       duration: 167
+    - time: 80449
+      lane: 1
+      type: 0
+      duration: 0
     - time: 80516
       lane: 0
       type: 7
       duration: 0
-    - time: 80783
+    - time: 80949
       lane: 1
-      type: 2
-      duration: 166
+      type: 1
+      duration: 0
     - time: 81182
       lane: 0
       type: 7
       duration: 0
     - time: 81449
       lane: 1
-      type: 2
-      duration: 167
+      type: 1
+      duration: 0
     - time: 81849
       lane: 0
       type: 7
       duration: 0
-    - time: 81983
+    - time: 81949
       lane: 1
       type: 4
-      duration: 667
-    - time: 83049
+      duration: 167
+    - time: 82783
+      lane: 0
+      type: 0
+      duration: 0
+    - time: 83116
       lane: 0
       type: 1
       duration: 0
-    - time: 83449
+    - time: 83616
       lane: 0
       type: 0
       duration: 0
-    - time: 83583
-      lane: 0
-      type: 0
-      duration: 0
-    - time: 83850
-      lane: 0
+    - time: 83949
+      lane: 1
       type: 2
-      duration: 533
+      duration: 333
+    - time: 84449
+      lane: 1
+      type: 2
+      duration: 500
     - time: 84916
       lane: 0
       type: 7
@@ -1807,16 +2087,12 @@ MonoBehaviour:
     - time: 85449
       lane: 1
       type: 4
-      duration: 666
-    - time: 86116
+      duration: 332
+    - time: 85783
       lane: 0
       type: 0
       duration: 0
-    - time: 86267
-      lane: 0
-      type: 0
-      duration: 0
-    - time: 86516
+    - time: 86283
       lane: 0
       type: 1
       duration: 0
@@ -1824,10 +2100,14 @@ MonoBehaviour:
       lane: 1
       type: 7
       duration: 0
-    - time: 86802
+    - time: 86783
       lane: 0
       type: 2
-      duration: 533
+      duration: 333
+    - time: 87283
+      lane: 0
+      type: 0
+      duration: 0
     - time: 88116
       lane: 0
       type: 0
@@ -1836,15 +2116,27 @@ MonoBehaviour:
       lane: 0
       type: 0
       duration: 0
-    - time: 88516
+    - time: 88449
       lane: 1
       type: 2
-      duration: 400
+      duration: 167
     - time: 88649
       lane: 0
       type: 7
       duration: 0
-    - time: 89716
+    - time: 88949
+      lane: 1
+      type: 1
+      duration: 0
+    - time: 89283
+      lane: 1
+      type: 2
+      duration: 166
+    - time: 89616
+      lane: 1
+      type: 0
+      duration: 0
+    - time: 89783
       lane: 1
       type: 0
       duration: 0
@@ -1852,27 +2144,19 @@ MonoBehaviour:
       lane: 0
       type: 7
       duration: 0
-    - time: 89849
+    - time: 89949
       lane: 1
-      type: 0
+      type: 1
       duration: 0
-    - time: 89983
-      lane: 1
-      type: 0
-      duration: 0
-    - time: 90383
+    - time: 90283
       lane: 1
       type: 4
-      duration: 1067
-    - time: 91183
+      duration: 166
+    - time: 91116
       lane: 0
       type: 0
       duration: 0
-    - time: 91316
-      lane: 0
-      type: 0
-      duration: 0
-    - time: 91716
+    - time: 91616
       lane: 0
       type: 1
       duration: 0
@@ -1883,35 +2167,43 @@ MonoBehaviour:
     - time: 92116
       lane: 0
       type: 2
-      duration: 667
-    - time: 93183
-      lane: 0
-      type: 1
-      duration: 0
-    - time: 93316
+      duration: 333
+    - time: 92616
       lane: 0
       type: 0
       duration: 0
+    - time: 92783
+      lane: 0
+      type: 1
+      duration: 0
+    - time: 93116
+      lane: 0
+      type: 1
+      duration: 0
+    - time: 93283
+      lane: 0
+      type: 2
+      duration: 334
     - time: 93316
       lane: 1
       type: 7
       duration: 0
-    - time: 93849
+    - time: 93783
       lane: 1
       type: 0
       duration: 0
-    - time: 93983
-      lane: 1
-      type: 0
-      duration: 0
-    - time: 94383
+    - time: 94283
       lane: 1
       type: 1
       duration: 0
-    - time: 94668
+    - time: 94616
       lane: 1
       type: 2
-      duration: 400
+      duration: 333
+    - time: 95116
+      lane: 1
+      type: 2
+      duration: 667
     - time: 95449
       lane: 0
       type: 7
@@ -1919,52 +2211,60 @@ MonoBehaviour:
     - time: 96116
       lane: 1
       type: 4
-      duration: 933
-    - time: 96649
+      duration: 333
+    - time: 96449
       lane: 0
       type: 0
       duration: 0
-    - time: 96783
-      lane: 0
-      type: 0
-      duration: 0
-    - time: 97183
+    - time: 96949
       lane: 0
       type: 1
       duration: 0
+    - time: 97449
+      lane: 0
+      type: 2
+      duration: 167
     - time: 97450
       lane: 1
       type: 7
       duration: 0
-    - time: 97468
+    - time: 97949
       lane: 0
-      type: 2
-      duration: 400
+      type: 1
+      duration: 0
     - time: 98516
       lane: 0
       type: 7
       duration: 0
     - time: 98783
       lane: 1
-      type: 1
+      type: 0
       duration: 0
-    - time: 99049
+    - time: 98949
       lane: 1
       type: 0
       duration: 0
-    - time: 99183
+    - time: 99116
       lane: 1
+      type: 1
+      duration: 0
+    - time: 99616
+      lane: 0
       type: 0
       duration: 0
     - time: 99716
       lane: 1
       type: 7
       duration: 0
-    - time: 100116
+    - time: 99949
       lane: 0
-      type: 1
+      type: 2
+      duration: 167
+    - time: 100283
+      lane: 0
+      type: 0
       duration: 0
-    - time: 100516
+    - time: 100449
       lane: 0
       type: 0
       duration: 0
@@ -1972,76 +2272,68 @@ MonoBehaviour:
       lane: 1
       type: 7
       duration: 0
-    - time: 100649
+    - time: 100616
       lane: 0
       type: 0
       duration: 0
-    - time: 100782
+    - time: 100949
       lane: 0
-      type: 0
+      type: 1
       duration: 0
     - time: 101449
       lane: 0
       type: 4
-      duration: 667
-    - time: 101981
-      lane: 1
-      type: 1
-      duration: 0
-    - time: 102116
+      duration: 335
+    - time: 101783
       lane: 1
       type: 0
+      duration: 0
+    - time: 102283
+      lane: 1
+      type: 1
       duration: 0
     - time: 102650
       lane: 0
       type: 7
       duration: 0
-    - time: 102669
+    - time: 102783
       lane: 1
       type: 2
-      duration: 400
+      duration: 333
     - time: 103449
       lane: 0
       type: 0
       duration: 0
     - time: 103716
-      lane: 0
-      type: 1
-      duration: 0
-    - time: 103716
       lane: 1
       type: 7
       duration: 0
-    - time: 103849
+    - time: 103783
       lane: 0
       type: 1
       duration: 0
-    - time: 104516
-      lane: 1
-      type: 1
-      duration: 0
-    - time: 104783
+    - time: 103949
+      lane: 0
+      type: 4
+      duration: 334
+    - time: 104449
       lane: 1
       type: 0
       duration: 0
-    - time: 104916
+    - time: 104949
       lane: 1
       type: 0
       duration: 0
     - time: 105449
       lane: 0
       type: 9
-      duration: 934
+      duration: 1600
     rumbleNotes:
     - time: 449
       lane: 1
       type: 2
       duration: 500
-    - time: 1283
-      lane: 1
-      type: 0
-      duration: 0
-    - time: 1482
+    - time: 1449
       lane: 1
       type: 1
       duration: 0
@@ -2049,89 +2341,137 @@ MonoBehaviour:
       lane: 1
       type: 1
       duration: 0
+    - time: 2783
+      lane: 0
+      type: 7
+      duration: 0
     - time: 3449
       lane: 1
-      type: 0
+      type: 1
       duration: 0
     - time: 3616
       lane: 1
-      type: 0
-      duration: 0
-    - time: 4116
-      lane: 1
       type: 1
       duration: 0
-    - time: 4282
-      lane: 1
+    - time: 3783
+      lane: 0
       type: 1
       duration: 0
-    - time: 4449
-      lane: 1
+    - time: 3949
+      lane: 0
       type: 1
       duration: 0
-    - time: 4616
+    - time: 4783
       lane: 1
-      type: 1
+      type: 5
       duration: 0
-    - time: 5616
+    - time: 5116
       lane: 0
       type: 0
       duration: 0
+    - time: 5449
+      lane: 1
+      type: 3
+      duration: 167
     - time: 5783
-      lane: 0
+      lane: 1
       type: 1
       duration: 0
-    - time: 5982
+    - time: 5949
       lane: 0
-      type: 1
+      type: 3
+      duration: 167
+    - time: 6283
+      lane: 1
+      type: 5
       duration: 0
     - time: 6449
       lane: 0
       type: 2
-      duration: 999
+      duration: 2165
+    - time: 7449
+      lane: 1
+      type: 7
+      duration: 0
+    - time: 8449
+      lane: 1
+      type: 7
+      duration: 0
+    - time: 9449
+      lane: 0
+      type: 5
+      duration: 0
+    - time: 9449
+      lane: 1
+      type: 2
+      duration: 1334
+    - time: 10116
+      lane: 0
+      type: 7
+      duration: 0
+    - time: 11116
+      lane: 0
+      type: 7
+      duration: 0
     - time: 11116
       lane: 1
       type: 2
       duration: 500
-    - time: 11950
-      lane: 1
-      type: 0
-      duration: 0
     - time: 12149
       lane: 1
       type: 1
+      duration: 0
+    - time: 12449
+      lane: 0
+      type: 7
       duration: 0
     - time: 12616
       lane: 1
       type: 1
       duration: 0
+    - time: 13449
+      lane: 1
+      type: 5
+      duration: 0
     - time: 14116
-      lane: 0
-      type: 0
+      lane: 1
+      type: 1
       duration: 0
     - time: 14283
+      lane: 1
+      type: 1
+      duration: 0
+    - time: 14450
       lane: 0
-      type: 0
+      type: 1
+      duration: 0
+    - time: 14616
+      lane: 0
+      type: 1
       duration: 0
     - time: 14783
-      lane: 0
-      type: 1
-      duration: 0
-    - time: 14949
-      lane: 0
-      type: 1
-      duration: 0
-    - time: 15116
-      lane: 0
-      type: 1
+      lane: 1
+      type: 0
       duration: 0
     - time: 15283
       lane: 0
-      type: 1
+      type: 3
+      duration: 167
+    - time: 15449
+      lane: 1
+      type: 5
+      duration: 0
+    - time: 15783
+      lane: 0
+      type: 0
       duration: 0
     - time: 16116
       lane: 0
       type: 0
+      duration: 0
+    - time: 16116
+      lane: 1
+      type: 7
       duration: 0
     - time: 16449
       lane: 0
@@ -2141,10 +2481,18 @@ MonoBehaviour:
       lane: 0
       type: 1
       duration: 0
+    - time: 16783
+      lane: 1
+      type: 7
+      duration: 0
     - time: 17116
       lane: 0
       type: 2
       duration: 332
+    - time: 17449
+      lane: 1
+      type: 7
+      duration: 0
     - time: 17783
       lane: 0
       type: 0
@@ -2157,6 +2505,10 @@ MonoBehaviour:
       lane: 0
       type: 1
       duration: 0
+    - time: 18116
+      lane: 1
+      type: 7
+      duration: 0
     - time: 18283
       lane: 0
       type: 1
@@ -2168,6 +2520,10 @@ MonoBehaviour:
     - time: 18783
       lane: 0
       type: 1
+      duration: 0
+    - time: 19449
+      lane: 0
+      type: 5
       duration: 0
     - time: 19449
       lane: 1
@@ -2217,6 +2573,14 @@ MonoBehaviour:
       lane: 1
       type: 7
       duration: 0
+    - time: 23783
+      lane: 0
+      type: 3
+      duration: 166
+    - time: 24116
+      lane: 1
+      type: 0
+      duration: 0
     - time: 24449
       lane: 0
       type: 7
@@ -2228,8 +2592,8 @@ MonoBehaviour:
     - time: 24783
       lane: 1
       type: 3
-      duration: 1333
-    - time: 25450
+      duration: 166
+    - time: 25449
       lane: 1
       type: 1
       duration: 0
@@ -2238,36 +2602,52 @@ MonoBehaviour:
       type: 1
       duration: 0
     - time: 25783
-      lane: 0
-      type: 0
+      lane: 1
+      type: 1
       duration: 0
     - time: 25949
       lane: 0
-      type: 0
+      type: 4
       duration: 0
-    - time: 26283
+    - time: 26116
       lane: 0
-      type: 2
-      duration: 833
+      type: 3
+      duration: 167
+    - time: 26449
+      lane: 0
+      type: 1
+      duration: 0
+    - time: 26532
+      lane: 0
+      type: 1
+      duration: 0
     - time: 26560
       lane: 1
       type: 7
       duration: 0
+    - time: 26615
+      lane: 0
+      type: 1
+      duration: 0
+    - time: 27116
+      lane: 1
+      type: 3
+      duration: 167
     - time: 27449
       lane: 0
       type: 7
       duration: 0
-    - time: 27450
-      lane: 1
-      type: 3
-      duration: 1333
-    - time: 27616
+    - time: 27449
       lane: 1
       type: 0
       duration: 0
-    - time: 27783
+    - time: 27616
       lane: 1
-      type: 1
+      type: 3
+      duration: 167
+    - time: 28116
+      lane: 0
+      type: 0
       duration: 0
     - time: 28283
       lane: 1
@@ -2280,82 +2660,78 @@ MonoBehaviour:
     - time: 28783
       lane: 0
       type: 3
-      duration: 1333
-    - time: 29116
-      lane: 0
-      type: 7
-      duration: 0
-    - time: 29116
+      duration: 166
+    - time: 28949
       lane: 1
       type: 0
       duration: 0
-    - time: 29949
+    - time: 29116
+      lane: 1
+      type: 1
+      duration: 0
+    - time: 29450
+      lane: 0
+      type: 7
+      duration: 0
+    - time: 29783
       lane: 1
       type: 1
       duration: 0
     - time: 30116
       lane: 1
-      type: 4
-      duration: 1333
+      type: 1
+      duration: 0
     - time: 30283
       lane: 0
       type: 0
       duration: 0
-    - time: 30449
+    - time: 30616
       lane: 1
       type: 7
       duration: 0
-    - time: 31283
+    - time: 30783
       lane: 0
-      type: 1
+      type: 3
+      duration: 0
+    - time: 31116
+      lane: 0
+      type: 3
       duration: 0
     - time: 31449
       lane: 0
       type: 4
-      duration: 1334
-    - time: 31782
-      lane: 1
-      type: 0
-      duration: 0
-    - time: 31783
+      duration: 167
+    - time: 32116
       lane: 0
-      type: 7
+      type: 5
       duration: 0
-    - time: 32516
+    - time: 32449
       lane: 1
       type: 0
       duration: 0
-    - time: 32750
-      lane: 1
-      type: 0
-      duration: 0
-    - time: 33116
+    - time: 32783
       lane: 1
       type: 1
       duration: 0
+    - time: 32949
+      lane: 0
+      type: 4
+      duration: 167
     - time: 33449
       lane: 1
       type: 2
-      duration: 667
-    - time: 34383
+      duration: 334
+    - time: 33949
       lane: 0
-      type: 1
+      type: 0
       duration: 0
-    - time: 34516
+    - time: 34449
       lane: 0
-      type: 1
-      duration: 0
+      type: 2
+      duration: 334
     - time: 34616
       lane: 1
       type: 7
-      duration: 0
-    - time: 34649
-      lane: 0
-      type: 1
-      duration: 0
-    - time: 34783
-      lane: 0
-      type: 1
       duration: 0
     - time: 35116
       lane: 0
@@ -2365,48 +2741,68 @@ MonoBehaviour:
       lane: 0
       type: 1
       duration: 0
+    - time: 35616
+      lane: 0
+      type: 4
+      duration: 167
     - time: 36116
       lane: 0
       type: 2
       duration: 367
+    - time: 36283
+      lane: 1
+      type: 5
+      duration: 0
     - time: 36783
       lane: 1
       type: 1
       duration: 0
-    - time: 36950
+    - time: 36949
       lane: 1
       type: 1
       duration: 0
-    - time: 37117
+    - time: 37116
+      lane: 0
+      type: 8
+      duration: 500
+    - time: 37783
       lane: 1
       type: 1
       duration: 0
-    - time: 37449
-      lane: 1
-      type: 4
-      duration: 334
+    - time: 38116
+      lane: 0
+      type: 7
+      duration: 0
     - time: 38116
       lane: 1
       type: 0
       duration: 0
-    - time: 38249
+    - time: 38283
       lane: 1
-      type: 0
+      type: 4
       duration: 0
     - time: 38783
-      lane: 1
-      type: 1
+      lane: 0
+      type: 0
+      duration: 0
+    - time: 39283
+      lane: 0
+      type: 3
       duration: 0
     - time: 39449
       lane: 1
       type: 0
       duration: 0
-    - time: 39583
+    - time: 39616
       lane: 1
       type: 0
       duration: 0
+    - time: 39783
+      lane: 0
+      type: 3
+      duration: 0
     - time: 39949
-      lane: 1
+      lane: 0
       type: 1
       duration: 0
     - time: 40116
@@ -2425,18 +2821,26 @@ MonoBehaviour:
       lane: 0
       type: 0
       duration: 0
+    - time: 41116
+      lane: 1
+      type: 5
+      duration: 0
     - time: 41449
       lane: 0
-      type: 1
-      duration: 0
-    - time: 41616
-      lane: 0
-      type: 1
-      duration: 0
+      type: 3
+      duration: 167
+    - time: 41783
+      lane: 1
+      type: 3
+      duration: 166
     - time: 42116
       lane: 0
       type: 4
       duration: 500
+    - time: 42783
+      lane: 1
+      type: 1
+      duration: 0
     - time: 43116
       lane: 0
       type: 7
@@ -2447,81 +2851,69 @@ MonoBehaviour:
       duration: 0
     - time: 43616
       lane: 1
+      type: 4
+      duration: 167
+    - time: 43783
+      lane: 0
       type: 0
       duration: 0
     - time: 43949
       lane: 0
-      type: 1
-      duration: 0
-    - time: 44116
-      lane: 0
-      type: 1
-      duration: 0
+      type: 4
+      duration: 167
     - time: 44116
       lane: 1
-      type: 7
-      duration: 0
+      type: 3
+      duration: 167
+    - time: 44449
+      lane: 1
+      type: 3
+      duration: 167
     - time: 44783
       lane: 0
-      type: 0
-      duration: 0
-    - time: 44949
-      lane: 0
-      type: 0
+      type: 5
       duration: 0
     - time: 45116
       lane: 0
+      type: 9
+      duration: 500
+    - time: 45783
+      lane: 1
       type: 0
-      duration: 0
-    - time: 45283
-      lane: 0
-      type: 1
-      duration: 0
-    - time: 45449
-      lane: 1
-      type: 1
-      duration: 0
-    - time: 45616
-      lane: 1
-      type: 1
       duration: 0
     - time: 46116
       lane: 1
       type: 0
       duration: 0
     - time: 46283
-      lane: 1
-      type: 0
-      duration: 0
-    - time: 46449
-      lane: 1
-      type: 1
-      duration: 0
+      lane: 0
+      type: 4
+      duration: 166
     - time: 46783
       lane: 0
-      type: 1
+      type: 0
       duration: 0
     - time: 46949
       lane: 0
-      type: 0
+      type: 1
       duration: 0
     - time: 47116
       lane: 0
-      type: 0
+      type: 1
       duration: 0
-    - time: 47449
+    - time: 47283
       lane: 0
-      type: 7
+      type: 1
       duration: 0
     - time: 47449
       lane: 1
       type: 2
       duration: 833
-    - time: 48445
+    - time: 47949
       lane: 0
-      type: 7
+      type: 5
       duration: 0
-    - time: 48616
+    - time: 48449
       lane: 1
       type: 0
       duration: 0
@@ -2529,19 +2921,19 @@ MonoBehaviour:
       lane: 1
       type: 0
       duration: 0
-    - time: 49116
-      lane: 1
-      type: 1
-      duration: 0
-    - time: 49283
-      lane: 1
-      type: 1
-      duration: 0
-    - time: 49449
+    - time: 48949
       lane: 0
-      type: 7
-      duration: 0
+      type: 3
+      duration: 167
     - time: 49449
+      lane: 1
+      type: 1
+      duration: 0
+    - time: 49616
+      lane: 0
+      type: 5
+      duration: 0
+    - time: 49783
       lane: 1
       type: 1
       duration: 0
@@ -2563,40 +2955,28 @@ MonoBehaviour:
       duration: 0
     - time: 50783
       lane: 0
-      type: 1
-      duration: 0
-    - time: 50783
+      type: 4
+      duration: 166
+    - time: 50949
       lane: 1
       type: 7
       duration: 0
     - time: 51449
       lane: 0
-      type: 0
-      duration: 0
-    - time: 51616
-      lane: 0
-      type: 0
-      duration: 0
+      type: 2
+      duration: 334
     - time: 52116
+      lane: 1
+      type: 3
+      duration: 167
+    - time: 52449
       lane: 0
-      type: 1
-      duration: 0
-    - time: 52283
-      lane: 0
-      type: 1
-      duration: 0
+      type: 3
+      duration: 167
     - time: 52783
       lane: 1
-      type: 0
-      duration: 0
-    - time: 52916
-      lane: 1
-      type: 0
-      duration: 0
-    - time: 53116
-      lane: 1
-      type: 1
-      duration: 0
+      type: 3
+      duration: 166
     - time: 53183
       lane: 0
       type: 7
@@ -2604,7 +2984,11 @@ MonoBehaviour:
     - time: 53449
       lane: 1
       type: 4
-      duration: 1334
+      duration: 167
+    - time: 53783
+      lane: 0
+      type: 3
+      duration: 167
     - time: 54116
       lane: 1
       type: 0
@@ -2625,13 +3009,17 @@ MonoBehaviour:
       lane: 0
       type: 1
       duration: 0
-    - time: 55183
-      lane: 1
-      type: 7
-      duration: 0
+    - time: 55116
+      lane: 0
+      type: 3
+      duration: 167
     - time: 55449
       lane: 0
       type: 0
+      duration: 0
+    - time: 55449
+      lane: 1
+      type: 7
       duration: 0
     - time: 55616
       lane: 0
@@ -2639,66 +3027,50 @@ MonoBehaviour:
       duration: 0
     - time: 55783
       lane: 0
-      type: 1
-      duration: 0
-    - time: 56116
-      lane: 0
-      type: 1
-      duration: 0
-    - time: 56116
+      type: 4
+      duration: 333
+    - time: 56449
       lane: 1
-      type: 7
+      type: 0
       duration: 0
-    - time: 56283
+    - time: 56616
       lane: 0
-      type: 1
+      type: 5
       duration: 0
     - time: 56783
-      lane: 0
-      type: 0
-      duration: 0
-    - time: 56949
-      lane: 0
-      type: 0
-      duration: 0
-    - time: 57116
-      lane: 0
-      type: 0
-      duration: 0
-    - time: 57449
-      lane: 0
-      type: 1
-      duration: 0
+      lane: 1
+      type: 3
+      duration: 166
     - time: 57449
       lane: 1
-      type: 7
-      duration: 0
-    - time: 57616
-      lane: 0
       type: 1
       duration: 0
-    - time: 57782
+    - time: 57616
+      lane: 1
+      type: 1
+      duration: 0
+    - time: 57783
+      lane: 1
+      type: 1
+      duration: 0
+    - time: 57949
       lane: 0
+      type: 5
+      duration: 0
+    - time: 57949
+      lane: 1
       type: 1
       duration: 0
     - time: 58116
-      lane: 0
-      type: 0
-      duration: 0
-    - time: 58282
-      lane: 0
-      type: 0
-      duration: 0
-    - time: 58783
-      lane: 0
-      type: 4
-      duration: 666
+      lane: 1
+      type: 2
+      duration: 667
     - time: 59116
       lane: 0
-      type: 1
-      duration: 0
+      type: 4
+      duration: 334
     - time: 59283
-      lane: 1
+      lane: 0
       type: 1
       duration: 0
     - time: 59449
@@ -2725,330 +3097,322 @@ MonoBehaviour:
       lane: 1
       type: 0
       duration: 0
-    - time: 60616
-      lane: 1
-      type: 0
-      duration: 0
     - time: 60783
       lane: 0
       type: 1
       duration: 0
-    - time: 60916
+    - time: 60949
       lane: 0
       type: 1
       duration: 0
+    - time: 61116
+      lane: 0
+      type: 4
+      duration: 167
     - time: 61449
-      lane: 0
-      type: 0
-      duration: 0
-    - time: 61616
-      lane: 0
-      type: 1
-      duration: 0
+      lane: 1
+      type: 3
+      duration: 334
     - time: 62116
-      lane: 1
-      type: 1
-      duration: 0
-    - time: 62249
-      lane: 1
-      type: 1
-      duration: 0
-    - time: 62449
-      lane: 1
-      type: 0
-      duration: 0
-    - time: 62783
       lane: 0
-      type: 0
-      duration: 0
-    - time: 62949
+      type: 3
+      duration: 334
+    - time: 62783
+      lane: 1
+      type: 3
+      duration: 166
+    - time: 63116
       lane: 0
       type: 0
       duration: 0
     - time: 63449
       lane: 1
-      type: 1
-      duration: 0
+      type: 2
+      duration: 334
     - time: 63583
       lane: 0
       type: 7
       duration: 0
-    - time: 63583
-      lane: 1
-      type: 1
-      duration: 0
-    - time: 63783
-      lane: 1
-      type: 0
-      duration: 0
     - time: 64116
-      lane: 1
-      type: 2
+      lane: 0
+      type: 3
       duration: 167
     - time: 64449
       lane: 1
-      type: 1
-      duration: 0
-    - time: 64516
-      lane: 0
-      type: 7
-      duration: 0
+      type: 4
+      duration: 167
     - time: 64783
       lane: 1
-      type: 2
-      duration: 166
+      type: 0
+      duration: 0
+    - time: 64949
+      lane: 0
+      type: 4
+      duration: 167
     - time: 65116
       lane: 1
-      type: 1
+      type: 0
       duration: 0
-    - time: 65449
-      lane: 0
-      type: 7
-      duration: 0
-    - time: 65449
-      lane: 1
-      type: 2
-      duration: 167
-    - time: 65783
-      lane: 1
-      type: 1
-      duration: 0
-    - time: 66116
-      lane: 1
-      type: 4
-      duration: 667
-    - time: 67183
-      lane: 0
-      type: 1
-      duration: 0
-    - time: 67316
-      lane: 0
-      type: 1
-      duration: 0
-    - time: 67449
-      lane: 0
-      type: 1
-      duration: 0
-    - time: 67616
+    - time: 65283
       lane: 0
       type: 0
       duration: 0
-    - time: 67783
+    - time: 65449
+      lane: 1
+      type: 4
+      duration: 167
+    - time: 65783
+      lane: 1
+      type: 0
+      duration: 0
+    - time: 65949
+      lane: 0
+      type: 4
+      duration: 334
+    - time: 66449
+      lane: 1
+      type: 5
+      duration: 0
+    - time: 66699
+      lane: 0
+      type: 1
+      duration: 0
+    - time: 66783
+      lane: 0
+      type: 0
+      duration: 0
+    - time: 66949
+      lane: 0
+      type: 0
+      duration: 0
+    - time: 67116
+      lane: 1
+      type: 4
+      duration: 167
+    - time: 67449
+      lane: 1
+      type: 0
+      duration: 0
+    - time: 67616
+      lane: 0
+      type: 4
+      duration: 167
+    - time: 67949
       lane: 0
       type: 0
       duration: 0
     - time: 68116
       lane: 1
-      type: 1
+      type: 3
+      duration: 334
+    - time: 68450
+      lane: 0
+      type: 5
       duration: 0
-    - time: 68249
+    - time: 68616
       lane: 1
-      type: 1
+      type: 4
+      duration: 167
+    - time: 68949
+      lane: 0
+      type: 0
       duration: 0
-    - time: 68449
+    - time: 69283
       lane: 1
-      type: 1
+      type: 7
       duration: 0
-    - time: 68649
+    - time: 69448
+      lane: 0
+      type: 3
+      duration: 167
+    - time: 69781
+      lane: 1
+      type: 4
+      duration: 167
+    - time: 70115
       lane: 1
       type: 0
       duration: 0
-    - time: 68783
-      lane: 1
-      type: 0
-      duration: 0
-    - time: 69183
-      lane: 1
-      type: 7
-      duration: 0
-    - time: 69449
-      lane: 0
-      type: 2
-      duration: 167
-    - time: 69783
-      lane: 0
-      type: 1
-      duration: 0
-    - time: 69849
-      lane: 1
-      type: 7
-      duration: 0
-    - time: 70116
-      lane: 0
-      type: 2
-      duration: 166
-    - time: 70449
-      lane: 0
-      type: 1
-      duration: 0
-    - time: 70516
-      lane: 1
-      type: 7
-      duration: 0
-    - time: 70782
-      lane: 0
-      type: 2
-      duration: 167
-    - time: 71116
-      lane: 0
-      type: 1
-      duration: 0
-    - time: 71183
-      lane: 1
-      type: 7
-      duration: 0
-    - time: 71450
+    - time: 70281
       lane: 0
       type: 4
-      duration: 667
-    - time: 72383
+      duration: 167
+    - time: 70448
+      lane: 1
+      type: 0
+      duration: 0
+    - time: 70615
+      lane: 0
+      type: 0
+      duration: 0
+    - time: 70781
+      lane: 1
+      type: 4
+      duration: 167
+    - time: 71115
+      lane: 1
+      type: 0
+      duration: 0
+    - time: 71281
+      lane: 0
+      type: 4
+      duration: 334
+    - time: 71616
+      lane: 1
+      type: 5
+      duration: 0
+    - time: 72116
+      lane: 1
+      type: 0
+      duration: 0
+    - time: 72283
+      lane: 1
+      type: 0
+      duration: 0
+    - time: 72449
+      lane: 0
+      type: 3
+      duration: 167
+    - time: 72949
       lane: 1
       type: 1
       duration: 0
-    - time: 72516
-      lane: 1
-      type: 1
-      duration: 0
-    - time: 72616
-      lane: 1
-      type: 1
-      duration: 0
-    - time: 72916
+    - time: 73250
       lane: 0
       type: 7
       duration: 0
-    - time: 72949
+    - time: 73283
       lane: 1
-      type: 0
-      duration: 0
-    - time: 73116
-      lane: 1
-      type: 0
-      duration: 0
-    - time: 73316
-      lane: 1
-      type: 2
-      duration: 533
-    - time: 74116
+      type: 4
+      duration: 167
+    - time: 73616
       lane: 1
       type: 1
       duration: 0
+    - time: 73783
+      lane: 0
+      type: 2
+      duration: 333
     - time: 74516
       lane: 1
       type: 7
       duration: 0
     - time: 74783
       lane: 0
-      type: 2
-      duration: 167
-    - time: 75116
-      lane: 0
-      type: 1
+      type: 0
       duration: 0
-    - time: 75182
-      lane: 1
-      type: 7
-      duration: 0
-    - time: 75450
-      lane: 0
-      type: 2
-      duration: 166
-    - time: 75783
-      lane: 0
-      type: 1
-      duration: 0
-    - time: 75849
-      lane: 1
-      type: 7
-      duration: 0
-    - time: 76116
-      lane: 0
-      type: 2
-      duration: 167
-    - time: 76449
-      lane: 0
-      type: 1
-      duration: 0
-    - time: 76516
-      lane: 1
-      type: 7
-      duration: 0
-    - time: 76784
+    - time: 75115
       lane: 0
       type: 4
-      duration: 667
-    - time: 77849
-      lane: 1
-      type: 1
+      duration: 167
+    - time: 75449
+      lane: 0
+      type: 0
       duration: 0
-    - time: 77949
+    - time: 75615
       lane: 1
-      type: 1
+      type: 4
+      duration: 167
+    - time: 75783
+      lane: 0
+      type: 0
       duration: 0
-    - time: 78116
-      lane: 1
-      type: 1
-      duration: 0
-    - time: 78283
+    - time: 75949
       lane: 1
       type: 0
       duration: 0
+    - time: 76115
+      lane: 1
+      type: 4
+      duration: 167
+    - time: 76449
+      lane: 1
+      type: 0
+      duration: 0
+    - time: 76615
+      lane: 0
+      type: 4
+      duration: 334
+    - time: 76950
+      lane: 1
+      type: 5
+      duration: 0
+    - time: 77449
+      lane: 0
+      type: 5
+      duration: 0
+    - time: 77449
+      lane: 1
+      type: 0
+      duration: 0
+    - time: 77616
+      lane: 1
+      type: 1
+      duration: 0
+    - time: 77783
+      lane: 1
+      type: 3
+      duration: 333
+    - time: 78283
+      lane: 0
+      type: 3
+      duration: 334
     - time: 78449
       lane: 1
-      type: 0
+      type: 5
       duration: 0
     - time: 78783
       lane: 0
       type: 1
       duration: 0
-    - time: 78916
+    - time: 78949
       lane: 0
       type: 1
       duration: 0
     - time: 79116
-      lane: 0
+      lane: 1
       type: 1
       duration: 0
     - time: 79283
-      lane: 0
-      type: 0
+      lane: 1
+      type: 1
       duration: 0
-    - time: 79449
-      lane: 0
-      type: 0
-      duration: 0
-    - time: 79849
+    - time: 79533
       lane: 0
       type: 7
       duration: 0
-    - time: 80116
+    - time: 79616
       lane: 1
-      type: 2
+      type: 3
       duration: 167
+    - time: 80116
+      lane: 0
+      type: 0
+      duration: 0
+    - time: 80283
+      lane: 1
+      type: 1
+      duration: 0
     - time: 80449
       lane: 1
-      type: 1
-      duration: 0
-    - time: 80516
-      lane: 0
-      type: 7
-      duration: 0
+      type: 3
+      duration: 167
     - time: 80783
-      lane: 1
-      type: 2
-      duration: 166
-    - time: 81116
-      lane: 1
-      type: 1
-      duration: 0
-    - time: 81182
       lane: 0
+      type: 0
+      duration: 0
+    - time: 80949
+      lane: 0
+      type: 3
+      duration: 334
+    - time: 80949
+      lane: 1
       type: 7
       duration: 0
     - time: 81449
       lane: 1
-      type: 2
-      duration: 167
+      type: 3
+      duration: 334
     - time: 81783
       lane: 1
       type: 0
@@ -3057,58 +3421,42 @@ MonoBehaviour:
       lane: 0
       type: 7
       duration: 0
-    - time: 81983
+    - time: 81950
       lane: 1
       type: 4
-      duration: 667
+      duration: 333
+    - time: 82783
+      lane: 0
+      type: 1
+      duration: 0
     - time: 82949
       lane: 0
       type: 1
       duration: 0
     - time: 83116
-      lane: 0
-      type: 1
-      duration: 0
-    - time: 83283
-      lane: 0
-      type: 1
-      duration: 0
-    - time: 83449
-      lane: 0
-      type: 0
-      duration: 0
-    - time: 83583
-      lane: 0
-      type: 0
-      duration: 0
-    - time: 83783
-      lane: 0
-      type: 2
-      duration: 500
-    - time: 84449
-      lane: 0
-      type: 1
-      duration: 0
-    - time: 84616
-      lane: 0
-      type: 1
-      duration: 0
-    - time: 84783
       lane: 1
-      type: 0
-      duration: 0
-    - time: 84916
-      lane: 0
-      type: 7
-      duration: 0
-    - time: 85449
+      type: 2
+      duration: 667
+    - time: 83616
       lane: 1
       type: 4
-      duration: 666
-    - time: 85616
+      duration: 500
+    - time: 83949
       lane: 1
-      type: 0
+      type: 2
+      duration: 334
+    - time: 84116
+      lane: 0
+      type: 5
       duration: 0
+    - time: 84449
+      lane: 0
+      type: 9
+      duration: 1000
+    - time: 85783
+      lane: 1
+      type: 3
+      duration: 333
     - time: 86116
       lane: 0
       type: 0
@@ -3132,155 +3480,115 @@ MonoBehaviour:
     - time: 86802
       lane: 0
       type: 2
-      duration: 533
-    - time: 87582
+      duration: 699
+    - time: 87283
       lane: 0
       type: 4
-      duration: 534
+      duration: 500
     - time: 88116
       lane: 0
       type: 0
       duration: 0
-    - time: 88249
+    - time: 88283
       lane: 0
       type: 0
       duration: 0
-    - time: 88516
+    - time: 88449
       lane: 1
       type: 2
-      duration: 400
+      duration: 334
     - time: 88649
       lane: 0
       type: 7
       duration: 0
-    - time: 89049
+    - time: 88949
       lane: 1
       type: 4
-      duration: 401
-    - time: 89716
+      duration: 167
+    - time: 89283
       lane: 1
-      type: 0
+      type: 2
+      duration: 1500
+    - time: 89616
+      lane: 1
+      type: 1
+      duration: 0
+    - time: 89783
+      lane: 1
+      type: 1
       duration: 0
     - time: 89849
       lane: 0
       type: 7
       duration: 0
-    - time: 89849
-      lane: 1
-      type: 0
-      duration: 0
-    - time: 89983
-      lane: 1
-      type: 0
-      duration: 0
-    - time: 90383
+    - time: 89949
       lane: 1
       type: 4
-      duration: 1067
-    - time: 90516
+      duration: 334
+    - time: 90283
       lane: 1
-      type: 1
-      duration: 0
-    - time: 91183
+      type: 4
+      duration: 333
+    - time: 91116
       lane: 0
-      type: 0
-      duration: 0
-    - time: 91316
-      lane: 0
-      type: 0
-      duration: 0
-    - time: 91449
-      lane: 0
-      type: 0
-      duration: 0
-    - time: 91716
-      lane: 0
-      type: 1
-      duration: 0
-    - time: 91849
-      lane: 0
-      type: 1
-      duration: 0
-    - time: 91983
+      type: 3
+      duration: 332
+    - time: 91116
       lane: 1
       type: 7
       duration: 0
+    - time: 91616
+      lane: 1
+      type: 3
+      duration: 333
     - time: 92116
       lane: 0
       type: 2
-      duration: 667
-    - time: 93049
-      lane: 0
-      type: 1
-      duration: 0
-    - time: 93049
+      duration: 500
+    - time: 92716
       lane: 1
       type: 7
       duration: 0
-    - time: 93183
+    - time: 92783
       lane: 0
       type: 1
       duration: 0
-    - time: 93316
+    - time: 93116
       lane: 0
-      type: 0
-      duration: 0
-    - time: 93849
-      lane: 1
-      type: 0
-      duration: 0
-    - time: 93983
-      lane: 1
-      type: 0
-      duration: 0
-    - time: 94116
-      lane: 1
       type: 1
       duration: 0
-    - time: 94249
-      lane: 1
-      type: 1
-      duration: 0
-    - time: 94668
+    - time: 93283
       lane: 1
       type: 2
-      duration: 400
-    - time: 95316
+      duration: 333
+    - time: 93783
       lane: 1
-      type: 1
+      type: 0
       duration: 0
-    - time: 95449
-      lane: 0
-      type: 7
-      duration: 0
-    - time: 96116
-      lane: 1
-      type: 4
-      duration: 933
-    - time: 96249
-      lane: 1
-      type: 1
-      duration: 0
-    - time: 96649
+    - time: 94283
       lane: 0
       type: 0
       duration: 0
+    - time: 94616
+      lane: 1
+      type: 2
+      duration: 333
+    - time: 95116
+      lane: 0
+      type: 9
+      duration: 1000
+    - time: 96449
+      lane: 1
+      type: 3
+      duration: 167
     - time: 96783
       lane: 0
-      type: 0
-      duration: 0
-    - time: 96916
-      lane: 0
-      type: 0
-      duration: 0
-    - time: 97049
-      lane: 0
       type: 1
       duration: 0
-    - time: 97183
+    - time: 96950
       lane: 0
-      type: 1
-      duration: 0
+      type: 3
+      duration: 166
     - time: 97450
       lane: 1
       type: 7
@@ -3301,7 +3609,7 @@ MonoBehaviour:
       lane: 0
       type: 7
       duration: 0
-    - time: 98649
+    - time: 98616
       lane: 1
       type: 1
       duration: 0
@@ -3309,138 +3617,102 @@ MonoBehaviour:
       lane: 1
       type: 1
       duration: 0
-    - time: 98916
+    - time: 98949
       lane: 1
       type: 1
       duration: 0
-    - time: 99049
+    - time: 99116
       lane: 1
+      type: 2
+      duration: 167
+    - time: 99616
+      lane: 0
       type: 0
-      duration: 0
-    - time: 99183
-      lane: 1
-      type: 0
-      duration: 0
-    - time: 99316
-      lane: 1
-      type: 1
       duration: 0
     - time: 99716
       lane: 1
       type: 7
       duration: 0
-    - time: 99849
+    - time: 99949
       lane: 0
-      type: 0
-      duration: 0
-    - time: 99983
-      lane: 0
-      type: 1
-      duration: 0
-    - time: 100116
+      type: 2
+      duration: 1167
+    - time: 100283
       lane: 0
       type: 1
       duration: 0
-    - time: 100516
+    - time: 100449
       lane: 0
-      type: 0
+      type: 1
       duration: 0
     - time: 100516
       lane: 1
       type: 7
       duration: 0
-    - time: 100649
-      lane: 0
-      type: 0
-      duration: 0
-    - time: 100782
-      lane: 0
-      type: 0
-      duration: 0
-    - time: 100916
-      lane: 0
-      type: 1
-      duration: 0
-    - time: 101449
+    - time: 100616
       lane: 0
       type: 4
-      duration: 667
-    - time: 101583
+      duration: 333
+    - time: 100949
       lane: 0
-      type: 1
+      type: 4
+      duration: 334
+    - time: 101449
+      lane: 1
+      type: 0
       duration: 0
-    - time: 101981
+    - time: 101783
       lane: 1
       type: 1
       duration: 0
     - time: 102116
-      lane: 1
+      lane: 0
       type: 0
       duration: 0
-    - time: 102249
-      lane: 1
-      type: 1
-      duration: 0
-    - time: 102383
-      lane: 1
-      type: 1
-      duration: 0
-    - time: 102650
+    - time: 102283
       lane: 0
+      type: 4
+      duration: 333
+    - time: 102317
+      lane: 1
       type: 7
       duration: 0
-    - time: 102669
+    - time: 102783
       lane: 1
       type: 2
-      duration: 400
-    - time: 103316
+      duration: 333
+    - time: 103283
       lane: 1
+      type: 1
+      duration: 0
+    - time: 103449
+      lane: 0
       type: 0
       duration: 0
-    - time: 103583
-      lane: 0
-      type: 1
-      duration: 0
-    - time: 103716
-      lane: 0
-      type: 1
-      duration: 0
-    - time: 103716
+    - time: 103616
       lane: 1
       type: 7
       duration: 0
-    - time: 103849
+    - time: 103783
       lane: 0
-      type: 0
-      duration: 0
-    - time: 103983
-      lane: 0
-      type: 1
-      duration: 0
-    - time: 104516
+      type: 3
+      duration: 334
+    - time: 103949
+      lane: 1
+      type: 2
+      duration: 334
+    - time: 104449
       lane: 1
       type: 1
       duration: 0
-    - time: 104649
-      lane: 1
-      type: 1
-      duration: 0
-    - time: 104783
+    - time: 104949
       lane: 1
       type: 0
-      duration: 0
-    - time: 104916
-      lane: 1
-      type: 0
-      duration: 0
-    - time: 105049
-      lane: 1
-      type: 1
       duration: 0
     - time: 105449
       lane: 0
       type: 9
-      duration: 934
+      duration: 1601
   <songReference>k__BackingField:
     Guid:
       Data1: 2114493477

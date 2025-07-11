@@ -1,5 +1,4 @@
 using FMODUnity;
-using NUnit.Framework;
 using UnityEngine;
 
 // Enum to define interaction types
@@ -15,6 +14,8 @@ public class RhtyhmCharacterController : MonoBehaviour
 
     [field: Header("Hit")]
     [field: SerializeField] public EventReference hitReference { get; private set; }
+    [field: Header("Hit")]
+    [field: SerializeField] public EventReference whooshReference { get; private set; }
 
     public GameObject popupPrefab;
     public int perfectWindow = 40;
@@ -137,6 +138,7 @@ public class RhtyhmCharacterController : MonoBehaviour
         // Hit detection
         if (Input.GetMouseButtonDown(0)) {
             swapper.TriggerHit();
+            RuntimeManager.PlayOneShot(whooshReference);
             bool hitSuccess = TryHitNotes(currentTime, currentLane, InteractionType.Hit);
             if (!hitSuccess) {
                 hitBuffered = true;
@@ -148,6 +150,7 @@ public class RhtyhmCharacterController : MonoBehaviour
         float mouseSpeedX = Input.GetAxis("Mouse X") / Time.deltaTime;
         if (!isFlicking && Mathf.Abs(mouseSpeedX) >= flickThreshold) {
             swapper.TriggerSlash(mouseSpeedX < 0);
+            RuntimeManager.PlayOneShot(whooshReference);
             isFlicking = true;
             bool flickSuccess = TryHitNotes(currentTime, currentLane, InteractionType.Flick);
             if (!flickSuccess) {
@@ -211,7 +214,7 @@ public class RhtyhmCharacterController : MonoBehaviour
                 misses++;
                 combo = 0;
                 if (DialogueMissionManager.instance != null)
-                    DialogueMissionManager.instance.RegisterMissionAction(false);
+                    DialogueMissionManager.instance.RegisterMissionAction(true);
             }
             if (currentLane == 1) swapper.SetBasePose(BaseAnimationState.Running);
             else swapper.SetBasePose(BaseAnimationState.Surfing);
@@ -363,11 +366,13 @@ public class RhtyhmCharacterController : MonoBehaviour
                 case NoteType.Laser:
                     if (currentTime < note.data.time + enemyHitDuration / 2 && currentTime > note.data.time - enemyHitDuration / 2) {
                         if (note.data.lane == currentLane) {
+                            if (!note.hitPlayer) {
+                                if (DialogueMissionManager.instance != null)
+                                    DialogueMissionManager.instance.RegisterMissionAction(true);
+                            }
                             TakeDamage(note);
-                            if (DialogueMissionManager.instance != null)
-                                DialogueMissionManager.instance.RegisterMissionAction(true);
                         }
-                    } else if (currentTime > note.data.time + enemyHitDuration / 2 && !note.missed) {
+                    } else if (currentTime > note.data.time + enemyHitDuration / 2 && !note.missed && !note.hitPlayer && note.data.lane != currentLane) {
                         note.missed = true;
                         if (DialogueMissionManager.instance != null)
                             DialogueMissionManager.instance.RegisterMissionAction(false);
@@ -474,7 +479,7 @@ public class RhtyhmCharacterController : MonoBehaviour
         combo = 0;
 
         // Inmune while testing
-        if (EditorUI.instance == null || DialogueMissionManager.instance == null) {
+        if (EditorUI.instance == null && DialogueMissionManager.instance == null) {
             health -= note.damage;
         }
 
