@@ -108,8 +108,6 @@ public class GameplayUI : UIManager
 
     private void Update()
     {
-        // For testing
-        if (Input.GetKeyDown(KeyCode.W)) StartCoroutine(WinLevel());
         if (Input.GetKeyDown(KeyCode.Escape) && !robo.IsDead()) {
             TogglePauseScreen();
         }

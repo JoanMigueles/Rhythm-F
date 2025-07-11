@@ -79,11 +79,6 @@ public class RhtyhmCharacterController : MonoBehaviour
         if (!GameManager.instance.IsPlaying()) return;
         if (dead) return;
 
-        if (Input.GetKeyDown(KeyCode.L) && GameplayUI.instance != null && DialogueMissionManager.instance == null) {
-            Lose();
-            NoteManager.instance.gameObject.SetActive(false);
-        }
-
         int currentTime = metronome.GetTimelinePosition();
         
         // Regenrate health
