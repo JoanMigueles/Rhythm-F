@@ -55,11 +55,18 @@ public class NoteManager : MonoBehaviour
                 LoadSelectedSong(song.Value);
         }
         else {
-            SongDataResource loaded = Resources.Load<SongDataResource>("SongData");
+            Debug.Log("Setting test song");
+            SongDataResource loaded = Resources.Load<SongDataResource>("Test");
             songData = loaded.data;
             Metronome.instance.SetBPMFlags(new List<BPMFlag>());
             Metronome.instance.SetLooping(false);
             Metronome.instance.SetSong(testSongReference);
+            if (DialogueMissionManager.instance != null) {
+                Metronome.instance.PlaySong();
+                GameManager.instance.SetPlaying(true);
+                return;
+            }
+            GameManager.instance.SetSelectedDifficulty(Difficulty.Normal);
         }
 
         difficulty = GameManager.instance.GetSelectedDifficulty();

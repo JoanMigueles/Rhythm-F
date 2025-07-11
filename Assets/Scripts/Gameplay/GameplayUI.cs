@@ -4,7 +4,6 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
-using UnityEngine.SocialPlatforms.Impl;
 using UnityEngine.UI;
 
 public class GameplayUI : UIManager
@@ -93,8 +92,10 @@ public class GameplayUI : UIManager
         roboSplash.transform.position = splashTargetPos + Vector3.left * 10f;
         resultsPanel.transform.position = resultsPanelTargetPos + Vector3.right * Screen.width;
 
-        rankIcon.transform.localScale = Vector3.one * startingsRankIconScale;
-        rankIcon.alpha = 0f;
+        if (rankIcon != null) {
+            rankIcon.transform.localScale = Vector3.one * startingsRankIconScale;
+            rankIcon.alpha = 0f;
+        }
         backButton.SetActive(false);
 
         loseBackground.alpha = 0f;
@@ -156,33 +157,38 @@ public class GameplayUI : UIManager
         yield return new WaitForSeconds(1f);
 
         Metronome.instance.SetBPMFlags(new List<BPMFlag>());
-        Metronome.instance.SetLooping(false);
+        Metronome.instance.SetLooping(true);
         Metronome.instance.SetSong(loseReference);
         Metronome.instance.PlaySong();
     }
 
     public void SetResults()
     {
+
         int score = robo.GetScore();
         (int perfects, int greats, int misses) = robo.GetHitStats();
         float accuracy = NoteManager.instance.GetAccuracy(perfects, greats, misses);
         GameManager.instance.RegisterScore(score, accuracy);
 
-        // Score
-        resultTexts[0].transform.GetChild(0).GetComponent<TMP_Text>().text = score.ToString();
+        if (resultTexts.Length >= 6) {
+            // Score
+            resultTexts[0].transform.GetChild(0).GetComponent<TMP_Text>().text = score.ToString();
 
-        // Hit stats
-        resultTexts[1].transform.GetChild(0).GetComponent<TMP_Text>().text = perfects.ToString();
-        resultTexts[2].transform.GetChild(0).GetComponent<TMP_Text>().text = greats.ToString();
-        resultTexts[3].transform.GetChild(0).GetComponent<TMP_Text>().text = misses.ToString();
+            // Hit stats
+            resultTexts[1].transform.GetChild(0).GetComponent<TMP_Text>().text = perfects.ToString();
+            resultTexts[2].transform.GetChild(0).GetComponent<TMP_Text>().text = greats.ToString();
+            resultTexts[3].transform.GetChild(0).GetComponent<TMP_Text>().text = misses.ToString();
 
-        // Max combo
-        resultTexts[4].transform.GetChild(0).GetComponent<TMP_Text>().text = robo.GetMaxCombo().ToString();
+            // Max combo
+            resultTexts[4].transform.GetChild(0).GetComponent<TMP_Text>().text = robo.GetMaxCombo().ToString();
 
-        // Accuracy
-        resultTexts[5].transform.GetChild(0).GetComponent<TMP_Text>().text = accuracy.ToString("F1") + " %";
+            // Accuracy
+            resultTexts[5].transform.GetChild(0).GetComponent<TMP_Text>().text = accuracy.ToString("F1") + " %";
+        }
+        
         Sprite rankSprite = GetRankIcon(accuracy);
-        rankIcon.GetComponent<Image>().sprite = rankSprite;
+        if (rankIcon != null)
+            rankIcon.GetComponent<Image>().sprite = rankSprite;
     }
 
     public void ShowResults()
@@ -214,14 +220,16 @@ public class GameplayUI : UIManager
                     robo.gameObject.SetActive(false);
                     textSeq.AppendCallback(() =>
                     {
-                        // Animate scale down to (1,1,1) and fade in
-                        Sequence rankSeq = DOTween.Sequence();
-                        rankSeq.Join(rankIcon.transform.DOScale(Vector3.one, 1f)
-                            .SetEase(Ease.OutBounce))
-                            .OnComplete(() => {
-                                rankIcon.GetComponent<Pulsator>().enabled = true;
-                            });
-                        rankSeq.Join(rankIcon.DOFade(1f, 0.4f));
+                        if (rankIcon != null) {
+                            // Animate scale down to (1,1,1) and fade in
+                            Sequence rankSeq = DOTween.Sequence();
+                            rankSeq.Join(rankIcon.transform.DOScale(Vector3.one, 1f)
+                                .SetEase(Ease.OutBounce))
+                                .OnComplete(() => {
+                                    rankIcon.GetComponent<Pulsator>().enabled = true;
+                                });
+                            rankSeq.Join(rankIcon.DOFade(1f, 0.4f));
+                        }
                     });
                 });
             });

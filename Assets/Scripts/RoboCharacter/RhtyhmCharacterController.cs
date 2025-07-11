@@ -1,4 +1,5 @@
 using FMODUnity;
+using NUnit.Framework;
 using UnityEngine;
 
 // Enum to define interaction types
@@ -77,7 +78,7 @@ public class RhtyhmCharacterController : MonoBehaviour
         if (!GameManager.instance.IsPlaying()) return;
         if (dead) return;
 
-        if (Input.GetKeyDown(KeyCode.L) && GameplayUI.instance != null) {
+        if (Input.GetKeyDown(KeyCode.L) && GameplayUI.instance != null && DialogueMissionManager.instance == null) {
             Lose();
             NoteManager.instance.gameObject.SetActive(false);
         }
@@ -98,7 +99,7 @@ public class RhtyhmCharacterController : MonoBehaviour
         }
 
         // Check for level ending
-        if (NoteManager.instance.IsPastLastNote() && !songEnded && GameplayUI.instance != null) {
+        if (NoteManager.instance.IsPastLastNote() && !songEnded && GameplayUI.instance != null && DialogueMissionManager.instance == null) {
             songEnded = true;
             StartCoroutine(GameplayUI.instance.WinLevel());
         }
@@ -109,6 +110,7 @@ public class RhtyhmCharacterController : MonoBehaviour
 
     private void HandleInput(int currentTime)
     {
+        if (DialogueMissionManager.instance != null && DialogueMissionManager.instance.CanAdvanceDialogue()) return;
         // Lane switching
         if (Input.GetKeyDown(KeyCode.Space))
         {
@@ -208,6 +210,8 @@ public class RhtyhmCharacterController : MonoBehaviour
                 heldNote = null;
                 misses++;
                 combo = 0;
+                if (DialogueMissionManager.instance != null)
+                    DialogueMissionManager.instance.RegisterMissionAction(false);
             }
             if (currentLane == 1) swapper.SetBasePose(BaseAnimationState.Running);
             else swapper.SetBasePose(BaseAnimationState.Surfing);
@@ -220,6 +224,8 @@ public class RhtyhmCharacterController : MonoBehaviour
         SpawnPopup("Perfect!", heldNote.data.lane);
         perfects++;
         combo++;
+        if (DialogueMissionManager.instance != null)
+            DialogueMissionManager.instance.RegisterMissionAction(false);
         heldNote.Kill();
         heldNote = null;
     }
@@ -237,12 +243,16 @@ public class RhtyhmCharacterController : MonoBehaviour
             activeMultihitNote.SetHitting(false);
             activeMultihitNote.Kill();
             activeMultihitNote = null;
+            if (DialogueMissionManager.instance != null)
+                DialogueMissionManager.instance.RegisterMissionAction(false);
             return;
         } else if (multihitTimer > multihitTimeInterval) {
             TakeDamage(activeMultihitNote);
             misses++;
             activeMultihitNote.SetHitting(false);
             activeMultihitNote = null;
+            if (DialogueMissionManager.instance != null)
+                DialogueMissionManager.instance.RegisterMissionAction(true);
             return;
         }
 
@@ -315,11 +325,15 @@ public class RhtyhmCharacterController : MonoBehaviour
                     SpawnPopup("Perfect!", note.data.lane);
                     perfects++;
                     AddScore(150);
+                    if (DialogueMissionManager.instance != null)
+                        DialogueMissionManager.instance.RegisterMissionAction(false);
                 }
                 else {
                     SpawnPopup("Great", note.data.lane);
                     greats++;
                     AddScore(100);
+                    if (DialogueMissionManager.instance != null)
+                        DialogueMissionManager.instance.RegisterMissionAction(false);
                 }
                 note.Kill();
                 RuntimeManager.PlayOneShot(hitReference);
@@ -331,8 +345,8 @@ public class RhtyhmCharacterController : MonoBehaviour
 
     void HandleMissedNotes(int currentTime)
     {
-        foreach (var note in noteManager.activeNotes) {
-
+        for (int i = 0; i < NoteManager.instance.activeNotes.Count; i++) {
+            var note = NoteManager.instance.activeNotes[i];
             int enemyHitDuration = 60;
             if (note.data.time > currentTime + enemyHitDuration / 2) {
                 break;
@@ -350,7 +364,13 @@ public class RhtyhmCharacterController : MonoBehaviour
                     if (currentTime < note.data.time + enemyHitDuration / 2 && currentTime > note.data.time - enemyHitDuration / 2) {
                         if (note.data.lane == currentLane) {
                             TakeDamage(note);
+                            if (DialogueMissionManager.instance != null)
+                                DialogueMissionManager.instance.RegisterMissionAction(true);
                         }
+                    } else if (currentTime > note.data.time + enemyHitDuration / 2 && !note.missed) {
+                        note.missed = true;
+                        if (DialogueMissionManager.instance != null)
+                            DialogueMissionManager.instance.RegisterMissionAction(false);
                     }
                     break;
                 case NoteType.Warn_Slash:
@@ -454,7 +474,7 @@ public class RhtyhmCharacterController : MonoBehaviour
         combo = 0;
 
         // Inmune while testing
-        if (EditorUI.instance == null) {
+        if (EditorUI.instance == null || DialogueMissionManager.instance == null) {
             health -= note.damage;
         }
 
@@ -486,10 +506,13 @@ public class RhtyhmCharacterController : MonoBehaviour
         misses++;
         combo = 0;
         note.missed = true;
+        if (DialogueMissionManager.instance != null) 
+            DialogueMissionManager.instance.RegisterMissionAction(true);
 
         if (note is SliderNote slider) {
             slider.SetMissed(true);
             misses++;
+            
         }
 
         if (note is ShooterNote shooter) {

@@ -126,6 +126,7 @@ public class Metronome : MonoBehaviour
 
     private void ResetTimelinePosition()
     {
+        Debug.Log("reset");
         timelineBeatPosition = 0;
         lastBeat = 0;
         timelinePosition = 0;
@@ -372,7 +373,6 @@ public class Metronome : MonoBehaviour
             instancePlayer.getPlaybackState(out PLAYBACK_STATE state);
             return state == PLAYBACK_STATE.PLAYING;
         }
-
     }
 
     public void SetMetronomeSound(bool on)
@@ -452,9 +452,6 @@ public class Metronome : MonoBehaviour
     private IEnumerator FadeOut(float duration = 2f)
     {
         if (customPlayer != null) {
-            customPlayer.Volume = 0;
-            PlaySong();
-
             float elapsed = 0f;
             while (elapsed < duration) {
                 if (customPlayer == null)
@@ -474,9 +471,6 @@ public class Metronome : MonoBehaviour
             PauseSong();
         }
         else if (instancePlayer.isValid()) {
-            instancePlayer.setVolume(0f);
-            PlaySong();
-
             float elapsed = 0f;
             while (elapsed < duration) {
                 if (!instancePlayer.isValid())

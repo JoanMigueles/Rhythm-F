@@ -21,8 +21,6 @@ public class FMODEnemyMover : MonoBehaviour
     private double previousTChannel;
     private double startTime;
 
-    private bool isPlaying = false;
-
     void Start()
     {
         Application.targetFrameRate = 1000;
